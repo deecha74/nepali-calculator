@@ -83,12 +83,13 @@ export function generateWebApplicationSchema({
   url: string;
   category?: string;
 }) {
+  const normalizedUrl = url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url);
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name,
     description,
-    url,
+    url: normalizedUrl,
     applicationCategory: category,
     operatingSystem: "All (Web Browser, iOS, Android)",
     offers: {
@@ -122,7 +123,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url,
+      item: item.url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
     })),
   };
 }
@@ -147,12 +148,12 @@ export function generateGEODatasetSchema({
     "@type": "Dataset",
     name,
     description,
-    url,
+    url: url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
     keywords,
     creator: {
       "@type": "Organization",
-      name: "NepalCalc",
-      url: "https://nepalcalc.com",
+      name: "Nepali Calc",
+      url: SITE_CONFIG.url,
     },
     license: "https://creativecommons.org/licenses/by/4.0/",
     isAccessibleForFree: true,
@@ -183,7 +184,7 @@ export function generateAEOAnswerSchema({
       acceptedAnswer: {
         "@type": "Answer",
         text: answer,
-        url,
+        url: url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: [".aeo-answer-container", "h1", "p"],
