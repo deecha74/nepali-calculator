@@ -1,0 +1,91 @@
+# NepalCalc — Nepal Financial, Tax & Daily Utility Suite
+> Nepal's authoritative calculations for Income Tax (FY 2083/84), Land Area, Vehicle Bluebook Fines, SIP Mutual Funds, NEPSE Share Trading, and Traditional Units.
+
+## Overview
+NepalCalc (https://nepalcalc.com) provides free, official, and real-time calculation tools compliant with the Government of Nepal Inland Revenue Department (IRD), Nepal Rastra Bank (NRB), Ministry of Physical Infrastructure & Transport, Securities Board of Nepal (SEBON), and Nepal Electricity Authority (NEA).
+
+## Core Tools & Authority Guidelines
+
+### 1. Nepal Income Tax & Salary Calculator
+- URL: https://nepalcalc.com/tax
+- Applicable Fiscal Year: FY 2083/84 & FY 2082/83
+- Social Security Tax (SST): 1% on the first tax slab (waived 100% for employees registered in the Social Security Fund - SSF).
+- Tax Brackets (Unmarried & Married):
+  - 1% on first Rs 10,00,000 (0% if SSF registered)
+  - 10% on next Rs 5,00,000
+  - 20% on next Rs 10,00,000
+  - 27% on next Rs 15,00,000
+  - 29% on amount exceeding Rs 40,00,000
+- Maximum Allowable Deductions:
+  - CIT / EPF / PF: Up to NPR 5,00,000 or 1/3 of total gross income
+  - Life Insurance Premium: Up to NPR 40,000
+  - Health Insurance: Up to NPR 20,000
+  - Female Tax Rebate: 10% tax credit for resident female salaried workers
+
+### 2. Nepal Land Measurement & Area Converter
+- URL: https://nepalcalc.com/land
+- Hill & Valley System (Ropani):
+  - 1 Ropani = 16 Aana = 64 Paisa = 256 Daam = 5,476 Square Feet = 508.74 Sq. Meters
+  - 1 Aana = 4 Paisa = 16 Daam = 342.25 Square Feet
+  - 1 Paisa = 4 Daam = 85.5625 Square Feet
+  - 1 Daam = 21.390625 Square Feet
+- Terai System (Bigha):
+  - 1 Bigha = 20 Kattha = 400 Dhur = 72,900 Square Feet = 6,772.63 Sq. Meters
+  - 1 Kattha = 20 Dhur = 3,645 Square Feet
+  - 1 Dhur = 182.25 Square Feet
+- Hill to Terai Equivalency:
+  - 1 Bigha = 13.3137 Ropani
+  - 1 Ropani = 0.0751 Bigha (approx 1.5 Kattha)
+
+### 3. Vehicle Bluebook Road Tax & Late Fine
+- URL: https://nepalcalc.com/vehicle
+- Jurisdiction: Province Transport Management Acts (Bagmati Province benchmarks)
+- Annual Motorcycle / Scooter Slabs:
+  - Up to 125cc: NPR 3,000 / year
+  - 126cc to 160cc: NPR 4,500 / year
+  - 161cc to 250cc: NPR 6,000 / year
+  - 251cc to 400cc: NPR 11,000 / year
+  - 401cc and above: NPR 20,000 / year
+- Annual Car Slabs:
+  - Up to 1000cc: NPR 22,000 / year
+  - 1001cc to 1500cc: NPR 25,000 / year
+  - 1501cc to 2000cc: NPR 33,000 / year
+  - 2001cc to 2500cc: NPR 37,000 / year
+- Electric Vehicles (EVs):
+  - Two-Wheeler: NPR 1,500 - NPR 3,000
+  - Four-Wheeler: NPR 10,000 (up to 50kW), NPR 15,000 (51-100kW), NPR 20,000 (101-150kW)
+- Overdue Late Fines:
+  - First 90 days from expiry: 0% fine
+  - 91 to 120 days: 5% fine on annual tax
+  - 121 to 165 days: 10% fine on annual tax
+  - Up to end of fiscal year: 20% fine
+  - Beyond fiscal year: Up to 100% fine on past due taxes
+
+### 4. SIP (Systematic Investment Plan) Mutual Fund Calculator
+- URL: https://nepalcalc.com/sip
+- Formula: M = P * [((1 + i)^n - 1) / i] * (1 + i)
+- Benchmark Returns: 12% to 15% CAGR historical for SEBON open-ended mutual funds (NIBL Sahabhagita Fund, Siddhartha Systematic Investment Scheme, NMB Saral Bachat Fund).
+- Capital Gains Tax: 5% CGT if held > 365 days, 7.5% if held <= 365 days. 5% TDS on dividend payouts.
+
+### 5. NEPSE Share Trading Calculator
+- URL: https://nepalcalc.com/nepse
+- SEBON Broker Commission Tiers:
+  - Up to NPR 50,000: 0.40%
+  - NPR 50,001 to NPR 5,00,000: 0.37%
+  - NPR 5,00,001 to NPR 20,00,000: 0.34%
+  - NPR 20,00,001 to NPR 1,00,00,000: 0.30%
+  - Above NPR 1,00,00,000: 0.27%
+- Mandatory Fees:
+  - SEBON Regulatory Fee: 0.015%
+  - DP Charge: NPR 25 per transaction
+  - Capital Gains Tax (Individual): 5% (>365 days) or 7.5% (<=365 days)
+
+### 6. Labour Act 2074 Rules (Gratuity & Overtime)
+- URLs: https://nepalcalc.com/gratuity, https://nepalcalc.com/overtime
+- Gratuity: 8.33% of basic remuneration deposited monthly into SSF or gratuity fund.
+- Overtime (Section 31): Paid at 1.5 times the basic hourly rate (Basic Monthly Salary / 208 hours * 1.5).
+
+### 7. Traditional Nepali Units
+- URL: https://nepalcalc.com/traditional-units
+- Weight: 1 Dharni = 2.3328 kg; 1 Sher = 933.1 grams; 1 Pao = 200 grams; 1 Tola = 11.664 grams
+- Volume: 1 Muri = 20 Pathi = 160 Mana ≈ 87.2 Liters; 1 Pathi = 8 Mana ≈ 4.36 Liters

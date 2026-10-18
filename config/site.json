@@ -1,0 +1,54 @@
+{
+  "site": {
+    "name": "Nepali Calc",
+    "fullName": "Nepali Calc — Smart All-in-One Calculators for Nepal",
+    "tagline": "Smart All-in-One Calculators for Nepal",
+    "domain": "nepalcalc.com",
+    "url": "https://nepalcalc.com",
+    "locale": "en_NP",
+    "description": "Official online calculators for Nepal: Income Tax, Land Unit Converter, Vehicle Bluebook Tax & Fines, NEPSE Stock Fees, Loan EMI, Gold Rates, and NEA Electricity Bill."
+  },
+  "logo": {
+    "text": "Nepali Calc",
+    "accentDot": ".",
+    "accentColor": "#f59e0b",
+    "textColor": "#0f172a",
+    "showFlag": true,
+    "flagUrl": "/nepal-flag.svg",
+    "logoImage": "/nepal-flag.svg"
+  },
+  "contact": {
+    "email": "contact@nepalcalc.com",
+    "supportEmail": "support@nepalcalc.com"
+  },
+  "social": {
+    "twitter": "https://twitter.com/nepalcalc",
+    "facebook": "https://facebook.com/nepalcalc",
+    "github": "https://github.com/nepalcalc"
+  },
+  "seo": {
+    "titleTemplate": "%s | Nepali Calc",
+    "defaultKeywords": [
+      "nepal calculator",
+      "nepal tax calculator",
+      "salary tax nepal 2083 2084",
+      "income tax calculator nepal",
+      "land measurement calculator nepal",
+      "ropani to bigha",
+      "aana to sq ft",
+      "nepse share calculator",
+      "nepse broker commission calculator",
+      "bluebook renewal fine nepal",
+      "bike tax bagmati province",
+      "emi calculator nepal",
+      "gold price calculator nepal",
+      "nea electricity bill calculator",
+      "nepali date converter bs to ad",
+      "nepali patro calendar",
+      "daily rashifal nepal",
+      "driving license likhit exam nepal",
+      "gpa calculator nepal see plus two",
+      "preeti to unicode converter nepal"
+    ]
+  }
+}
