@@ -6,6 +6,7 @@ import { PROGRAMMATIC_SALARY_TAXES } from '@/lib/rates/programmaticTax';
 import { PROGRAMMATIC_FOREX_CONVERSIONS } from '@/lib/rates/forexRates';
 
 import { PROGRAMMATIC_SIP_SCENARIOS } from '@/lib/rates/programmaticSip';
+import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -23,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/emi',
     '/sip',
     '/gold',
+    '/gold/history',
     '/nea',
     '/date',
     '/forex',
@@ -56,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/krishi-fertilizer',
     '/blood-donation',
     '/qr-generator',
+    '/loksewa-age',
+    '/date/bulk',
+    '/momo-calorie',
+    '/university-attendance',
+    '/citizenship-age',
+    '/foreign-employment',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
@@ -98,6 +106,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const programmaticGoldRoutes = PROGRAMMATIC_GOLD_ITEMS.map((gold) => ({
+    url: `${baseUrl}/gold/${gold.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -105,6 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticTaxRoutes,
     ...programmaticForexRoutes,
     ...programmaticSipRoutes,
+    ...programmaticGoldRoutes,
   ];
 }
 

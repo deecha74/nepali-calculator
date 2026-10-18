@@ -1,11 +1,12 @@
 import React from 'react';
 import { CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 
-interface AEOAnswerBoxProps {
+export interface AEOAnswerBoxProps {
   question: string;
   directAnswer: string;
   keyFacts?: string[];
-  authoritySource: string;
+  authoritySource?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -17,7 +18,8 @@ export function AEOAnswerBox({
   question,
   directAnswer,
   keyFacts = [],
-  authoritySource,
+  authoritySource = "Official Government & Regulatory Standards",
+  style,
 }: AEOAnswerBoxProps) {
   return (
     <div
@@ -31,6 +33,7 @@ export function AEOAnswerBox({
         padding: '20px 24px',
         margin: '24px 0 32px',
         boxShadow: '0 4px 16px rgba(16, 185, 129, 0.06)',
+        ...style,
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px' }}>

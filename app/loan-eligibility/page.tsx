@@ -61,19 +61,21 @@ export default function LoanEligibilityPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="How much loan can I get on my salary in Nepal?"
-        directAnswer="Under Nepal Rastra Bank (NRB) unified regulations, your total monthly debt payments (EMIs) cannot exceed 50% of your verified monthly salary (DSTI ratio). For example, on an NPR 80,000 monthly income with NPR 10,000 existing EMI, your maximum eligible new EMI is NPR 30,000/month, allowing approximately NPR 32 to 34 Lakhs in 20-year home financing at 9.5% interest."
-        keyFacts={["50% DSTI Maximum Ceiling", "Home & Auto Loans", "Joint Spousal Income Allowed"]}
-        authoritySource="Nepal Rastra Bank Unified Directive"
-      />
-
       <LoanEligibilityCalculator />
 
       <AdBanner slotId="loan-eligibility-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Nepal Bank Loan Eligibility FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Nepal Bank Loan Eligibility FAQs"
+          quickSummary={{
+            question: "How much loan can I get on my salary in Nepal?",
+            directAnswer: "Under Nepal Rastra Bank (NRB) unified regulations, your total monthly debt payments (EMIs) cannot exceed 50% of your verified monthly salary (DSTI ratio). For example, on an NPR 80,000 monthly income with NPR 10,000 existing EMI, your maximum eligible new EMI is NPR 30,000/month, allowing approximately NPR 32 to 34 Lakhs in 20-year home financing at 9.5% interest.",
+            keyFacts: ["50% DSTI Maximum Ceiling", "Home & Auto Loans", "Joint Spousal Income Allowed"],
+            authoritySource: "Nepal Rastra Bank Unified Directive"
+          }}
+        />
       </div>
     </div>
   );

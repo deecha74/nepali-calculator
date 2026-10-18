@@ -61,7 +61,7 @@ export function Footer() {
               }}
               aria-label="Nepali Calc Home"
             >
-              <NepalCalcLogo height={32} strokeColor="#0f172a" accentColor="#f59e0b" showFlag={true} />
+              <NepalCalcLogo height={32} strokeColor="#0f172a" accentColor="#f59e0b" showFlag={false} />
             </Link>
             <p 
               style={{ 

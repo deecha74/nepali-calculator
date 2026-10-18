@@ -63,19 +63,21 @@ export default function PreetiPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="How do I convert Preeti font to Unicode in Nepal?"
-        directAnswer="To convert Preeti to Unicode, paste your Preeti-encoded text into the left converter box. The tool automatically maps legacy glyphs to universal Devanagari Unicode codepoints (UTF-8), making your text immediately readable on smartphones, web browsers, and Facebook."
-        keyFacts={["Zero installation needed", "Bidirectional Preeti ⇄ Unicode", "Works for Kantipur font"]}
-        authoritySource="Devanagari Unicode Standard"
-      />
-
       <PreetiConverter />
 
       <AdBanner slotId="preeti-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Preeti to Unicode Conversion FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Preeti to Unicode Conversion FAQs"
+          quickSummary={{
+            question: "How do I convert Preeti font to Unicode in Nepal?",
+            directAnswer: "To convert Preeti to Unicode, paste your Preeti-encoded text into the left converter box. The tool automatically maps legacy glyphs to universal Devanagari Unicode codepoints (UTF-8), making your text immediately readable on smartphones, web browsers, and Facebook.",
+            keyFacts: ["Zero installation needed", "Bidirectional Preeti ⇄ Unicode", "Works for Kantipur font"],
+            authoritySource: "Devanagari Unicode Standard"
+          }}
+        />
       </div>
     </div>
   );

@@ -62,19 +62,21 @@ export default function NumberToWordsPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="How do you write numbers in words on a bank cheque in Nepal?"
-        directAnswer="To write an amount on a Nepali bank cheque, express the numeric figure in Lakh and Crore notation followed by 'रुपैयाँ मात्र' (in Nepali) or 'Rupees Only' (in English). For example, NPR 2,75,000 is written as 'दुई लाख पचहत्तर हजार रुपैयाँ मात्र' or 'Two Lakh Seventy Five Thousand Rupees Only'."
-        keyFacts={["Bank Cheque Compliant", "Crore & Lakh Notation", "Includes 'मात्र' / 'Only' suffix"]}
-        authoritySource="Nepal Rastra Bank Clearing Standard"
-      />
-
       <NumberToWordsCalculator />
 
       <AdBanner slotId="number-words-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Cheque Writing & Number to Words FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Cheque Writing & Number to Words FAQs"
+          quickSummary={{
+            question: "How do you write numbers in words on a bank cheque in Nepal?",
+            directAnswer: "To write an amount on a Nepali bank cheque, express the numeric figure in Lakh and Crore notation followed by 'रुपैयाँ मात्र' (in Nepali) or 'Rupees Only' (in English). For example, NPR 2,75,000 is written as 'दुई लाख पचहत्तर हजार रुपैयाँ मात्र' or 'Two Lakh Seventy Five Thousand Rupees Only'.",
+            keyFacts: ["Bank Cheque Compliant", "Crore & Lakh Notation", "Includes 'मात्र' / 'Only' suffix"],
+            authoritySource: "Nepal Rastra Bank Clearing Standard"
+          }}
+        />
       </div>
     </div>
   );

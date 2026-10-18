@@ -96,40 +96,89 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // 3. Fetch Live Gold & Silver from Gold-API (free spot rates)
+    // 3. Fetch Official Live Gold & Silver from FENEGOSIDA
+    let fineGoldTolaNpr = 289700;
+    let tejabiGoldTolaNpr = 288700;
+    let silverTolaNpr = 4100;
+    let fineGold10gNpr = 248370;
+    let silver10gNpr = 3515;
+    let dailyChangeNpr = -400;
+    let dailyChangePercent = -0.14;
+    let isFenegosidaLive = false;
     let goldUsdPerOz = 2650;
     let silverUsdPerOz = 31.5;
-    try {
-      const [goldRes, silverRes] = await Promise.all([
-        fetch('https://api.gold-api.com/price/XAU', { next: { revalidate: 300 }, signal: AbortSignal.timeout(3500) }),
-        fetch('https://api.gold-api.com/price/XAG', { next: { revalidate: 300 }, signal: AbortSignal.timeout(3500) })
-      ]);
 
-      if (goldRes.ok) {
-        const gData = await goldRes.json();
-        if (gData?.price && gData.price > 1000) {
-          goldUsdPerOz = Number(gData.price);
-        }
-      }
-      if (silverRes.ok) {
-        const sData = await silverRes.json();
-        if (sData?.price && sData.price > 10) {
-          silverUsdPerOz = Number(sData.price);
+    try {
+      const fenegoRes = await fetch('https://api.fenegosida.org/api/website/v1/Dashboard/today', {
+        next: { revalidate: 300 },
+        signal: AbortSignal.timeout(4000),
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+      });
+
+      if (fenegoRes.ok) {
+        const items = await fenegoRes.json();
+        if (Array.isArray(items) && items.length > 0) {
+          for (const item of items) {
+            const name = item.rateType || '';
+            const todayRate = Number(item.todayBaseRatePerGram) || 0;
+            const yestRate = Number(item.yestardayBaseRatePerGram) || 0;
+
+            if (name.includes('छापावाल') && name.includes('१ तोला')) {
+              fineGoldTolaNpr = todayRate;
+              if (yestRate > 0) {
+                dailyChangeNpr = Math.round(todayRate - yestRate);
+                dailyChangePercent = Number(((dailyChangeNpr / yestRate) * 100).toFixed(2));
+              }
+            } else if (name.includes('छापावाल') && name.includes('१० ग्राम')) {
+              fineGold10gNpr = todayRate;
+            } else if (name.includes('चाँदी') && name.includes('१ तोला')) {
+              silverTolaNpr = todayRate;
+            } else if (name.includes('चाँदी') && name.includes('१० ग्राम')) {
+              silver10gNpr = todayRate;
+            }
+          }
+
+          if (fineGoldTolaNpr > 50000) {
+            tejabiGoldTolaNpr = fineGoldTolaNpr - 1000;
+            isFenegosidaLive = true;
+          }
         }
       }
     } catch (err) {
-      console.warn('Metals live fetch fallback:', err);
+      console.warn('FENEGOSIDA direct live fetch fallback:', err);
     }
 
-    // Convert Gold & Silver to Nepal Tola Price:
-    // 1 Tola = 0.375 Troy Ounces
-    // Nepal official import duty + bank logistics markup ~15%
-    const tolaRatio = 0.375;
-    const nepalImportMarkupFactor = 1.15;
+    // Fallback to Global Spot Gold-API if FENEGOSIDA is temporarily unavailable
+    if (!isFenegosidaLive) {
+      try {
+        const [goldRes, silverRes] = await Promise.all([
+          fetch('https://api.gold-api.com/price/XAU', { next: { revalidate: 300 }, signal: AbortSignal.timeout(3500) }),
+          fetch('https://api.gold-api.com/price/XAG', { next: { revalidate: 300 }, signal: AbortSignal.timeout(3500) })
+        ]);
 
-    const fineGoldTolaNpr = Math.round(goldUsdPerOz * tolaRatio * nprPerUsd * nepalImportMarkupFactor / 100) * 100;
-    const tejabiGoldTolaNpr = Math.round(fineGoldTolaNpr - 800);
-    const silverTolaNpr = Math.round(silverUsdPerOz * tolaRatio * nprPerUsd * 1.12 / 10) * 10;
+        if (goldRes.ok) {
+          const gData = await goldRes.json();
+          if (gData?.price && gData.price > 1000) {
+            goldUsdPerOz = Number(gData.price);
+          }
+        }
+        if (silverRes.ok) {
+          const sData = await silverRes.json();
+          if (sData?.price && sData.price > 10) {
+            silverUsdPerOz = Number(sData.price);
+          }
+        }
+        const tolaRatio = 0.375;
+        const nepalImportMarkupFactor = 1.15;
+        fineGoldTolaNpr = Math.round(goldUsdPerOz * tolaRatio * nprPerUsd * nepalImportMarkupFactor / 100) * 100;
+        tejabiGoldTolaNpr = Math.round(fineGoldTolaNpr - 1000);
+        silverTolaNpr = Math.round(silverUsdPerOz * tolaRatio * nprPerUsd * 1.12 / 10) * 10;
+        fineGold10gNpr = Math.round((fineGoldTolaNpr / 11.6638) * 10);
+        silver10gNpr = Math.round((silverTolaNpr / 11.6638) * 10);
+      } catch (err) {
+        console.warn('Metals live fetch fallback:', err);
+      }
+    }
 
     // 4. Fetch Live Kathmandu Weather from Open-Meteo
     let ktmTemp = 21;
@@ -173,16 +222,24 @@ export async function GET(request: NextRequest) {
       success: true,
       timestamp: new Date().toISOString(),
       isLive: true,
-      source: isLiveNrb ? 'Nepal Rastra Bank (Official Live)' : 'Live Global Feed',
+      source: isFenegosidaLive ? 'FENEGOSIDA (Federation of Nepal Gold & Silver Dealers)' : (isLiveNrb ? 'Nepal Rastra Bank' : 'Live Global Feed'),
       gold: {
         fineGold24K: fineGoldTolaNpr,
         tejabiGold22K: tejabiGoldTolaNpr,
         silver: silverTolaNpr,
         silverPerTola: silverTolaNpr,
+        fineGold10g: fineGold10gNpr,
+        silver10g: silver10gNpr,
+        fineGold1Lal: Math.round(fineGoldTolaNpr / 100),
+        tejabiGold1Lal: Math.round(tejabiGoldTolaNpr / 100),
+        fineGold1g: Math.round(fineGold10gNpr / 10),
+        tejabiGold1g: Math.round(tejabiGoldTolaNpr / 11.6638),
         goldUsdPerOz,
         silverUsdPerOz,
         unit: 'Tola (११.६६४ ग्राम)',
-        dailyChangeNpr: 600,
+        dailyChangeNpr,
+        dailyChangePercent,
+        isLive: isFenegosidaLive,
       },
       forex: {
         usdToNpr: nprPerUsd,

@@ -43,7 +43,11 @@ import {
   Sprout,
   Heart,
   QrCode,
-  Building2
+  Building2,
+  Award,
+  FileSpreadsheet,
+  Flame,
+  Plane
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CALCULATOR_TOOLS, CALCULATOR_CATEGORIES, CalculatorTool } from '@/lib/toolsList';
@@ -151,6 +155,10 @@ export default function HomePage() {
       case 'Heart': return <Heart size={size} color={color} />;
       case 'QrCode': return <QrCode size={size} color={color} />;
       case 'Building2': return <Building2 size={size} color={color} />;
+      case 'Award': return <Award size={size} color={color} />;
+      case 'FileSpreadsheet': return <FileSpreadsheet size={size} color={color} />;
+      case 'Flame': return <Flame size={size} color={color} />;
+      case 'Plane': return <Plane size={size} color={color} />;
       default: return <Calculator size={size} color={color} />;
     }
   };

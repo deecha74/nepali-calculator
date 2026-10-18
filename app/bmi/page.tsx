@@ -61,19 +61,21 @@ export default function BmiPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="What is the ideal BMI score for people in Nepal?"
-        directAnswer="Under World Health Organization (WHO) South Asian guidelines, the ideal BMI for adults in Nepal is between 18.5 and 22.9. A BMI of 23.0 to 27.4 is classified as Overweight (with elevated metabolic risk), while a BMI of 27.5 or above is classified as Obese."
-        keyFacts={["Normal Range: 18.5 - 22.9", "South Asian WHO Threshold", "Calculates Ideal Weight in KG"]}
-        authoritySource="World Health Organization (WHO) South Asia"
-      />
-
       <BmiCalculator />
 
       <AdBanner slotId="bmi-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Nepal BMI & Health FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Nepal BMI & Health FAQs"
+          quickSummary={{
+            question: "What is the ideal BMI score for people in Nepal?",
+            directAnswer: "Under World Health Organization (WHO) South Asian guidelines, the ideal BMI for adults in Nepal is between 18.5 and 22.9. A BMI of 23.0 to 27.4 is classified as Overweight (with elevated metabolic risk), while a BMI of 27.5 or above is classified as Obese.",
+            keyFacts: ["Normal Range: 18.5 - 22.9", "South Asian WHO Threshold", "Calculates Ideal Weight in KG"],
+            authoritySource: "World Health Organization (WHO) South Asia"
+          }}
+        />
       </div>
     </div>
   );

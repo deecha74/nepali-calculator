@@ -4,6 +4,8 @@ export * from './vehicleTaxRates';
 export * from './nepseRates';
 export * from './neaRates';
 export * from './goldRates';
+export * from './programmaticGold';
+export * from './goldHistory';
 export * from './forexRates';
 
 export interface RateEngineStatus {

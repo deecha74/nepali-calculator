@@ -61,19 +61,21 @@ export default function KhanepaniPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="How is drinking water tariff calculated in Kathmandu Valley?"
-        directAnswer="Kathmandu Upatyaka Khanepani Limited (KUKL) charges a base minimum of NPR 100 for the first 10,000 liters (10 units) on a 1/2-inch tap. Subsequent water is billed at NPR 32/unit (11-20 units), NPR 71/unit (21-30 units), and NPR 95/unit (>30 units), plus an optional 50% municipal sewerage drainage fee."
-        keyFacts={["Min charge NPR 100 (10k Liters)", "50% Sewerage Surcharge", "1 Unit = 1,000 Liters"]}
-        authoritySource="KUKL Tariff Board"
-      />
-
       <KhanepaniCalculator />
 
       <AdBanner slotId="khanepani-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Nepal Khanepani Water Bill FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Nepal Khanepani Water Bill FAQs"
+          quickSummary={{
+            question: "How is drinking water tariff calculated in Kathmandu Valley?",
+            directAnswer: "Kathmandu Upatyaka Khanepani Limited (KUKL) charges a base minimum of NPR 100 for the first 10,000 liters (10 units) on a 1/2-inch tap. Subsequent water is billed at NPR 32/unit (11-20 units), NPR 71/unit (21-30 units), and NPR 95/unit (>30 units), plus an optional 50% municipal sewerage drainage fee.",
+            keyFacts: ["Min charge NPR 100 (10k Liters)", "50% Sewerage Surcharge", "1 Unit = 1,000 Liters"],
+            authoritySource: "KUKL Tariff Board"
+          }}
+        />
       </div>
     </div>
   );

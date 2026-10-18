@@ -19,14 +19,14 @@ export interface GoldMetalRates {
 
 // Current prevailing market baseline (Federation of Nepal Gold and Silver Dealers' Association - FENEGOSIDA)
 export const DEFAULT_GOLD_RATES: GoldMetalRates = {
-  fineGold24K: 168500, // NPR per tola
-  tejabiGold22K: 167800, // NPR per tola
-  silver: 2150, // NPR per tola
-  fineGold10g: 144460, // per 10 grams
-  silver10g: 1843, // per 10 grams
-  dailyChangeNpr: 800,
-  dailyChangePercent: 0.48,
+  fineGold24K: 289700, // NPR per tola
+  tejabiGold22K: 288700, // NPR per tola
+  silver: 4100, // NPR per tola
+  fineGold10g: 248370, // per 10 grams
+  silver10g: 3515, // per 10 grams
+  dailyChangeNpr: -400,
+  dailyChangePercent: -0.14,
   marketStatus: "Live Market Active",
-  updatedAt: "Today 11:00 AM (FENEGOSIDA Official)",
+  updatedAt: "Today (FENEGOSIDA Official Live)",
 };
 

@@ -62,19 +62,21 @@ export default function PensionPage() {
         </p>
       </div>
 
-      <AEOAnswerBox
-        question="How is retirement fund and pension calculated in Nepal?"
-        directAnswer="In Nepal, monthly retirement savings comprise 20% of basic salary (10% employee + 10% employer matching) in Karmachari Sanchaya Kosh (EPF) plus optional voluntary deposits in Nagarik Lagani Kosh (CIT). These compound at an average 7.5% annual interest rate until retirement age (typically 58), yielding a lump-sum retirement corpus or monthly annuity pension."
-        keyFacts={["20% Monthly EPF Deposit", "7.5% Compound Interest Benchmark", "Tax Deduction up to NPR 5 Lakhs"]}
-        authoritySource="Karmachari Sanchaya Kosh Act"
-      />
-
       <PensionCalculator />
 
       <AdBanner slotId="pension-page-middle" format="horizontal" />
 
       <div style={{ marginTop: '40px' }}>
-        <FAQAccordion items={faqs} title="Nepal EPF, CIT & Pension FAQs" />
+        <FAQAccordion
+          items={faqs}
+          title="Nepal EPF, CIT & Pension FAQs"
+          quickSummary={{
+            question: "How is retirement fund and pension calculated in Nepal?",
+            directAnswer: "In Nepal, monthly retirement savings comprise 20% of basic salary (10% employee + 10% employer matching) in Karmachari Sanchaya Kosh (EPF) plus optional voluntary deposits in Nagarik Lagani Kosh (CIT). These compound at an average 7.5% annual interest rate until retirement age (typically 58), yielding a lump-sum retirement corpus or monthly annuity pension.",
+            keyFacts: ["20% Monthly EPF Deposit", "7.5% Compound Interest Benchmark", "Tax Deduction up to NPR 5 Lakhs"],
+            authoritySource: "Karmachari Sanchaya Kosh Act"
+          }}
+        />
       </div>
     </div>
   );

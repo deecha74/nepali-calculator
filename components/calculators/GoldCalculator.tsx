@@ -5,10 +5,40 @@ import { Sparkles, Copy, Check } from 'lucide-react';
 import { DEFAULT_GOLD_RATES, GRAMS_PER_TOLA, LAL_PER_TOLA } from '@/lib/rates/goldRates';
 import { useLanguage } from '@/components/LanguageContext';
 
-export function GoldCalculator() {
+export interface GoldCalculatorProps {
+  initialMetalType?: 'fine' | 'tejabi' | 'silver';
+  initialWeightUnit?: 'tola' | 'gram';
+  initialTola?: number;
+  initialLal?: number;
+  initialGram?: number;
+  initialMakingCharge?: number;
+  initialWastagePercent?: number;
+  titleTag?: 'h1' | 'h2';
+  customTitle?: string;
+  customSubtitle?: string;
+}
+
+export function GoldCalculator({
+  initialMetalType = 'fine',
+  initialWeightUnit = 'tola',
+  initialTola = 1,
+  initialLal = 0,
+  initialGram = 11.66,
+  initialMakingCharge = 2500,
+  initialWastagePercent = 2,
+  titleTag = 'h1',
+  customTitle,
+  customSubtitle,
+}: GoldCalculatorProps = {}) {
   const { language, t } = useLanguage();
-  const [metalType, setMetalType] = useState<'fine' | 'tejabi' | 'silver'>('fine');
-  const [ratePerTola, setRatePerTola] = useState<number>(DEFAULT_GOLD_RATES.fineGold24K);
+  const [metalType, setMetalType] = useState<'fine' | 'tejabi' | 'silver'>(initialMetalType);
+  const initialBaseRate =
+    initialMetalType === 'tejabi'
+      ? DEFAULT_GOLD_RATES.tejabiGold22K
+      : initialMetalType === 'silver'
+      ? DEFAULT_GOLD_RATES.silver
+      : DEFAULT_GOLD_RATES.fineGold24K;
+  const [ratePerTola, setRatePerTola] = useState<number>(initialBaseRate);
   const [liveRates, setLiveRates] = useState({
     fine: DEFAULT_GOLD_RATES.fineGold24K,
     tejabi: DEFAULT_GOLD_RATES.tejabiGold22K,
@@ -40,17 +70,17 @@ export function GoldCalculator() {
       }
     }
     loadLive();
-  }, []);
+  }, [metalType]);
 
   // Weight units
-  const [weightUnit, setWeightUnit] = useState<'tola' | 'gram' | 'lal'>('tola');
-  const [tolaAmount, setTolaAmount] = useState<number>(1);
-  const [lalAmount, setLalAmount] = useState<number>(0);
-  const [gramAmount, setGramAmount] = useState<number>(11.66);
+  const [weightUnit, setWeightUnit] = useState<'tola' | 'gram'>(initialWeightUnit);
+  const [tolaAmount, setTolaAmount] = useState<number>(initialTola);
+  const [lalAmount, setLalAmount] = useState<number>(initialLal);
+  const [gramAmount, setGramAmount] = useState<number>(initialGram);
 
   // Charges
-  const [makingCharge, setMakingCharge] = useState<number>(2500); // Fixed or per tola
-  const [wastageJartiPercent, setWastageJartiPercent] = useState<number>(2); // 2% jarti
+  const [makingCharge, setMakingCharge] = useState<number>(initialMakingCharge);
+  const [wastageJartiPercent, setWastageJartiPercent] = useState<number>(initialWastagePercent);
 
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -110,14 +140,21 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-amber">{t('FENEGOSIDA Rates', 'नेपाल सुनचाँदी व्यवसायी महासंघ दर')}</span>
             <span className="badge badge-neutral">{t('Tola, Lal & Gram', 'तोला, लाल तथा ग्राम')}</span>
           </div>
-          <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            {t('Gold & Silver Price & Jewelry Calculator', 'सुनचाँदी मूल्य तथा गहना हिसाब क्यालकुलेटर')}
-          </h1>
+          {titleTag === 'h2' ? (
+            <h2 style={{ fontSize: '22px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+              {customTitle || t('Gold & Silver Price & Jewelry Calculator', 'सुनचाँदी मूल्य तथा गहना हिसाब क्यालकुलेटर')}
+            </h2>
+          ) : (
+            <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+              {customTitle || t('Gold & Silver Price & Jewelry Calculator', 'सुनचाँदी मूल्य तथा गहना हिसाब क्यालकुलेटर')}
+            </h1>
+          )}
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-            {t(
-              'Calculate 24K Hallmark, 22K Tejabi, and Silver prices with making charges (ज्याला) and wastage (जर्ती).',
-              '२४ क्यारेट छापावाल, २२ क्यारेट तेजाबी सुन र चाँदीको मूल्य, ज्याला र जर्ती सहितको वास्तविक गहना हिसाब।'
-            )}
+            {customSubtitle ||
+              t(
+                'Calculate 24K Hallmark, 22K Tejabi, and Silver prices with making charges (ज्याला) and wastage (जर्ती).',
+                '२४ क्यारेट छापावाल, २२ क्यारेट तेजाबी सुन र चाँदीको मूल्य, ज्याला र जर्ती सहितको वास्तविक गहना हिसाब।'
+              )}
           </p>
         </div>
 

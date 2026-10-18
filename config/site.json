@@ -13,7 +13,7 @@
     "accentDot": ".",
     "accentColor": "#f59e0b",
     "textColor": "#0f172a",
-    "showFlag": true,
+    "showFlag": false,
     "flagUrl": "/nepal-flag.svg",
     "logoImage": "/nepal-flag.svg"
   },
@@ -29,6 +29,12 @@
   "seo": {
     "titleTemplate": "%s | Nepali Calc",
     "defaultKeywords": [
+      "price of gold in nepal",
+      "gold price in nepal today",
+      "1 lal gold price in nepal today",
+      "todays gold price in nepal",
+      "gold price in nepal today per tola",
+      "1 tola gold price in nepal today",
       "nepal calculator",
       "nepal tax calculator",
       "salary tax nepal 2083 2084",
