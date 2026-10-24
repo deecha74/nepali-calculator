@@ -61,6 +61,7 @@ import { AOSInit } from "@/components/AOSInit";
 import { LanguageProvider } from "@/components/LanguageContext";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { ParallaxMountainBackground } from "@/components/ParallaxMountainBackground";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const rootSchema = {
   "@context": "https://schema.org",
@@ -107,6 +108,7 @@ export default function RootLayout({
         {/* <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" /> */}
       </head>
       <body>
+        <GoogleAnalytics />
         <LanguageProvider>
           <AOSInit />
           <ParallaxMountainBackground />
