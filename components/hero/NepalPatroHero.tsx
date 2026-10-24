@@ -8,6 +8,8 @@ import {
   RefreshCw,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   ArrowRight,
   Sun,
   Calendar as CalendarIcon,
@@ -53,6 +55,7 @@ export function NepalPatroHero() {
   const [timeStr, setTimeStr] = useState("राति १०:४४:३४");
   const [activeCityIndex, setActiveCityIndex] = useState(0);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
+  const [mobileCalendarExpanded, setMobileCalendarExpanded] = useState(false);
 
   // Dynamic Real-Time Bikram Sambat Calendar State
   const todayBs = useMemo(() => getTodayBsDate(), []);
@@ -205,114 +208,63 @@ export function NepalPatroHero() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Main 2-Column Grid: Left (Cultural Details) + Right (Clean Calendar Card) */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: '36px',
-            alignItems: 'center'
-          }}
-        >
+        <div className="hero-patro-grid">
 
           {/* LEFT COLUMN: Open Heritage Canvas */}
           <div
+            className="hero-left-col"
             style={{
               position: 'relative',
               display: 'flex',
               flexDirection: 'column',
-              minHeight: '380px',
               justifyContent: 'center',
             }}
           >
             {/* Foreground Content */}
             <div style={{ position: 'relative', zIndex: 1 }}>
 
-              {/* Top Subtitle Badge: आज · नेपालमा आज */}
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.16)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  padding: '5px 14px',
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  marginBottom: '14px',
-                  width: 'fit-content',
-                }}
-              >
-                {/* <NepalFlagAnimated size={16} /> */}
-                {/* <span style={{ fontSize: '12px', fontWeight: 800, color: '#fef08a', letterSpacing: '0.06em' }}>
-                  {t('TODAY · IN NEPAL TODAY', 'आज · नेपालमा आज')}
-                </span> */}
+              {/* Top Subtitle Badge: Live Patro Status */}
+              <div className="hero-live-badge">
+                <span className="pulse-dot" />
+                <span className="hero-live-badge-text">
+                  {language === 'ne' ? 'नेपाल आधिकारिक समय · प्रत्यक्ष पात्रो' : 'Nepal Live Patro & Time'}
+                </span>
+                <span className="hero-live-badge-year">२०८३</span>
               </div>
 
-              {/* Massive Bold Heading: Dynamic BS Date - Art Nouveau Serif */}
-              <h1
-                style={{
-                  fontFamily: 'var(--font-devanagari-serif), var(--font-serif)',
-                  fontSize: 'clamp(32px, 4.5vw, 52px)',
-                  fontWeight: 900,
-                  color: '#ffffff',
-                  lineHeight: 1.15,
-                  letterSpacing: '0.01em',
-                  margin: '0 0 10px',
-                  textShadow: '0 3px 20px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.35)',
-                }}
-              >
+              {/* Massive Bold Heading: Dynamic BS Date - Modern Mukta Devanagari */}
+              <h1 className="hero-main-title">
                 {toNepaliDigits(activeDay.bsDay)} {heroMeta.monthNameNep} {toNepaliDigits(heroYear)}, {activeDay.dayNameNep}
               </h1>
 
               {/* Gregorian English Date & Vikram Sambat */}
-              <div style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '14px', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)', fontFamily: 'var(--font-serif)' }}>
-                <span style={{ fontWeight: 800, color: '#ffffff' }}>
+              <div className="hero-subdate-wrap">
+                <span className="hero-ad-date">
                   {activeDay.adMonthName} {activeDay.adDay}, {new Date(activeDay.adDate).getFullYear()}
                 </span>
-                <span style={{ margin: '0 8px', opacity: 0.7 }}>•</span>
-                <span>{t('Bikram Sambat', 'विक्रम संवत्')} ({activeDay.tithiShort})</span>
-              </div>
-
-              {/* Live Nepal Time */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: 700, color: '#ffffff', marginBottom: '16px', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}>
-                <Clock size={17} color="#fde047" />
-                <span>
-                  {t('Time · ', 'समय · ')}
-                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#fde047', textShadow: '0 0 14px rgba(253, 224, 71, 0.6)' }}>
-                    {mounted ? timeStr : 'राति १०:४४:३४'}
-                  </span>
+                <span className="hero-subdate-sep">•</span>
+                <span className="hero-tithi-tag">
+                  <Sparkles size={13} color="#fde047" />
+                  <span>{t('Bikram Sambat', 'विक्रम संवत्')} ({activeDay.tithiShort})</span>
                 </span>
               </div>
 
-              {/* Catchphrase: आज नेपालमा जान्नुपर्ने सबै कुरा। */}
-              {/* <p style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.92)', margin: '0 0 22px', fontWeight: 500, textShadow: '0 2px 8px rgba(0, 0, 0, 0.6)' }}>
-                {t(
-                  'Everything you need to know in Nepal today.',
-                  'आज नेपालमा जान्नुपर्ने सबै कुरा।'
-                )}
-              </p> */}
+              {/* Live Nepal Time - Modern Glassmorphic Pill */}
+              <div className="hero-live-clock-card">
+                <Clock size={15} color="#fef08a" />
+                <span className="clock-label">{t('Time:', 'समय:')}</span>
+                <span className="clock-time-val">
+                  {mounted ? timeStr : 'राति १०:४४:३४'}
+                </span>
+                <span className="clock-npt-badge">NPT</span>
+              </div>
 
-              {/* Weather Pill (Floating White Pill with Location Switcher) */}
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '14px' }}>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    backgroundColor: '#ffffff',
-                    padding: '8px 16px',
-                    borderRadius: '9999px',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-                    border: '1.5px solid #bfdbfe',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    color: '#003893',
-                  }}
-                >
-                  <span>{currentCity.icon}</span>
-                  <span>
-                    {language === 'ne' ? currentCity.cityNep : currentCity.cityEng} · {currentCity.temp}°C · {language === 'ne' ? currentCity.conditionNep : currentCity.conditionEng}
+              {/* Weather Pill (Floating Frosted Glass with Location Switcher) */}
+              <div className="hero-weather-pill-wrap" style={{ position: 'relative', display: 'inline-block' }}>
+                <div className="hero-pill-badge" style={{ color: '#003893' }}>
+                  <span style={{ fontSize: '15px' }}>{currentCity.icon}</span>
+                  <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <strong style={{ color: '#003893' }}>{language === 'ne' ? currentCity.cityNep : currentCity.cityEng}</strong> · <span style={{ color: '#003893', fontWeight: 800 }}>{currentCity.temp}°C</span> · {language === 'ne' ? currentCity.conditionNep : currentCity.conditionEng}
                   </span>
                   <button
                     type="button"
@@ -321,17 +273,20 @@ export function NepalPatroHero() {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      background: 'none',
-                      border: 'none',
+                      background: 'rgba(0, 56, 147, 0.08)',
+                      border: '1px solid rgba(0, 56, 147, 0.2)',
+                      borderRadius: '9999px',
                       color: '#003893',
-                      fontSize: '12px',
-                      fontWeight: 700,
+                      fontSize: '11px',
+                      fontWeight: 800,
                       cursor: 'pointer',
-                      padding: 0,
+                      padding: '3px 8px',
+                      marginLeft: '2px',
+                      flexShrink: 0
                     }}
                   >
-                    <RefreshCw size={12} />
-                    <span>{t('Change', 'परिवर्तन')}</span>
+                    <RefreshCw size={11} />
+                    <span>{t('Change', 'फेर्नुहोस्')}</span>
                   </button>
                 </div>
 
@@ -344,8 +299,8 @@ export function NepalPatroHero() {
                       left: 0,
                       backgroundColor: '#ffffff',
                       border: '1.5px solid #003893',
-                      borderRadius: '8px',
-                      boxShadow: '0 15px 35px rgba(0,0,0,0.15)',
+                      borderRadius: '12px',
+                      boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
                       zIndex: 50,
                       width: '260px',
                       maxHeight: '240px',
@@ -368,9 +323,9 @@ export function NepalPatroHero() {
                           width: '100%',
                           textAlign: 'left',
                           padding: '8px 10px',
-                          backgroundColor: idx === activeCityIndex ? '#f1f5f9' : 'transparent',
+                          backgroundColor: idx === activeCityIndex ? '#eff6ff' : 'transparent',
                           border: 'none',
-                          borderRadius: '4px',
+                          borderRadius: '6px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -381,7 +336,7 @@ export function NepalPatroHero() {
                         }}
                       >
                         <span>{c.icon} {language === 'ne' ? c.cityNep : c.cityEng}</span>
-                        <span style={{ color: '#003893', fontWeight: 700 }}>{c.temp}°C</span>
+                        <span style={{ color: '#003893', fontWeight: 800 }}>{c.temp}°C</span>
                       </button>
                     ))}
                   </div>
@@ -389,51 +344,21 @@ export function NepalPatroHero() {
               </div>
 
               {/* Event Holiday Pills (Dynamically reflects activeDay) */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    backgroundColor: '#ffffff',
-                    border: '1px solid #e7ded0',
-                    padding: '8px 16px',
-                    borderRadius: '9999px',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    color: '#0f172a',
-                    width: 'fit-content',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
-                  }}
-                >
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: activeDay.isHoliday ? '#c8102e' : '#10b981' }} />
+              <div className="hero-holiday-pills-wrap" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="hero-pill-badge hero-today-holiday-pill">
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: activeDay.isHoliday ? '#ef4444' : '#10b981', boxShadow: activeDay.isHoliday ? '0 0 8px #ef4444' : '0 0 8px #10b981', flexShrink: 0 }} />
                   <span>
-                    {activeDay.isToday ? t('Today', 'आज') : activeDay.dayNameNep} · {activeDay.eventNep || (activeDay.isWeekend ? 'साप्ताहिक बिदा' : 'शुभ दिन')} · {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Workday', 'कार्यदिन')}
+                    <strong>{activeDay.isToday ? t('Today', 'आज') : activeDay.dayNameNep}</strong> · {activeDay.eventNep || (activeDay.isWeekend ? 'साप्ताहिक बिदा' : 'शुभ दिन')} · <span style={{ color: activeDay.isHoliday ? '#dc2626' : '#059669', fontWeight: 800 }}>{activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Workday', 'कार्यदिन')}</span>
                   </span>
                 </div>
 
                 {upcomingFestival && (
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      backgroundColor: '#ffffff',
-                      border: '1px solid #e7ded0',
-                      padding: '8px 16px',
-                      borderRadius: '9999px',
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      color: '#0f172a',
-                      width: 'fit-content',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
-                    }}
-                  >
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
+                  <div className="hero-pill-badge">
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b', boxShadow: '0 0 8px #f59e0b', flexShrink: 0 }} />
                     <span>
                       {language === 'ne'
-                        ? `अब आउने · ${upcomingFestival.eventNep} · ${upcomingFestival.daysRemaining === 0 ? 'आज' : `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि`}`
-                        : `Upcoming · ${upcomingFestival.eventEng} · ${upcomingFestival.daysRemaining === 0 ? 'Today' : `in ${upcomingFestival.daysRemaining} days`}`}
+                        ? <><strong>अब आउने</strong> · {upcomingFestival.eventNep} · <span style={{ color: '#d97706', fontWeight: 800 }}>{upcomingFestival.daysRemaining === 0 ? 'आज' : `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि`}</span></>
+                        : <><strong>Upcoming</strong> · {upcomingFestival.eventEng} · <span style={{ color: '#d97706', fontWeight: 800 }}>{upcomingFestival.daysRemaining === 0 ? 'Today' : `in ${upcomingFestival.daysRemaining} days`}</span></>}
                     </span>
                   </div>
                 )}
@@ -444,17 +369,7 @@ export function NepalPatroHero() {
 
 
           {/* RIGHT COLUMN: Art Nouveau Ivory Parchment Calendar Card */}
-          <div
-            style={{
-              backgroundColor: '#fdfbf7',
-              borderRadius: '20px',
-              border: '1.5px solid #d4af37',
-              boxShadow: '0 12px 35px rgba(44, 34, 20, 0.08), inset 0 0 0 1px rgba(212, 175, 55, 0.2)',
-              padding: '24px 28px',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
+          <div className="hero-calendar-card">
             {/* Tab Switcher: [ 📅 मासिक पात्रो (Calendar) ]  [ 🔮 दैनिक राशिफल (Daily Horoscope) ] */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
               <div className="segmented-control" style={{ padding: '3px' }}>
@@ -607,104 +522,146 @@ export function NepalPatroHero() {
                 </div>
 
                 {/* Days Grid with Motion */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${heroYear}-${heroMonth}`}
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.16 }}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(7, 1fr)',
-                      gap: '4px',
-                      textAlign: 'center',
-                      marginBottom: '18px'
-                    }}
-                  >
-                    {/* Empty slots for start of month */}
-                    {Array.from({ length: heroMeta.startDayOfWeek }).map((_, i) => (
-                      <div key={`empty-hero-${i}`} style={{ height: '52px' }} />
-                    ))}
+                {/* Days Grid with Motion & Mobile Minimal Week Support */}
+                {(() => {
+                  const activeSlotIdx = heroMeta.startDayOfWeek + (activeDay.bsDay - 1);
+                  const activeRowIdx = Math.floor(activeSlotIdx / 7);
 
-                    {heroDays.map((day) => {
-                      const isSelected = activeDay.bsDay === day.bsDay && activeDay.bsMonth === day.bsMonth;
-                      const isToday = day.isToday;
-                      const isWeekend = day.dayOfWeek === 0 || day.dayOfWeek === 6;
-
-                      let cellBg = '#ffffff';
-                      let textColor = (isWeekend || day.isHoliday) ? '#dc2626' : '#1e293b';
-
-                      if (isToday) {
-                        cellBg = '#f59e0b';
-                        textColor = '#000000';
-                      } else if (isSelected) {
-                        cellBg = '#fffbeb';
-                        textColor = '#b45309';
-                      } else if (day.isHoliday || isWeekend) {
-                        cellBg = '#fef2f2';
-                        textColor = '#dc2626';
-                      }
-
-                      return (
-                        <motion.button
-                          key={day.bsDay}
-                          type="button"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ duration: 0.12 }}
-                          onClick={() => setSelectedDay(day)}
+                  return (
+                    <>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`${heroYear}-${heroMonth}`}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.16 }}
+                          className={`hero-calendar-grid ${mobileCalendarExpanded ? 'is-expanded' : ''}`}
                           style={{
-                            height: '52px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: cellBg,
-                            color: textColor,
-                            border: isToday ? '2px solid #d97706' : (isSelected ? '2px solid #f59e0b' : '1px solid #f1f5f9'),
-                            borderRadius: '10px',
-                            cursor: 'pointer',
-                            padding: '2px',
-                            position: 'relative',
-                            boxShadow: isToday ? '0 4px 12px rgba(245, 158, 11, 0.3)' : 'none',
-                            transition: 'all 0.15s ease'
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(7, 1fr)',
+                            gap: '4px',
+                            textAlign: 'center',
+                            marginBottom: '6px'
                           }}
                         >
-                          {/* Big Nepali Digit */}
-                          <span style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1 }}>
-                            {toNepaliDigits(day.bsDay)}
-                          </span>
-                          {/* Small English Date */}
-                          <span
-                            style={{
-                              fontSize: '10px',
-                              fontWeight: 600,
-                              color: isSelected ? 'rgba(255,255,255,0.85)' : (isWeekend || day.isHoliday ? '#c8102e' : '#94a3b8'),
-                              lineHeight: 1,
-                              marginTop: '3px'
-                            }}
-                          >
-                            {day.adDay}
-                          </span>
+                          {/* Empty slots for start of month */}
+                          {Array.from({ length: heroMeta.startDayOfWeek }).map((_, i) => {
+                            const isHiddenOnMobile = Math.floor(i / 7) !== activeRowIdx;
+                            return (
+                              <div
+                                key={`empty-hero-${i}`}
+                                className={`hero-day-cell ${isHiddenOnMobile ? 'hero-slot-hidden-mobile' : ''}`}
+                                style={{ height: '52px' }}
+                              />
+                            );
+                          })}
 
-                          {/* Active Today / Selected Dot Indicator from Screenshot 2 */}
-                          {isSelected && (
-                            <span
-                              style={{
-                                width: '4px',
-                                height: '4px',
-                                borderRadius: '50%',
-                                backgroundColor: '#f59e0b',
-                                marginTop: '2px'
-                              }}
-                            />
+                          {heroDays.map((day) => {
+                            const isSelected = activeDay.bsDay === day.bsDay && activeDay.bsMonth === day.bsMonth;
+                            const isToday = day.isToday;
+                            const isWeekend = day.dayOfWeek === 0 || day.dayOfWeek === 6;
+                            const slotIndex = heroMeta.startDayOfWeek + (day.bsDay - 1);
+                            const isHiddenOnMobile = Math.floor(slotIndex / 7) !== activeRowIdx;
+
+                            let cellBg = '#ffffff';
+                            let textColor = (isWeekend || day.isHoliday) ? '#dc2626' : '#1e293b';
+
+                            if (isToday) {
+                              cellBg = '#f59e0b';
+                              textColor = '#000000';
+                            } else if (isSelected) {
+                              cellBg = '#fffbeb';
+                              textColor = '#b45309';
+                            } else if (day.isHoliday || isWeekend) {
+                              cellBg = '#fef2f2';
+                              textColor = '#dc2626';
+                            }
+
+                            return (
+                              <motion.button
+                                key={day.bsDay}
+                                type="button"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ duration: 0.12 }}
+                                onClick={() => setSelectedDay(day)}
+                                className={`hero-day-cell ${isHiddenOnMobile ? 'hero-slot-hidden-mobile' : ''}`}
+                                style={{
+                                  height: '52px',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  backgroundColor: cellBg,
+                                  color: textColor,
+                                  border: isToday ? '2px solid #d97706' : (isSelected ? '2px solid #f59e0b' : '1px solid #f1f5f9'),
+                                  borderRadius: '10px',
+                                  cursor: 'pointer',
+                                  padding: '2px',
+                                  position: 'relative',
+                                  boxShadow: isToday ? '0 4px 12px rgba(245, 158, 11, 0.3)' : 'none',
+                                  transition: 'all 0.15s ease'
+                                }}
+                              >
+                                {/* Big Nepali Digit */}
+                                <span style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1 }}>
+                                  {toNepaliDigits(day.bsDay)}
+                                </span>
+                                {/* Small English Date */}
+                                <span
+                                  style={{
+                                    fontSize: '10px',
+                                    fontWeight: 600,
+                                    color: isSelected ? 'rgba(255,255,255,0.85)' : (isWeekend || day.isHoliday ? '#c8102e' : '#94a3b8'),
+                                    lineHeight: 1,
+                                    marginTop: '3px'
+                                  }}
+                                >
+                                  {day.adDay}
+                                </span>
+
+                                {/* Active Today / Selected Dot Indicator from Screenshot 2 */}
+                                {isSelected && (
+                                  <span
+                                    style={{
+                                      width: '4px',
+                                      height: '4px',
+                                      borderRadius: '50%',
+                                      backgroundColor: '#f59e0b',
+                                      marginTop: '2px'
+                                    }}
+                                  />
+                                )}
+                              </motion.button>
+                            );
+                          })}
+                        </motion.div>
+                      </AnimatePresence>
+
+                      {/* Mobile Minimal Toggle: Expand Full Month or Collapse to Week */}
+                      <div className="hero-mobile-expand-bar">
+                        <button
+                          type="button"
+                          onClick={() => setMobileCalendarExpanded(!mobileCalendarExpanded)}
+                          className="hero-mobile-expand-btn"
+                        >
+                          {mobileCalendarExpanded ? (
+                            <>
+                              <span>{t('Collapse to Week View', 'संक्षिप्त हप्ता हेर्नुहोस्')}</span>
+                              <ChevronUp size={14} />
+                            </>
+                          ) : (
+                            <>
+                              <span>{t('View Full Month (30 Days)', 'पूरा महिना हेर्नुहोस् (३० दिन)')}</span>
+                              <ChevronDown size={14} />
+                            </>
                           )}
-                        </motion.button>
-                      );
-                    })}
-                  </motion.div>
-                </AnimatePresence>
+                        </button>
+                      </div>
+                    </>
+                  );
+                })()}
 
                 {/* Footer Legend & Link: 🔴 सार्वजनिक बिदा  🟣 चाडपर्व  ⚪ अन्य  | पूरा पात्रो हेर्नुहोस् → */}
                 <div
@@ -714,11 +671,11 @@ export function NepalPatroHero() {
                     justifyContent: 'space-between',
                     fontSize: '12px',
                     color: '#64748b',
-                    paddingTop: '12px',
+                    paddingTop: '10px',
                     borderTop: '1px solid #f1f5f9'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  <div className="hero-calendar-legend-mobile-hide" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
                       <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#dc2626' }} />
                       सार्वजनिक बिदा
@@ -741,7 +698,8 @@ export function NepalPatroHero() {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      textDecoration: 'none'
+                      textDecoration: 'none',
+                      marginLeft: 'auto'
                     }}
                   >
                     <span>पूरा पात्रो हेर्नुहोस्</span>

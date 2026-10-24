@@ -3,8 +3,8 @@
 import Script from 'next/script';
 
 export function GoogleAnalytics({ gaId }: { gaId?: string }) {
-  // Use prop or environment variable
-  const measurementId = gaId || process.env.NEXT_PUBLIC_GA_ID;
+  // Use prop, environment variable, or official Nepali Calc GA4 measurement ID
+  const measurementId = gaId || process.env.NEXT_PUBLIC_GA_ID || 'G-TQCKJXBLRB';
 
   if (!measurementId) return null;
 

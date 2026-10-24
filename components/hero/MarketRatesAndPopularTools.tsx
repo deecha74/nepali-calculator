@@ -356,21 +356,13 @@ export function MarketRatesAndPopularTools() {
           {/* RIGHT: सुन र चाँदी (Live Gold & Silver Rates Hub) */}
           <div
             data-aos="fade-up"
-            style={{
-              backgroundColor: '#ffffff',
-              border: '1.5px solid #e2e8f0',
-              borderRadius: '18px',
-              padding: '22px 24px',
-              display: 'flex',
-              flexDirection: 'column',
-              boxShadow: '0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04)',
-            }}
+            className="gold-silver-card"
           >
             {/* Header with Unit Selector & History Link */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', paddingBottom: '12px', borderBottom: '1.5px solid #f1f5f9' }}>
+            <div className="gold-silver-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', paddingBottom: '10px', borderBottom: '1.5px solid #f1f5f9', flexWrap: 'wrap', gap: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <TrendingUp size={18} color="#d97706" />
-                <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
+                <TrendingUp size={17} color="#d97706" />
+                <h3 className="gold-silver-title" style={{ fontSize: '17px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
                   {t('Gold & Silver Market Rates', 'सुन र चाँदी बजार दर')}
                 </h3>
                 {rates.isLive && (
@@ -402,7 +394,7 @@ export function MarketRatesAndPopularTools() {
                     type="button"
                     onClick={() => setUnitMode('tola')}
                     className={`segmented-btn ${unitMode === 'tola' ? 'active' : ''}`}
-                    style={{ padding: '3px 10px', fontSize: '11.5px' }}
+                    style={{ padding: '2px 8px', fontSize: '11px' }}
                   >
                     {t('Tola', 'तोला')}
                   </button>
@@ -410,7 +402,7 @@ export function MarketRatesAndPopularTools() {
                     type="button"
                     onClick={() => setUnitMode('gram')}
                     className={`segmented-btn ${unitMode === 'gram' ? 'active' : ''}`}
-                    style={{ padding: '3px 10px', fontSize: '11.5px' }}
+                    style={{ padding: '2px 8px', fontSize: '11px' }}
                   >
                     {t('10 Gram', '१० ग्राम')}
                   </button>
@@ -419,53 +411,54 @@ export function MarketRatesAndPopularTools() {
                 <Link
                   href="/gold"
                   style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     fontWeight: 700,
                     color: '#d97706',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '4px',
+                    gap: '3px',
                     textDecoration: 'none'
                   }}
                 >
                   <span>{t('Price & History', 'मूल्य र इतिहास')}</span>
-                  <ArrowRight size={13} />
+                  <ArrowRight size={12} />
                 </Link>
               </div>
             </div>
 
             {/* Rate Cards (Fine Gold & Silver) */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px', marginBottom: '16px' }}>
+            <div className="gold-rates-grid">
               
               {/* Fine Gold Card */}
               <div
+                className="gold-rate-box"
                 style={{
                   backgroundColor: '#fffbeb',
                   border: '1.5px solid #fde68a',
                   borderRadius: '12px',
-                  padding: '14px',
+                  padding: '12px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between'
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: '#92400e', marginBottom: '4px' }}>
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
-                    {language === 'ne' ? 'फाइन सुन (९९.९९%)' : 'Fine Gold (99.99%)'}
+                  <div className="gold-rate-label" style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: 700, color: '#92400e', marginBottom: '4px' }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#f59e0b', flexShrink: 0 }} />
+                    <span>{language === 'ne' ? 'फाइन सुन (९९.९९%)' : 'Fine Gold (99.99%)'}</span>
                   </div>
                   
-                  <div style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', margin: '4px 0 2px' }}>
+                  <div className="gold-rate-price" style={{ fontSize: '18px', fontWeight: 900, color: '#0f172a', margin: '3px 0 2px' }}>
                     NPR {language === 'ne' 
                       ? toNepaliDigits((unitMode === 'tola' ? rates.fineGoldTola : rates.fineGold10g).toLocaleString('en-IN'))
                       : (unitMode === 'tola' ? rates.fineGoldTola : rates.fineGold10g).toLocaleString('en-IN')
                     }
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748b' }}>
+                    <span style={{ fontSize: '10.5px', fontWeight: 600, color: '#64748b', marginLeft: '2px' }}>
                       /{unitMode === 'tola' ? t('Tola', 'तोला') : t('10 Gram', '१० ग्राम')}
                     </span>
                   </div>
 
-                  <div style={{ fontSize: '11px', color: '#64748b' }}>
+                  <div className="gold-rate-sub" style={{ fontSize: '10.5px', color: '#64748b' }}>
                     NPR {language === 'ne'
                       ? toNepaliDigits((unitMode === 'tola' ? rates.fineGold10g : rates.fineGoldTola).toLocaleString('en-IN'))
                       : (unitMode === 'tola' ? rates.fineGold10g : rates.fineGoldTola).toLocaleString('en-IN')
@@ -473,7 +466,7 @@ export function MarketRatesAndPopularTools() {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: rates.dailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div className="gold-rate-change" style={{ marginTop: '8px', fontSize: '10.5px', fontWeight: 700, color: rates.dailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '3px' }}>
                   <span>
                     {rates.dailyChangeNpr >= 0 ? '▲' : '▼'}{' '}
                     NPR {language === 'ne' 
@@ -487,33 +480,34 @@ export function MarketRatesAndPopularTools() {
 
               {/* Silver Card */}
               <div
+                className="gold-rate-box"
                 style={{
                   backgroundColor: '#f8fafc',
                   border: '1.5px solid #e2e8f0',
                   borderRadius: '12px',
-                  padding: '14px',
+                  padding: '12px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between'
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#94a3b8' }} />
-                    {language === 'ne' ? 'चाँदी (Silver)' : 'Silver (चाँदी)'}
+                  <div className="gold-rate-label" style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#94a3b8', flexShrink: 0 }} />
+                    <span>{language === 'ne' ? 'चाँदी (Silver)' : 'Silver (चाँदी)'}</span>
                   </div>
                   
-                  <div style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', margin: '4px 0 2px' }}>
+                  <div className="gold-rate-price" style={{ fontSize: '18px', fontWeight: 900, color: '#0f172a', margin: '3px 0 2px' }}>
                     NPR {language === 'ne' 
                       ? toNepaliDigits((unitMode === 'tola' ? rates.silverTola : rates.silver10g).toLocaleString('en-IN'))
                       : (unitMode === 'tola' ? rates.silverTola : rates.silver10g).toLocaleString('en-IN')
                     }
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748b' }}>
+                    <span style={{ fontSize: '10.5px', fontWeight: 600, color: '#64748b', marginLeft: '2px' }}>
                       /{unitMode === 'tola' ? t('Tola', 'तोला') : t('10 Gram', '१० ग्राम')}
                     </span>
                   </div>
 
-                  <div style={{ fontSize: '11px', color: '#64748b' }}>
+                  <div className="gold-rate-sub" style={{ fontSize: '10.5px', color: '#64748b' }}>
                     NPR {language === 'ne'
                       ? toNepaliDigits((unitMode === 'tola' ? rates.silver10g : rates.silverTola).toLocaleString('en-IN'))
                       : (unitMode === 'tola' ? rates.silver10g : rates.silverTola).toLocaleString('en-IN')
@@ -521,7 +515,7 @@ export function MarketRatesAndPopularTools() {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: rates.silverDailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div className="gold-rate-change" style={{ marginTop: '8px', fontSize: '10.5px', fontWeight: 700, color: rates.silverDailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '3px' }}>
                   <span>
                     {rates.silverDailyChangeNpr >= 0 ? '▲' : '▼'}{' '}
                     NPR {language === 'ne'
@@ -536,56 +530,49 @@ export function MarketRatesAndPopularTools() {
             </div>
 
             {/* Quick In-Card Gold Price Estimator - Modern Box */}
-            <div 
-              style={{
-                borderRadius: '12px',
-                backgroundColor: '#f8fafc',
-                border: '1.5px solid #e2e8f0',
-                padding: '12px 14px',
-                marginBottom: '14px'
-              }}
-            >
-              <div style={{ fontSize: '12px', fontWeight: 800, color: '#0f172a', marginBottom: '8px' }}>
+            <div className="gold-estimator-box" style={{ borderRadius: '12px', backgroundColor: '#f8fafc', border: '1.5px solid #e2e8f0', padding: '10px 14px', marginBottom: '12px' }}>
+              <div className="gold-estimator-title" style={{ fontSize: '12px', fontWeight: 800, color: '#0f172a', marginBottom: '6px' }}>
                 {t('Quick Gold Price Estimator (Tola):', 'द्रुत सुन मूल्य क्यालकुलेटर (तोला):')}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '12px', color: '#475569' }}>{t('Weight:', 'तौल:')}</span>
+              <div className="gold-estimator-row" style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '11.5px', color: '#475569' }}>{t('Weight:', 'तौल:')}</span>
                 <input
                   type="number"
                   min="0.1"
                   step="0.5"
                   value={calcTolas}
                   onChange={(e) => setCalcTolas(parseFloat(e.target.value) || 1)}
+                  className="gold-estimator-input"
                   style={{
-                    width: '64px',
-                    padding: '5px 8px',
-                    fontSize: '12.5px',
+                    width: '54px',
+                    padding: '4px 6px',
+                    fontSize: '12px',
                     fontWeight: 700,
                     border: '1px solid rgba(212, 175, 55, 0.35)',
                     borderRadius: '6px',
                     backgroundColor: '#faf7f0',
-                    boxShadow: 'inset 2px 2px 4px rgba(44, 34, 20, 0.08), inset -2px -2px 4px rgba(255, 255, 255, 0.95)',
+                    boxShadow: 'inset 2px 2px 4px rgba(44, 34, 20, 0.08)',
                     outline: 'none',
                     color: '#0b2b5c'
                   }}
                 />
-                <span style={{ fontSize: '12px', color: '#475569' }}>{t('Tola =', 'तोला =')}</span>
-                <strong style={{ fontSize: '13px', color: '#b45309' }}>
+                <span style={{ fontSize: '11.5px', color: '#475569' }}>{t('Tola =', 'तोला =')}</span>
+                <strong style={{ fontSize: '12.5px', color: '#b45309' }}>
                   NPR {language === 'ne' ? toNepaliDigits(quickGoldTotal.toLocaleString('en-IN')) : quickGoldTotal.toLocaleString('en-IN')}
                 </strong>
-                <span style={{ fontSize: '10px', color: '#64748b' }}>
+                <span style={{ fontSize: '9.5px', color: '#64748b' }}>
                   {t('(incl. making + VAT)', '(जर्ती + भ्याट सहित)')}
                 </span>
               </div>
             </div>
 
             {/* FENEGOSIDA Official Disclaimer */}
-            <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'flex-start', gap: '6px', fontSize: '11px', color: '#64748b', lineHeight: 1.4 }}>
-              <Info size={14} color="#94a3b8" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div className="gold-disclaimer" style={{ marginTop: 'auto', display: 'flex', alignItems: 'flex-start', gap: '5px', fontSize: '10.5px', color: '#64748b', lineHeight: 1.35 }}>
+              <Info size={13} color="#94a3b8" style={{ flexShrink: 0, marginTop: '2px' }} />
               <span>
                 {t(
-                  'Gold and silver rates are indicative based on the Federation of Nepal Gold and Silver Dealers\' Association (FENEGOSIDA). Please confirm with your jeweler before transacting.',
-                  'सुन-चाँदीको दर नेपाल सुनचाँदी व्यवसायी महासंघ (FENEGOSIDA) को आधिकारिक दरमा आधारित जानकारीका लागि मात्र हो। कारोबार गर्नुअघि आफ्नो व्यापारीसँग पुष्टि गर्नुहोस्।'
+                  'Gold and silver rates are indicative based on FENEGOSIDA. Please confirm with your jeweler before transacting.',
+                  'सुन-चाँदीको दर सुनचाँदी व्यवसायी महासंघ (FENEGOSIDA) को आधिकारिक दरमा आधारित हो। कारोबार गर्नुअघि पुष्टि गर्नुहोस्।'
                 )}
               </span>
             </div>

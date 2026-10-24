@@ -199,14 +199,13 @@ export function LiveGoldTicker() {
             </span>
           </Link>
 
-          {/* Right indicator: item count + tap action */}
+          {/* Right indicator: tap action */}
           <Link
             href="/gold"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '3px',
-              color: '#bfdbfe',
+              color: '#fde047',
               fontSize: '10px',
               fontWeight: 700,
               textDecoration: 'none',
@@ -216,10 +215,7 @@ export function LiveGoldTicker() {
             }}
             title={t('View all live gold rates', 'सम्पूर्ण प्रत्यक्ष दर हेर्नुहोस्')}
           >
-            <span style={{ color: '#93c5fd' }}>
-              {activeIndex + 1}/{announcements.length}
-            </span>
-            <ChevronRight size={13} color="#fde047" />
+            <ChevronRight size={14} color="#fde047" />
           </Link>
         </div>
 

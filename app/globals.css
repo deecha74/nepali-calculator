@@ -1626,11 +1626,116 @@ button:active,
   }
 
   .doc-card-slide {
-    flex: 0 0 calc(100vw - 52px) !important;
-    max-width: 380px !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
+    flex: 0 0 calc(85vw - 20px) !important;
+    max-width: 300px !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: normal !important;
     height: auto !important;
+    padding: 14px 14px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  .doc-card-slide .doc-card-badge {
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+  }
+
+  .doc-card-slide .doc-card-title {
+    font-size: 13.5px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 4px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .doc-card-slide .doc-card-authority {
+    font-size: 10.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .doc-card-slide .doc-card-summary {
+    font-size: 11.5px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .doc-card-slide .doc-clause-pills {
+    margin-bottom: 10px !important;
+    gap: 4px !important;
+  }
+
+  .doc-card-slide .doc-clause-pill {
+    font-size: 9.5px !important;
+    padding: 2px 6px !important;
+  }
+
+  .doc-card-slide .doc-card-actions {
+    padding-top: 10px !important;
+    gap: 6px !important;
+  }
+
+  .doc-card-slide .doc-card-actions button {
+    padding: 7px 10px !important;
+    font-size: 11.5px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Cute header styles for mobile */
+  .doc-header-pill {
+    font-size: 10.5px !important;
+    padding: 3px 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .doc-header-title {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .doc-header-subtitle {
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  .doc-saved-btn {
+    padding: 6px 12px !important;
+    font-size: 11.5px !important;
+  }
+
+  .doc-search-input {
+    padding: 10px 14px 10px 40px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+  }
+
+  .cute-tools-pill {
+    font-size: 10.5px !important;
+    padding: 4px 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cute-tools-title {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cute-tools-subtitle {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  .cute-search-input {
+    font-size: 13px !important;
+    padding: 11px 16px 11px 44px !important;
   }
 
   .doc-carousel-controls {
@@ -2333,3 +2438,628 @@ html, body {
   body.printing-doc .dp-p,body.printing-doc .dp-ol li{page-break-inside:avoid}
   body.printing-doc .dp-sign{page-break-inside:avoid}
 }
+
+/* ============ Mobile-Catchy Hero Patro & Modern Typography ============ */
+.hero-patro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .hero-patro-grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 36px;
+  }
+}
+
+.hero-left-col {
+  min-height: 340px;
+}
+
+.hero-weather-pill-wrap {
+  margin-bottom: 10px;
+}
+
+.hero-holiday-pills-wrap {
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.hero-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+}
+
+.hero-live-badge .pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: pulseGlow 1.8s infinite;
+  flex-shrink: 0;
+}
+
+.hero-live-badge-text {
+  font-family: 'Outfit', 'Mukta', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #fef08a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-live-badge-year {
+  background: rgba(254, 240, 138, 0.22);
+  color: #ffffff;
+  padding: 1px 7px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.hero-main-title {
+  font-family: 'Mukta', 'Noto Sans Devanagari', 'Outfit', sans-serif;
+  font-size: clamp(30px, 7vw, 50px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-subdate-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  font-family: 'Outfit', 'Mukta', sans-serif;
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-ad-date {
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.hero-subdate-sep {
+  opacity: 0.65;
+  color: #ffffff;
+}
+
+.hero-tithi-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(254, 240, 138, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(254, 240, 138, 0.38);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  color: #fef08a;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.hero-live-clock-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  font-family: 'Outfit', 'Inter', sans-serif;
+  width: fit-content;
+}
+
+.hero-live-clock-card .clock-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #bfdbfe;
+}
+
+.hero-live-clock-card .clock-time-val {
+  font-weight: 800;
+  font-size: 14px;
+  color: #fef08a;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(254, 240, 138, 0.5);
+}
+
+.hero-live-clock-card .clock-npt-badge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 7px 15px;
+  border-radius: 9999px;
+  font-family: 'Mukta', 'Outfit', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  width: fit-content;
+  max-width: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hero-pill-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+}
+
+.hero-calendar-card {
+  background-color: #fdfbf7;
+  border-radius: 20px;
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 12px 35px rgba(44, 34, 20, 0.08), inset 0 0 0 1px rgba(212, 175, 55, 0.2);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  /* Left Hero Card Minimal Mobile Redesign */
+  .hero-patro-grid {
+    gap: 12px !important;
+  }
+  .hero-left-col {
+    min-height: auto !important;
+  }
+  .hero-live-badge {
+    padding: 3px 8px !important;
+    gap: 5px !important;
+    margin-bottom: 6px !important;
+  }
+  .hero-live-badge .pulse-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .hero-live-badge-text {
+    font-size: 9.5px !important;
+    letter-spacing: 0.03em !important;
+  }
+  .hero-live-badge-year {
+    font-size: 9.5px !important;
+    padding: 1px 5px !important;
+  }
+  .hero-main-title {
+    font-size: 21px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 5px !important;
+    letter-spacing: -0.01em !important;
+  }
+  .hero-subdate-wrap {
+    font-size: 11.5px !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .hero-ad-date {
+    font-size: 11.5px !important;
+  }
+  .hero-tithi-tag {
+    font-size: 10.5px !important;
+    padding: 1px 7px !important;
+    gap: 4px !important;
+  }
+  .hero-tithi-tag svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+  .hero-live-clock-card {
+    padding: 3px 9px !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .hero-live-clock-card svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .hero-live-clock-card .clock-label {
+    font-size: 10px !important;
+  }
+  .hero-live-clock-card .clock-time-val {
+    font-size: 11.5px !important;
+  }
+  .hero-live-clock-card .clock-npt-badge {
+    font-size: 8px !important;
+    padding: 1px 4px !important;
+  }
+  .hero-weather-pill-wrap {
+    margin-bottom: 6px !important;
+  }
+  .hero-holiday-pills-wrap {
+    gap: 5px !important;
+    margin-top: 0 !important;
+  }
+  .hero-pill-badge {
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    gap: 6px !important;
+    border-radius: 9999px !important;
+    line-height: 1.35 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  }
+  .hero-pill-badge strong {
+    font-size: 11px !important;
+  }
+  .hero-pill-badge button {
+    padding: 1px 6px !important;
+    font-size: 9.5px !important;
+    gap: 2px !important;
+  }
+  .hero-today-holiday-pill {
+    display: none !important;
+  }
+
+  /* Calendar Card Mobile Sizing */
+  .hero-calendar-card {
+    padding: 14px 12px;
+    border-radius: 16px;
+  }
+  .hero-calendar-grid:not(.is-expanded) .hero-slot-hidden-mobile {
+    display: none !important;
+  }
+  .hero-calendar-grid .hero-day-cell {
+    height: 42px !important;
+  }
+  .hero-calendar-legend-mobile-hide {
+    display: none !important;
+  }
+}
+
+.hero-mobile-expand-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 641px) {
+  .hero-mobile-expand-bar {
+    display: none !important;
+  }
+}
+
+.hero-mobile-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1ece1;
+  color: #003893;
+  border: 1px solid #dfd5c4;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-family: 'Mukta', 'Outfit', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.15s ease;
+}
+
+.hero-mobile-expand-btn:active {
+  transform: scale(0.96);
+  background: #e6decb;
+}
+
+/* ============ Festival Spotlight Card Mobile Optimization ============ */
+@media (max-width: 640px) {
+  .festival-banner-wrap {
+    height: 105px !important;
+  }
+  .festival-banner-content {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 8px !important;
+  }
+  .festival-banner-title {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+  .festival-banner-sub {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 220px !important;
+  }
+  .festival-banner-days span:first-child {
+    font-size: 14px !important;
+  }
+  .festival-card-body {
+    padding: 12px !important;
+  }
+  .festival-milestones-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 6px !important;
+    scrollbar-width: none;
+  }
+  .festival-milestones-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .festival-milestone-card {
+    flex: 0 0 135px !important;
+    min-width: 135px !important;
+    padding: 8px 10px !important;
+    scroll-snap-align: start;
+  }
+  .festival-btn-row {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  .festival-btn-row a {
+    min-width: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ============ Gold & Silver Card Mobile Optimization ============ */
+.gold-silver-card {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.gold-rates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.gold-rate-box {
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.15s ease;
+}
+
+@media (max-width: 640px) {
+  .gold-silver-card {
+    padding: 14px 14px !important;
+    border-radius: 16px !important;
+  }
+  .gold-silver-header {
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+  }
+  .gold-silver-title {
+    font-size: 15px !important;
+  }
+  .gold-rates-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .gold-rate-box {
+    padding: 9px 10px !important;
+    border-radius: 10px !important;
+  }
+  .gold-rate-label {
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+  }
+  .gold-rate-price {
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+  .gold-rate-sub {
+    font-size: 9.5px !important;
+    margin-top: 2px !important;
+  }
+  .gold-rate-change {
+    margin-top: 6px !important;
+    font-size: 9.5px !important;
+  }
+  .gold-estimator-box {
+    padding: 8px 10px !important;
+    margin-bottom: 8px !important;
+    border-radius: 10px !important;
+  }
+  .gold-estimator-title {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+  .gold-estimator-row {
+    font-size: 11.5px !important;
+    gap: 5px !important;
+  }
+  .gold-estimator-input {
+    width: 44px !important;
+    padding: 3px 6px !important;
+    font-size: 11.5px !important;
+  }
+  .gold-disclaimer {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ============ Legal Document Generators Carousel ============ */
+.doc-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 900px) {
+  .doc-carousel-track {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    overflow-x: visible !important;
+  }
+  .doc-carousel-item {
+    flex: none !important;
+  }
+  .doc-carousel-arrows {
+    display: none !important;
+  }
+}
+@media (max-width: 899px) {
+  .doc-carousel-item {
+    flex: 0 0 min(82vw, 300px) !important;
+    min-width: min(82vw, 300px) !important;
+  }
+  .doc-carousel-dots {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .doc-subtag-hide-mobile {
+    display: none !important;
+  }
+}
+
+/* ============ Upcoming in Nepal Card Mobile Carousel & Sizing ============ */
+@media (max-width: 640px) {
+  .upcoming-card {
+    padding: 14px 14px !important;
+    border-radius: 16px !important;
+  }
+  .upcoming-header {
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+  }
+  .upcoming-title {
+    font-size: 15px !important;
+  }
+  .upcoming-events-track {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 9px !important;
+    padding-bottom: 6px !important;
+    padding-right: 0 !important;
+    scrollbar-width: none !important;
+  }
+  .upcoming-events-track::-webkit-scrollbar {
+    display: none !important;
+  }
+  .upcoming-event-item {
+    flex: 0 0 170px !important;
+    min-width: 170px !important;
+    max-width: 185px !important;
+    scroll-snap-align: start !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    padding: 10px 11px !important;
+    border-radius: 12px !important;
+    min-height: 104px !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+  }
+  .upcoming-item-main {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 7px !important;
+    width: 100% !important;
+  }
+  .upcoming-date-badge {
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 7px !important;
+  }
+  .upcoming-date-day {
+    font-size: 13.5px !important;
+  }
+  .upcoming-date-month {
+    font-size: 8.5px !important;
+  }
+  .upcoming-details {
+    width: 100% !important;
+  }
+  .upcoming-item-title {
+    font-size: 12.5px !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .upcoming-item-sub {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .upcoming-badge-wrap {
+    width: 100% !important;
+    justify-content: space-between !important;
+    margin-top: 6px !important;
+    padding-top: 6px !important;
+    border-top: 1px dashed rgba(0, 0, 0, 0.08) !important;
+  }
+  .upcoming-countdown-badge {
+    font-size: 9.5px !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+  }
+  .upcoming-arrow {
+    display: none !important;
+  }
+  .upcoming-footer-row {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+    gap: 8px !important;
+  }
+  .upcoming-footer-row a {
+    font-size: 11.5px !important;
+    padding: 8px 12px !important;
+    min-width: 0 !important;
+  }
+}
+
+
+
+

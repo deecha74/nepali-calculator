@@ -395,3 +395,48 @@ When writing a new blog article around these keywords:
 3. **Featured Snippet Bait**: Include a concise definition or conversion table within the first 150 words ("...ma kati huncha" question answered immediately).
 4. **Structured Schema**: Automatically generates `BlogPosting`, `FAQPage`, and `WebApplication` JSON-LD schema.
 5. **Language Isolation**: Strictly adhere to single-language rendering (English version 100% clean, Nepali version 100% Devanagari).
+6. **Word Guardrails for Blog Writing**:
+   * **Words to IGNORE / EXCLUDE**: AI clichés (*"In this fast-paced world..."*, *"Have you ever wondered..."*, *"In conclusion..."*), broad unattainable head terms (*"banks in nepal"*, *"taxes"*), negative scraping junk (*"crack"*, *"apk"*, *"vacancy 2083"*, *"syllabus pdf"*), and vague hedging (*"maybe"*, *"perhaps"*).
+   * **Words to STRATEGICALLY INCLUDE**: Official statutory bodies (*"Income Tax Act 2058"*, *"Muluki Civil Code"*, *"FENEGOSIDA"*, *"NRB"*, *"SSF"*), Diaspora remittance queries (*"send money from Australia/USA/UK/Europe to Nepal"*, *"3% NOC tax"*, *"NRE deposit tax"*), and direct mathematical answers (*"1 tola = 11.6638 grams"*, *"The exact formula is:"*).
+
+---
+
+## 🔍 Keyword Research Query Engine: Words to INCLUDE vs EXCLUDE
+
+Use these exact Boolean filtering commands in Google Search, Google Keyword Planner, Ahrefs, Semrush, or OpenSEO:
+
+### Master Search Operator Commands:
+```bash
+# 1. Domestic High-Intent Calculators / Converters:
+allintitle:"nepal" (calculator OR converter OR generator OR tax OR charges OR fee) -jobs -vacancy -syllabus -routine -result -login -portal -apk
+
+# 2. Diaspora / Cross-Border Remittance & Tax (USA, UK, Australia, Europe):
+("send money to nepal" OR "remittance tax" OR "noc tax" OR "nre account" OR "forex rates") (USA OR UK OR Australia OR Europe OR "Gulf") -jobs -vacancy -visa
+
+# 3. High-Intent "How To" & "Kasari Hisab Garne" Queries:
+("how to calculate" OR "kasari hisab garne" OR "rate today") (site:reddit.com OR site:quora.com OR site:facebook.com) "nepal"
+```
+
+### Whitelist vs Blacklist Filtering Table:
+
+| Dimension | Words to INCLUDE (High Intent & Conversions) | Words to EXCLUDE (Negative Noise & Waste) |
+| :--- | :--- | :--- |
+| **Utility** | `calculator`, `converter`, `generator`, `estimator`, `checker`, `today rate`, `current price`, `charges`, `fee`, `cost` | `crack`, `mod apk`, `hack`, `torrent`, `license key`, `free download` |
+| **Actionable Rules** | `how to calculate`, `formula`, `rules`, `slabs`, `step by step`, `process`, `documents required`, `sample`, `template` | `jobs`, `vacancy`, `careers`, `salary of employee at`, `internship`, `interview questions` |
+| **Academic Noise** | `guide`, `worked example`, `comparison`, `vs`, `explained` | `syllabus`, `past questions`, `question paper`, `exam routine`, `board result`, `admit card`, `notes pdf` |
+| **Navigational Junk** | `official rates`, `statutory rules`, `government gazette`, `schedule` | `login`, `portal`, `sign in`, `reset password`, `customer care number`, `toll free`, `branch near me` |
+| **Media Waste** | `instant`, `online`, `print ready`, `download pdf`, `without login` | `movie`, `song`, `lyrics`, `video`, `mp3`, `wallpaper`, `images`, `photos`, `cast`, `meme` |
+| **Diaspora / Global** | `send money to nepal`, `remittance fee`, `forex margin`, `npr to usd`, `aud to npr`, `gbp to npr`, `eur to npr`, `noc tax 3%`, `nre deposit` | `embassy lottery`, `work permit scam`, `flight status delay` |
+| **Romanized Query Phrases** | `kasari hisab garne`, `kati lagcha`, `kati huncha`, `dar`, `vau`, `sulka`, `nirdeshika`, `niyamawali` | `samachar`, `breaking news`, `viral video`, `facebook status`, `shubhakamana message` |
+
+---
+
+## 📈 CTR Acceleration & SERP Magnet Checklist
+
+To turn organic impressions into clicks and lift average positions from 33.5 to the Top 5:
+1. **Target Striking Distance Queries (Positions 8–20)**: Mine queries in GSC and put them directly in `<title>`, `<h1>`, and introductory sentences.
+2. **Apply High-CTR Click Magnet Title Pattern**: `[Primary Search Keyword] — [Concrete Bracket Benefit] | [Current Year]`.
+3. **Inject `FAQPage` Schema**: Output structured JSON-LD accordions with direct factual answers to expand SERP mobile footprint by 2.5×.
+4. **First 115-Character Meta Description**: Structure as `[Target Keyword] + [Exact Outcome / Calculation] + [Action CTA →]`.
+5. **Funnel Internal Links**: Feature top-impression long-tail pages on the homepage and high-authority blog posts to rapidly transfer PageRank.
+*(See Section 11 of `SEO_AUDIT_REPORT.md` for the full technical architectural blueprint).*

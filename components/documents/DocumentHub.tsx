@@ -189,16 +189,51 @@ Verified against Nepal Gazette Standard.
       <div className="container">
 
         {/* Section Header */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
+        <div className="doc-header-wrap" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '14px', marginBottom: '24px' }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#eff6ff', color: '#003893', border: '1px solid #bfdbfe', padding: '3px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
+            <div
+              className="doc-header-pill"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                backgroundColor: 'rgba(0, 56, 147, 0.07)',
+                color: '#003893',
+                border: '1px solid rgba(0, 56, 147, 0.18)',
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '11px',
+                fontWeight: 800,
+                letterSpacing: '0.04em',
+                marginBottom: '8px'
+              }}
+            >
               <ShieldCheck size={13} color="#003893" />
-              <span>OFFICIAL REGULATORY GAZETTES & ACTS</span>
+              <span>{t('OFFICIAL REGULATORY GAZETTES & ACTS', 'आधिकारिक नेपाल सरकारी ऐन तथा राजपत्र')}</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
+            <h2
+              className="doc-header-title"
+              style={{
+                fontSize: 'clamp(20px, 3.2vw, 32px)',
+                fontWeight: 850,
+                color: '#0f172a',
+                margin: '0 0 6px',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.25
+              }}
+            >
               {t('Official Nepal Government Acts & Document Reader', 'आधिकारिक नेपाल सरकारी ऐन, राजपत्र तथा दस्ताबेज रिडर')}
             </h2>
-            <p style={{ fontSize: '14px', color: '#64748b', margin: 0, maxWidth: '640px' }}>
+            <p
+              className="doc-header-subtitle"
+              style={{
+                fontSize: '13.5px',
+                color: '#64748b',
+                margin: 0,
+                maxWidth: '640px',
+                lineHeight: 1.5
+              }}
+            >
               {t(
                 'Read, search, download, and bookmark real official government gazettes, tax circulars, labour acts, and transport regulations.',
                 'वास्तविक सरकारी ऐन, आर्थिक ऐन स्ल्याब, श्रम ऐन, सवारी कर तालिका र राष्ट्र बैंकका निर्देशनहरू पढ्नुहोस्, खोज्नुहोस् र डाउनलोड गर्नुहोस्।'
@@ -210,13 +245,13 @@ Verified against Nepal Gazette Standard.
           <button
             type="button"
             onClick={() => setFilterSavedOnly(!filterSavedOnly)}
-            className="neu-btn"
+            className="neu-btn doc-saved-btn"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              padding: '8px 16px',
-              fontSize: '13px',
+              padding: '7px 14px',
+              fontSize: '12.5px',
               fontWeight: 700,
               backgroundColor: filterSavedOnly ? '#003893' : '#ffffff',
               color: filterSavedOnly ? '#ffffff' : '#003893',
@@ -227,7 +262,7 @@ Verified against Nepal Gazette Standard.
               boxShadow: filterSavedOnly ? '0 4px 12px rgba(0, 56, 147, 0.25)' : '0 1px 3px rgba(15, 23, 42, 0.05)'
             }}
           >
-            {filterSavedOnly ? <BookmarkCheck size={15} color="#ffffff" /> : <Bookmark size={15} />}
+            {filterSavedOnly ? <BookmarkCheck size={14} color="#ffffff" /> : <Bookmark size={14} />}
             <span>
               {t(`Saved Documents (${savedDocIds.length})`, `सुरक्षित दस्ताबेजहरू (${savedDocIds.length})`)}
             </span>
@@ -239,36 +274,35 @@ Verified against Nepal Gazette Standard.
 
           {/* Search Box - Inset Neumorphic Well */}
           <div style={{ position: 'relative' }}>
-            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#c59b27' }} />
+            <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#c59b27' }} />
             <input
               type="text"
+              className="doc-search-input"
               placeholder={t(
-                'Search official documents & clauses (e.g. gratuity, overtime, tax slab, pulsar, dsti, mdms)...',
-                'दस्ताबेज तथा दफा खोज्नुहोस् (जस्तै: उपदान, ओभरटाइम, आयकर स्ल्याब, ब्लुबुक, DSTI, MDMS)...'
+                'Search official documents & clauses (e.g. gratuity, tax slab, bluebook, dsti, mdms)... 🔍',
+                'दस्ताबेज तथा दफा खोज्नुहोस् (जस्तै: उपदान, आयकर स्ल्याब, ब्लुबुक, DSTI, MDMS)... 🔍'
               )}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
                 width: '100%',
-                padding: '13px 18px 13px 44px',
-                fontSize: '14px',
+                padding: '11px 18px 11px 42px',
+                fontSize: '13.5px',
                 borderRadius: '12px',
                 border: '1.5px solid rgba(212, 175, 55, 0.35)',
-                backgroundColor: '#faf6ee',
+                backgroundColor: '#ffffff',
                 color: '#0f172a',
                 outline: 'none',
-                boxShadow: 'inset 2px 2px 4px rgba(44, 34, 20, 0.07), inset -2px -2px 4px rgba(255, 255, 255, 0.95)',
+                boxShadow: '0 2px 8px rgba(44, 34, 20, 0.04)',
                 transition: 'all 0.18s ease',
               }}
               onFocus={(e) => {
                 e.currentTarget.style.borderColor = '#c59b27';
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.boxShadow = 'inset 1px 1px 3px rgba(44, 34, 20, 0.04), 0 0 0 3px rgba(197, 155, 39, 0.18)';
+                e.currentTarget.style.boxShadow = '0 0 0 3px rgba(197, 155, 39, 0.18), 0 4px 12px rgba(197, 155, 39, 0.08)';
               }}
               onBlur={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.35)';
-                e.currentTarget.style.backgroundColor = '#faf6ee';
-                e.currentTarget.style.boxShadow = 'inset 2px 2px 4px rgba(44, 34, 20, 0.07), inset -2px -2px 4px rgba(255, 255, 255, 0.95)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(44, 34, 20, 0.04)';
               }}
             />
           </div>
@@ -311,12 +345,12 @@ Verified against Nepal Gazette Standard.
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1.5px solid #e2e8f0',
-                  borderRadius: '12px',
-                  padding: '20px',
+                  borderRadius: '14px',
+                  padding: '16px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.03)',
+                  boxShadow: '0 3px 12px rgba(0,0,0,0.03)',
                   transition: 'all 0.18s ease',
                   minWidth: 0,
                   overflow: 'hidden',
@@ -324,17 +358,20 @@ Verified against Nepal Gazette Standard.
               >
                 <div>
                   {/* Category & Authority Badge */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px' }}>
                     <span
+                      className="doc-card-badge"
                       style={{
-                        fontSize: '11px',
+                        fontSize: '10.5px',
                         fontWeight: 800,
                         color: '#003893',
                         backgroundColor: '#eff6ff',
-                        padding: '3px 8px',
-                        borderRadius: '4px',
+                        border: '1px solid #bfdbfe',
+                        padding: '2px 8px',
+                        borderRadius: '9999px',
                         textTransform: 'uppercase',
                         whiteSpace: 'nowrap',
+                        letterSpacing: '0.04em'
                       }}
                     >
                       {doc.category.toUpperCase()}
@@ -352,67 +389,103 @@ Verified against Nepal Gazette Standard.
                         color: isSaved ? '#c8102e' : '#94a3b8'
                       }}
                     >
-                      {isSaved ? <BookmarkCheck size={18} color="#c8102e" /> : <Bookmark size={18} />}
+                      {isSaved ? <BookmarkCheck size={16} color="#c8102e" /> : <Bookmark size={16} />}
                     </button>
                   </div>
 
                   {/* Title */}
-                  <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px', lineHeight: 1.35, wordBreak: 'break-word', fontFamily: 'var(--font-sans)' }}>
+                  <h3
+                    className="doc-card-title"
+                    style={{
+                      fontSize: '14.5px',
+                      fontWeight: 800,
+                      color: '#0f172a',
+                      margin: '0 0 5px',
+                      lineHeight: 1.32,
+                      wordBreak: 'break-word',
+                      fontFamily: 'var(--font-sans)'
+                    }}
+                  >
                     {language === 'ne' ? doc.titleNep : doc.title}
                   </h3>
 
                   {/* Authority & Gazette info */}
-                  <div style={{ fontSize: '12px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
-                    <Building2 size={13} style={{ flexShrink: 0 }} />
+                  <div className="doc-card-authority" style={{ fontSize: '11.5px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '8px' }}>
+                    <Building2 size={12} style={{ flexShrink: 0, color: '#94a3b8' }} />
                     <span style={{ wordBreak: 'break-word' }}>{language === 'ne' ? doc.authorityNep : doc.authority}</span>
                   </div>
 
                   {/* Summary */}
-                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, margin: '0 0 16px', wordBreak: 'break-word' }}>
+                  <p
+                    className="doc-card-summary"
+                    style={{
+                      fontSize: '12px',
+                      color: '#475569',
+                      lineHeight: 1.45,
+                      margin: '0 0 10px',
+                      wordBreak: 'break-word'
+                    }}
+                  >
                     {language === 'ne' ? doc.summaryNep : doc.summary}
                   </p>
 
                   {/* Clause Pills Preview */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
-                    {doc.clauses.map((c) => (
+                  <div className="doc-clause-pills" style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px' }}>
+                    {doc.clauses.slice(0, 4).map((c) => (
                       <span
                         key={c.clauseNumber}
+                        className="doc-clause-pill"
                         style={{
-                          fontSize: '11px',
+                          fontSize: '10px',
                           fontWeight: 700,
                           backgroundColor: '#f1f5f9',
                           color: '#334155',
-                          padding: '3px 7px',
-                          borderRadius: '4px',
+                          padding: '2px 6px',
+                          borderRadius: '9999px',
                           whiteSpace: 'nowrap',
                         }}
                       >
                         {c.clauseNumber}
                       </span>
                     ))}
+                    {doc.clauses.length > 4 && (
+                      <span
+                        className="doc-clause-pill"
+                        style={{
+                          fontSize: '9.5px',
+                          fontWeight: 700,
+                          backgroundColor: '#e2e8f0',
+                          color: '#64748b',
+                          padding: '2px 5px',
+                          borderRadius: '9999px',
+                        }}
+                      >
+                        +{doc.clauses.length - 4}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 {/* Card Action Buttons */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '14px', borderTop: '1px solid #f1f5f9', marginTop: 'auto' }}>
+                <div className="doc-card-actions" style={{ display: 'flex', alignItems: 'center', gap: '6px', paddingTop: '10px', borderTop: '1px solid #f1f5f9', marginTop: 'auto' }}>
                   <button
                     type="button"
                     onClick={() => setActiveDocument(doc)}
                     className="btn-primary"
-                    style={{ flex: 1, padding: '9px 12px', fontSize: '13px', whiteSpace: 'nowrap' }}
+                    style={{ flex: 1, padding: '7px 10px', fontSize: '12px', borderRadius: '8px', whiteSpace: 'nowrap' }}
                   >
-                    <Eye size={14} style={{ flexShrink: 0 }} />
-                    <span>{t('Open Reader', 'दस्ताबेज पढ्नुहोस्')}</span>
+                    <Eye size={13} style={{ flexShrink: 0 }} />
+                    <span>{t('Open Reader', 'पढ्नुहोस्')}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={(e) => handleDownload(doc, e)}
                     className="btn-secondary"
-                    style={{ padding: '9px 12px', fontSize: '13px', whiteSpace: 'nowrap' }}
+                    style={{ padding: '7px 10px', fontSize: '12px', borderRadius: '8px', whiteSpace: 'nowrap' }}
                     title="Download Official Document Text"
                   >
-                    <Download size={14} style={{ flexShrink: 0 }} />
+                    <Download size={13} style={{ flexShrink: 0 }} />
                     <span>{t('Download', 'डाउनलोड')}</span>
                   </button>
                 </div>

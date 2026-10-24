@@ -254,83 +254,105 @@ export default function HomePage() {
       <div id="all-tools" className="container" style={{ padding: '64px 20px 72px' }}>
 
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 40px' }} data-aos="fade-up">
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'linear-gradient(135deg, rgba(0, 56, 147, 0.08) 0%, rgba(200, 16, 46, 0.08) 100%)',
-            border: '1px solid rgba(0, 56, 147, 0.15)',
-            color: '#003893',
-            fontSize: '12.5px',
-            fontWeight: 800,
-            textTransform: 'uppercase',
-            letterSpacing: '0.08em',
-            padding: '6px 16px',
-            borderRadius: '9999px',
-            marginBottom: '14px'
-          }}>
-            <Sparkles size={14} color="#003893" />
-            <span>{t('ALL 35+ NEPAL CALCULATORS & CONVERTERS', 'नेपालका सबै ३५+ क्यालकुलेटर तथा रूपान्तरण औजारहरू')}</span>
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 30px' }} data-aos="fade-up">
+          <div
+            className="cute-tools-pill"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.09) 0%, rgba(236, 72, 153, 0.09) 100%)',
+              border: '1px solid rgba(99, 102, 241, 0.22)',
+              color: '#4338ca',
+              fontSize: '11.5px',
+              fontWeight: 750,
+              letterSpacing: '0.04em',
+              padding: '5px 14px',
+              borderRadius: '9999px',
+              marginBottom: '12px',
+              boxShadow: '0 2px 8px rgba(99, 102, 241, 0.08)'
+            }}
+          >
+            <Sparkles size={13} color="#6366f1" />
+            <span>{t('All 35+ Nepal Calculators & Converters', 'नेपालका सबै ३५+ क्यालकुलेटर तथा रूपान्तरण औजारहरू')}</span>
           </div>
 
-          <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', margin: '0 0 14px' }}>
+          <h2
+            className="cute-tools-title"
+            style={{
+              fontSize: 'clamp(22px, 4.2vw, 38px)',
+              fontWeight: 800,
+              color: '#0f172a',
+              letterSpacing: '-0.02em',
+              margin: '0 0 10px',
+              lineHeight: 1.25
+            }}
+          >
             {language === 'ne' ? (
-              <>एकै ठाउँमा <span style={{ background: 'linear-gradient(135deg, #003893 0%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>सम्पूर्ण हिसाब</span> र रूपान्तरण</>
+              <>एकै ठाउँमा <span style={{ background: 'linear-gradient(135deg, #2563eb 0%, #ec4899 50%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>सम्पूर्ण हिसाब ✨</span></>
             ) : (
-              <>Every Smart Calculation <span style={{ background: 'linear-gradient(135deg, #003893 0%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>in One Place</span></>
+              <>Every Smart Calculation <span style={{ background: 'linear-gradient(135deg, #2563eb 0%, #ec4899 50%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block', whiteSpace: 'nowrap' }}>in One Place ✨</span></>
             )}
           </h2>
 
-
-          <p style={{ fontSize: '15.5px', color: '#475569', lineHeight: 1.6, margin: 0 }}>
+          <p
+            className="cute-tools-subtitle"
+            style={{
+              fontSize: '13.5px',
+              color: '#64748b',
+              lineHeight: 1.5,
+              margin: '0 auto',
+              maxWidth: '560px'
+            }}
+          >
             {t(
-              'Income tax, land measurement, bluebook vehicle tax, license exam, passport fees, NEPSE shares, loan EMI, Preeti font converter, and utility bills.',
-              'आयकर, जग्गा नाप, सवारी कर, लाइसेन्स परीक्षा, राहदानी दस्तुर, शेयर बजार, बैंक ऋण, फन्ट रूपान्तरण, र घरायसी बिलहरूको आधिकारिक गणना।'
+              'Income tax, land units, gold rates, vehicle tax, loan EMI & legal forms — fast, accurate & 100% free.',
+              'आयकर, जग्गा नाप, सुनको भाउ, ब्लुबुक कर, बैंक ऋण र कानुनी ढाँचाहरू — छिटो, सही र पूर्ण निःशुल्क।'
             )}
           </p>
         </div>
 
         {/* Instant Search Bar - Modern Floating Input */}
-        <div style={{ maxWidth: '640px', margin: '0 auto 36px', position: 'relative' }} data-aos="fade-up">
+        <div style={{ maxWidth: '560px', margin: '0 auto 28px', position: 'relative' }} data-aos="fade-up">
           <Search
-            size={20}
+            size={18}
             style={{
               position: 'absolute',
-              left: '20px',
+              left: '18px',
               top: '50%',
               transform: 'translateY(-50%)',
-              color: '#003893',
+              color: '#6366f1',
             }}
           />
           <input
             type="text"
+            className="cute-search-input"
             placeholder={t(
-              'Search 35+ tools (e.g. malpot, tax, license, passport, rent, preeti, ropani, gold, ipo)...',
-              'कुनै पनि उपकरण खोज्नुहोस् (जस्तै: मालपोत, tax, license, passport, rent, preeti, ropani, gold)...'
+              'Search 35+ tools (e.g. tax, land, gold, bluebook, salary)... 🔍',
+              'कुनै पनि उपकरण खोज्नुहोस् (जस्तै: tax, land, gold, bluebook, salary)... 🔍'
             )}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%',
-              padding: '16px 24px 16px 52px',
-              fontSize: '15.5px',
+              padding: '13px 20px 13px 46px',
+              fontSize: '14px',
               borderRadius: '9999px',
-              border: '1.5px solid #cbd5e1',
+              border: '1.5px solid #e0e7ff',
               backgroundColor: '#ffffff',
               color: '#0f172a',
               outline: 'none',
-              boxShadow: '0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04)',
+              boxShadow: '0 8px 24px -4px rgba(99, 102, 241, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)',
               fontFamily: 'var(--font-sans)',
               transition: 'all 0.2s ease',
             }}
             onFocus={(e) => {
-              e.currentTarget.style.borderColor = '#2563eb';
-              e.currentTarget.style.boxShadow = '0 0 0 4px rgba(37, 99, 235, 0.14), 0 12px 28px -5px rgba(37, 99, 235, 0.08)';
+              e.currentTarget.style.borderColor = '#6366f1';
+              e.currentTarget.style.boxShadow = '0 0 0 4px rgba(99, 102, 241, 0.14), 0 10px 25px -4px rgba(99, 102, 241, 0.12)';
             }}
             onBlur={(e) => {
-              e.currentTarget.style.borderColor = '#cbd5e1';
-              e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04)';
+              e.currentTarget.style.borderColor = '#e0e7ff';
+              e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(99, 102, 241, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)';
             }}
           />
         </div>
@@ -350,29 +372,29 @@ export default function HomePage() {
               <button
                 key={cat.id}
                 type="button"
-                className={`filter-pill ${isActive ? 'active' : ''}`}
+                className={`filter-pill cute-filter-pill ${isActive ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '7px',
-                  padding: '8px 16px',
+                  gap: '6px',
+                  padding: '7px 14px',
                   borderRadius: '9999px',
-                  fontSize: '13px',
+                  fontSize: '12.5px',
                   fontWeight: 700,
                   cursor: 'pointer',
                   flexShrink: 0,
                   whiteSpace: 'nowrap',
                   transition: 'all 0.18s ease',
-                  border: isActive ? '1.5px solid #003893' : '1.5px solid #e2e8f0',
-                  background: isActive ? 'linear-gradient(135deg, #003893 0%, #1e40af 100%)' : '#ffffff',
+                  border: isActive ? '1.5px solid #2563eb' : '1.5px solid #e2e8f0',
+                  background: isActive ? 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' : '#ffffff',
                   color: isActive ? '#ffffff' : '#334155',
-                  boxShadow: isActive ? '0 6px 16px -2px rgba(0, 56, 147, 0.35)' : '0 1px 3px rgba(15, 23, 42, 0.04)'
+                  boxShadow: isActive ? '0 4px 14px -2px rgba(37, 99, 235, 0.35)' : '0 1px 3px rgba(15, 23, 42, 0.04)'
                 }}
               >
                 <span>{language === 'ne' ? cat.nepaliName : cat.name}</span>
                 <span style={{
-                  fontSize: '11px',
+                  fontSize: '10.5px',
                   fontWeight: 800,
                   padding: '1px 6px',
                   borderRadius: '9999px',
