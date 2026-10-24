@@ -186,24 +186,24 @@ export function FAQAccordion({
           return (
             <div
               key={idx}
-              style={{
-                border: '1px solid var(--border-subtle)',
-                borderRadius: '12px',
-                background: '#ffffff',
-                overflow: 'hidden',
-                transition: 'border-color 0.2s ease',
-              }}
+              className={`faq-accordion-item ${isOpen ? 'open' : ''}`}
             >
               <button
                 type="button"
+                id={`faq-btn-${idx}`}
+                aria-expanded={isOpen}
+                aria-controls={`faq-panel-${idx}`}
                 onClick={() => toggle(idx)}
                 className="btn-accordion"
                 style={{
                   width: '100%',
                   textAlign: 'left',
-                  padding: '14px 16px',
+                  padding: '16px 18px',
                   background: 'transparent',
                   border: 'none',
+                  outline: 'none',
+                  boxShadow: 'none',
+                  WebkitTapHighlightColor: 'transparent',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
@@ -211,39 +211,50 @@ export function FAQAccordion({
                   cursor: 'pointer',
                   fontSize: '14.5px',
                   fontWeight: 700,
-                  color: 'var(--text-primary)',
+                  color: isOpen ? '#1d4ed8' : 'var(--text-primary)',
                   whiteSpace: 'normal',
+                  transition: 'color 0.2s ease',
                 }}
               >
-                <span style={{ flex: 1, minWidth: 0, wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal', lineHeight: 1.4 }}>
+                <span style={{ flex: 1, minWidth: 0, wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal', lineHeight: 1.45 }}>
                   {displayQuestion}
                 </span>
-                <ChevronDown
-                  size={18}
-                  style={{
-                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.2s ease',
-                    color: 'var(--text-muted)',
-                    flexShrink: 0,
-                  }}
-                />
-              </button>
-
-              {isOpen && (
                 <div
                   style={{
-                    padding: '0 16px 16px',
-                    fontSize: '13.5px',
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.55',
-                    borderTop: '1px solid #f8fafc',
-                    wordBreak: 'break-word',
-                    overflowWrap: 'break-word',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
+                    background: isOpen ? '#eff6ff' : '#f8fafc',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    transition: 'background-color 0.2s ease',
                   }}
                 >
-                  {displayAnswer}
+                  <ChevronDown
+                    size={17}
+                    style={{
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                      color: isOpen ? '#2563eb' : 'var(--text-muted)',
+                    }}
+                  />
                 </div>
-              )}
+              </button>
+
+              <div
+                id={`faq-panel-${idx}`}
+                role="region"
+                aria-labelledby={`faq-btn-${idx}`}
+                className={`faq-accordion-collapse ${isOpen ? 'open' : ''}`}
+              >
+                <div className="faq-accordion-inner">
+                  <div className="faq-accordion-content">
+                    {displayAnswer}
+                  </div>
+                </div>
+              </div>
             </div>
           );
         })}

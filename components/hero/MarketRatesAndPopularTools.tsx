@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Calendar, 
@@ -19,10 +19,13 @@ import {
   DollarSign, 
   Calculator,
   ChevronRight,
-  Info
+  Info,
+  Radio
 } from 'lucide-react';
 import { toNepaliDigits } from '@/lib/nepaliDate';
 import { useLanguage } from '@/components/LanguageContext';
+import { UpcomingCard } from './DashainAndUpcomingEvents';
+import { DEFAULT_GOLD_RATES } from '@/lib/rates/goldRates';
 
 interface QuickToolItem {
   id: string;
@@ -171,36 +174,9 @@ const QUICK_POPULAR_TOOLS: QuickToolItem[] = [
   },
 ];
 
-export function MarketRatesAndPopularTools() {
-  const [unitMode, setUnitMode] = useState<'tola' | 'gram'>('tola');
-  const [calcTolas, setCalcTolas] = useState(1);
+export function PopularToolsCard() {
   const { language, t } = useLanguage();
-
-  // Market Rates
-  const fineGoldTola = 295700;
-  const tejabiGoldTola = 294200;
-  const silverTola = 4405;
-
-  const fineGold10g = 253519.35;
-  const tejabiGold10g = 252233.15;
-  const silver10g = 3776.64;
-
-  const quickGoldTotal = Math.round(calcTolas * fineGoldTola * 1.13); // with approx making & vat
-
   return (
-    <section style={{ backgroundColor: '#ffffff', padding: 'clamp(32px, 4.5vw, 48px) 0', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
-      <div className="container">
-        
-        <div 
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
-            gap: '24px',
-            alignItems: 'stretch'
-          }}
-        >
-
-          {/* LEFT: लोकप्रिय उपकरणहरू (Popular Tools Grid) */}
           <div
             data-aos="fade-up"
             style={{
@@ -297,6 +273,84 @@ export function MarketRatesAndPopularTools() {
             </div>
 
           </div>
+  );
+}
+
+export function MarketRatesAndPopularTools() {
+  const [unitMode, setUnitMode] = useState<'tola' | 'gram'>('tola');
+  const [calcTolas, setCalcTolas] = useState(1);
+  const { language, t } = useLanguage();
+
+  const [rates, setRates] = useState({
+    fineGoldTola: DEFAULT_GOLD_RATES.fineGold24K,
+    tejabiGoldTola: DEFAULT_GOLD_RATES.tejabiGold22K,
+    silverTola: DEFAULT_GOLD_RATES.silver,
+    fineGold10g: DEFAULT_GOLD_RATES.fineGold10g,
+    silver10g: DEFAULT_GOLD_RATES.silver10g,
+    dailyChangeNpr: DEFAULT_GOLD_RATES.dailyChangeNpr,
+    dailyChangePercent: DEFAULT_GOLD_RATES.dailyChangePercent,
+    silverDailyChangeNpr: 15,
+    silverDailyChangePercent: 0.34,
+    isLive: false,
+  });
+
+  // Fetch real-time live rates from /api/live-rates (official FENEGOSIDA source)
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchLive() {
+      try {
+        const res = await fetch('/api/live-rates');
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data.gold) {
+            const fineTola = Number(data.gold.fineGold24K) || DEFAULT_GOLD_RATES.fineGold24K;
+            const silverTola = Number(data.gold.silverPerTola || data.gold.silver) || DEFAULT_GOLD_RATES.silver;
+            const fine10g = Number(data.gold.fineGold10g) || Math.round((fineTola / 11.6638) * 10);
+            const silver10g = Number(data.gold.silver10g) || Math.round((silverTola / 11.6638) * 10);
+            const changeNpr = typeof data.gold.dailyChangeNpr === 'number' ? data.gold.dailyChangeNpr : DEFAULT_GOLD_RATES.dailyChangeNpr;
+            const changePct = typeof data.gold.dailyChangePercent === 'number' ? data.gold.dailyChangePercent : DEFAULT_GOLD_RATES.dailyChangePercent;
+
+            setRates({
+              fineGoldTola: fineTola,
+              tejabiGoldTola: Number(data.gold.tejabiGold22K) || (fineTola - 1000),
+              silverTola: silverTola,
+              fineGold10g: fine10g,
+              silver10g: silver10g,
+              dailyChangeNpr: changeNpr,
+              dailyChangePercent: changePct,
+              silverDailyChangeNpr: Number(data.gold.silverDailyChangeNpr) || 15,
+              silverDailyChangePercent: Number(data.gold.silverDailyChangePercent) || 0.34,
+              isLive: true,
+            });
+          }
+        }
+      } catch (e) {
+        // Fallback gracefully
+      }
+    }
+    fetchLive();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const quickGoldTotal = Math.round(calcTolas * rates.fineGoldTola * 1.13); // with approx making & vat
+
+  return (
+    <section style={{ backgroundColor: '#ffffff', padding: 'clamp(32px, 4.5vw, 48px) 0', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+      <div className="container">
+        
+        <div 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
+            gap: '24px',
+            alignItems: 'stretch'
+          }}
+        >
+
+          {/* LEFT: Upcoming in Nepal (swapped with Popular Tools) */}
+          <UpcomingCard />
 
 
           {/* RIGHT: सुन र चाँदी (Live Gold & Silver Rates Hub) */}
@@ -319,6 +373,26 @@ export function MarketRatesAndPopularTools() {
                 <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
                   {t('Gold & Silver Market Rates', 'सुन र चाँदी बजार दर')}
                 </h3>
+                {rates.isLive && (
+                  <span
+                    style={{
+                      fontSize: '10px',
+                      fontWeight: 800,
+                      color: '#059669',
+                      backgroundColor: '#ecfdf5',
+                      border: '1px solid #a7f3d0',
+                      padding: '2px 7px',
+                      borderRadius: '9999px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#059669' }} />
+                    {t('Live', 'प्रत्यक्ष')}
+                  </span>
+                )}
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -382,9 +456,9 @@ export function MarketRatesAndPopularTools() {
                   </div>
                   
                   <div style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', margin: '4px 0 2px' }}>
-                    {language === 'ne'
-                      ? (unitMode === 'tola' ? 'NPR २,९५,७००' : 'NPR २,५३,५१९.३५')
-                      : (unitMode === 'tola' ? 'NPR 2,95,700' : 'NPR 2,53,519.35')
+                    NPR {language === 'ne' 
+                      ? toNepaliDigits((unitMode === 'tola' ? rates.fineGoldTola : rates.fineGold10g).toLocaleString('en-IN'))
+                      : (unitMode === 'tola' ? rates.fineGoldTola : rates.fineGold10g).toLocaleString('en-IN')
                     }
                     <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748b' }}>
                       /{unitMode === 'tola' ? t('Tola', 'तोला') : t('10 Gram', '१० ग्राम')}
@@ -392,15 +466,22 @@ export function MarketRatesAndPopularTools() {
                   </div>
 
                   <div style={{ fontSize: '11px', color: '#64748b' }}>
-                    {language === 'ne'
-                      ? (unitMode === 'tola' ? 'NPR २,५३,५१९.३५ / १० ग्राम' : 'NPR २,९५,७०० / तोला')
-                      : (unitMode === 'tola' ? 'NPR 2,53,519.35 / 10 Gram' : 'NPR 2,95,700 / Tola')
-                    }
+                    NPR {language === 'ne'
+                      ? toNepaliDigits((unitMode === 'tola' ? rates.fineGold10g : rates.fineGoldTola).toLocaleString('en-IN'))
+                      : (unitMode === 'tola' ? rates.fineGold10g : rates.fineGoldTola).toLocaleString('en-IN')
+                    } / {unitMode === 'tola' ? (language === 'ne' ? '१० ग्राम' : '10 Gram') : (language === 'ne' ? 'तोला' : 'Tola')}
                   </div>
                 </div>
 
-                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: '#059669', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>{language === 'ne' ? '▲ NPR २,९००.०० (+०.९९%)' : '▲ NPR 2,900.00 (+0.99%)'}</span>
+                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: rates.dailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span>
+                    {rates.dailyChangeNpr >= 0 ? '▲' : '▼'}{' '}
+                    NPR {language === 'ne' 
+                      ? toNepaliDigits(Math.abs(rates.dailyChangeNpr).toLocaleString('en-IN')) 
+                      : Math.abs(rates.dailyChangeNpr).toLocaleString('en-IN')
+                    }{' '}
+                    ({rates.dailyChangePercent >= 0 ? `+${rates.dailyChangePercent}` : rates.dailyChangePercent}%)
+                  </span>
                 </div>
               </div>
 
@@ -423,9 +504,9 @@ export function MarketRatesAndPopularTools() {
                   </div>
                   
                   <div style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', margin: '4px 0 2px' }}>
-                    {language === 'ne'
-                      ? (unitMode === 'tola' ? 'NPR ४,४०५' : 'NPR ३,७७६.६४')
-                      : (unitMode === 'tola' ? 'NPR 4,405' : 'NPR 3,776.64')
+                    NPR {language === 'ne' 
+                      ? toNepaliDigits((unitMode === 'tola' ? rates.silverTola : rates.silver10g).toLocaleString('en-IN'))
+                      : (unitMode === 'tola' ? rates.silverTola : rates.silver10g).toLocaleString('en-IN')
                     }
                     <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748b' }}>
                       /{unitMode === 'tola' ? t('Tola', 'तोला') : t('10 Gram', '१० ग्राम')}
@@ -433,15 +514,22 @@ export function MarketRatesAndPopularTools() {
                   </div>
 
                   <div style={{ fontSize: '11px', color: '#64748b' }}>
-                    {language === 'ne'
-                      ? (unitMode === 'tola' ? 'NPR ३,७७६.६४ / १० ग्राम' : 'NPR ४,४०५ / तोला')
-                      : (unitMode === 'tola' ? 'NPR 3,776.64 / 10 Gram' : 'NPR 4,405 / Tola')
-                    }
+                    NPR {language === 'ne'
+                      ? toNepaliDigits((unitMode === 'tola' ? rates.silver10g : rates.silverTola).toLocaleString('en-IN'))
+                      : (unitMode === 'tola' ? rates.silver10g : rates.silverTola).toLocaleString('en-IN')
+                    } / {unitMode === 'tola' ? (language === 'ne' ? '१० ग्राम' : '10 Gram') : (language === 'ne' ? 'तोला' : 'Tola')}
                   </div>
                 </div>
 
-                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: '#059669', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>{language === 'ne' ? '▲ NPR १५.०० (+०.३४%)' : '▲ NPR 15.00 (+0.34%)'}</span>
+                <div style={{ marginTop: '10px', fontSize: '11px', fontWeight: 700, color: rates.silverDailyChangeNpr >= 0 ? '#059669' : '#dc2626', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span>
+                    {rates.silverDailyChangeNpr >= 0 ? '▲' : '▼'}{' '}
+                    NPR {language === 'ne'
+                      ? toNepaliDigits(Math.abs(rates.silverDailyChangeNpr).toLocaleString('en-IN'))
+                      : Math.abs(rates.silverDailyChangeNpr).toLocaleString('en-IN')
+                    }{' '}
+                    ({rates.silverDailyChangePercent >= 0 ? `+${rates.silverDailyChangePercent}` : rates.silverDailyChangePercent}%)
+                  </span>
                 </div>
               </div>
 

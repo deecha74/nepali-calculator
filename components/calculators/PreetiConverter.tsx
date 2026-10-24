@@ -36,7 +36,6 @@ export function PreetiConverter() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="badge badge-emerald">{t('Nepal Standard Font Converter', 'नेपाल मानक फन्ट रूपान्तरक')}</span>
-            <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>{t('500k+ Searches', '५ लाख+ प्रयोगकर्ता')}</span>
           </div>
           <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             {t('Preeti to Nepali Unicode Converter', 'प्रिती देखि युनिकोड रूपान्तरण (Preeti to Unicode)')}

@@ -629,11 +629,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <span style={{ fontSize: '14px', fontWeight: 800, color: isSelected ? '#003893' : '#0f172a' }}>
                             {tool.nepName}
                           </span>
-                          {tool.badge && (
-                            <span style={{ fontSize: '9.5px', fontWeight: 800, backgroundColor: '#fef3c7', color: '#b45309', padding: '1px 6px', borderRadius: '4px' }}>
-                              {tool.badge}
-                            </span>
-                          )}
                         </div>
                         <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {tool.name} • {tool.desc}

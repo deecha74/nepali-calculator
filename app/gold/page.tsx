@@ -23,6 +23,11 @@ export const metadata: Metadata = constructMetadata({
     "fenegosida gold rate",
     "today gold silver rate nepal",
     "tola to gram nepal",
+    "1 tola ma kati gram huncha",
+    "1 tola ma kati lal huncha",
+    "1 lal sun ko vau kati huncha",
+    "nepal ma aaja sun ko vau kati cha",
+    "gold jarti kasari nikalne",
     "gold jewelry making charge calculator",
     "सुनको भाउ आज",
     "चाँदीको भाउ",
@@ -41,15 +46,15 @@ export default function GoldPage() {
 
   const faqs = [
     {
-      question: "What is the price of gold in Nepal today per tola?",
+      question: "What is the price of gold in Nepal today per tola? (नेपालमा आज सुनको भाउ कति छ?)",
       answer: "Today's official gold price in Nepal published by FENEGOSIDA is रु 2,89,700 per tola for 24K Hallmark Fine Gold (छापावाल सुन) and रु 2,88,700 per tola for 22K Tejabi Gold (तेजाबी सुन).",
     },
     {
-      question: "How much is 1 Lal gold price in Nepal today?",
+      question: "1 Lal sun ko vau aaja kati cha? (How much is 1 Lal gold in Nepal?)",
       answer: "Today's 1 Lal gold price in Nepal is approximately रु 2,897 for 24K Hallmark gold and रु 2,887 for 22K Tejabi gold. In Nepal, 1 Tola contains exactly 100 Lal (१ तोला = १०० लाल).",
     },
     {
-      question: "How many grams are in 1 Tola in Nepal?",
+      question: "1 Tola ma kati gram huncha? (How many grams are in 1 Tola?)",
       answer: "Under the official Nepal gold market standard (FENEGOSIDA), exactly 1 Tola = 11.6638 grams. 1 Tola also equals 100 Lal or 16 Aana.",
     },
     {

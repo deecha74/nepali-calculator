@@ -10,16 +10,24 @@ import {
   GraduationCap, 
   Calendar, 
   Sparkles,
-  ArrowUpRight
+  ArrowUpRight,
+  ScrollText
 } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 import { NepalCalcLogo } from '@/components/NepalCalcLogo';
+import { DOC_GENERATORS } from '@/lib/documents/meta';
 
 export function Footer() {
   const { t } = useLanguage();
 
   const quickPills = [
     { name: t('Income Tax 2083/84', 'आयकर हिसाब २०८३/८४'), href: '/tax' },
+    { name: t('Remittance In-Hand', 'रेमिट्यान्स हिसाब'), href: '/remittance-calculator' },
+    { name: t('House Cost', 'घर बनाउने खर्च'), href: '/house-construction' },
+    { name: t('Right Share', 'हकप्रद सेयर'), href: '/right-share' },
+    { name: t('Bato Katta', 'बाटो कट्टा'), href: '/bato-katta' },
+    { name: t('BS Age Calculator', 'वि.सं. उमेर हिसाब'), href: '/age' },
+    { name: t('Sayakada 2/3 Byaj', 'सयकडा ब्याज'), href: '/village-interest' },
     { name: t('Land Malpot Tax', 'जग्गा मालपोत तथा रजिष्ट्रेसन'), href: '/malpot' },
     { name: t('Nepali Patro 2083', 'नेपाली पात्रो २०८३'), href: '/calendar' },
     { name: t('NEPSE Broker Profit', 'नेप्से ब्रोकर कमिसन'), href: '/nepse' },
@@ -93,6 +101,38 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Legal Document Generators section */}
+        <div
+          id="footer-document-generators"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '14px 20px',
+            padding: '16px 20px',
+            marginBottom: '36px',
+            borderRadius: '16px',
+            background: 'linear-gradient(135deg, #eef2ff, #f5f3ff)',
+            border: '1px solid #e0e7ff',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ width: 32, height: 32, borderRadius: 10, background: '#4f46e5', color: '#fff', display: 'grid', placeItems: 'center' }}>
+              <ScrollText size={16} />
+            </div>
+            <Link href="/document-generators" style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', textDecoration: 'none' }}>
+              {t('Legal Document Generators', 'कानुनी कागजात जेनेरेटर')}
+            </Link>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', flex: 1 }}>
+            {DOC_GENERATORS.map((d) => (
+              <Link key={d.slug} href={d.href} className="footer-pill-link">
+                {t(d.shortEn, d.shortNe)}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* 4 Multi-Column Comprehensive Navigation Grid */}
         <div
           style={{
@@ -156,6 +196,9 @@ export function Footer() {
               </h3>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', padding: 0, margin: 0 }}>
+              <li><Link href="/remittance-calculator" className="footer-link" style={{ color: '#059669', fontWeight: 700 }}>✦ {t('Remittance In-Hand Net', 'वैदेशिक रेमिट्यान्स हिसाब')}</Link></li>
+              <li><Link href="/right-share" className="footer-link" style={{ color: '#003893', fontWeight: 700 }}>✦ {t('NEPSE Right & Bonus Adjustment', 'नेप्से हकप्रद तथा बोनस समायोजन')}</Link></li>
+              <li><Link href="/village-interest" className="footer-link">{t('Village Sahu Byaj (Sayakada)', 'गाउँघरको सयकडा ब्याज हिसाब')}</Link></li>
               <li><Link href="/sip" className="footer-link">{t('SIP Mutual Fund Compounding', 'एसआइपी म्युचुअल फण्ड कम्पाउन्डिङ')}</Link></li>
               <li><Link href="/emi" className="footer-link">{t('Bank Loan EMI & Amortization', 'बैंक लोन ईएमआई (EMI) किस्ता')}</Link></li>
               <li><Link href="/loan-eligibility" className="footer-link">{t('Loan Limit (NRB 50% DSTI)', 'कर्जा सीमा (DSTI ५०% मापदण्ड)')}</Link></li>
@@ -190,6 +233,16 @@ export function Footer() {
               </h3>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', padding: 0, margin: 0 }}>
+              <li>
+                <Link href="/house-construction" className="footer-link" style={{ color: '#2563eb', fontWeight: 700 }}>
+                  ✦ {t('House Construction Cost & Materials', 'घर बनाउने खर्च तथा निर्माण सामग्री')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/bato-katta" className="footer-link" style={{ color: '#b45309', fontWeight: 700 }}>
+                  ✦ {t('Land Road Deduction (Bato Katta)', 'जग्गा बाटो कट्टा तथा क्षेत्रफल')}
+                </Link>
+              </li>
               <li>
                 <Link href="/malpot" className="footer-link" style={{ color: '#b45309', fontWeight: 700 }}>
                   ✦ {t('Land Malpot Tax & CGT', 'मालपोत लिखत तथा पूँजीगत लाभकर')}
@@ -236,6 +289,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/age" className="footer-link" style={{ color: '#d97706', fontWeight: 700 }}>
+                  ✦ {t('Bikram Sambat Exact Age', 'वि.सं. उमेर तथा कोसेढुङ्गा')}
+                </Link>
+              </li>
+              <li>
                 <Link href="/license-exam" className="footer-link" style={{ color: '#0284c7', fontWeight: 700 }}>
                   ✦ {t('Driving License Written Exam', 'सवारी चालक लिखित परीक्षा क्विज')}
                 </Link>
@@ -271,6 +329,8 @@ export function Footer() {
           </div>
 
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/about" className="footer-link" style={{ fontWeight: 700, color: '#0f172a' }}>{t('About Us', 'हाम्रो बारेमा')}</Link>
+            <Link href="/blog" className="footer-link" style={{ fontWeight: 700, color: '#003893' }}>{t('Blog & Guides', 'ब्लग तथा निर्देशिका')}</Link>
             <Link href="/documents" className="footer-link">{t('Official Acts & Gazettes', 'सरकारी ऐन तथा राजपत्र')}</Link>
             <Link href="/documents" className="footer-link">{t('Privacy Policy', 'गोपनीयता नीति')}</Link>
             <Link href="/documents" className="footer-link">{t('Terms of Service', 'प्रयोगका सर्तहरू')}</Link>

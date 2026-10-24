@@ -20,6 +20,11 @@ export const metadata: Metadata = constructMetadata({
     "nepal land converter",
     "1 ropani in square feet nepal",
     "1 aana in sq ft",
+    "1 ropani ma kati aana huncha",
+    "1 aana ma kati square feet huncha",
+    "1 bigha ma kati kattha huncha",
+    "1 kattha ma kati dhur huncha",
+    "1 dhur ma kati square feet huncha",
     "terai to hill land converter nepal",
     "bigha kattha dhur calculation",
     "malpot land registration fee calculator",
@@ -39,16 +44,20 @@ export default function LandPage() {
 
   const faqs = [
     {
-      question: "How much is 1 Aana in Square Feet?",
-      answer: "One Aana equals 342.25 Square Feet (approx. 31.8 Square Meters). There are 16 Aana in 1 Ropani (5,476 Square Feet).",
+      question: "1 Aana ma kati Square Feet huncha? (How much is 1 Aana in Sq Ft?)",
+      answer: "One Aana equals 342.25 Square Feet (approx. 31.8 Square Meters). In the Kathmandu Valley and hill system, 1 Ropani contains exactly 16 Aana (5,476 Square Feet).",
     },
     {
-      question: "How many Kattha and Dhur are in 1 Bigha?",
-      answer: "One Bigha equals 20 Kattha or 400 Dhur. In square feet, 1 Bigha is 72,900 Square Feet (approx. 6,772.63 Square Meters).",
+      question: "1 Bigha ma kati Kattha ra Dhur huncha?",
+      answer: "One Bigha equals 20 Kattha or 400 Dhur. In square feet, 1 Bigha equals 72,900 Square Feet (approx. 6,772.63 Square Meters).",
     },
     {
-      question: "How many Ropani is 1 Bigha?",
-      answer: "One Bigha is equal to approximately 13.31 Ropani. Conversely, 1 Ropani is equal to approximately 0.0751 Bigha (or 1.5 Kattha).",
+      question: "1 Ropani ma kati Bigha huncha? (Hill to Terai conversion)",
+      answer: "One Bigha is equal to approximately 13.31 Ropani. Conversely, 1 Ropani equals approximately 0.0751 Bigha (or 1.5 Kattha).",
+    },
+    {
+      question: "1 Kattha ma kati Dhur ra Square Feet huncha?",
+      answer: "1 Kattha equals 20 Dhur or 3,645 Square Feet (approx. 338.63 Square Meters).",
     },
   ];
 

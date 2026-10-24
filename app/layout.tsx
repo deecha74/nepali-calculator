@@ -16,10 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/nepal-flag.svg", type: "image/svg+xml" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    shortcut: "/nepal-flag.svg",
+    shortcut: "/favicon.ico",
     apple: "/nepal-flag.svg",
   },
   openGraph: {
@@ -110,7 +111,7 @@ export default function RootLayout({
           <AOSInit />
           <ParallaxMountainBackground />
           <Navbar />
-          <main style={{ minHeight: 'calc(100vh - 200px)', position: 'relative', zIndex: 1 }}>{children}</main>
+          <main style={{ minHeight: 'calc(100vh - 200px)', position: 'relative', zIndex: 1, overflowX: 'clip' }}>{children}</main>
           <Footer />
           <CookieConsentBanner />
         </LanguageProvider>

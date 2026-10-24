@@ -2,20 +2,20 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { 
-  Calculator, 
-  Search, 
-  Sparkles, 
-  ShieldCheck, 
-  ArrowRight, 
+import {
+  Calculator,
+  Search,
+  Sparkles,
+  ShieldCheck,
+  ArrowRight,
   ChevronLeft,
   ChevronRight,
-  ReceiptText, 
-  Landmark, 
-  Car, 
-  TrendingUp, 
-  Percent, 
-  Calendar, 
+  ReceiptText,
+  Landmark,
+  Car,
+  TrendingUp,
+  Percent,
+  Calendar,
   Zap,
   DollarSign,
   GraduationCap,
@@ -47,7 +47,9 @@ import {
   Award,
   FileSpreadsheet,
   Flame,
-  Plane
+  Plane,
+  Send,
+  Cake
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CALCULATOR_TOOLS, CALCULATOR_CATEGORIES, CalculatorTool } from '@/lib/toolsList';
@@ -61,6 +63,7 @@ import { DashainAndUpcomingEvents } from '@/components/hero/DashainAndUpcomingEv
 import { MarketRatesAndPopularTools } from '@/components/hero/MarketRatesAndPopularTools';
 import { SecurityGuaranteeBanner } from '@/components/SecurityGuaranteeBanner';
 import { DocumentHub } from '@/components/documents/DocumentHub';
+import { DocHomeSection } from '@/components/documents-gen/DocHub';
 import { AdBanner } from '@/components/AdBanner';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { useLanguage } from '@/components/LanguageContext';
@@ -118,6 +121,14 @@ export default function HomePage() {
     });
   }, [searchQuery, selectedCategory]);
 
+  const categoryMap = useMemo(() => {
+    const map: Record<string, { name: string; nepaliName: string }> = {};
+    CALCULATOR_CATEGORIES.forEach(c => {
+      map[c.id] = { name: c.name, nepaliName: c.nepaliName };
+    });
+    return map;
+  }, []);
+
   // Render icons dynamically
   const renderIcon = (tool: CalculatorTool, size: number = 24) => {
     const color = tool.color;
@@ -159,6 +170,8 @@ export default function HomePage() {
       case 'FileSpreadsheet': return <FileSpreadsheet size={size} color={color} />;
       case 'Flame': return <Flame size={size} color={color} />;
       case 'Plane': return <Plane size={size} color={color} />;
+      case 'Send': return <Send size={size} color={color} />;
+      case 'Cake': return <Cake size={size} color={color} />;
       default: return <Calculator size={size} color={color} />;
     }
   };
@@ -191,8 +204,8 @@ export default function HomePage() {
   ];
 
   return (
-    <div style={{ 
-      backgroundColor: 'transparent', 
+    <div style={{
+      backgroundColor: 'transparent',
       minHeight: '100vh',
       backgroundImage: `
         radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.05), transparent 70%),
@@ -220,7 +233,7 @@ export default function HomePage() {
           }),
         }}
       />
-      
+
       {/* 1. Signature Nepali Cultural Hero & Interactive Patro Calendar (As in Screenshot 1) */}
       <NepalPatroHero />
 
@@ -231,33 +244,36 @@ export default function HomePage() {
       <MarketRatesAndPopularTools />
 
 
+      {/* Legal Document Generators */}
+      <DocHomeSection />
+
       {/* 5. Official Regulatory Acts & Interactive Document Reader (User Documents Feature) */}
       <DocumentHub isHomepage={true} />
 
       {/* 6. Complete 35+ Tool Directory with Live Search & Category Filters */}
       <div id="all-tools" className="container" style={{ padding: '64px 20px 72px' }}>
-        
+
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 40px' }} data-aos="fade-up">
-          <div style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: '8px', 
-            background: 'linear-gradient(135deg, rgba(0, 56, 147, 0.08) 0%, rgba(200, 16, 46, 0.08) 100%)', 
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(135deg, rgba(0, 56, 147, 0.08) 0%, rgba(200, 16, 46, 0.08) 100%)',
             border: '1px solid rgba(0, 56, 147, 0.15)',
-            color: '#003893', 
-            fontSize: '12.5px', 
-            fontWeight: 800, 
-            textTransform: 'uppercase', 
-            letterSpacing: '0.08em', 
+            color: '#003893',
+            fontSize: '12.5px',
+            fontWeight: 800,
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
             padding: '6px 16px',
             borderRadius: '9999px',
-            marginBottom: '14px' 
+            marginBottom: '14px'
           }}>
             <Sparkles size={14} color="#003893" />
             <span>{t('ALL 35+ NEPAL CALCULATORS & CONVERTERS', 'नेपालका सबै ३५+ क्यालकुलेटर तथा रूपान्तरण औजारहरू')}</span>
           </div>
-          
+
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', margin: '0 0 14px' }}>
             {language === 'ne' ? (
               <>एकै ठाउँमा <span style={{ background: 'linear-gradient(135deg, #003893 0%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>सम्पूर्ण हिसाब</span> र रूपान्तरण</>
@@ -265,8 +281,8 @@ export default function HomePage() {
               <>Every Smart Calculation <span style={{ background: 'linear-gradient(135deg, #003893 0%, #c8102e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>in One Place</span></>
             )}
           </h2>
-          
-          
+
+
           <p style={{ fontSize: '15.5px', color: '#475569', lineHeight: 1.6, margin: 0 }}>
             {t(
               'Income tax, land measurement, bluebook vehicle tax, license exam, passport fees, NEPSE shares, loan EMI, Preeti font converter, and utility bills.',
@@ -325,8 +341,8 @@ export default function HomePage() {
           className="category-pills-track"
         >
           {CALCULATOR_CATEGORIES.map((cat) => {
-            const count = cat.id === 'all' 
-              ? CALCULATOR_TOOLS.length 
+            const count = cat.id === 'all'
+              ? CALCULATOR_TOOLS.length
               : CALCULATOR_TOOLS.filter((t) => t.category === cat.id).length;
             const isActive = selectedCategory === cat.id;
 
@@ -355,8 +371,8 @@ export default function HomePage() {
                 }}
               >
                 <span>{language === 'ne' ? cat.nepaliName : cat.name}</span>
-                <span style={{ 
-                  fontSize: '11px', 
+                <span style={{
+                  fontSize: '11px',
                   fontWeight: 800,
                   padding: '1px 6px',
                   borderRadius: '9999px',
@@ -397,140 +413,158 @@ export default function HomePage() {
         )}
 
         {/* Modern Vibrant Cards Grid & Mobile Carousel */}
-        <div 
+        <div
           ref={toolsCarouselRef}
           onScroll={handleToolScroll}
           className="grid-smallpdf"
         >
-          {filteredTools.map((tool) => (
-            <div
-              key={tool.id}
-              className="smallpdf-card-wrapper"
-              style={{ display: 'flex' }}
-            >
-              <Link
-                href={tool.slug}
-                className="smallpdf-card"
-                style={{ 
-                  width: '100%', 
-                  height: '100%',
-                }}
+          {filteredTools.map((tool) => {
+            const cat = categoryMap[tool.category];
+            const categoryLabel = language === 'ne' ? (cat?.nepaliName || 'दैनिक हिसाब') : (cat?.name || 'Tool');
+
+            return (
+              <div
+                key={tool.id}
+                className="smallpdf-card-wrapper"
+                style={{ display: 'flex' }}
               >
-
-                <div>
-                  {/* Top Header inside card: Icon Box + Badge */}
-                  <div className="tool-card-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <div
-                      className="smallpdf-icon-box"
-                      style={{ 
-                        backgroundColor: tool.bgLight,
-                        border: `1.5px solid ${tool.color}25`,
-                        boxShadow: `0 4px 12px -2px ${tool.color}20`,
-                      }}
-                    >
-                      {renderIcon(tool, 20)}
-                    </div>
-
-                    {tool.badge && (
-                      <span
-                        className="tool-card-badge"
-                        style={{
-                          fontSize: '11px',
-                          fontWeight: 800,
-                          padding: '3px 9px',
-                          borderRadius: '9999px',
-                          backgroundColor: `${tool.color}12`,
-                          color: tool.color,
-                          border: `1px solid ${tool.color}30`,
-                          letterSpacing: '0.02em',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        {tool.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Title */}
-                  <h4 className="tool-card-title" style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.015em', margin: '0 0 5px', lineHeight: 1.3 }}>
-                    {language === 'ne' ? tool.nepaliName : tool.name}
-                  </h4>
-
-                  {/* Secondary Language Pill Tag */}
-                  <div className="tool-card-subpill" style={{ marginBottom: '8px' }}>
-                    <span
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        color: tool.color,
-                        backgroundColor: `${tool.color}12`,
-                        padding: '2px 7px',
-                        borderRadius: '6px',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {language === 'ne' ? tool.name : tool.nepaliName}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p
-                    className="tool-card-desc"
-                    style={{
-                      fontSize: '12.5px',
-                      color: '#475569',
-                      lineHeight: '1.5',
-                      margin: 0,
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {tool.description}
-                  </p>
-                </div>
-
-                {/* Card Footer Action */}
-                <div
-                  className="tool-card-footer"
+                <Link
+                  href={tool.slug}
+                  className="smallpdf-card"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginTop: '16px',
-                    paddingTop: '12px',
-                    borderTop: '1px solid #f1f5f9',
-                    fontSize: '12.5px',
-                    fontWeight: 800,
-                    color: tool.color,
+                    width: '100%',
+                    height: '100%',
                   }}
                 >
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    {t('Calculate now', 'हिसाब सुरु गर्नुहोस्')}
-                  </span>
+                  {/* Top Signature Accent Stripe */}
                   <div
-                    className="tool-card-arrow-btn"
                     style={{
-                      width: '26px',
-                      height: '26px',
-                      borderRadius: '50%',
-                      backgroundColor: `${tool.color}14`,
-                      color: tool.color,
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '3.5px',
+                      backgroundColor: tool.color,
+                      opacity: 0.9,
+                    }}
+                  />
+
+                  <div>
+                    {/* Top Row: Squircle Icon + Fast Action Launch Pill */}
+                    <div className="tool-card-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                      <div
+                        className="smallpdf-icon-box"
+                        style={{
+                          backgroundColor: tool.bgLight,
+                          border: `1.5px solid ${tool.color}30`,
+                          boxShadow: `0 4px 14px -3px ${tool.color}25`,
+                        }}
+                      >
+                        {renderIcon(tool, 20)}
+                      </div>
+
+                      {/* Fast Action Launch Pill */}
+                      <div className="tool-card-action-badge">
+                        <span>{t('Open', 'हिसाब')}</span>
+                        <ArrowRight size={12} className="tool-action-arrow" />
+                      </div>
+                    </div>
+
+                    {/* Bold Title & Clean Dual-Language Subline */}
+                    <div style={{ marginBottom: '8px' }}>
+                      <h4
+                        className="tool-card-title"
+                        style={{
+                          fontSize: '16.5px',
+                          fontWeight: 800,
+                          color: '#0f172a',
+                          letterSpacing: '-0.015em',
+                          margin: 0,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {language === 'ne' ? tool.nepaliName : tool.name}
+                      </h4>
+                      <div
+                        style={{
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          color: '#64748b',
+                          marginTop: '3px',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        {language === 'ne' ? tool.name : tool.nepaliName}
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p
+                      className="tool-card-desc"
+                      style={{
+                        fontSize: '12.5px',
+                        color: '#475569',
+                        lineHeight: '1.5',
+                        margin: 0,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {tool.description}
+                    </p>
+                  </div>
+
+                  {/* Card Footer: Category with Colored Dot + Free Instant Tag */}
+                  <div
+                    className="tool-card-footer"
+                    style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.2s ease',
+                      justifyContent: 'space-between',
+                      marginTop: '14px',
+                      paddingTop: '11px',
+                      borderTop: '1px solid #f1f5f9',
                     }}
                   >
-                    <ArrowRight size={13} />
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', fontWeight: 700, color: '#64748b' }}>
+                      <span
+                        style={{
+                          width: '7px',
+                          height: '7px',
+                          borderRadius: '50%',
+                          backgroundColor: tool.color,
+                          display: 'inline-block',
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span>{categoryLabel}</span>
+                    </span>
+
+                    {/* <span
+                      style={{
+                        fontSize: '11px',
+                        fontWeight: 800,
+                        color: tool.color,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        backgroundColor: `${tool.color}10`,
+                        padding: '2px 8px',
+                        borderRadius: '6px',
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      {t('Free Instant', 'निःशुल्क')}
+                    </span> */}
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            );
+          })}
         </div>
 
         {/* Mobile Carousel Navigation Arrows & Scroller */}
@@ -553,14 +587,14 @@ export default function HomePage() {
             {/* Compact Progress Bar / Indicator */}
             <div style={{ flex: 1, maxWidth: '180px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
               <div style={{ width: '100%', height: '5px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-                <div 
-                  style={{ 
-                    height: '100%', 
+                <div
+                  style={{
+                    height: '100%',
                     width: `${Math.max(5, ((activeToolSlide + 1) / filteredTools.length) * 100)}%`,
                     backgroundColor: '#003893',
                     borderRadius: '9999px',
                     transition: 'width 0.2s ease'
-                  }} 
+                  }}
                 />
               </div>
               <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b' }}>

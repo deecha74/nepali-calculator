@@ -7,6 +7,8 @@ import { PROGRAMMATIC_FOREX_CONVERSIONS } from '@/lib/rates/forexRates';
 
 import { PROGRAMMATIC_SIP_SCENARIOS } from '@/lib/rates/programmaticSip';
 import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
+import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
+import { BLOG_POSTS } from '@/lib/blog/posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -28,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/nea',
     '/date',
     '/forex',
+    '/remittance-calculator',
+    '/age',
+    '/village-interest',
+    '/house-construction',
+    '/right-share',
+    '/bato-katta',
     '/vat',
     '/traditional-units',
     '/interest',
@@ -50,6 +58,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/passport-fee',
     '/noc-tax',
     '/rent-tax',
+    '/document-generators',
+    '/rent-agreement',
+    '/aoa',
+    '/partnership-deed',
     '/ipo-allotment',
     '/battery-backup',
     '/postal-shipping',
@@ -64,11 +76,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/university-attendance',
     '/citizenship-age',
     '/foreign-employment',
+    '/about',
+    '/blog',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.9,
+    priority: route === '' ? 1.0 : (route === '/about' || route === '/blog' ? 0.9 : 0.85),
+  }));
+
+  const blogRoutes = BLOG_POSTS.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedDate),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }));
 
   const programmaticLandRoutes = PROGRAMMATIC_LAND_CONVERSIONS.map((conv) => ({
@@ -113,6 +134,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticTraditionalUnitRoutes = PROGRAMMATIC_TRADITIONAL_UNITS.map((unit) => ({
+    url: `${baseUrl}/traditional-units/${unit.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -121,6 +149,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticForexRoutes,
     ...programmaticSipRoutes,
     ...programmaticGoldRoutes,
+    ...programmaticTraditionalUnitRoutes,
+    ...blogRoutes,
   ];
 }
 

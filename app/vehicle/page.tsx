@@ -12,6 +12,10 @@ export const metadata: Metadata = constructMetadata({
     "bluebook renewal fine nepal",
     "vehicle tax calculator nepal",
     "bike tax bagmati province 2081",
+    "bike ko bluebook renewal tax kati lagcha",
+    "bluebook fine kasari hisab garne",
+    "bike renew garnu agadi insurance chahincha ki nai",
+    "nepal ma gadi tax kati huncha",
     "car tax nepal",
     "yatayat tax renewal fine",
     "सवारी कर बागमती प्रदेश",
@@ -29,15 +33,15 @@ export default function VehiclePage() {
 
   const faqs = [
     {
-      question: "When should I renew my vehicle bluebook in Nepal to avoid fines?",
-      answer: "You should renew your bluebook within the same fiscal year or within 90 days from the registration expiry date. Renewing within this period incurs zero late penalty.",
+      question: "Bike ko bluebook renewal fine kati lagcha? (When do vehicle renewal fines start?)",
+      answer: "You should renew your bluebook within the current fiscal year or within 90 days from the registration expiry date. Renewing within this period incurs zero late penalty. If overdue into the next fiscal year, penalties start at 20% to 32%, scaling up to 100% fine on annual vehicle tax.",
     },
     {
       question: "What is the late fine for overdue bike renewal after 1 year?",
       answer: "If vehicle renewal is overdue into the subsequent fiscal year, fines range from 20% to 32%, escalating to 100% fine on annual tax for multi-year overdue vehicles.",
     },
     {
-      question: "Is third-party insurance mandatory for bluebook renewal in Nepal?",
+      question: "Bluebook renew garda third-party insurance compulsory huncha?",
       answer: "Yes, a valid third-party motor insurance certificate is legally mandatory before the Transport Management Office (Yatayat Karyalaya) can stamp your bluebook renewal.",
     },
   ];

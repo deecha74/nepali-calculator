@@ -3,11 +3,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Clock, 
-  RefreshCw, 
-  ChevronLeft, 
-  ChevronRight, 
+import {
+  Clock,
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
   ArrowRight,
   Sun,
   Calendar as CalendarIcon,
@@ -18,10 +18,12 @@ import { toNepaliDigits, NEPALI_MONTHS } from '@/lib/nepaliDate';
 import { useLanguage } from '@/components/LanguageContext';
 import { TODAY_RASHIFAL } from '@/lib/rashifalData';
 import { NepalFlagAnimated } from '@/components/NepalFlagAnimated';
-import { 
-  generateMonthDays, 
-  DetailedCalendarDay, 
-  WEEKDAYS_NEP 
+import {
+  generateMonthDays,
+  DetailedCalendarDay,
+  WEEKDAYS_NEP,
+  getTodayBsDate,
+  KNOWN_FESTIVALS_2083
 } from '@/lib/calendarData';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -52,17 +54,40 @@ export function NepalPatroHero() {
   const [activeCityIndex, setActiveCityIndex] = useState(0);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
 
-  // Dynamic Bikram Sambat Calendar State
-  const [heroYear, setHeroYear] = useState<number>(2083);
-  const [heroMonth, setHeroMonth] = useState<number>(6); // Ashwin (Month 6)
+  // Dynamic Real-Time Bikram Sambat Calendar State
+  const todayBs = useMemo(() => getTodayBsDate(), []);
+  const [heroYear, setHeroYear] = useState<number>(todayBs.bsYear);
+  const [heroMonth, setHeroMonth] = useState<number>(todayBs.bsMonth);
   const [selectedDay, setSelectedDay] = useState<DetailedCalendarDay | null>(null);
 
   const { meta: heroMeta, days: heroDays } = useMemo(() => {
     return generateMonthDays(heroYear, heroMonth);
   }, [heroYear, heroMonth]);
 
-  // Active day defaults to today (Ashwin 26, 2083 BS)
-  const activeDay = selectedDay || heroDays.find((d) => d.isToday) || heroDays[25] || heroDays[0];
+  // Active day defaults to today's real day
+  const activeDay = selectedDay || heroDays.find((d) => d.isToday) || heroDays.find((d) => d.bsDay === todayBs.bsDay) || heroDays[0];
+
+  // Dynamic next upcoming festival calculation
+  const upcomingFestival = useMemo(() => {
+    const cur = getTodayBsDate();
+    const upcomingList = KNOWN_FESTIVALS_2083.filter(
+      (f) => f.month > cur.bsMonth || (f.month === cur.bsMonth && f.day >= cur.bsDay)
+    );
+    if (upcomingList.length > 0) {
+      const next = upcomingList[0];
+      let diff = 0;
+      if (next.month === cur.bsMonth) {
+        diff = next.day - cur.bsDay;
+      } else {
+        diff = (30 - cur.bsDay) + next.day;
+      }
+      return {
+        ...next,
+        daysRemaining: Math.max(0, diff),
+      };
+    }
+    return null;
+  }, [heroYear, heroMonth]);
 
   const handleHeroPrevMonth = () => {
     if (heroMonth === 1) {
@@ -85,9 +110,11 @@ export function NepalPatroHero() {
   };
 
   const handleHeroToday = () => {
-    setHeroYear(2083);
-    setHeroMonth(6);
-    setSelectedDay(heroDays.find((d) => d.isToday) || heroDays[25] || null);
+    const cur = getTodayBsDate();
+    setHeroYear(cur.bsYear);
+    setHeroMonth(cur.bsMonth);
+    const mDays = generateMonthDays(cur.bsYear, cur.bsMonth).days;
+    setSelectedDay(mDays.find((d) => d.isToday) || mDays.find((d) => d.bsDay === cur.bsDay) || null);
   };
 
   const [heroRightTab, setHeroRightTab] = useState<'calendar' | 'rashifal'>('calendar');
@@ -108,7 +135,7 @@ export function NepalPatroHero() {
             setIsLiveApi(Boolean(json.data.isLiveApi));
           }
         }
-      } catch (err) {}
+      } catch (err) { }
     }
     loadLiveHoroscope();
     return () => { active = false; };
@@ -138,8 +165,8 @@ export function NepalPatroHero() {
   const activeRashi = TODAY_RASHIFAL.find((r) => r.id === selectedRashiId) || TODAY_RASHIFAL[0];
 
   return (
-    <section 
-      style={{ 
+    <section
+      style={{
         position: 'relative',
         padding: 'clamp(40px, 5.5vw, 64px) 0 clamp(40px, 5.5vw, 60px)',
         overflow: 'hidden',
@@ -176,12 +203,12 @@ export function NepalPatroHero() {
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        
+
         {/* Main 2-Column Grid: Left (Cultural Details) + Right (Clean Calendar Card) */}
-        <div 
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', 
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
             gap: '36px',
             alignItems: 'center'
           }}
@@ -199,10 +226,10 @@ export function NepalPatroHero() {
           >
             {/* Foreground Content */}
             <div style={{ position: 'relative', zIndex: 1 }}>
-              
+
               {/* Top Subtitle Badge: आज · नेपालमा आज */}
-              <div 
-                style={{ 
+              <div
+                style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -216,10 +243,10 @@ export function NepalPatroHero() {
                   width: 'fit-content',
                 }}
               >
-                <NepalFlagAnimated size={16} />
-                <span style={{ fontSize: '12px', fontWeight: 800, color: '#fef08a', letterSpacing: '0.06em' }}>
+                {/* <NepalFlagAnimated size={16} /> */}
+                {/* <span style={{ fontSize: '12px', fontWeight: 800, color: '#fef08a', letterSpacing: '0.06em' }}>
                   {t('TODAY · IN NEPAL TODAY', 'आज · नेपालमा आज')}
-                </span>
+                </span> */}
               </div>
 
               {/* Massive Bold Heading: Dynamic BS Date - Art Nouveau Serif */}
@@ -251,7 +278,7 @@ export function NepalPatroHero() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: 700, color: '#ffffff', marginBottom: '16px', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}>
                 <Clock size={17} color="#fde047" />
                 <span>
-                  {t('Nepal Time · ', 'नेपाल समय · ')}
+                  {t('Time · ', 'समय · ')}
                   <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#fde047', textShadow: '0 0 14px rgba(253, 224, 71, 0.6)' }}>
                     {mounted ? timeStr : 'राति १०:४४:३४'}
                   </span>
@@ -259,12 +286,12 @@ export function NepalPatroHero() {
               </div>
 
               {/* Catchphrase: आज नेपालमा जान्नुपर्ने सबै कुरा। */}
-              <p style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.92)', margin: '0 0 22px', fontWeight: 500, textShadow: '0 2px 8px rgba(0, 0, 0, 0.6)' }}>
+              {/* <p style={{ fontSize: '15px', color: 'rgba(255, 255, 255, 0.92)', margin: '0 0 22px', fontWeight: 500, textShadow: '0 2px 8px rgba(0, 0, 0, 0.6)' }}>
                 {t(
                   'Everything you need to know in Nepal today.',
                   'आज नेपालमा जान्नुपर्ने सबै कुरा।'
                 )}
-              </p>
+              </p> */}
 
               {/* Weather Pill (Floating White Pill with Location Switcher) */}
               <div style={{ position: 'relative', display: 'inline-block', marginBottom: '14px' }}>
@@ -363,14 +390,14 @@ export function NepalPatroHero() {
 
               {/* Event Holiday Pills (Dynamically reflects activeDay) */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div 
-                  style={{ 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '8px', 
-                    backgroundColor: '#ffffff', 
-                    border: '1px solid #e7ded0', 
-                    padding: '8px 16px', 
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    backgroundColor: '#ffffff',
+                    border: '1px solid #e7ded0',
+                    padding: '8px 16px',
                     borderRadius: '9999px',
                     fontSize: '13px',
                     fontWeight: 700,
@@ -385,25 +412,31 @@ export function NepalPatroHero() {
                   </span>
                 </div>
 
-                <div 
-                  style={{ 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '8px', 
-                    backgroundColor: '#ffffff', 
-                    border: '1px solid #e7ded0', 
-                    padding: '8px 16px', 
-                    borderRadius: '9999px',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    color: '#0f172a',
-                    width: 'fit-content',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
-                  }}
-                >
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
-                  <span>{t('Upcoming · Phulpati (Dashain) · in 5 days', 'अब आउने · फूलपाती (दशैँ) · ५ दिनपछि')}</span>
-                </div>
+                {upcomingFestival && (
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #e7ded0',
+                      padding: '8px 16px',
+                      borderRadius: '9999px',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#0f172a',
+                      width: 'fit-content',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+                    }}
+                  >
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
+                    <span>
+                      {language === 'ne'
+                        ? `अब आउने · ${upcomingFestival.eventNep} · ${upcomingFestival.daysRemaining === 0 ? 'आज' : `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि`}`
+                        : `Upcoming · ${upcomingFestival.eventEng} · ${upcomingFestival.daysRemaining === 0 ? 'Today' : `in ${upcomingFestival.daysRemaining} days`}`}
+                    </span>
+                  </div>
+                )}
               </div>
 
             </div>
@@ -545,10 +578,10 @@ export function NepalPatroHero() {
                 </div>
 
                 {/* Weekday Strip: आइत सोम मंगल बुध बिहि शुक्र शनि (Sunday and Saturday in red) */}
-                <div 
-                  style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: 'repeat(7, 1fr)', 
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(7, 1fr)',
                     textAlign: 'center',
                     backgroundColor: '#f6f1e8',
                     padding: '8px 0',
@@ -559,12 +592,12 @@ export function NepalPatroHero() {
                   {WEEKDAYS_NEP.map((d, index) => {
                     const isRedDay = index === 0 || index === 6;
                     return (
-                      <div 
-                        key={d.nep} 
-                        style={{ 
-                          fontSize: '12px', 
-                          fontWeight: 800, 
-                          color: isRedDay ? '#c8102e' : '#475569' 
+                      <div
+                        key={d.nep}
+                        style={{
+                          fontSize: '12px',
+                          fontWeight: 800,
+                          color: isRedDay ? '#c8102e' : '#475569'
                         }}
                       >
                         {d.nep}
@@ -575,16 +608,16 @@ export function NepalPatroHero() {
 
                 {/* Days Grid with Motion */}
                 <AnimatePresence mode="wait">
-                  <motion.div 
+                  <motion.div
                     key={`${heroYear}-${heroMonth}`}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.16 }}
-                    style={{ 
-                      display: 'grid', 
-                      gridTemplateColumns: 'repeat(7, 1fr)', 
-                      gap: '4px', 
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(7, 1fr)',
+                      gap: '4px',
                       textAlign: 'center',
                       marginBottom: '18px'
                     }}
@@ -643,13 +676,13 @@ export function NepalPatroHero() {
                             {toNepaliDigits(day.bsDay)}
                           </span>
                           {/* Small English Date */}
-                          <span 
-                            style={{ 
-                              fontSize: '10px', 
-                              fontWeight: 600, 
-                              color: isSelected ? 'rgba(255,255,255,0.85)' : (isWeekend || day.isHoliday ? '#c8102e' : '#94a3b8'), 
-                              lineHeight: 1, 
-                              marginTop: '3px' 
+                          <span
+                            style={{
+                              fontSize: '10px',
+                              fontWeight: 600,
+                              color: isSelected ? 'rgba(255,255,255,0.85)' : (isWeekend || day.isHoliday ? '#c8102e' : '#94a3b8'),
+                              lineHeight: 1,
+                              marginTop: '3px'
                             }}
                           >
                             {day.adDay}
@@ -657,14 +690,14 @@ export function NepalPatroHero() {
 
                           {/* Active Today / Selected Dot Indicator from Screenshot 2 */}
                           {isSelected && (
-                            <span 
-                              style={{ 
-                                width: '4px', 
-                                height: '4px', 
-                                borderRadius: '50%', 
-                                backgroundColor: '#f59e0b', 
-                                marginTop: '2px' 
-                              }} 
+                            <span
+                              style={{
+                                width: '4px',
+                                height: '4px',
+                                borderRadius: '50%',
+                                backgroundColor: '#f59e0b',
+                                marginTop: '2px'
+                              }}
                             />
                           )}
                         </motion.button>
@@ -674,12 +707,12 @@ export function NepalPatroHero() {
                 </AnimatePresence>
 
                 {/* Footer Legend & Link: 🔴 सार्वजनिक बिदा  🟣 चाडपर्व  ⚪ अन्य  | पूरा पात्रो हेर्नुहोस् → */}
-                <div 
-                  style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'space-between', 
-                    fontSize: '12px', 
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    fontSize: '12px',
                     color: '#64748b',
                     paddingTop: '12px',
                     borderTop: '1px solid #f1f5f9'
@@ -700,13 +733,13 @@ export function NepalPatroHero() {
                     </span>
                   </div>
 
-                  <Link 
-                    href="/calendar" 
-                    style={{ 
-                      color: '#003893', 
-                      fontWeight: 800, 
-                      display: 'inline-flex', 
-                      alignItems: 'center', 
+                  <Link
+                    href="/calendar"
+                    style={{
+                      color: '#003893',
+                      fontWeight: 800,
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       gap: '4px',
                       textDecoration: 'none'
                     }}
@@ -720,12 +753,12 @@ export function NepalPatroHero() {
               /* TAB 2: DAILY RASHIFAL (HOROSCOPE) VIEW */
               <div>
                 {/* 12 Rashi Selection Bar */}
-                <div 
-                  style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: 'repeat(6, 1fr)', 
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(6, 1fr)',
                     gap: '6px',
-                    marginBottom: '16px' 
+                    marginBottom: '16px'
                   }}
                 >
                   {TODAY_RASHIFAL.map((rashi) => {
@@ -759,13 +792,13 @@ export function NepalPatroHero() {
                 </div>
 
                 {/* Active Rashi Details Card */}
-                <div 
-                  style={{ 
-                    backgroundColor: '#faf7f2', 
-                    border: '1.5px solid #ebe2d3', 
-                    borderRadius: '8px', 
+                <div
+                  style={{
+                    backgroundColor: '#faf7f2',
+                    border: '1.5px solid #ebe2d3',
+                    borderRadius: '8px',
                     padding: '16px',
-                    marginBottom: '14px' 
+                    marginBottom: '14px'
                   }}
                 >
                   {/* Top Details & Stars */}
@@ -815,16 +848,16 @@ export function NepalPatroHero() {
                       {t('Daily Prediction', 'दैनिक फलादेश')}
                     </span>
                     {isLiveApi && (
-                      <span 
-                        style={{ 
-                          display: 'inline-flex', 
-                          alignItems: 'center', 
-                          gap: '5px', 
-                          fontSize: '10px', 
-                          fontWeight: 800, 
-                          color: '#065f46', 
-                          backgroundColor: '#d1fae5', 
-                          padding: '2px 8px', 
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                          fontSize: '10px',
+                          fontWeight: 800,
+                          color: '#065f46',
+                          backgroundColor: '#d1fae5',
+                          padding: '2px 8px',
                           borderRadius: '4px',
                           border: '1px solid #a7f3d0'
                         }}
@@ -864,14 +897,14 @@ export function NepalPatroHero() {
                   <span style={{ fontSize: '11px', color: '#64748b' }}>
                     २५ आश्विन २०८३ • दैनिक फलादेश
                   </span>
-                  <Link 
-                    href="/rashifal" 
-                    style={{ 
-                      color: '#003893', 
+                  <Link
+                    href="/rashifal"
+                    style={{
+                      color: '#003893',
                       fontSize: '12px',
-                      fontWeight: 800, 
-                      display: 'inline-flex', 
-                      alignItems: 'center', 
+                      fontWeight: 800,
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       gap: '4px',
                       textDecoration: 'none'
                     }}

@@ -1,8 +1,5 @@
-/**
- * Comprehensive Nepali Calendar (Bikram Sambat Patro) dataset
- * Covers BS 2081, 2082, 2083, 2084 with Tithis, Panchanga, and Events.
- * IMPORTANT: Sunday AND Saturday are official weekend holidays in this calendar!
- */
+import { convertAdToBsApprox } from './nepaliDate';
+
 
 export interface DetailedCalendarDay {
   bsYear: number;
@@ -104,11 +101,30 @@ const BS_2083_MONTH_SPECS = [
   { month: 9, days: 30, startDay: 4, prevDays: 29, adStart: new Date(2026, 11, 16) }, // Poush
   { month: 10, days: 29, startDay: 6, prevDays: 30, adStart: new Date(2027, 0, 15) }, // Magh
   { month: 11, days: 30, startDay: 0, prevDays: 29, adStart: new Date(2027, 1, 13) }, // Falgun
-  { month: 12, days: 30, startDay: 2, prevDays: 30, adStart: new Date(2027, 2, 15) }, // Chaitra
 ];
 
+/**
+ * Returns the exact current Bikram Sambat date based on Gregorian real time
+ */
+export function getTodayBsDate(): { bsYear: number; bsMonth: number; bsDay: number } {
+  const now = new Date();
+  for (let i = 0; i < BS_2083_MONTH_SPECS.length; i++) {
+    const spec = BS_2083_MONTH_SPECS[i];
+    const start = new Date(spec.adStart);
+    const end = new Date(spec.adStart);
+    end.setDate(end.getDate() + spec.days);
+    if (now >= start && now < end) {
+      const diffMs = now.getTime() - start.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      return { bsYear: 2083, bsMonth: spec.month, bsDay: Math.min(spec.days, diffDays + 1) };
+    }
+  }
+  const approx = convertAdToBsApprox(now);
+  return { bsYear: approx.year, bsMonth: approx.month, bsDay: approx.day };
+}
+
 // Known festival calendar mapping for 2083 BS
-interface FestivalEvent {
+export interface FestivalEvent {
   month: number;
   day: number;
   eventNep: string;
@@ -116,7 +132,7 @@ interface FestivalEvent {
   isGazettedHoliday: boolean;
 }
 
-const KNOWN_FESTIVALS_2083: FestivalEvent[] = [
+export const KNOWN_FESTIVALS_2083: FestivalEvent[] = [
   // Baishakh
   { month: 1, day: 1, eventNep: 'नयाँ वर्ष २०८३ / वैशाख संक्रान्ति', eventEng: 'Nepali New Year 2083', isGazettedHoliday: true },
   { month: 1, day: 11, eventNep: 'लोकतन्त्र दिवस', eventEng: 'Democracy Day', isGazettedHoliday: false },
@@ -266,8 +282,13 @@ export function generateMonthDays(bsYear: number = 2083, bsMonth: number = 6): {
     const shubhMuhurat = '११:३८ - १२:२४ (अभिजित मुहूर्त)';
     const rahukaal = dayOfWeek === 0 ? '१६:३० - १८:००' : dayOfWeek === 6 ? '०९:०० - १०:३०' : '१३:३० - १५:००';
 
-    // Today indicator: October 13, 2026 = Ashwin 27, 2083 BS
-    const isToday = (bsYear === 2083 && bsMonth === 6 && bsDay === 27);
+    // Today indicator: dynamic comparison against current Gregorian date
+    const today = new Date();
+    const isToday = (
+      adDateObj.getFullYear() === today.getFullYear() &&
+      adDateObj.getMonth() === today.getMonth() &&
+      adDateObj.getDate() === today.getDate()
+    );
 
     // Dynamic Moon phase description & icon
     let moonPhaseText = isShukla ? 'बढ्दो अर्धचन्द्र' : 'घट्दो अर्धचन्द्र';
