@@ -108,7 +108,7 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
       </div>
 
       {/* Interactive Live Converter */}
-      <TraditionalUnitsConverter />
+      <TraditionalUnitsConverter hideTitleTag={true} />
 
       {/* Other Programmatic Conversions Matrix */}
       <section style={{ margin: '48px 0 24px' }}>

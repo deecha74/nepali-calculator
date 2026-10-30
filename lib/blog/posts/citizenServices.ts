@@ -497,7 +497,19 @@ export const citizenServicesPosts: BlogPost[] = [
         },
         {
           heading: 'Workflow for Legal Agreements & Company Registration in Nepal',
-          body: 'When registering a Private Limited company or drafting a commercial lease in Nepal, you can generate your initial bilingual legal draft using Nepali Calc’s Legal Document Generators (/rent-agreement, /aoa, /partnership-deed), export the document to PDF, and then open PrestigePDF (prestigepdf.com) to append witness pages, apply digital signatures, and compress the final packet for instant upload to the Office of the Company Registrar (OCR) or ward office.',
+          body: 'When registering a Private Limited company or drafting a commercial lease in Nepal, you can generate your initial bilingual legal draft using Nepali Calc’s Legal Document Generators (/rent-agreement, /aoa, /partnership-deed), export the document to PDF, and then open PrestigePDF to merge witness pages (https://prestigepdf.com/tools/merge), apply digital signatures, and compress the final packet (https://prestigepdf.com/tools/compress) for instant upload to the Office of the Company Registrar (OCR) or ward office.',
+          links: [
+            {
+              label: 'Merge Legal Deeds & Witness Pages',
+              href: 'https://prestigepdf.com/tools/merge',
+              description: 'Merge MOA, AOA, and Citizenship copies at https://prestigepdf.com/tools/merge'
+            },
+            {
+              label: 'Compress Signed PDF Contracts',
+              href: 'https://prestigepdf.com/tools/compress',
+              description: 'Compress signed agreements for OCR & IRD upload at https://prestigepdf.com/tools/compress'
+            }
+          ]
         }
       ],
       conclusion: 'Properly formatted, merged, and compressed PDF documents prevent last-minute application rejections on Loksewa, NOC, and banking portals. Draft your statutory agreements on Nepali Calc and use PrestigePDF (prestigepdf.com) to merge, edit, sign, and compress your PDFs effortlessly.'
