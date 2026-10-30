@@ -2,6 +2,111 @@ import { BlogPost } from '../types';
 
 export const landAndRealEstatePosts: BlogPost[] = [
   {
+    slug: 'nepal-municipal-property-tax-ghar-jagga-sampurak-kar-guide',
+    title: 'Nepal Municipal Property Tax (Ghar Jagga & Sampurak Kar) 2083/84: Slabs & 10% Rebate',
+    titleNep: 'वडा कार्यालयको सम्पत्ति तथा घरजग्गा कर २०८३/८४: मूल्याङ्कन दर र १०% छुट नियम',
+    excerpt: 'Complete taxpayer guide to annual Integrated Property Tax (एकीकृत सम्पत्ति कर) and House-Land Tax (घरजग्गा कर) in Kathmandu Metropolitan City (KMC), Lalitpur, Pokhara, and municipalities across Nepal.',
+    excerptNep: 'काठमाडौँ महानगरपालिका, ललितपुर, पोखरा तथा देशभरका नगरपालिकाको वडा कार्यालयमा प्रत्येक वर्ष बुझाउनुपर्ने घरजग्गा तथा सम्पत्ति करको दर र १०% छुट पाउने म्याद।',
+    category: 'Land & Real Estate',
+    publishedDate: '2026-10-30',
+    readTime: '5 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Annual Ward Property Tax',
+      href: '/property-tax',
+      iconText: 'Building2',
+    },
+    keywords: [
+      'property tax calculator nepal',
+      'kathmandu metropolitan city property tax rate 2083',
+      'ghar jagga kar nepal',
+      'sampurak kar ward office nepal',
+    ],
+    content: {
+      intro: 'Under Nepal’s Intergovernmental Fiscal Arrangement Act 2074 and Local Government Operation Act 2074, every landowner and homeowner must pay annual Property Tax (सम्पत्ति कर / घरजग्गा कर) at their local Municipality Ward Office based on the combined fiscal valuation of their land and building structure. For FY 2083/84, municipal property tax starts at NPR 300 per year for properties valued up to NPR 10 Lakh, NPR 2,000 per year up to NPR 1 Crore, and scales progressively for higher valuations, with a statutory 10% early payment rebate granted to taxpayers who settle their current year’s tax within the first half of the fiscal year.',
+      keyTakeaways: [
+        'Valuation Basis: Property tax is calculated on the government minimum land valuation (न्यूनतम सरकारी मूल्याङ्कन) plus depreciated building structure value—not commercial market price.',
+        '10% Early Payment Discount: Paying your annual property tax at the Ward Office before the end of Ashwin/Poush grants a 10% statutory discount.',
+        'Residential vs Commercial Use: Buildings used for commercial banking, hotels, or corporate rentals incur a higher municipal tax multiplier than owner-occupied residential homes.',
+        'Mandatory for Bank Loans & Malpot Transfer: A current-year Ward Property Tax clearance receipt (तिरेको रसिद) is mandatory for Malpot deed transfers, Naksa Pass, and bank mortgage renewals.'
+      ],
+      sections: [
+        {
+          heading: '1. Municipal Property Tax Valuation Slabs (KMC / Metropolitan Benchmark)',
+          body: 'Local governments apply progressive valuation brackets so ordinary residential homeowners pay a modest annual fee while large commercial estates contribute proportionally:',
+          table: {
+            headers: ['Combined Land + Building Valuation (NPR)', 'Annual Property Tax Slab', 'Net Tax After 10% Timely Rebate'],
+            rows: [
+              ['Up to NPR 10,00,000 (10 Lakh)', 'NPR 300 / year', 'NPR 270 / year'],
+              ['NPR 10 Lakh to NPR 20 Lakh', 'NPR 500 / year', 'NPR 450 / year'],
+              ['NPR 20 Lakh to NPR 50 Lakh', 'NPR 1,000 / year', 'NPR 900 / year'],
+              ['NPR 50 Lakh to NPR 1,00,00,000 (1 Crore)', 'NPR 2,000 / year', 'NPR 1,800 / year'],
+              ['NPR 1 Crore to NPR 2 Crore', 'NPR 2,000 + 0.035% on excess above 1 Cr', '10% Discount Applicable'],
+              ['NPR 2 Crore to NPR 3 Crore', 'NPR 5,500 + 0.060% on excess above 2 Cr', '10% Discount Applicable'],
+              ['NPR 3 Crore to NPR 5 Crore', 'NPR 11,500 + 0.100% on excess above 3 Cr', '10% Discount Applicable'],
+            ]
+          },
+          tip: 'Estimate your exact Ward Office property tax and 10% early rebate in seconds using our Property Tax Calculator at /property-tax.'
+        }
+      ],
+      conclusion: 'Clearing your municipal property tax before the Poush deadline saves 10% and avoids late ward penalties during tax clearance or property sales. Calculate your annual obligation using our Nepal Property Tax Calculator.'
+    }
+  },
+  {
+    slug: 'house-painting-cost-wall-brick-m20-concrete-mix-nepal',
+    title: 'House Painting Cost, Wall Brick Count & M20 Concrete Mix Ratio Guide in Nepal',
+    titleNep: 'घर रङरोगन खर्च, गारोमा लाग्ने इँटा र ढलानको (M20) सिमेन्ट-बालुवा-गिट्टी हिसाब',
+    excerpt: 'Practical civil engineering formulas for Nepal homeowners: calculate liters of Asian/Berger emulsion paint, wall putty, number of bricks per sq. ft. for 4.5" and 9" walls, and NBC 105 M20 concrete mix quantities.',
+    excerptNep: 'घरमा रङ लगाउँदा कति लिटर पेन्ट, प्राइमर र पुट्टी लाग्छ? ४.५ र ९ इन्चको गारोमा प्रति वर्गफिट कति इँटा चाहिन्छ र M20 ढलानको सही अनुपात के हो?',
+    category: 'Land & Real Estate',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Paint, Bricks & M20 Concrete Materials',
+      href: '/paint-cost',
+      iconText: 'Home',
+    },
+    keywords: [
+      'paint cost calculator nepal',
+      'brick calculator per sq ft nepal',
+      'm20 concrete mix ratio nepal',
+      'house painting price in nepal',
+    ],
+    content: {
+      intro: 'Under Nepal National Building Code (NBC 105) and standard civil estimation benchmarks in Nepal, a 9-inch load-bearing brick wall requires 9.2 standard Nepali bricks per square foot, a 4.5-inch partition wall requires 4.6 bricks per square foot, 1 liter of interior/exterior emulsion paint covers 55–65 square feet for two coats, and residential RCC slabs/columns require M20 grade concrete mixed at a 1 : 1.5 : 3 volumetric ratio (1 part cement, 1.5 parts river sand, and 3 parts crushed aggregate/gitti). Calculating these exact material quantities before ordering prevents contractor wastage and budget overruns.',
+      keyTakeaways: [
+        'Paint, Primer & Putty Coverage: 1 Liter of emulsion paint covers ~60 sq. ft. (2 coats); 1 Liter of primer covers ~120 sq. ft. (1 coat); 1 KG of wall putty covers ~18 sq. ft. (2 coats).',
+        'Brickwork Rule of Thumb: Multiply wall area (Length × Height in feet) by 4.6 for a 4.5-inch wall or 9.2 for a 9-inch wall, and add 5% for transport breakage.',
+        'M20 RCC Concrete Formula: Wet Volume × 1.54 = Dry Volume. Divide Dry Volume by 5.5 (1 + 1.5 + 3) to get cement volume in CFT (1 Bag of 50kg cement = 1.226 CFT).',
+        '1,000 Sq. Ft. 5-Inch Slab Benchmark: Requires ~95 bags of 50kg OPC cement, ~175 CFT sand, and ~350 CFT gitti under M20 grade.'
+      ],
+      sections: [
+        {
+          heading: '1. Quick Reference Material Table for Nepal House Construction & Finishing',
+          body: 'Use these verified civil engineering unit conversion factors when purchasing materials from local hardware depots:',
+          table: {
+            headers: ['Construction Work Item', 'Standard Nepal Specification', 'Material Required per 100 Sq. Ft.', 'Typical Wastage Buffer'],
+            rows: [
+              ['Interior / Exterior Emulsion Paint (2 Coats)', 'Asian / Berger / Pashupati / Jasmine', '1.67 Liters Paint + 0.85L Primer + 5.5kg Putty', '5%'],
+              ['4.5-Inch Partition Brick Wall', 'Standard Nepali Brick (9"×4.5"×2.75")', '460 Bricks + 3.5 Bags Cement (1:4 Mortar)', '5% Breakage'],
+              ['9-Inch Outer Brick Wall', 'Standard Nepali Brick (9"×4.5"×2.75")', '920 Bricks + 7.0 Bags Cement (1:5 Mortar)', '5% Breakage'],
+              ['5-Inch RCC Roof Slab (M20 — 1:1.5:3)', '53 Grade OPC Cement + 20mm Gitti', '9.5 Bags Cement + 17.5 CFT Sand + 35 CFT Gitti', 'Included in 1.54 Dry Factor'],
+            ]
+          },
+          tip: 'Switch between Paint, Wall Brick, and Concrete Mix tabs in our interactive estimator at /paint-cost to get instant shopping lists.'
+        }
+      ],
+      conclusion: 'Ordering exact quantities of paint buckets, bricks, and cement bags saves tens of thousands of rupees during house construction and renovation. Run your exact room and slab dimensions through our free Paint, Brick & Concrete Calculator.'
+    }
+  },
+  {
     slug: 'nepal-land-measurement-ropani-bigha-malpot',
     title: 'Nepal Land Measurement Guide: Ropani vs Bigha and Malpot Registration Taxes',
     titleNep: 'नेपालमा जग्गा नापजाँच निर्देशिका: रोपनी, बिघा र मालपोत लिखत रजिष्ट्रेसन कर',

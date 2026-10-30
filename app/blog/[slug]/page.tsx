@@ -278,6 +278,48 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <strong>💡 Pro Tip: </strong>{section.tip}
               </div>
             )}
+
+            {/* Contextual Resource Links / Dofollow Backlinks */}
+            {section.links && section.links.length > 0 && (
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+                  gap: '12px',
+                  margin: '20px 0',
+                }}
+              >
+                {section.links.map((item, lIdx) => (
+                  <a
+                    key={lIdx}
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener' : undefined}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      padding: '14px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f8fafc',
+                      border: '1.5px solid #cbd5e1',
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                      <span style={{ fontSize: '14px', fontWeight: 800, color: '#003893' }}>{item.label}</span>
+                      <ArrowRight size={15} color="#003893" />
+                    </div>
+                    {item.description && (
+                      <span style={{ fontSize: '12.5px', color: '#475569', marginTop: '6px', lineHeight: 1.5 }}>
+                        {item.description}
+                      </span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            )}
           </section>
         ))}
 

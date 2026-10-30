@@ -2,6 +2,58 @@ import { BlogPost } from '../types';
 
 export const utilitiesAndDailyPosts: BlogPost[] = [
   {
+    slug: 'rooftop-solar-panel-price-battery-sizing-nea-net-metering-nepal',
+    title: 'Solar System Price in Nepal (2083/84): Panel kW Sizing, Battery Ah & NEA Net Metering',
+    titleNep: 'नेपालमा घरायसी सोलार सिस्टमको मूल्य २०८३/८४: प्यानल वाट, ब्याट्री र नेट मिटरिङ हिसाब',
+    excerpt: 'Complete guide to installing rooftop solar panels in Nepal: how to size kW capacity from your monthly NEA electricity bill, Lithium LiFePO4 vs Tubular battery costs, and NEA Net Metering export rates.',
+    excerptNep: 'घर वा अफिसको मासिक बिजुली बिलको आधारमा कति किलोवाट (kW) को सोलार प्यानल, इन्भर्टर र लिथियम ब्याट्री चाहिन्छ? कुल जडान खर्च र विद्युत प्राधिकरणको नेट मिटरिङ नियम।',
+    category: 'Utilities & Daily',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Solar Panel, Battery & Inverter Size',
+      href: '/solar-requirement',
+      iconText: 'Zap',
+    },
+    keywords: [
+      'solar requirement calculator nepal',
+      'solar panel price in nepal 2083',
+      'home solar system cost nepal',
+      'nea net metering rate nepal',
+      'lithium vs tubular battery solar nepal',
+    ],
+    content: {
+      intro: 'A 1 kilowatt (1 kW) rooftop solar photovoltaic (PV) system in Nepal generates an average of 4.0 to 4.5 units (kWh) of electricity per day across 5.0 peak sun hours, requiring two 550W Mono PERC half-cut solar panels and approximately 65 square feet (0.19 Aana) of shadow-free south-facing roof area. Under Nepal Electricity Authority (NEA) Net Metering guidelines, households and commercial buildings installing grid-connected or hybrid solar systems can eliminate daytime electricity bills and export surplus solar power back to the national grid at NPR 7.10 per kWh.',
+      keyTakeaways: [
+        'Exact Sizing Formula: Required Solar kW = (Daily Electricity Units kWh × 1.20 System Loss Factor) ÷ Peak Daily Sun Hours (~5.0 hours in Kathmandu/Hills, ~5.5 hours in Terai).',
+        'Roof Area Rule: Every 1 kW of 550W Mono PERC panels requires ~65 Sq. Ft. of unshaded south-tilted (27°–30°) roof space.',
+        'Lithium vs Lead-Acid Battery: Lithium LiFePO4 batteries offer 85% Depth of Discharge (DoD) and a 10–12 year lifespan (3,500+ cycles), whereas Tall Tubular Lead-Acid batteries offer 55% DoD and last 4–5 years.',
+        'Turnkey Nepal Pricing (2083/84): A complete hybrid rooftop solar system in Nepal costs approximately NPR 1,10,000 to NPR 1,45,000 per kW including panels, hybrid inverter, mounting structure, and battery storage.'
+      ],
+      sections: [
+        {
+          heading: '1. Nepal Household Solar System Sizing & Cost Table (1 kW to 5 kW)',
+          body: 'Match your average monthly NEA electricity bill to the recommended rooftop solar configuration below:',
+          table: {
+            headers: ['Monthly NEA Bill (NPR)', 'System Size (kW)', '550W Panels Needed', 'Roof Space Required', 'Recommended Inverter & Battery', 'Est. Turnkey Cost in Nepal'],
+            rows: [
+              ['NPR 1,200 – 1,800', '1.1 kW', '2 Panels (550W)', '70 Sq. Ft. (0.20 Aana)', '1.5 kVA Inverter + 2.4 kWh Battery', 'NPR 1,35,000 – 1,65,000'],
+              ['NPR 2,200 – 3,200', '2.2 kW', '4 Panels (550W)', '140 Sq. Ft. (0.41 Aana)', '3.0 kVA Inverter + 4.8 kWh Battery', 'NPR 2,60,000 – 3,10,000'],
+              ['NPR 3,500 – 5,000', '3.3 kW', '6 Panels (550W)', '215 Sq. Ft. (0.63 Aana)', '5.0 kVA Inverter + 5.1 kWh LiFePO4', 'NPR 3,80,000 – 4,50,000'],
+              ['NPR 6,000 – 9,000', '5.5 kW', '10 Panels (550W)', '355 Sq. Ft. (1.04 Aana)', '6.0 kVA Hybrid + 10 kWh LiFePO4', 'NPR 6,20,000 – 7,40,000'],
+            ]
+          },
+          tip: 'Calculate your exact panel count, battery Ah, and payback period using our interactive Nepal Solar Requirement Calculator at /solar-requirement.'
+        }
+      ],
+      conclusion: 'With rising urban cooling/heating loads, induction cooking, and EV home charging in Nepal, a properly sized hybrid rooftop solar system pays for itself while guaranteeing uninterrupted power backup. Size your home solar setup today using our Solar Requirement Calculator.'
+    }
+  },
+  {
     slug: 'preeti-to-unicode-converter-nepal-guide',
     title: 'Preeti to Unicode in Nepal: Why Unicode is Essential for Official & Online Documents',
     titleNep: 'प्रिती टु युनिकोड: सरकारी कामकाज र डिजिटल दस्ताबेजमा युनिकोडको महत्त्व',
@@ -655,6 +707,56 @@ export const utilitiesAndDailyPosts: BlogPost[] = [
         }
       ],
       conclusion: 'Reflecting on astrological patterns encourages positive daily mindfulness and planning. Read your updated daily forecast using our Daily Nepali Rashifal.'
+    }
+  },
+  {
+    slug: 'essential-daily-digital-math-health-utilities-nepal',
+    title: 'Essential Daily Utilities in Nepal: Dharni/Pau Converter, Body Fat, Sleep Cycles & Math Solvers',
+    titleNep: 'दैनिक उपयोगी क्याल्कुलेटरहरू: धार्नी-पाउ रूपान्तरण, शरीरको बोसो, निद्रा चक्र र गणित',
+    excerpt: 'Guide to everyday Nepali and academic utility tools: converting Dharni and Pau to Kilograms, US Navy Body Fat %, 90-minute REM sleep cycles, and CSIT/Engineering base & statistics solvers.',
+    excerptNep: 'नेपाली बजारमा प्रचलित धार्नी, पाउ र हातको हिसाब, शरीरको बोसो (Body Fat %) र ९० मिनेटको निद्रा चक्र तथा विद्यार्थीका लागि बाइनरी र तथ्याङ्क क्याल्कुलेटर।',
+    category: 'Utilities & Daily',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Explore Universal Unit & Dharni Converter',
+      href: '/unit-converter',
+      iconText: 'Scale',
+    },
+    keywords: ['dharni to kg converter nepal', 'pau to gram nepal', 'body fat calculator nepal', '90 minute sleep cycle calculator', 'base converter statistics solver'],
+    content: {
+      intro: 'From buying local organic potatoes in Dharni (धार्नी) and Pau (पाउ) at a Kathmandu vegetable market to checking US Navy body fat fitness requirements or solving quadratic and binary equations for university exams, accurate quick-reference utilities save time every day.',
+      keyTakeaways: [
+        '1 traditional Nepali Dharni equals 12 Pau, or approximately 2.393 kilograms (commonly rounded to 2.4 kg in retail markets).',
+        '1 traditional Nepali Pau equals approximately 199.4 grams (200 grams retail), and 1 Haat equals 18 inches (1.5 feet).',
+        'Waking up at the end of a 90-minute sleep cycle (after 5 or 6 cycles = 7.5 or 9 hours) prevents morning grogginess.',
+        'The US Navy circumference method estimates body fat percentage within 3%–4% accuracy using only waist, neck, and height measurements.'
+      ],
+      sections: [
+        {
+          heading: 'Traditional Nepali Weight & Length Equivalencies',
+          body: 'Quick reference table for converting traditional Nepali household measurements into metric and imperial units:',
+          table: {
+            headers: ['Traditional Nepali Unit', 'Metric Equivalent', 'Common Usage in Nepal'],
+            rows: [
+              ['1 Dharni (धार्नी = 12 Pau)', '2.393 Kilograms (~2.4 kg)', 'Ghee, honey, potatoes, and hillside agricultural produce'],
+              ['1 Pau (पाउ)', '199.4 Grams (~200 g)', 'Retail vegetables, spices, and sweet shops'],
+              ['1 Tola (तोला = 100 Lal)', '11.6638 Grams', '24K/22K Gold and Silver jewelry across Nepal'],
+              ['1 Haat (हात - Cubit)', '45.72 cm (18 Inches / 1.5 ft)', 'Traditional cloth, timber, and rural plot measurement'],
+            ]
+          },
+          tip: 'When shopping during Dashain and Tihar sales or splitting restaurant bills with 13% VAT, use our Discount & Bill Splitter at /discount-calculator.'
+        },
+        {
+          heading: 'Health, Academic & Digital Security Tools',
+          body: 'Students and professionals can also access specialized browser-native utilities: check body composition with the US Navy Body Fat Calculator (/body-fat), align wake-up times with the Sleep Cycle Calculator (/sleep-calculator), count Nepali Devanagari words (/word-counter), generate high-entropy banking passwords (/password-generator), and solve Binary/Hex bases (/base-converter), Trigonometry/GCD (/scientific-calculator), and Standard Deviation/Quadratics (/statistics-calculator).',
+        }
+      ],
+      conclusion: 'Bookmarking reliable calculators eliminates manual conversion errors across shopping, fitness, and academic coursework. Try our Universal Unit Converter and daily utility tools today.'
     }
   }
 ];

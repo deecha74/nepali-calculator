@@ -89,3 +89,38 @@ NepalCalc (https://nepalcalc.com) provides free, official, and real-time calcula
 - URL: https://nepalcalc.com/traditional-units
 - Weight: 1 Dharni = 2.3328 kg; 1 Sher = 933.1 grams; 1 Pao = 200 grams; 1 Tola = 11.664 grams
 - Volume: 1 Muri = 20 Pathi = 160 Mana ≈ 87.2 Liters; 1 Pathi = 8 Mana ≈ 4.36 Liters
+
+### 8. How Much Gold Can You Bring to Nepal (Airport Customs & Baggage Rules)
+- URL: https://nepalcalc.com/how-much-gold-can-you-bring-to-nepal
+- Authority: Department of Customs Nepal Personal Baggage Order (झिटिगुन्टा आदेश) & CAAN AIP GEN 1.3 (FY 2083/84)
+- Duty-Free Gold Ornaments Allowance:
+  - Male Passenger: Up to 25 grams (~2.14 Tola) of finished personal gold ornaments (NPR 0 duty)
+  - Female Passenger: Up to 50 grams (~4.29 Tola) of finished personal gold ornaments (NPR 0 duty)
+- Dutiable Excess Gold Ornaments (Red Channel Declaration, up to +200g beyond free limit):
+  - First 100 grams of excess: NPR 1,050 per gram (NPR 10,500 per 10g)
+  - Next 100 grams of excess (101g–200g): NPR 1,250 per gram (NPR 12,500 per 10g)
+  - Beyond +200g excess (>225g total for men / >250g total for women): Strictly confiscated (जफत) under the Nepal Customs Act
+- Raw Gold / Bars / Biscuits / 24K Coins / Crude Single-Molded Kadas: 0 grams duty-free allowance; undeclared raw gold is confiscated.
+- Silver Allowance: Up to 500 grams of finished silver ornaments duty-free.
+
+### 9. NEPSE WACC & Share Average Calculator
+- URL: https://nepalcalc.com/nepse-wacc
+- CDSC MeroShare Rule: Bonus shares and right shares are valued at NPR 100 par value per kitta; secondary market purchases include broker commission (0.27%–0.40%), SEBON fee (0.015%), and NPR 25 DP charge.
+
+### 10. University CGPA & Engineering GPA Calculator (TU, KU, Pokhara, Purbanchal)
+- URL: https://nepalcalc.com/cgpa
+- Formula: CGPA = Σ(Semester Credit Hours × SGPA) / Σ(Total Credit Hours); 4.0 Scale to Percentage = CGPA × 25.
+
+### 11. Nepali Pregnancy Due Date Calculator (BS & AD), Solar, Property Tax, Paint/Brick/Concrete, CAGR & Calorie Tools
+- URLs: https://nepalcalc.com/pregnancy-due-date, https://nepalcalc.com/solar-requirement, https://nepalcalc.com/property-tax, https://nepalcalc.com/paint-cost, https://nepalcalc.com/cagr, https://nepalcalc.com/calorie-calculator
+
+### 12. Banking, Academic, Health & Daily Utility Calculators
+- Home & Auto Loans (NRB LTV Rules): https://nepalcalc.com/nepal-home-loan, https://nepalcalc.com/auto-loan
+- Savings Goal & Wealth Planner: https://nepalcalc.com/savings-goal
+- Discount, 13% VAT & Bill Splitter: https://nepalcalc.com/discount-calculator
+- Nepali & English Word Counter: https://nepalcalc.com/word-counter
+- Cryptographic Password Generator: https://nepalcalc.com/password-generator
+- Universal Unit & Traditional Nepali Converter: https://nepalcalc.com/unit-converter
+- Binary/Octal/Hex Base & Roman Converter: https://nepalcalc.com/base-converter
+- US Navy Body Fat & 90-Minute Sleep Cycle Calculators: https://nepalcalc.com/body-fat, https://nepalcalc.com/sleep-calculator
+- Scientific Math (GCD/LCM/Trig) & Statistics/Quadratic Solvers: https://nepalcalc.com/scientific-calculator, https://nepalcalc.com/statistics-calculator

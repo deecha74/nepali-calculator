@@ -29,6 +29,11 @@ export interface BlogPost {
         rows: string[][];
       };
       tip?: string;
+      links?: {
+        label: string;
+        href: string;
+        description?: string;
+      }[];
     }[];
     conclusion: string;
   };

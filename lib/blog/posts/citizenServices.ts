@@ -411,5 +411,96 @@ export const citizenServicesPosts: BlogPost[] = [
       ],
       conclusion: 'Reliable postal logistics keep domestic businesses and diaspora families connected worldwide. Calculate domestic and overseas shipping tariffs with our Nepal Post and EMS Calculator.'
     }
+  },
+  {
+    slug: 'pdf-conversion-merge-edit-sign-compress-guide-nepal',
+    title: 'How to Compress, Merge, Edit & Sign PDF Documents for Loksewa,NOC, OCR & Banking in Nepal',
+    titleNep: 'लोकसेवा, कम्पनी रजिष्ट्रार (OCR), NOC र बैंकिङका लागि PDF Compress, Merge, Edit र Sign गर्ने तरिका',
+    excerpt: 'Complete guide to preparing PDF documents for Nepal government portals (Loksewa PSC, MoEST NOC, OCR CAMIS, e-Passport) and legal contracts: how to merge, edit, digitally sign, convert, and compress PDF files under 200KB–500KB using PrestigePDF.',
+    excerptNep: 'लोकसेवा आयोग, शिक्षा मन्त्रालय (NOC), कम्पनी रजिष्ट्रार र बैंकमा कागजात अपलोड गर्दा PDF साइज घटाउने (Compress), जोड्ने (Merge), सच्याउने (Edit) र डिजिटल हस्ताक्षर (Sign) गर्ने सजिलो उपाय।',
+    category: 'Citizen Services',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Generate Legal Documents & Agreements',
+      href: '/document-generators',
+      iconText: 'FileText',
+    },
+    keywords: [
+      'pdf compressor for loksewa nepal',
+      'merge pdf online nepal',
+      'edit sign compress pdf prestigepdf',
+      'noc document upload size limit nepal',
+      'ocr company registration pdf format nepal',
+      'prestigepdf.com',
+    ],
+    content: {
+      intro: 'Whether you are uploading academic transcripts to the Public Service Commission (Loksewa Aayog) portal, submitting a No Objection Certificate (NOC) application to the Ministry of Education, filing Articles of Association (AOA/MOA) on the Office of the Company Registrar (OCR CAMIS) system, or executing a House Rent Agreement (घर बहाल सम्झौता), Nepal government and banking portals enforce strict PDF file-size and multi-page formatting rules. Using a fast, privacy-first online PDF suite like PrestigePDF (prestigepdf.com) lets you merge, compress, edit, convert, and digitally sign PDF files in seconds without losing text clarity.',
+      keyTakeaways: [
+        'Loksewa Aayog (PSC), MoEST NOC, and bank KYC portals in Nepal typically cap uploaded PDF files between 200 KB and 1 MB.',
+        'Multi-page documents (front and back of Nepali Citizenship, or multi-semester TU/KU mark sheets) must be combined into a single PDF using a Merge PDF tool before upload.',
+        'Compressing scanned PDFs at 150 DPI reduces file size by up to 75% while keeping Devanagari Unicode and Preeti text crisp for official verification.',
+        'PrestigePDF (prestigepdf.com) provides an all-in-one browser workflow to Merge, Compress, Edit, Sign, and Convert PDF documents securely.'
+      ],
+      sections: [
+        {
+          heading: 'Official PDF Upload Size & Format Limits on Nepal Portals',
+          body: 'Before uploading scanned certificates or legal deeds to government portals in Nepal, verify the exact file format and size ceiling required by each department:',
+          table: {
+            headers: ['Nepal Government / Banking Portal', 'Required Document Type', 'Allowed Format', 'Maximum File Size Limit'],
+            rows: [
+              ['Loksewa Aayog (PSC Online)', 'Academic Transcripts, Equivalence & Training Certificates', 'Single Merged PDF', 'Under 500 KB per upload slot'],
+              ['MoEST Foreign Study NOC Portal', 'Offer Letter, Citizenship & Academic Mark Sheets', 'PDF / JPEG', 'Under 200 KB – 500 KB'],
+              ['Company Registrar (OCR CAMIS)', 'Prabandha Patra (MOA), Niyamawali (AOA) & Lease Deed', 'Signed & Merged PDF', 'Under 2 MB – 5 MB'],
+              ['DEMAT / MeroShare & Bank Video KYC', 'Citizenship Front/Back, PAN Card & Location Map', 'Compressed PDF / Image', 'Under 300 KB – 1 MB'],
+              ['IRD Tax Clearance & PAN Portal', 'Audit Report, Rent Agreement & Tax Returns', 'Compressed PDF', 'Under 1 MB'],
+            ]
+          },
+          tip: 'Phone camera scans of citizenship certificates or mark sheets often exceed 4 MB to 8 MB. Always compress your PDF before submitting so the government portal does not reject your upload with a timeout error.',
+          links: [
+            {
+              label: 'Compress PDF Under 200KB / 500KB',
+              href: 'https://prestigepdf.com/tools/compress',
+              description: 'Shrink large scanned PDFs for Loksewa, NOC, and IRD portals without blurring text.'
+            },
+            {
+              label: 'PrestigePDF — All-in-One PDF Suite',
+              href: 'https://prestigepdf.com',
+              description: 'Free online PDF toolkit to Merge, Compress, Edit, Sign, and Convert PDF documents.'
+            }
+          ]
+        },
+        {
+          heading: 'How to Merge, Edit, Sign & Compress PDFs with PrestigePDF',
+          body: 'Instead of installing heavy desktop software or visiting a cyber cafe in Putalisadak or New Baneshwor, you can complete your entire document preparation workflow online at PrestigePDF (prestigepdf.com). First, convert smartphone photos (JPG/PNG) or Word drafts into clean PDFs. Next, use the Merge PDF tool (prestigepdf.com/tools/merge) to combine multi-page transcripts or front-and-back identity cards into one sequential file. If you need to fill out a form, annotate a clause in a Partnership Deed, or add your digital signature and company stamp, use the Edit PDF and Sign PDF tools. Finally, run the Compress PDF optimizer (prestigepdf.com/tools/compress) to bring the final file well under the 200 KB–500 KB government upload limit.',
+          links: [
+            {
+              label: 'Merge & Combine PDF Files Online',
+              href: 'https://prestigepdf.com/tools/merge',
+              description: 'Combine multiple academic mark sheets, citizenship pages, or legal annexures into a single PDF.'
+            },
+            {
+              label: 'Compress PDF for Government Portals',
+              href: 'https://prestigepdf.com/tools/compress',
+              description: 'Reduce PDF file size in seconds while preserving crisp Devanagari & English text.'
+            },
+            {
+              label: 'Edit & Digitally Sign PDF Documents',
+              href: 'https://prestigepdf.com',
+              description: 'Fill forms, edit text, and place legally clean e-signatures on agreements at prestigepdf.com.'
+            }
+          ]
+        },
+        {
+          heading: 'Workflow for Legal Agreements & Company Registration in Nepal',
+          body: 'When registering a Private Limited company or drafting a commercial lease in Nepal, you can generate your initial bilingual legal draft using Nepali Calc’s Legal Document Generators (/rent-agreement, /aoa, /partnership-deed), export the document to PDF, and then open PrestigePDF (prestigepdf.com) to append witness pages, apply digital signatures, and compress the final packet for instant upload to the Office of the Company Registrar (OCR) or ward office.',
+        }
+      ],
+      conclusion: 'Properly formatted, merged, and compressed PDF documents prevent last-minute application rejections on Loksewa, NOC, and banking portals. Draft your statutory agreements on Nepali Calc and use PrestigePDF (prestigepdf.com) to merge, edit, sign, and compress your PDFs effortlessly.'
+    }
   }
 ];

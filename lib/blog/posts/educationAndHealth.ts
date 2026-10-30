@@ -2,6 +2,171 @@ import { BlogPost } from '../types';
 
 export const educationAndHealthPosts: BlogPost[] = [
   {
+    slug: 'tu-ku-pokhara-university-cgpa-to-percentage-calculation',
+    title: 'University CGPA to Percentage in Nepal: TU IOE, FoM, KU & Pokhara University Guide',
+    titleNep: 'नेपालका विश्वविद्यालयमा CGPA बाट प्रतिशत (Percentage) कसरी निकाल्ने? (TU, KU र PU सूत्र)',
+    excerpt: 'Official credit-hour weighted CGPA calculation formulas, 4.0 grading scales, distinction cutoffs, and CGPA-to-percentage conversion rules for Tribhuvan University (IOE/BBA/BIM/CSIT), Kathmandu University, and Pokhara University.',
+    excerptNep: 'त्रिभुवन विश्वविद्यालय (IOE/BBA/BCA/CSIT), काठमाडौँ विश्वविद्यालय र पोखरा विश्वविद्यालयमा सेमेस्टर SGPA बाट कुल CGPA र प्रतिशत निकाल्ने आधिकारिक तरिका।',
+    category: 'Citizen Services',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate University CGPA & Target SGPA',
+      href: '/cgpa',
+      iconText: 'GraduationCap',
+    },
+    keywords: [
+      'cgpa calculator nepal',
+      'tu cgpa to percentage converter',
+      'engineering gpa calculator tu ioe',
+      'pokhara university cgpa to percentage',
+      'kathmandu university grading system',
+    ],
+    content: {
+      intro: 'In Nepali universities—including Tribhuvan University (TU IOE, Faculty of Management BBA/BIM/BCA, and IOST BSc CSIT), Kathmandu University (KU), Pokhara University (PU), and Purbanchal University (PoU)—Cumulative Grade Point Average (CGPA) is calculated as a credit-weighted average across all completed semesters: CGPA = Σ(Semester Credit Hours × SGPA) ÷ Σ(Total Credit Hours). On the standard 4.0 grading scale, converting CGPA to an equivalent percentage multiplies your CGPA by 25 (Percentage = CGPA × 25), where a 3.60 CGPA equals 90.0%.',
+      keyTakeaways: [
+        'Weighted Formula: Never average your semester SGPAs with a simple arithmetic mean if semesters have different credit hours; always weight each SGPA by its credit hours.',
+        'Standard 4.0 Percentage Conversion: For TU FoM (BBA/BIM/BCA/MBS), KU, and PoU 4.0 scales, Equivalent Percentage = CGPA × 25.',
+        'Minimum Graduation Threshold: Students must maintain a minimum cumulative CGPA of 2.00 (C Grade average) to qualify for degree conferral.',
+        'Distinction / Dean’s List Cutoffs: Pokhara University and TU Engineering/Science award Distinction at 3.60+ CGPA, while TU Faculty of Management requires 3.70+ CGPA.'
+      ],
+      sections: [
+        {
+          heading: '1. Official Grading Scale & Division Thresholds Across Nepal Universities',
+          body: 'While all major Nepali universities operate on a 4.00 maximum grade point scale, division classifications and minimum passing grades vary slightly by faculty:',
+          table: {
+            headers: ['University / Faculty', 'Max Scale', 'Minimum Pass CGPA', 'First Division Cutoff', 'Distinction / Honours Cutoff'],
+            rows: [
+              ['Tribhuvan University (IOE / BSc CSIT)', '4.00', '2.00 CGPA', '3.00 CGPA', '3.60 CGPA'],
+              ['TU Faculty of Management (BBA / BIM / BCA)', '4.00', '2.00 CGPA', '3.30 CGPA', '3.70 CGPA'],
+              ['Kathmandu University (KU — BE / BSc / BBA)', '4.00', '2.00 CGPA', '3.00 CGPA', '3.50 – 3.60 CGPA'],
+              ['Pokhara University (PU — BE / BBA / BCIS)', '4.00', '2.00 CGPA', '3.00 CGPA', '3.60 CGPA (Dean’s List ≥ 3.70)'],
+              ['Purbanchal University (PoU — BE / BIT)', '4.00', '2.00 CGPA', '3.00 CGPA', '3.60 CGPA'],
+            ]
+          },
+          tip: 'Use our Graduation Target CGPA Predictor at /cgpa to calculate the exact SGPA you must score in your remaining semesters to reach 3.60+ Distinction.'
+        },
+        {
+          heading: '2. Worked Example: 4-Semester Credit-Weighted CGPA Calculation',
+          body: 'Suppose a BSc CSIT or Engineering student completes 4 semesters with the following credits and SGPAs: Sem 1 (20 credits, 3.45 SGPA = 69.0 points), Sem 2 (21 credits, 3.62 SGPA = 76.02 points), Sem 3 (22 credits, 3.55 SGPA = 78.10 points), and Sem 4 (21 credits, 3.70 SGPA = 77.70 points). Total Credits = 84; Total Grade Points = 300.82. Exact CGPA = 300.82 ÷ 84 = 3.58 CGPA (Equivalent to 89.52%). To graduate with a 3.65 CGPA after 8 semesters, the student needs an average of 3.72 SGPA across the final 4 semesters.',
+        }
+      ],
+      conclusion: 'Tracking your credit-weighted CGPA and target semester grades early helps you secure Dean’s List honours and Loksewa/foreign university scholarship eligibility. Calculate your exact CGPA and target GPA using our University CGPA Calculator.'
+    }
+  },
+  {
+    slug: 'nepali-pregnancy-due-date-calculation-aama-surakshya-guide',
+    title: 'Nepali Pregnancy Due Date Calculator (BS & AD): Trimesters & Aama Surakshya Incentives',
+    titleNep: 'नेपाली प्रसूति मिति (Due Date) कसरी पत्ता लगाउने? गर्भावस्थाका त्रैमासिक र आमा सुरक्षा भत्ता',
+    excerpt: 'Calculate your baby’s exact delivery due date in Bikram Sambat (वि.सं.) and English (AD) calendars using Naegele’s Rule, track 40-week trimester milestones, and claim Nepal Government Aama Surakshya cash incentives.',
+    excerptNep: 'अन्तिम महिनावारीको मिति (LMP) बाट बच्चा जन्मने अनुमानित नेपाली मिति (वि.सं.), ४० हप्ताको विकासक्रम र नेपाल सरकारको आमा सुरक्षा कार्यक्रम अन्तर्गत पाइने यातायात तथा जाँच भत्ता।',
+    category: 'Citizen Services',
+    publishedDate: '2026-10-30',
+    readTime: '5 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Pregnancy Due Date in BS & AD',
+      href: '/pregnancy-due-date',
+      iconText: 'Heart',
+    },
+    keywords: [
+      'pregnancy due date calculator nepal',
+      'nepali pregnancy calculator bs',
+      'prasuti miti kasari nikalne',
+      'aama surakshya programme nepal incentive',
+    ],
+    content: {
+      intro: 'Under clinical obstetrical standards (Naegele’s Rule), a full-term human pregnancy lasts 280 days (40 weeks) from the first day of a woman’s Last Menstrual Period (LMP), adjusted by plus or minus the number of days her average cycle deviates from a standard 28-day cycle. In Nepal, converting this 280-day gestational timeline into the Bikram Sambat (BS) calendar allows expectant parents to plan hospital delivery dates and complete the Ministry of Health and Population’s mandatory Antenatal Care (ANC) checkups under the Aama Surakshya Programme.',
+      keyTakeaways: [
+        'Exact Formula: Estimated Delivery Date (EDD) = First Day of LMP + 280 Days + (Average Cycle Length - 28 Days).',
+        '3 Trimester Stages: 1st Trimester spans Weeks 1–12, 2nd Trimester spans Weeks 13–26, and 3rd Trimester spans Weeks 27–40.',
+        'Nepal Government ANC Cash Incentive: Mothers completing protocol ANC checkups in the 4th, 6th, 8th, and 9th months receive NPR 800 upon institutional delivery.',
+        'Free Institutional Delivery & Transport Allowance: Delivering at a listed public health facility grants free normal/C-section delivery plus NPR 1,000 (Terai), NPR 2,000 (Hills), or NPR 3,000 (Mountains) transport allowance.'
+      ],
+      sections: [
+        {
+          heading: '1. Trimester Milestones & Mandatory Nepal Government ANC Schedule',
+          body: 'The Family Welfare Division under the Department of Health Services (DoHS) recommends 8 ANC contacts (and mandates at least 4 protocol visits in months 4, 6, 8, and 9) along with Iron-Folic Acid, Calcium, and Td vaccination:',
+          table: {
+            headers: ['Pregnancy Stage', 'Gestational Weeks', 'Key Fetal & Maternal Checkups in Nepal', 'Aama Surakshya Protocol'],
+            rows: [
+              ['1st Trimester (पहिलो त्रैमासिक)', 'Weeks 1 – 12', 'Dating Ultrasound (USG), Folic Acid, Blood Group & VDRL/HIV test', '1st ANC Contact (<12 Weeks)'],
+              ['2nd Trimester (दोस्रो त्रैमासिक)', 'Weeks 13 – 26', 'Anomaly Scan (18–22 wks), Iron + Calcium tablets, Td Vaccine', 'Protocol Visits at Month 4 & Month 6'],
+              ['3rd Trimester (तेस्रो त्रैमासिक)', 'Weeks 27 – 40', 'Fetal growth & position scan, BP/Sugar check, hospital bag prep', 'Protocol Visits at Month 8 & Month 9'],
+            ]
+          },
+          tip: 'Enter your LMP date in our Nepali Pregnancy Due Date Calculator at /pregnancy-due-date to get your exact Bikram Sambat (वि.सं.) and English delivery dates.'
+        },
+        {
+          heading: '2. Nepal Aama Surakshya Programme Cash Allowance by Region',
+          body: 'To reduce maternal and neonatal mortality, the Government of Nepal provides 100% free delivery services (normal delivery, complicated delivery, and Caesarean section) at listed public and community hospitals, plus direct cash incentives upon discharge: Terai districts receive NPR 1,000 transport + NPR 800 ANC = NPR 1,800; Hill districts receive NPR 2,000 transport + NPR 800 ANC = NPR 2,800; and Mountain districts receive NPR 3,000 transport + NPR 800 ANC = NPR 3,800.',
+        }
+      ],
+      conclusion: 'Knowing your Bikram Sambat delivery date and following the 4th, 6th, 8th, and 9th month ANC schedule ensures a safe motherhood journey. Check your exact due date and current pregnancy week using our Nepali Pregnancy Due Date Calculator.'
+    }
+  },
+  {
+    slug: 'nepali-diet-dal-bhat-calories-bmr-water-intake-guide',
+    title: 'Calories in Nepali Dal-Bhat: Daily BMR, TDEE & Water Intake Guide for Nepal',
+    titleNep: 'नेपाली दाल-भातमा कति क्यालोरी हुन्छ? दैनिक BMR, तौल घटाउने क्यालोरी र पानीको हिसाब',
+    excerpt: 'Detailed nutritional breakdown of traditional Nepali foods (Dal-Bhat-Tarkari, Roti, Dhido, Selroti, Chiya), clinical Mifflin-St Jeor BMR/TDEE formulas, and daily water intake requirements.',
+    excerptNep: 'एक थाल नेपाली दाल-भात-तरकारी, रोटी, ढिँडो र चियामा कति क्यालोरी हुन्छ? शरीरको उचाइ र तौल अनुसार दैनिक चाहिने क्यालोरी (TDEE) र पानीको मात्रा निकाल्ने वैज्ञानिक सूत्र।',
+    category: 'Citizen Services',
+    publishedDate: '2026-10-30',
+    readTime: '5 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Daily Calories, BMR & Water Intake',
+      href: '/calorie-calculator',
+      iconText: 'Flame',
+    },
+    keywords: [
+      'dal bhat calories nepal',
+      'calorie calculator nepal',
+      'bmr calculator nepal',
+      'water intake per kg body weight',
+      'nepali food calorie chart',
+    ],
+    content: {
+      intro: 'A standard home-cooked plate of Nepali Dal-Bhat-Tarkari (containing 200g cooked steamed rice, 150ml lentil dal, 150g seasonal vegetable curry, and pickle) provides approximately 620 to 680 kilocalories (kcal), while a restaurant or festive thali with chicken/mutton curry and 1 tablespoon of ghee reaches 850 to 1,050 kcal. To maintain or lose weight on a traditional Nepali diet, your daily caloric intake must align with your Total Daily Energy Expenditure (TDEE), calculated by multiplying your Mifflin-St Jeor Basal Metabolic Rate (BMR) by your physical activity factor.',
+      keyTakeaways: [
+        'Mifflin-St Jeor BMR Formula: Men = (10 × weight kg) + (6.25 × height cm) - (5 × age) + 5; Women = (10 × weight kg) + (6.25 × height cm) - (5 × age) - 161.',
+        'Weight Loss Deficit Rule: Consuming 500 kcal below your daily maintenance TDEE creates a 3,500 kcal weekly deficit, burning approximately 0.5 kg of body fat per week.',
+        'Dal-Bhat Portion Control: Replacing half of your white rice portion with cucumber/carrot salad and thick lentil dal cuts 180 kcal per meal while boosting protein and fiber.',
+        'Daily Hydration Formula: Drink 35 ml of water per kilogram of body weight daily (e.g., 2.45 Liters/day for a 70 kg adult).'
+      ],
+      sections: [
+        {
+          heading: '1. Calorie & Protein Reference Chart of Everyday Nepali Foods',
+          body: 'Use this portion reference table to track daily meals without giving up traditional Nepali home cooking:',
+          table: {
+            headers: ['Nepali Food Item & Serving Size', 'Calories (kcal)', 'Protein (g)', 'Carbs (g)', 'Fat (g)'],
+            rows: [
+              ['Standard Veg Dal-Bhat-Tarkari (1 Medium Plate)', '650 kcal', '16g', '115g', '12g'],
+              ['Chicken Dal-Bhat Thali with Ghee (1 Full Plate)', '920 kcal', '38g', '120g', '28g'],
+              ['Whole Wheat Sukha Roti (2 Medium Rotis) + Tarkari', '340 kcal', '10g', '56g', '7g'],
+              ['Buckwheat / Millet Dhido (1 Bowl) + Local Chicken Soup', '520 kcal', '32g', '68g', '11g'],
+              ['Steamed Chicken Momo (1 Plate — 10 Pieces)', '460 kcal', '24g', '52g', '16g'],
+              ['Nepali Milk Tea / Dudh Chiya with 2 tsp Sugar (1 Cup)', '110 kcal', '3g', '16g', '3.5g'],
+            ]
+          },
+          tip: 'Drinking 3 cups of sugary Dudh Chiya with biscuits adds over 500 hidden calories per day—enough to stall fat loss completely.'
+        }
+      ],
+      conclusion: 'You do not need an expensive Western diet to achieve fitness goals in Nepal. Calculate your exact BMR, TDEE maintenance calories, and daily water requirement using our free Calorie & BMR Calculator.'
+    }
+  },
+  {
     slug: 'neb-see-plus-two-gpa-percentage-calculation-guide',
     title: 'NEB SEE & Class 12 GPA Calculation Guide: Grade Points, NG & Percentage Conversion',
     titleNep: 'एसईई (SEE) र कक्षा १२ को GPA तथा प्रतिशत निकाल्ने आधिकारिक निर्देशिका',

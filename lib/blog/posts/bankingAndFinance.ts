@@ -344,5 +344,55 @@ export const bankingAndFinancePosts: BlogPost[] = [
       ],
       conclusion: 'Retirement planning guarantees stability during your post-service years. Compute your exact monthly pension disbursement and gratuity entitlements with our Nepal Pension Calculator.'
     }
+  },
+  {
+    slug: 'nepal-home-loan-auto-loan-nrb-ltv-down-payment-guide',
+    title: 'Nepal Home Loan & EV vs Petrol Auto Loan Guide: NRB LTV Rules & EMI',
+    titleNep: 'नेपालमा घर कर्जा र गाडी कर्जा (EV र पेट्रोल) निर्देशिका: राष्ट्र बैंक LTV नियम र किस्ता',
+    excerpt: 'Complete guide to Nepal Rastra Bank (NRB) Loan-to-Value (LTV) limits, first-time homebuyer financing, EV vs Petrol car down payment rules, and Debt-to-Income caps.',
+    excerptNep: 'नेपाल राष्ट्र बैंकको घर कर्जा र सवारी कर्जा सम्बन्धी नियम, डाउन पेमेन्ट प्रतिशत, बेस रेट र प्रिमियम ब्याजदर तथा मासिक किस्ता (EMI) घटाउने उपाय।',
+    category: 'Banking & Loans',
+    publishedDate: '2026-10-30',
+    readTime: '6 min read',
+    author: {
+      name: 'Deepak Chalise',
+      role: 'Founder & Software Architect, Chalise Tech',
+    },
+    toolLink: {
+      title: 'Calculate Home Loan & Auto Loan EMI',
+      href: '/nepal-home-loan',
+      iconText: 'Home',
+    },
+    keywords: ['home loan calculator nepal', 'ev auto loan down payment nepal', 'nrb ltv ratio home loan', 'car loan emi nepal'],
+    content: {
+      intro: 'Whether you are purchasing your first residential home in Kathmandu Valley or financing an Electric Vehicle (EV), commercial bank lending in Nepal is governed by Nepal Rastra Bank (NRB) Unified Directives on Loan-to-Value (LTV) and Debt-Service-to-Gross-Income (DTI) ratios.',
+      keyTakeaways: [
+        'First-time residential homebuyers can qualify for up to 70% LTV financing (30% minimum down payment) up to NRB ceiling limits.',
+        'Standard real estate mortgages and Electric Vehicle (EV) hire-purchase loans typically require a 40% to 50% down payment.',
+        'Monthly loan EMI cannot exceed 50% of your verifiable gross monthly income (or up to 70% for qualifying first-time home loans).',
+        'Commercial banks charge Base Rate + Premium (typically 1.5% to 3.5%) plus a one-time loan processing fee capped at 0.75% to 1.0%.'
+      ],
+      sections: [
+        {
+          heading: 'NRB Loan-to-Value (LTV) & Down Payment Comparison',
+          body: 'How much equity down payment you must arrange before bank disbursement:',
+          table: {
+            headers: ['Loan Type', 'Maximum Bank Financing (LTV)', 'Minimum Borrower Down Payment', 'Maximum Tenure'],
+            rows: [
+              ['First-Time Homebuyer (Residential)', 'Up to 70% of Fair Market Valuation', '30% Down Payment', 'Up to 20–25 Years'],
+              ['Standard Residential Home Loan', 'Up to 50%–60% of Valuation', '40%–50% Down Payment', 'Up to 15–20 Years'],
+              ['Electric Vehicle (EV) Auto Loan', 'Up to 60%–80% (NRB Directive)', '20%–40% Down Payment', 'Up to 5–7 Years'],
+              ['Petrol / Diesel Private Car Loan', 'Up to 50% of Invoice Price', '50% Down Payment', 'Up to 5–7 Years'],
+            ]
+          },
+          tip: 'Banks value land and buildings using a weighted formula (typically 70%–80% Commercial Fair Market Rate + 20%–30% Malpot Government Minimum Valuation), meaning actual cash down payment may be slightly higher than the headline LTV.'
+        },
+        {
+          heading: 'How to Reach Your Down Payment Target Faster',
+          body: 'Using a disciplined monthly recurring deposit or systematic savings goal plan allows families to accumulate the required 30%–50% down payment without taking expensive personal loans. You can plan your exact monthly contribution using our Savings Goal Planner at /savings-goal or compare EV vs Petrol EMIs at /auto-loan.',
+        }
+      ],
+      conclusion: 'Comparing Base Rates across Class A commercial banks and choosing the right down payment ratio can save lakhs in cumulative interest. Simulate your exact monthly installment using our Nepal Home Loan and Auto Loan Calculators.'
+    }
   }
 ];
