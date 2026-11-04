@@ -23,7 +23,8 @@ export function constructMetadata({
 }): Metadata {
   const metaTitle = title || SITE_CONFIG.name;
   const metaDesc = description || SITE_CONFIG.description;
-  const canonicalUrl = `${SITE_CONFIG.url}${path}`;
+  const cleanPath = path === "/" ? "" : path.replace(/\/+$/, "");
+  const canonicalUrl = `${SITE_CONFIG.url}${cleanPath}`;
 
   return {
     title: metaTitle,
@@ -83,7 +84,7 @@ export function generateWebApplicationSchema({
   url: string;
   category?: string;
 }) {
-  const normalizedUrl = url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url);
+  const normalizedUrl = url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url);
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -123,7 +124,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
+      item: item.url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url),
     })),
   };
 }
@@ -148,7 +149,7 @@ export function generateGEODatasetSchema({
     "@type": "Dataset",
     name,
     description,
-    url: url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
+    url: url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url),
     keywords,
     creator: {
       "@type": "Organization",
@@ -184,7 +185,7 @@ export function generateAEOAnswerSchema({
       acceptedAnswer: {
         "@type": "Answer",
         text: answer,
-        url: url.replace(/https?:\/\/(www\.)?nepalcalc\.com/g, SITE_CONFIG.url),
+        url: url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url),
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: [".aeo-answer-container", "h1", "p"],

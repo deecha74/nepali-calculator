@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Nepali Calc" }],
   creator: "Nepali Calc",
   metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

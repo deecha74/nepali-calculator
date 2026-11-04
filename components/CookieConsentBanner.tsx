@@ -154,7 +154,7 @@ export function CookieConsentBanner() {
             </button>
 
             <Link
-              href="/documents"
+              href="/privacy-policy"
               style={{
                 fontSize: '11.5px',
                 color: '#64748b',
@@ -162,7 +162,7 @@ export function CookieConsentBanner() {
                 marginLeft: 'auto',
               }}
             >
-              {t('Learn more', 'थप विवरण')}
+              {t('Privacy Policy', 'गोपनीयता नीति')}
             </Link>
           </div>
         </div>

@@ -3,8 +3,8 @@
     "name": "Nepali Calc",
     "fullName": "Nepali Calc — Smart All-in-One Calculators for Nepal",
     "tagline": "Smart All-in-One Calculators for Nepal",
-    "domain": "calculator.chalisetech.com",
-    "url": "https://calculator.chalisetech.com",
+    "domain": "nepalicalc.com",
+    "url": "https://nepalicalc.com",
     "locale": "en_NP",
     "description": "Official online calculators for Nepal: Income Tax, Land Unit Converter, Vehicle Bluebook Tax & Fines, NEPSE Stock Fees, Loan EMI, Gold Rates, and NEA Electricity Bill."
   },
@@ -18,13 +18,13 @@
     "logoImage": "/nepal-flag.svg"
   },
   "contact": {
-    "email": "contact@nepalcalc.com",
-    "supportEmail": "support@nepalcalc.com"
+    "email": "contact@nepalicalc.com",
+    "supportEmail": "support@nepalicalc.com"
   },
   "social": {
-    "twitter": "https://twitter.com/nepalcalc",
-    "facebook": "https://facebook.com/nepalcalc",
-    "github": "https://github.com/nepalcalc"
+    "twitter": "https://twitter.com/nepalicalc",
+    "facebook": "https://facebook.com/nepalicalc",
+    "github": "https://github.com/nepalicalc"
   },
   "seo": {
     "titleTemplate": "%s | Nepali Calc",

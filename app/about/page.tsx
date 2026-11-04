@@ -284,7 +284,7 @@ export default function AboutPage() {
           </p>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '10px 20px', borderRadius: '12px', backgroundColor: '#f1f5f9', fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>
             <span>Email us:</span>
-            <a href="mailto:contact@nepalcalc.com" style={{ color: '#003893', textDecoration: 'none' }}>contact@nepalcalc.com</a>
+            <a href="mailto:contact@nepalicalc.com" style={{ color: '#003893', textDecoration: 'none' }}>contact@nepalicalc.com</a>
           </div>
         </div>
       </section>

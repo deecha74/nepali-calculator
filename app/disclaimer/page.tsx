@@ -17,7 +17,7 @@ import { constructMetadata } from '@/lib/seo/metadata';
 export const metadata: Metadata = constructMetadata({
   title: 'Disclaimer — Financial, Tax, Legal & Medical Accuracy Notice',
   description:
-    'Official legal, financial, tax, customs, stock market (NEPSE), and health calculation disclaimer for Nepali Calc (nepalcalc.com) →',
+    'Official legal, financial, tax, customs, stock market (NEPSE), and health calculation disclaimer for Nepali Calc (nepalicalc.com) →',
   path: '/disclaimer',
   keywords: [
     'nepali calc disclaimer',

@@ -331,11 +331,12 @@ export function Footer() {
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center' }}>
             <Link href="/tools" className="footer-link" style={{ fontWeight: 700, color: '#0f172a' }}>{t('All Tools Directory', 'सबै क्याल्कुलेटर सूची')}</Link>
             <Link href="/about" className="footer-link" style={{ fontWeight: 700, color: '#0f172a' }}>{t('About Us', 'हाम्रो बारेमा')}</Link>
+            <Link href="/contact" className="footer-link" style={{ fontWeight: 700, color: '#0f172a' }}>{t('Contact Us', 'सम्पर्क')}</Link>
             <Link href="/blog" className="footer-link" style={{ fontWeight: 700, color: '#003893' }}>{t('Blog & Guides', 'ब्लग तथा निर्देशिका')}</Link>
-            <Link href="/disclaimer" className="footer-link" style={{ fontWeight: 700, color: '#b91c1c' }}>{t('Disclaimer', 'अस्वीकरण')}</Link>
+            <Link href="/privacy-policy" className="footer-link">{t('Privacy Policy', 'गोपनीयता नीति')}</Link>
+            <Link href="/terms-of-service" className="footer-link">{t('Terms of Service', 'प्रयोगका सर्तहरू')}</Link>
+            <Link href="/disclaimer" className="footer-link">{t('Disclaimer', 'अस्वीकरण')}</Link>
             <Link href="/documents" className="footer-link">{t('Official Acts & Gazettes', 'सरकारी ऐन तथा राजपत्र')}</Link>
-            <Link href="/documents" className="footer-link">{t('Privacy Policy', 'गोपनीयता नीति')}</Link>
-            <Link href="/documents" className="footer-link">{t('Terms of Service', 'प्रयोगका सर्तहरू')}</Link>
             <Link href="/calendar" className="footer-link" style={{ color: '#003893', fontWeight: 700 }}>
               नेपाली पात्रो २०८३
             </Link>

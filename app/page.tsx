@@ -220,8 +220,8 @@ export default function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "NepalCalc — Smart All-in-One Calculators for Nepal",
-            "url": "https://nepalcalc.com",
+            "name": "Nepali Calc — Smart All-in-One Calculators for Nepal",
+            "url": "https://nepalicalc.com",
             "description": "Nepal's premier official online calculation suite: Income Tax, Land Unit Converter, Vehicle Bluebook Tax, Gold Rates, Driving License Written Exam, and Nepali Patro 2083.",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "All",
