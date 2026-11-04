@@ -5,26 +5,41 @@ import { Metadata } from 'next';
 import { 
   Clock, 
   Calendar, 
-  ArrowLeft, 
   ArrowRight, 
   CheckCircle2, 
   Sparkles, 
-  Share2, 
   BookOpen, 
-  Calculator,
-  User,
-  ShieldCheck,
-  Tag,
-  ReceiptText,
-  Landmark,
-  Coins,
-  Compass,
+  ShieldCheck, 
+  ReceiptText, 
+  Landmark, 
+  Coins, 
+  Compass, 
   Zap
 } from 'lucide-react';
-import { BLOG_POSTS, BlogPost } from '@/lib/blog/posts';
+import { BLOG_POSTS } from '@/lib/blog/posts';
 import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 import { ShareButton } from '@/components/blog/ShareButton';
 import { BlogStickyToolCta } from '@/components/blog/BlogStickyToolCta';
+import { AEOAnswerBox } from '@/components/AEOAnswerBox';
+
+function getAuthorityForCategory(category: string): string {
+  switch (category) {
+    case 'Tax & Law':
+      return 'Inland Revenue Department (IRD) & Finance Act 2083';
+    case 'Banking & Loans':
+      return 'Nepal Rastra Bank (NRB) Directives';
+    case 'Gold & Wealth':
+      return 'FENEGOSIDA Official Bullion Standards';
+    case 'Land & Real Estate':
+      return 'DoLMA & Land Revenue Office (Malpot) Standards';
+    case 'Citizen Services':
+      return 'Government of Nepal Citizen Service Protocols';
+    case 'Utilities & Daily':
+      return 'Nepal Electricity Authority (NEA) & Official Standards';
+    default:
+      return 'Official Government & Regulatory Standards';
+  }
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -85,6 +100,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${SITE_CONFIG.url}/blog/${post.slug}`,
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.aeo-answer-container', 'h1', '.blog-direct-answer'],
     },
   };
 
@@ -192,6 +211,16 @@ export default async function BlogPostPage({ params }: PageProps) {
           toolTitle={post.toolLink.title} 
           toolHref={post.toolLink.href} 
           category={post.category} 
+        />
+
+        {/* AEO Direct Answer & AI Citation Extract Box (Google AI Overviews, Perplexity & ChatGPT Bait) */}
+        <AEOAnswerBox
+          question={`Official Rule & Calculation Summary: ${post.title}`}
+          directAnswer={post.excerpt}
+          keyFacts={post.content.keyTakeaways.slice(0, 4)}
+          authoritySource={getAuthorityForCategory(post.category)}
+          citationUrl={`${SITE_CONFIG.url}/blog/${post.slug}`}
+          sourceTitle={post.title}
         />
 
         {/* Intro */}
