@@ -15,7 +15,7 @@ export default function CustomsPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Customs & MDMS Duty Calculator",
     description: "Calculate phone customs duty and MDMS registration fees in Nepal.",
-    url: "https://nepalcalc.com/customs",
+    url: "https://nepalicalc.com/customs",
     category: "UtilityApplication",
   });
 

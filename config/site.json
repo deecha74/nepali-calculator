@@ -1,12 +1,19 @@
 {
   "site": {
     "name": "Nepali Calc",
+    "alternateName": "Nepali Calculator",
     "fullName": "Nepali Calc — Smart All-in-One Calculators for Nepal",
     "tagline": "Smart All-in-One Calculators for Nepal",
     "domain": "nepalicalc.com",
     "url": "https://nepalicalc.com",
     "locale": "en_NP",
     "description": "Official online calculators for Nepal: Income Tax, Land Unit Converter, Vehicle Bluebook Tax & Fines, NEPSE Stock Fees, Loan EMI, Gold Rates, and NEA Electricity Bill."
+  },
+  "founder": {
+    "name": "Deepak Chalise",
+    "title": "Founder & Principal Architect",
+    "website": "https://deepakchalise.com.np",
+    "company": "Chalise Tech"
   },
   "logo": {
     "text": "Nepali Calc",

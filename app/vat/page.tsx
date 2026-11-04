@@ -15,7 +15,7 @@ export default function VatPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal 13% VAT & Service Charge Calculator",
     description: "Official 13% VAT and reverse VAT tax calculator for Nepal business and retail.",
-    url: "https://nepalcalc.com/vat",
+    url: "https://nepalicalc.com/vat",
     category: "FinancialApplication",
   });
 

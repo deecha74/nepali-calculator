@@ -24,7 +24,7 @@ export default function BatoKattaPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Land Road Deduction (Bato Katta) Calculator",
     description: "Calculate road area deduction, remaining net usable land, and real cost per Aana after road dedication.",
-    url: "https://nepalcalc.com/bato-katta",
+    url: "https://nepalicalc.com/bato-katta",
     category: "UtilityApplication",
   });
 

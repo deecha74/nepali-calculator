@@ -21,7 +21,7 @@ export default function BloodDonationPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Blood Donation Eligibility & Group Matcher",
     description: "Health tool calculating blood donation intervals and compatibility charts under Nepal Red Cross Society blood transfusion service guidelines.",
-    url: "https://nepalcalc.com/blood-donation",
+    url: "https://nepalicalc.com/blood-donation",
     category: "HealthApplication",
   });
 

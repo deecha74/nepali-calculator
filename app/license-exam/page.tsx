@@ -28,7 +28,7 @@ export default function LicenseExamPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Driving License Written Exam Practice",
     description: "Practice official DOTM 100-mark written test for motorcycle and car driving licenses.",
-    url: "https://nepalcalc.com/license-exam",
+    url: "https://nepalicalc.com/license-exam",
     category: "EducationalApplication",
   });
 

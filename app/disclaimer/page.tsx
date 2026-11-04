@@ -12,7 +12,7 @@ import {
   Info,
   ArrowRight,
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Disclaimer — Financial, Tax, Legal & Medical Accuracy Notice',
@@ -66,8 +66,20 @@ export default function DisclaimerPage() {
     },
   ];
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Disclaimer — Nepali Calc',
+    description: 'Disclaimer regarding financial, tax, legal and medical accuracy on Nepali Calc.',
+    url: `${SITE_CONFIG.url}/disclaimer`,
+  };
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero Banner */}
       <section
         style={{

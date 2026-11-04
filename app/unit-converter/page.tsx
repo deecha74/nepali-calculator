@@ -4,7 +4,7 @@ import { UniversalUnitConverter } from '@/components/calculators/UniversalUnitCo
 import { FAQAccordion } from '@/components/FAQAccordion';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Universal Unit Converter Nepal — Length, Weight (Dharni/Pau/Tola) & Temperature',
+  title: 'Universal Unit Converter Nepal (Length, Weight & Temperature)',
   description:
     'Convert metric and imperial units alongside traditional Nepali measurement units including Dharni (धार्नी), Pau (पाउ), Tola (तोला), and Haat (हात) →',
   path: '/unit-converter',

@@ -4,8 +4,8 @@ import { MalpotTaxCalculator } from '@/components/calculators/MalpotTaxCalculato
 import { FAQAccordion } from '@/components/FAQAccordion';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Nepal Land Malpot Registration & Capital Gains Tax Calculator (मालपोत लिखत तथा पूँजीगत लाभकर)",
-  description: "Calculate official land deed registration fees for buyers across all municipalities, 25% female ownership discount, and seller Capital Gains Tax (7.5% vs 10% CGT) in Nepal.",
+  title: "Malpot Land Registration Fee & CGT Calculator Nepal 2083",
+  description: "Calculate official land deed registration fees for buyers across all municipalities, 25% female ownership discount, and seller Capital Gains Tax in Nepal.",
   path: "/malpot",
   keywords: [
     "malpot tax calculator nepal",
@@ -23,7 +23,7 @@ export default function MalpotPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Land Malpot Registration & Capital Gains Tax Calculator",
     description: "Official calculator for Nepal land registration deed fees, female owner concessions, and seller capital gains tax under DoLMA guidelines.",
-    url: "https://nepalcalc.com/malpot",
+    url: "https://nepalicalc.com/malpot",
     category: "FinancialApplication",
   });
 

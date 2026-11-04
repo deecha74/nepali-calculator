@@ -21,7 +21,7 @@ export default function RentTaxPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal House Rent Tax Calculator",
     description: "Calculate 10% municipality house rent tax and net landlord earnings.",
-    url: "https://nepalcalc.com/rent-tax",
+    url: "https://nepalicalc.com/rent-tax",
     category: "FinanceApplication",
   });
 

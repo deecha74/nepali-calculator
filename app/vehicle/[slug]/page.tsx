@@ -3,10 +3,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Car, Bike, ShieldCheck, Check } from 'lucide-react';
 import { PROGRAMMATIC_VEHICLE_TAXES, ProgrammaticVehicleTax } from '@/lib/rates/programmaticVehicles';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { VehicleTaxCalculator } from '@/components/calculators/VehicleTaxCalculator';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_VEHICLE_TAXES.map((v) => ({
@@ -46,7 +48,7 @@ export default async function ProgrammaticVehiclePage({
   const schema = generateWebApplicationSchema({
     name: `${item.name} Bluebook Road Tax Calculator`,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/vehicle/${item.slug}`,
+    url: `${SITE_CONFIG.url}/vehicle/${item.slug}`,
     category: "UtilityApplication",
   });
 

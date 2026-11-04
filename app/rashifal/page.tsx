@@ -24,13 +24,13 @@ export default function RashifalPage() {
   const schema = generateWebApplicationSchema({
     name: "NepalCalc Daily Rashifal (दैनिक राशिफल)",
     description: "Daily Vedic astrological predictions, lucky numbers, colors, and planetary horoscopes for all 12 Rashi signs in Nepal.",
-    url: "https://nepalcalc.com/rashifal",
+    url: "https://nepalicalc.com/rashifal",
     category: "LifestyleApplication",
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://nepalcalc.com" },
-    { name: "दैनिक राशिफल", url: "https://nepalcalc.com/rashifal" },
+    { name: "Home", url: "https://nepalicalc.com" },
+    { name: "दैनिक राशिफल", url: "https://nepalicalc.com/rashifal" },
   ]);
 
   return (

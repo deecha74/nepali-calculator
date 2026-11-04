@@ -5,8 +5,8 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Nepal Corporate Tax & Section 94 Advance Tax Calculator 2083/84",
-  description: "Official corporate income tax calculator for Nepal companies, partnerships, and manufacturing industries. Calculate 20%, 25%, 30% corporate tax rates and Section 94 advance tax installments (Poush 40%, Chaitra 70%, Ashadh 100%).",
+  title: "Nepal Corporate Tax & Advance Tax Calculator FY 2083/84",
+  description: "Calculate corporate tax rates (20%, 25%, 30%) and Section 94 advance tax installments (Poush, Chaitra, Ashadh) for Nepal private limited companies and firms.",
   path: "/corporate-tax",
   keywords: [
     "corporate tax calculator nepal",
@@ -25,7 +25,7 @@ export default function CorporateTaxPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Corporate Tax & Advance Tax Calculator",
     description: "Official corporate income tax and Section 94 quarterly advance tax instalment schedule calculator for Nepal businesses.",
-    url: "https://nepalcalc.com/corporate-tax",
+    url: "https://nepalicalc.com/corporate-tax",
     category: "FinancialApplication",
   });
 

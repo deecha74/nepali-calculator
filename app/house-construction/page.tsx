@@ -24,7 +24,7 @@ export default function HouseConstructionPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal House Construction Cost & Materials Estimator",
     description: "Calculate building budget, labor costs, and material quantities for residential houses in Nepal.",
-    url: "https://nepalcalc.com/house-construction",
+    url: "https://nepalicalc.com/house-construction",
     category: "UtilityApplication",
   });
 

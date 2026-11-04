@@ -22,7 +22,7 @@ export default function PassportFeePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal e-Passport Fee Calculator",
     description: "Calculate official passport revenue fees for district and fast-track processing.",
-    url: "https://nepalcalc.com/passport-fee",
+    url: "https://nepalicalc.com/passport-fee",
     category: "GovernmentApplication",
   });
 

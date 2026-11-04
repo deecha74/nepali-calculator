@@ -17,7 +17,7 @@ import {
   Globe2,
   Users
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 import { NepalCalcLogo } from '@/components/NepalCalcLogo';
 
 export const metadata: Metadata = constructMetadata({
@@ -72,8 +72,36 @@ export default function AboutPage() {
     { number: "0", label: "Third-Party Data Sale", sub: "Committed to public service utility and education" }
   ];
 
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Nepali Calculator (Nepali Calc)',
+    description: 'Learn about Nepali Calculator, an engineering initiative by Chalise Tech founded by Deepak Chalise to provide accurate, client-side private, and officially verified calculators for Nepal.',
+    url: `${SITE_CONFIG.url}/about`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nepali Calculator',
+      alternateName: ['Nepali Calc', 'NepalCalc'],
+      url: SITE_CONFIG.url,
+      founder: {
+        '@type': 'Person',
+        name: 'Deepak Chalise',
+        jobTitle: 'Founder & Principal Architect',
+        url: 'https://deepakchalise.com.np',
+        sameAs: [
+          'https://chalisetech.com',
+          'https://github.com/deepakchalise',
+        ],
+      },
+    },
+  };
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       
       {/* Top Hero Section */}
       <section 
@@ -254,7 +282,7 @@ export default function AboutPage() {
                   Deepak Chalise
                 </h3>
                 <div style={{ fontSize: '13px', color: '#003893', fontWeight: 700, marginTop: '2px' }}>
-                  Founder & Principal Architect • Chalise Tech
+                  Founder & Principal Architect • Nepali Calculator / Chalise Tech
                 </div>
                 <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
                   <a href="https://deepakchalise.com.np" target="_blank" rel="noopener noreferrer" style={{ color: '#64748b', textDecoration: 'underline' }}>deepakchalise.com.np</a>

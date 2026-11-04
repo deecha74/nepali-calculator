@@ -15,7 +15,7 @@ export default function DatePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Date Converter & Age Finder",
     description: "Convert between Bikram Sambat and Gregorian calendar dates and find exact age.",
-    url: "https://nepalcalc.com/date",
+    url: "https://nepalicalc.com/date",
     category: "UtilityApplication",
   });
 

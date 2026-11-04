@@ -9,7 +9,7 @@ import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
-const CONTENT_LAST_MODIFIED = new Date('2026-10-30');
+const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -99,6 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/scientific-calculator',
       '/statistics-calculator',
       '/tools',
+      '/malpot',
       '/disclaimer',
       '/privacy-policy',
       '/terms-of-service',

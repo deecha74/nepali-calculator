@@ -3,11 +3,13 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, TrendingUp, Sparkles, ShieldCheck } from 'lucide-react';
 import { PROGRAMMATIC_SIP_SCENARIOS, ProgrammaticSipScenario } from '@/lib/rates/programmaticSip';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { SipCalculator } from '@/components/calculators/SipCalculator';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 import { calculateSip } from '@/lib/rates/sipRates';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_SIP_SCENARIOS.map((item) => ({
@@ -51,7 +53,7 @@ export default async function ProgrammaticSipPage({
   const schema = generateWebApplicationSchema({
     name: `SIP of NPR ${item.monthlyAmount.toLocaleString()} Per Month Calculator Nepal`,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/sip/${item.slug}`,
+    url: `${SITE_CONFIG.url}/sip/${item.slug}`,
     category: "FinanceApplication",
   });
 

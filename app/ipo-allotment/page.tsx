@@ -21,7 +21,7 @@ export default function IpoAllotmentPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal IPO Allotment Probability Calculator",
     description: "Calculate 10 kitta lottery allotment probability and oversubscription ratio for Nepal shares.",
-    url: "https://nepalcalc.com/ipo-allotment",
+    url: "https://nepalicalc.com/ipo-allotment",
     category: "FinanceApplication",
   });
 

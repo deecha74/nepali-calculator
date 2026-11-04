@@ -22,7 +22,7 @@ export default function SipPage() {
   const schema = generateWebApplicationSchema({
     name: "SIP Calculator Nepal",
     description: "Online Systematic Investment Plan (SIP) and open-ended mutual fund maturity calculator for Nepal.",
-    url: "https://nepalcalc.com/sip",
+    url: "https://nepalicalc.com/sip",
     category: "FinanceApplication",
   });
 

@@ -24,7 +24,7 @@ export default function MomoCaloriePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Momo Calorie & Nutrition Counter",
     description: "Calculates calories, protein, carbohydrates, and fat for Nepali momos (steamed, fried, kothey, c-momo, jhol) and exercise burn-off times.",
-    url: "https://nepalcalc.com/momo-calorie",
+    url: "https://nepalicalc.com/momo-calorie",
     category: "HealthApplication",
   });
 

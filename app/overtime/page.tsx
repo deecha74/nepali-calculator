@@ -21,7 +21,7 @@ export default function OvertimePage() {
   const schema = generateWebApplicationSchema({
     name: "Overtime (OT) Calculator Nepal",
     description: "Calculates employee overtime payment and hourly basic wage under Nepal Labour Act 2074.",
-    url: "https://nepalcalc.com/overtime",
+    url: "https://nepalicalc.com/overtime",
     category: "FinanceApplication",
   });
 

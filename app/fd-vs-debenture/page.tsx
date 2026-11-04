@@ -21,7 +21,7 @@ export default function FdVsDebenturePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal FD vs Debenture Yield Calculator",
     description: "Financial calculator comparing bank fixed deposit interest rates with corporate debentures under Nepal Rastra Bank regulations.",
-    url: "https://nepalcalc.com/fd-vs-debenture",
+    url: "https://nepalicalc.com/fd-vs-debenture",
     category: "FinanceApplication",
   });
 

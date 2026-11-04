@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { ArrowLeft, Sparkles, TrendingUp, CheckCircle, Scale, Coins, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PROGRAMMATIC_GOLD_ITEMS, ProgrammaticGoldItem } from '@/lib/rates/programmaticGold';
 import { DEFAULT_GOLD_RATES } from '@/lib/rates/goldRates';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { GoldCalculator } from '@/components/calculators/GoldCalculator';
 import { LiveGoldQuickAnswer } from '@/components/gold/LiveGoldQuickAnswer';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_GOLD_ITEMS.map((item) => ({
@@ -48,22 +50,9 @@ export default async function ProgrammaticGoldPage({
   const schema = generateWebApplicationSchema({
     name: item.title,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/gold/${item.slug}`,
+    url: `${SITE_CONFIG.url}/gold/${item.slug}`,
     category: "FinanceApplication",
   });
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: item.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
 
   const otherItems = PROGRAMMATIC_GOLD_ITEMS.filter((g) => g.slug !== item.slug);
 
@@ -77,10 +66,6 @@ export default async function ProgrammaticGoldPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Breadcrumb & Navigation */}

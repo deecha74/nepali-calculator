@@ -24,7 +24,7 @@ export default function NepsePage() {
   const schema = generateWebApplicationSchema({
     name: "NEPSE Share Market Calculator",
     description: "Accurate NEPSE share profit, broker commission, and capital gains tax calculator.",
-    url: "https://nepalcalc.com/nepse",
+    url: "https://nepalicalc.com/nepse",
     category: "FinancialApplication",
   });
 

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Check, Sparkles, Scale } from 'lucide-react';
 import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
-import { constructMetadata, generateWebApplicationSchema, generateFaqSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { TraditionalUnitsConverter } from '@/components/calculators/TraditionalUnitsConverter';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
@@ -11,6 +11,8 @@ import { AdBanner } from '@/components/AdBanner';
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_TRADITIONAL_UNITS.map((item) => ({
@@ -42,21 +44,15 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
   const schema = generateWebApplicationSchema({
     name: item.title,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/traditional-units/${item.slug}`,
+    url: `${SITE_CONFIG.url}/traditional-units/${item.slug}`,
     category: "UtilityApplication",
   });
-
-  const faqSchema = generateFaqSchema(item.faqs);
 
   return (
     <div className="calculator-page-container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Navigation Breadcrumb */}

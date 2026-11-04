@@ -5,8 +5,8 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Nepal Tax Depreciation Calculator (Schedule 2) — WDV Asset Pool & 7% Repairs",
-  description: "Official tax depreciation calculator under Nepal Income Tax Act 2058 Schedule 2. Calculate WDV for Blocks A (5%), B (25%), C (20%), D (15%), and E with 3-tier timing absorption (3/3, 2/3, 1/3) and Section 16 repairs limit.",
+  title: "Nepal Tax Depreciation Calculator (Schedule 2 WDV Blocks)",
+  description: "Calculate tax depreciation under Nepal Income Tax Act Schedule 2. Supports WDV Blocks A, B, C, D, timing absorption (3/3, 2/3, 1/3) and 7% repairs limit.",
   path: "/depreciation",
   keywords: [
     "nepal depreciation calculator",
@@ -25,7 +25,7 @@ export default function DepreciationPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Tax Depreciation Calculator",
     description: "Official Written Down Value (WDV) Block Depreciation and Section 16 Repairs calculator under Nepal Income Tax Act Schedule 2.",
-    url: "https://nepalcalc.com/depreciation",
+    url: "https://nepalicalc.com/depreciation",
     category: "FinancialApplication",
   });
 

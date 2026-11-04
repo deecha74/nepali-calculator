@@ -23,7 +23,7 @@ export default function BulkDatePage() {
   const schema = generateWebApplicationSchema({
     name: "Bulk Nepali Date Converter (Excel Copy-Paste)",
     description: "Converts columns of Nepali Bikram Sambat (BS) dates to Gregorian (AD) and vice-versa for Microsoft Excel and spreadsheets.",
-    url: "https://nepalcalc.com/date/bulk",
+    url: "https://nepalicalc.com/date/bulk",
     category: "UtilityApplication",
   });
 

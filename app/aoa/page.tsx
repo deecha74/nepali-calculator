@@ -20,7 +20,7 @@ export default function Page() {
   const schema = generateWebApplicationSchema({
     name: 'AOA Generator Nepal',
     description: 'Create a Nepali Articles of Association for a private limited company.',
-    url: 'https://nepalcalc.com/aoa',
+    url: 'https://nepalicalc.com/aoa',
     category: 'BusinessApplication',
   });
   return (

@@ -22,7 +22,7 @@ export default function NocTaxPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Abroad Study NOC & 3% Education Tax Calculator",
     description: "Calculate 3% foreign education tax and MOEST NOC fees for university tuition remittances.",
-    url: "https://nepalcalc.com/noc-tax",
+    url: "https://nepalicalc.com/noc-tax",
     category: "FinanceApplication",
   });
 

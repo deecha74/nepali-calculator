@@ -38,7 +38,7 @@ export default function LandPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Land Measurement Converter",
     description: "Official Nepal land measurement converter across Ropani and Bigha systems.",
-    url: "https://nepalcalc.com/land",
+    url: "https://nepalicalc.com/land",
     category: "UtilityApplication",
   });
 

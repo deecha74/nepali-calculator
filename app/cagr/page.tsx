@@ -10,7 +10,7 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'CAGR Calculator Nepal — Compound Annual Growth Rate & Investment Return',
+  title: 'CAGR Calculator Nepal — Compound Annual Growth Rate (Return %)',
   description:
     'Calculate exact Compound Annual Growth Rate (CAGR %), absolute return %, and Rule of 72 doubling years for NEPSE stocks, land, gold & mutual funds in Nepal →',
   path: '/cagr',

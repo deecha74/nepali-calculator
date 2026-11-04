@@ -23,7 +23,7 @@ export default function NumberToWordsPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Number to Words Converter",
     description: "Online currency amount number to words converter for bank cheques and invoices in Nepal.",
-    url: "https://nepalcalc.com/number-to-words",
+    url: "https://nepalicalc.com/number-to-words",
     category: "FinanceApplication",
   });
 

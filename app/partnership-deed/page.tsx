@@ -20,7 +20,7 @@ export default function Page() {
   const schema = generateWebApplicationSchema({
     name: 'Partnership Deed Generator Nepal',
     description: 'Create a print-ready Nepali partnership deed online.',
-    url: 'https://nepalcalc.com/partnership-deed',
+    url: 'https://nepalicalc.com/partnership-deed',
     category: 'BusinessApplication',
   });
   return (

@@ -24,7 +24,7 @@ export default function RightSharePage() {
   const schema = generateWebApplicationSchema({
     name: "NEPSE Right Share & Bonus Adjustment Calculator",
     description: "Calculate theoretical stock price adjustment and dividend tax on the Nepal Stock Exchange (NEPSE).",
-    url: "https://nepalcalc.com/right-share",
+    url: "https://nepalicalc.com/right-share",
     category: "FinancialApplication",
   });
 

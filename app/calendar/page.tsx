@@ -29,7 +29,7 @@ export default function CalendarPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Patro & Detailed Bikram Sambat Calendar",
     description: "Official interactive Nepali Calendar with Tithi, Panchanga, Sunday & Saturday holidays, and festival almanac.",
-    url: "https://nepalcalc.com/calendar",
+    url: "https://nepalicalc.com/calendar",
     category: "UtilityApplication",
   });
 

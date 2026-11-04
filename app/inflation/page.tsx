@@ -21,7 +21,7 @@ export default function InflationPage() {
   const schema = generateWebApplicationSchema({
     name: "Inflation Calculator Nepal",
     description: "Calculates purchasing power erosion and future money equivalents under Nepal Rastra Bank inflation benchmarks.",
-    url: "https://nepalcalc.com/inflation",
+    url: "https://nepalicalc.com/inflation",
     category: "FinanceApplication",
   });
 

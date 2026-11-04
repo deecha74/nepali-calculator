@@ -24,7 +24,7 @@ export default function PreetiPage() {
   const schema = generateWebApplicationSchema({
     name: "Preeti to Unicode Converter Nepal",
     description: "Online fast bidirectional Preeti to Unicode font converter for Nepal.",
-    url: "https://nepalcalc.com/preeti",
+    url: "https://nepalicalc.com/preeti",
     category: "UtilityApplication",
   });
 

@@ -15,7 +15,7 @@ export default function InterestPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Byaj & Fixed Deposit Calculator",
     description: "Calculate local interest and bank fixed deposits in Nepal.",
-    url: "https://nepalcalc.com/interest",
+    url: "https://nepalicalc.com/interest",
     category: "FinancialApplication",
   });
 

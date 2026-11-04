@@ -5,8 +5,8 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Nepal TDS & Withholding Tax Calculator 2083/84 — Forward & Reverse Gross-Up",
-  description: "Official TDS calculator for Nepal under Income Tax Act 2058. Calculate tax deducted at source for house rent (10%), consultancy (1.5%/15%), freight (2.5%), contracts (1.5%), and reverse gross-up payments.",
+  title: "Nepal TDS & Withholding Tax Calculator (FY 2083/84 Slabs)",
+  description: "Calculate Nepal TDS for house rent (10%), consultancy (1.5%/15%), freight (2.5%), and reverse gross-up under the Income Tax Act.",
   path: "/tds",
   keywords: [
     "nepal tds calculator",
@@ -26,7 +26,7 @@ export default function TdsPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal TDS & Withholding Tax Calculator",
     description: "Official Nepal Tax Deducted at Source (TDS) and Withholding Tax calculation utility for businesses, accountants, and taxpayers.",
-    url: "https://nepalcalc.com/tds",
+    url: "https://nepalicalc.com/tds",
     category: "FinancialApplication",
   });
 

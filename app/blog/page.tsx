@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
+import { BLOG_POSTS } from '@/lib/blog/posts';
 import { BlogIndexClient } from '@/components/blog/BlogIndexClient';
 
 export const metadata: Metadata = constructMetadata({
@@ -18,5 +19,33 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function BlogPage() {
-  return <BlogIndexClient />;
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Nepali Calc Financial Guides & Law Directory',
+    description: 'Official guides and in-depth articles on Nepal Income Tax, Gold billing, Bank Loans, and Land Area calculations.',
+    url: `${SITE_CONFIG.url}/blog`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nepali Calc',
+      url: SITE_CONFIG.url,
+    },
+    blogPost: BLOG_POSTS.slice(0, 20).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      url: `${SITE_CONFIG.url}/blog/${post.slug}`,
+      datePublished: post.publishedDate,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <BlogIndexClient />
+    </>
+  );
 }

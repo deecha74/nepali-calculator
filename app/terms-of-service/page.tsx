@@ -10,7 +10,7 @@ import {
   Gavel,
   ArrowRight,
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Terms of Service — Conditions of Use & Legal Agreement',
@@ -63,8 +63,20 @@ export default function TermsOfServicePage() {
     },
   ];
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Terms of Service — Nepali Calc',
+    description: 'Terms of Service and Conditions of Use for Nepali Calc.',
+    url: `${SITE_CONFIG.url}/terms-of-service`,
+  };
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero Banner */}
       <section
         style={{

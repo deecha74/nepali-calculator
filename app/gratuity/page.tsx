@@ -15,7 +15,7 @@ export default function GratuityPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Labour Act Gratuity Calculator",
     description: "Calculate retirement gratuity and separation payouts in Nepal.",
-    url: "https://nepalcalc.com/gratuity",
+    url: "https://nepalicalc.com/gratuity",
     category: "FinancialApplication",
   });
 

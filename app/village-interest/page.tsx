@@ -24,7 +24,7 @@ export default function VillageInterestPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Village Sahu Byaj & Sayakada Interest Calculator",
     description: "Calculate traditional Nepali village lending interest between Bikram Sambat dates.",
-    url: "https://nepalcalc.com/village-interest",
+    url: "https://nepalicalc.com/village-interest",
     category: "FinancialApplication",
   });
 

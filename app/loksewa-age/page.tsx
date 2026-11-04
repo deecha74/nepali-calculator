@@ -25,7 +25,7 @@ export default function LokSewaAgePage() {
   const schema = generateWebApplicationSchema({
     name: "Lok Sewa Age & Eligibility Calculator Nepal",
     description: "Calculates candidate age and verifies Public Service Commission (Lok Sewa Aayog) vacancy eligibility based on DOB and application deadline.",
-    url: "https://nepalcalc.com/loksewa-age",
+    url: "https://nepalicalc.com/loksewa-age",
     category: "EducationalApplication",
   });
 

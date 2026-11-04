@@ -57,7 +57,7 @@ export function ParallaxMountainBackground() {
           bottom: '-80px',
           y,
           scale,
-          backgroundImage: 'url(/himalayan-mountains-parallax.jpg)',
+          backgroundImage: 'url(/himalayan-mountains-parallax.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 20%',
           backgroundRepeat: 'no-repeat',

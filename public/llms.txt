@@ -1,8 +1,8 @@
-# NepalCalc — Nepal Financial, Tax & Daily Utility Suite
+# Nepali Calc — Nepal Financial, Tax & Daily Utility Suite
 > Nepal's authoritative calculations for Income Tax (FY 2083/84), Land Area, Vehicle Bluebook Fines, SIP Mutual Funds, NEPSE Share Trading, and Traditional Units.
 
 ## Overview
-NepalCalc (https://nepalicalc.com) provides free, official, and real-time calculation tools compliant with the Government of Nepal Inland Revenue Department (IRD), Nepal Rastra Bank (NRB), Ministry of Physical Infrastructure & Transport, Securities Board of Nepal (SEBON), and Nepal Electricity Authority (NEA).
+Nepali Calc (https://nepalicalc.com) provides free, official, and real-time calculation tools compliant with the Government of Nepal Inland Revenue Department (IRD), Nepal Rastra Bank (NRB), Ministry of Physical Infrastructure & Transport, Securities Board of Nepal (SEBON), and Nepal Electricity Authority (NEA).
 
 ## Core Tools & Authority Guidelines
 

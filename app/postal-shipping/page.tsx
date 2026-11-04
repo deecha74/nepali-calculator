@@ -21,7 +21,7 @@ export default function PostalShippingPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Post & EMS Parcel Shipping Calculator",
     description: "Official postal tariff calculator for General Post Office Nepal (GPO) and international Express Mail Service.",
-    url: "https://nepalcalc.com/postal-shipping",
+    url: "https://nepalicalc.com/postal-shipping",
     category: "UtilitiesApplication",
   });
 

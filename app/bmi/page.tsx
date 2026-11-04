@@ -22,7 +22,7 @@ export default function BmiPage() {
   const schema = generateWebApplicationSchema({
     name: "BMI & Ideal Weight Calculator Nepal",
     description: "Calculates Body Mass Index (BMI) using WHO South Asian health thresholds.",
-    url: "https://nepalcalc.com/bmi",
+    url: "https://nepalicalc.com/bmi",
     category: "HealthApplication",
   });
 

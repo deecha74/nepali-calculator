@@ -10,7 +10,7 @@ import {
   Building2,
   ArrowRight,
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Contact Us — Feedback, Tariff Updates & Support | Nepali Calc',
@@ -26,8 +26,32 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function ContactPage() {
+  const contactSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Nepali Calc',
+    description: 'Contact Nepali Calc team for feedback, suggestions, and tax rate updates.',
+    url: `${SITE_CONFIG.url}/contact`,
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Nepali Calc',
+      url: SITE_CONFIG.url,
+      email: 'contact@nepalicalc.com',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: 'contact@nepalicalc.com',
+        availableLanguage: ['English', 'Nepali'],
+      },
+    },
+  };
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
       {/* Hero Banner */}
       <section
         style={{

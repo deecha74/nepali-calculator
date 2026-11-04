@@ -20,7 +20,7 @@ export default function BatteryBackupPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Inverter & Battery Backup Calculator",
     description: "Calculate runtime hours of 12V tubular inverter and solar batteries under typical household watt loads.",
-    url: "https://nepalcalc.com/battery-backup",
+    url: "https://nepalicalc.com/battery-backup",
     category: "UtilitiesApplication",
   });
 

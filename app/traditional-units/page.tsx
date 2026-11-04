@@ -34,7 +34,7 @@ export default function TraditionalUnitsPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Traditional Units Converter",
     description: "Convert traditional Nepali weights and volumes to metric kilograms and liters.",
-    url: "https://nepalcalc.com/traditional-units",
+    url: "https://nepalicalc.com/traditional-units",
     category: "UtilityApplication",
   });
 

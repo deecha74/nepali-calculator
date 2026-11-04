@@ -39,7 +39,7 @@ import {
   BatteryCharging,
   Globe,
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = constructMetadata({
   title: 'All Calculators & Tools Directory — Complete A–Z Nepal Tool Index',
@@ -217,8 +217,29 @@ export default function AllToolsDirectoryPage() {
     },
   ];
 
+  const toolsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'All Calculators & Tools Directory — Nepali Calc',
+    description: 'Complete categorized directory of 72+ Nepal tax, banking, gold, land, NEPSE, construction, health, and citizen tools.',
+    url: `${SITE_CONFIG.url}/tools`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: groups.flatMap((g) => g.items).map((item, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: item.label,
+        url: `${SITE_CONFIG.url}${item.href}`,
+      })),
+    },
+  };
+
   return (
     <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', padding: 'clamp(28px, 4vw, 48px) 20px 80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolsSchema) }}
+      />
       <div className="container" style={{ maxWidth: '1140px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: '26px' }}>

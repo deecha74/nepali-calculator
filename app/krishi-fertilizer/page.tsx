@@ -21,7 +21,7 @@ export default function KrishiFertilizerPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Agriculture Fertilizer & Seed Calculator",
     description: "Crop fertilizer recommendation tool according to Nepal Agricultural Research Council (NARC) standards.",
-    url: "https://nepalcalc.com/krishi-fertilizer",
+    url: "https://nepalicalc.com/krishi-fertilizer",
     category: "UtilitiesApplication",
   });
 

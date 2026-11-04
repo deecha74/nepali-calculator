@@ -5,8 +5,8 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Nepali Age Calculator — Exact BS Age in Years, Months & Days (वि.सं. उमेर क्याल्कुलेटर)",
-  description: "Calculate your exact age from Bikram Sambat (वि.सं.) birthdate in years, months, and days. Check upcoming birthday countdown and eligibility for Loksewa, citizenship, and driving license.",
+  title: "Nepali Age Calculator (BS & AD) — Exact Age in Years & Days",
+  description: "Calculate your exact age from Bikram Sambat (वि.सं.) birthdate in years, months, and days. Check upcoming birthday countdown and Loksewa eligibility.",
   path: "/age",
   keywords: [
     "nepali age calculator",
@@ -24,7 +24,7 @@ export default function AgePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Bikram Sambat Exact Age Calculator",
     description: "Calculate exact age in years, months, and days from Bikram Sambat date of birth with government eligibility checks.",
-    url: "https://nepalcalc.com/age",
+    url: "https://nepalicalc.com/age",
     category: "UtilityApplication",
   });
 

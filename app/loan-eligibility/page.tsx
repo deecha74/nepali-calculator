@@ -22,7 +22,7 @@ export default function LoanEligibilityPage() {
   const schema = generateWebApplicationSchema({
     name: "Bank Loan Eligibility Calculator Nepal",
     description: "Calculates maximum allowable borrowing and loan pre-approval under Nepal Rastra Bank DSTI directives.",
-    url: "https://nepalcalc.com/loan-eligibility",
+    url: "https://nepalicalc.com/loan-eligibility",
     category: "FinanceApplication",
   });
 

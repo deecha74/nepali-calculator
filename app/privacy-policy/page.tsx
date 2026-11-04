@@ -11,7 +11,7 @@ import {
   Mail,
   ArrowRight,
 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo/metadata';
+import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Privacy Policy — Cookie, AdSense & Data Protection Policy',
@@ -65,8 +65,20 @@ export default function PrivacyPolicyPage() {
     },
   ];
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Privacy Policy — Nepali Calc',
+    description: 'Privacy Policy of Nepali Calc covering client-side calculation privacy, cookies, and analytics.',
+    url: `${SITE_CONFIG.url}/privacy-policy`,
+  };
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '80px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       {/* Hero Header */}
       <section
         style={{

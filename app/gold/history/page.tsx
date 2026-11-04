@@ -27,7 +27,7 @@ export default function GoldHistoryPage() {
   const schema = generateWebApplicationSchema({
     name: "100-Year Gold Price History & Return Comparison Nepal",
     description: "Compare today's live gold rate with historical gold rates up to 100 years ago in Nepal. Calculate CAGR, multiplier, and historical profits.",
-    url: "https://nepalcalc.com/gold/history",
+    url: "https://nepalicalc.com/gold/history",
     category: "FinanceApplication",
   });
 

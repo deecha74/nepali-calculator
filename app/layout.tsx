@@ -35,18 +35,18 @@ export const metadata: Metadata = {
     siteName: "Nepali Calc",
     images: [
       {
-        url: `${SITE_CONFIG.url}/hero-calc-3d.jpg`,
+        url: `${SITE_CONFIG.url}/hero-calc-3d.webp`,
         width: 1200,
         height: 630,
-        alt: "NepalCalc — Smart All-in-One Calculators for Nepal",
+        alt: "Nepali Calc — Smart All-in-One Calculators for Nepal",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NepalCalc — Smart All-in-One Calculators for Nepal",
+    title: "Nepali Calc — Smart All-in-One Calculators for Nepal",
     description: SITE_CONFIG.description,
-    images: [`${SITE_CONFIG.url}/hero-calc-3d.jpg`],
+    images: [`${SITE_CONFIG.url}/hero-calc-3d.webp`],
   },
   robots: {
     index: true,
@@ -73,9 +73,16 @@ const rootSchema = {
       "@type": "Organization",
       "@id": `${SITE_CONFIG.url}/#organization`,
       "name": SITE_CONFIG.shortName,
+      "alternateName": ["Nepali Calculator", "NepalCalc"],
       "url": SITE_CONFIG.url,
-      "logo": `${SITE_CONFIG.url}/hero-calc-3d.jpg`,
+      "logo": `${SITE_CONFIG.url}/hero-calc-3d.webp`,
       "description": SITE_CONFIG.description,
+      "founder": {
+        "@type": "Person",
+        "name": "Deepak Chalise",
+        "jobTitle": "Founder & Principal Architect",
+        "url": "https://deepakchalise.com.np"
+      },
     },
     {
       "@type": "WebSite",

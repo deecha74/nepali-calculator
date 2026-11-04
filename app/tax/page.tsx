@@ -28,7 +28,7 @@ export default function TaxPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Income Tax Calculator",
     description: "Official Nepal salary and income tax calculator for individuals and couples.",
-    url: "https://nepalcalc.com/tax",
+    url: "https://nepalicalc.com/tax",
     category: "FinancialApplication",
   });
 

@@ -9,8 +9,8 @@ import { AdBanner } from '@/components/AdBanner';
 import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 
 export const metadata: Metadata = constructMetadata({
-  title: "Price of Gold in Nepal Today (सुनको भाउ) — 24K, 22K & Jewelry Calculator",
-  description: "Live price of gold in Nepal today per tola, 1 lal, and 10 grams per official FENEGOSIDA rates. Calculate 24K Hallmark & 22K Tejabi jewelry cost with making charge (ज्याला) and jarti (जर्ती).",
+  title: "Price of Gold in Nepal Today (सुनको भाउ) — 24K, 22K Live Rates",
+  description: "Live gold price in Nepal today per tola, 1 lal & 10 grams (FENEGOSIDA). Calculate 24K & 22K jewelry costs with making charges (ज्याला) and jarti (जर्ती).",
   path: "/gold",
   keywords: [
     "price of gold in nepal",
@@ -40,7 +40,7 @@ export default function GoldPage() {
   const schema = generateWebApplicationSchema({
     name: "Price of Gold in Nepal Today & Jewelry Calculator",
     description: "Check today's gold price in Nepal per tola, 1 lal, and 10 grams. Calculate 24K Hallmark and 22K Tejabi jewelry prices with labor and wastage charges.",
-    url: "https://nepalcalc.com/gold",
+    url: "https://nepalicalc.com/gold",
     category: "FinanceApplication",
   });
 

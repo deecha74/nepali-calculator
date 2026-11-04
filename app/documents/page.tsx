@@ -23,13 +23,13 @@ export default function DocumentsPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Government Official Documents & Acts Reader",
     description: "Official interactive reader for Nepal Finance Acts, Labour Acts, and Departmental Circulars.",
-    url: "https://nepalcalc.com/documents",
+    url: "https://nepalicalc.com/documents",
     category: "GovernmentApplication",
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://nepalcalc.com" },
-    { name: "Official Documents", url: "https://nepalcalc.com/documents" },
+    { name: "Home", url: "https://nepalicalc.com" },
+    { name: "Official Documents", url: "https://nepalicalc.com/documents" },
   ]);
 
   return (

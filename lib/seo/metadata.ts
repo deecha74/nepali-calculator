@@ -45,7 +45,7 @@ export function constructMetadata({
       siteName: SITE_CONFIG.name,
       images: [
         {
-          url: `${SITE_CONFIG.url}/hero-calc-3d.jpg`,
+          url: `${SITE_CONFIG.url}/hero-calc-3d.webp`,
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -56,8 +56,8 @@ export function constructMetadata({
       card: "summary_large_image",
       title: metaTitle,
       description: metaDesc,
-      creator: "@nepalcalc",
-      images: [`${SITE_CONFIG.url}/hero-calc-3d.jpg`],
+      creator: "@nepalicalc",
+      images: [`${SITE_CONFIG.url}/hero-calc-3d.webp`],
     },
     robots: {
       index: true,

@@ -179,7 +179,7 @@ export function NepalPatroHero() {
       {/* Full Colored Panorama Background: Everest, River & Kathmandu City */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image
-          src="/nepal-hero-panorama.jpg"
+          src="/nepal-hero-panorama.webp"
           alt="Mount Everest, Himalayan River, and Kathmandu City"
           fill
           priority

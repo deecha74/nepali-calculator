@@ -20,7 +20,7 @@ export default function Page() {
   const schema = generateWebApplicationSchema({
     name: 'Rent Agreement Generator Nepal',
     description: 'Create a print-ready Nepali rent agreement online.',
-    url: 'https://nepalcalc.com/rent-agreement',
+    url: 'https://nepalicalc.com/rent-agreement',
     category: 'BusinessApplication',
   });
   return (

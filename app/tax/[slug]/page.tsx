@@ -3,10 +3,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Wallet, CheckCircle2, ShieldCheck, TrendingDown, ArrowRight } from 'lucide-react';
 import { PROGRAMMATIC_SALARY_TAXES, ProgrammaticSalaryTax } from '@/lib/rates/programmaticTax';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { IncomeTaxCalculator } from '@/components/calculators/IncomeTaxCalculator';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_SALARY_TAXES.map((item) => ({
@@ -46,7 +48,7 @@ export default async function ProgrammaticSalaryTaxPage({
   const schema = generateWebApplicationSchema({
     name: `Tax on NPR ${item.monthlySalary.toLocaleString()} Salary Calculator Nepal`,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/tax/${item.slug}`,
+    url: `${SITE_CONFIG.url}/tax/${item.slug}`,
     category: "FinanceApplication",
   });
 

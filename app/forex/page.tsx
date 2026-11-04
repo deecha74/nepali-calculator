@@ -15,7 +15,7 @@ export default function ForexPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Forex & Remittance Currency Converter",
     description: "Convert global remittances to Nepali Rupees with official exchange rates.",
-    url: "https://nepalcalc.com/forex",
+    url: "https://nepalicalc.com/forex",
     category: "FinancialApplication",
   });
 

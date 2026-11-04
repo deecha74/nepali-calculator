@@ -22,7 +22,7 @@ export default function KhanepaniPage() {
   const schema = generateWebApplicationSchema({
     name: "Drinking Water (Khanepani) Bill Calculator Nepal",
     description: "Calculates piped drinking water and sewerage tariffs for KUKL and Nepal Water Supply.",
-    url: "https://nepalcalc.com/khanepani",
+    url: "https://nepalicalc.com/khanepani",
     category: "UtilityApplication",
   });
 

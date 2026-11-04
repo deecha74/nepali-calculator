@@ -21,7 +21,7 @@ export default function TypingTestPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepali Typing Speed Test (WPM Calculator)",
     description: "Online typing speed and accuracy testing tool benchmarked to Nepal Public Service Commission (Loksewa Aayog) standards.",
-    url: "https://nepalcalc.com/typing-test",
+    url: "https://nepalicalc.com/typing-test",
     category: "EducationalApplication",
   });
 

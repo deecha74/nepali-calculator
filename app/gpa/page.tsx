@@ -31,7 +31,7 @@ export default function GpaPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal SEE & +2 GPA Calculator",
     description: "Calculate official NEB board examination GPA and percentage in Nepal.",
-    url: "https://nepalcalc.com/gpa",
+    url: "https://nepalicalc.com/gpa",
     category: "EducationApplication",
   });
 

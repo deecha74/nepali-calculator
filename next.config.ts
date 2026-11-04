@@ -84,6 +84,52 @@ const nextConfig: NextConfig = {
         destination: "https://nepalicalc.com/:path*",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "nepalcalc.com",
+          },
+        ],
+        destination: "https://nepalicalc.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "header",
+            key: "x-forwarded-host",
+            value: "nepalcalc.com",
+          },
+        ],
+        destination: "https://nepalicalc.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.nepalcalc.com",
+          },
+        ],
+        destination: "https://nepalicalc.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "header",
+            key: "x-forwarded-host",
+            value: "www.nepalcalc.com",
+          },
+        ],
+        destination: "https://nepalicalc.com/:path*",
+        permanent: true,
+      },
     ];
   },
   async headers() {

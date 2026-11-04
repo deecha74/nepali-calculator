@@ -23,7 +23,7 @@ export default function CitizenshipAgePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Citizenship 16-Year Age Calculator & Checklist",
     description: "Calculates candidate 16-year eligibility date for Nepali citizenship certificate and provides the official District Administration Office (DAO) document checklist.",
-    url: "https://nepalcalc.com/citizenship-age",
+    url: "https://nepalicalc.com/citizenship-age",
     category: "GovernmentApplication",
   });
 

@@ -15,7 +15,7 @@ export default function EmiPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Bank Loan EMI Calculator",
     description: "Calculate monthly loan EMIs and complete amortization schedule for Nepal banks.",
-    url: "https://nepalcalc.com/emi",
+    url: "https://nepalicalc.com/emi",
     category: "FinancialApplication",
   });
 

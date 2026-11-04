@@ -23,7 +23,7 @@ export default function PensionPage() {
   const schema = generateWebApplicationSchema({
     name: "EPF, CIT & Pension Retirement Calculator Nepal",
     description: "Calculates retirement corpus and monthly pension payouts for EPF and CIT in Nepal.",
-    url: "https://nepalcalc.com/pension",
+    url: "https://nepalicalc.com/pension",
     category: "FinanceApplication",
   });
 

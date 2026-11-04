@@ -444,7 +444,7 @@ export function DashainAndUpcomingEvents() {
               }}
             >
               <Image
-                src="/dashain-banner.jpg"
+                src="/dashain-banner.webp"
                 alt="Nepal Festival Season Artwork"
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"

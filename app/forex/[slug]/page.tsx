@@ -3,10 +3,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, DollarSign, TrendingUp } from 'lucide-react';
 import { PROGRAMMATIC_FOREX_CONVERSIONS, DEFAULT_FOREX_RATES, ProgrammaticForexConversion } from '@/lib/rates/forexRates';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { ForexCalculator } from '@/components/calculators/ForexCalculator';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_FOREX_CONVERSIONS.map((item) => ({
@@ -50,7 +52,7 @@ export default async function ProgrammaticForexPage({
   const schema = generateWebApplicationSchema({
     name: `${item.name} (${item.code}) to NPR Currency Converter`,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/forex/${item.slug}`,
+    url: `${SITE_CONFIG.url}/forex/${item.slug}`,
     category: "FinanceApplication",
   });
 

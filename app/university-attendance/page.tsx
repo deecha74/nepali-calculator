@@ -24,7 +24,7 @@ export default function UniversityAttendancePage() {
   const schema = generateWebApplicationSchema({
     name: "University 75% Attendance & Bunk Calculator Nepal",
     description: "Calculates college and university semester attendance percentage, safe bunks, and classes needed to reach 75% for TU, KU, and Pokhara University.",
-    url: "https://nepalcalc.com/university-attendance",
+    url: "https://nepalicalc.com/university-attendance",
     category: "EducationalApplication",
   });
 

@@ -25,7 +25,7 @@ export default function RemittancePage() {
   const schema = generateWebApplicationSchema({
     name: "Foreign Remittance In-Hand Calculator Nepal",
     description: "Calculate exact net Nepalese Rupees (NPR) received by families in Nepal from international remittances.",
-    url: "https://nepalcalc.com/remittance-calculator",
+    url: "https://nepalicalc.com/remittance-calculator",
     category: "FinancialApplication",
   });
 

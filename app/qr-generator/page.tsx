@@ -21,7 +21,7 @@ export default function QrGeneratorPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Payment QR Generator",
     description: "Generate standard interoperable payment QR code stickers for Fonepay, eSewa, and NepalPay merchant accounts.",
-    url: "https://nepalcalc.com/qr-generator",
+    url: "https://nepalicalc.com/qr-generator",
     category: "BusinessApplication",
   });
 

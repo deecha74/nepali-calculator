@@ -24,7 +24,7 @@ export default function ForeignEmploymentPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Foreign Employment & Manpower Cost Calculator",
     description: "Calculates official government regulated fees for foreign employment under DoFE guidelines and identifies illegal manpower overcharges.",
-    url: "https://nepalcalc.com/foreign-employment",
+    url: "https://nepalicalc.com/foreign-employment",
     category: "FinancialApplication",
   });
 

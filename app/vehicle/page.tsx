@@ -27,7 +27,7 @@ export default function VehiclePage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Vehicle Bluebook Tax & Fine Calculator",
     description: "Official annual road tax and late renewal fine calculator for Nepal vehicles.",
-    url: "https://nepalcalc.com/vehicle",
+    url: "https://nepalicalc.com/vehicle",
     category: "UtilityApplication",
   });
 

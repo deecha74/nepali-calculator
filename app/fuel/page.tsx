@@ -15,7 +15,7 @@ export default function FuelPage() {
   const schema = generateWebApplicationSchema({
     name: "Nepal Fuel & Travel Cost Calculator",
     description: "Calculate vehicle trip costs and fuel consumption in Nepal.",
-    url: "https://nepalcalc.com/fuel",
+    url: "https://nepalicalc.com/fuel",
     category: "UtilityApplication",
   });
 

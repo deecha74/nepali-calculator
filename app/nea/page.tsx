@@ -30,7 +30,7 @@ export default function NeaPage() {
   const schema = generateWebApplicationSchema({
     name: "NEA Electricity Bill Calculator",
     description: "Domestic electricity tariff and monthly power bill estimator for Nepal Electricity Authority.",
-    url: "https://nepalcalc.com/nea",
+    url: "https://nepalicalc.com/nea",
     category: "UtilityApplication",
   });
 

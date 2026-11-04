@@ -3,10 +3,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Check, Sparkles } from 'lucide-react';
 import { PROGRAMMATIC_LAND_CONVERSIONS, ProgrammaticLandConversion } from '@/lib/rates/landRates';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { LandConverter } from '@/components/calculators/LandConverter';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return PROGRAMMATIC_LAND_CONVERSIONS.map((conv) => ({
@@ -51,7 +53,7 @@ export default async function ProgrammaticLandPage({
   const schema = generateWebApplicationSchema({
     name: `${item.fromUnit} to ${item.toUnit} Converter`,
     description: item.metaDescription,
-    url: `https://nepalcalc.com/land/${item.slug}`,
+    url: `${SITE_CONFIG.url}/land/${item.slug}`,
     category: "UtilityApplication",
   });
 
