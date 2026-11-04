@@ -20,6 +20,9 @@ export const DEFAULT_FOREX_RATES: CurrencyRate[] = [
   { code: "MYR", name: "Malaysian Ringgit", flag: "🇲🇾", unit: 1, buyNpr: 31.25, sellNpr: 31.40 },
   { code: "CAD", name: "Canadian Dollar", flag: "🇨🇦", unit: 1, buyNpr: 98.40, sellNpr: 98.80 },
   { code: "INR", name: "Indian Rupee", flag: "🇮🇳", unit: 100, buyNpr: 160.00, sellNpr: 160.15 },
+  { code: "KWD", name: "Kuwaiti Dinar", flag: "🇰🇼", unit: 1, buyNpr: 438.50, sellNpr: 440.45 },
+  { code: "BHD", name: "Bahraini Dinar", flag: "🇧🇭", unit: 1, buyNpr: 357.50, sellNpr: 359.10 },
+  { code: "SGD", name: "Singapore Dollar", flag: "🇸🇬", unit: 1, buyNpr: 101.20, sellNpr: 101.65 },
 ];
 
 export interface ProgrammaticForexConversion {
@@ -131,5 +134,41 @@ export const PROGRAMMATIC_FOREX_CONVERSIONS: ProgrammaticForexConversion[] = [
     title: "JPY to NPR (Japanese Yen to Nepalese Rupee) Rate Today",
     metaDescription: "Convert Japanese Yen (JPY) to Nepalese Rupee (NPR). Live 10 Yen / 1000 Yen rates based on NRB currency exchange figures.",
     keywords: ["jpy to npr", "japanese yen to nepali rupees", "1000 yen in nepali rupees", "japan currency to npr"],
+  },
+  {
+    slug: "inr-to-npr",
+    code: "INR",
+    name: "Indian Rupee",
+    flag: "🇮🇳",
+    title: "INR to NPR (Indian Rupee to Nepalese Rupee) — 100 INR = 160 NPR",
+    metaDescription: "Convert Indian Rupee (INR) to Nepalese Rupee (NPR) at the official NRB pegged exchange rate: 100 INR = 160.00 NPR (Buying) & 160.15 NPR (Selling).",
+    keywords: ["inr to npr", "100 ic to nc", "indian rupee to nepali rupee", "1000 inr to npr"],
+  },
+  {
+    slug: "kwd-to-npr",
+    code: "KWD",
+    name: "Kuwaiti Dinar",
+    flag: "🇰🇼",
+    title: "KWD to NPR (Kuwaiti Dinar to Nepalese Rupee) Rate Today",
+    metaDescription: "Convert Kuwaiti Dinar (KWD) to Nepalese Rupee (NPR) with official NRB exchange rates. Calculate remittance transfers from Kuwait to Nepal.",
+    keywords: ["kwd to npr", "kuwait dinar to nepali rupee today", "1 kwd to npr", "kuwait currency rate nepal"],
+  },
+  {
+    slug: "bhd-to-npr",
+    code: "BHD",
+    name: "Bahraini Dinar",
+    flag: "🇧🇭",
+    title: "BHD to NPR (Bahraini Dinar to Nepalese Rupee) Rate Today",
+    metaDescription: "Convert Bahraini Dinar (BHD) to Nepalese Rupee (NPR) at today's official Nepal Rastra Bank forex rate for Bahrain workers remitting to Nepal.",
+    keywords: ["bhd to npr", "bahrain dinar to nepali rupee", "100 bhd to npr", "bahrain currency rate in nepal"],
+  },
+  {
+    slug: "sgd-to-npr",
+    code: "SGD",
+    name: "Singapore Dollar",
+    flag: "🇸🇬",
+    title: "SGD to NPR (Singapore Dollar to Nepalese Rupee) Rate Today",
+    metaDescription: "Convert Singapore Dollar (SGD) to Nepalese Rupee (NPR) using official Nepal Rastra Bank daily buying and selling exchange rates.",
+    keywords: ["sgd to npr", "singapore dollar to nepali rupee", "100 sgd to npr", "sgd rate today nepal"],
   },
 ];

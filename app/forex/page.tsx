@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { constructMetadata, generateWebApplicationSchema, generateGEODatasetSchema } from '@/lib/seo/metadata';
 import { ForexCalculator } from '@/components/calculators/ForexCalculator';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
@@ -19,6 +19,18 @@ export default function ForexPage() {
     category: "FinancialApplication",
   });
 
+  const datasetSchema = generateGEODatasetSchema({
+    name: "Nepal Rastra Bank (NRB) Daily Foreign Exchange (Forex) Buying & Selling Rates",
+    description: "Official daily foreign exchange buying and selling reference rates in Nepalese Rupees (NPR) for USD, AUD, EUR, GBP, AED, SAR, QAR, MYR, KRW, JPY, CAD, and INR.",
+    url: "https://nepalicalc.com/forex",
+    keywords: ["nrb forex rate today", "usd to npr", "aud to npr", "aed to npr", "qar to npr", "sar to npr"],
+    variableMeasured: [
+      "NRB Buying Rate (NPR)",
+      "NRB Selling Rate (NPR)",
+      "Remittance Bonus Rate (+1% NRB Incentive)",
+    ],
+  });
+
   const faqs = [
     {
       question: "Who sets the foreign exchange rates in Nepal?",
@@ -35,6 +47,10 @@ export default function ForexPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
       />
       <ForexCalculator />
       <AdBanner slotId="forex-page-bottom" format="horizontal" />

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Scale, TrendingUp, Sparkles, ShieldCheck } from 'lucide-react';
-import { constructMetadata, generateWebApplicationSchema } from '@/lib/seo/metadata';
+import { ArrowRight, Scale, Sparkles } from 'lucide-react';
+import { constructMetadata, generateWebApplicationSchema, generateGEODatasetSchema } from '@/lib/seo/metadata';
 import { GoldCalculator } from '@/components/calculators/GoldCalculator';
 import { Gold100YearComparison } from '@/components/gold/Gold100YearComparison';
 import { FAQAccordion } from '@/components/FAQAccordion';
@@ -44,6 +44,38 @@ export default function GoldPage() {
     category: "FinanceApplication",
   });
 
+  const datasetSchema = generateGEODatasetSchema({
+    name: "FENEGOSIDA Daily Gold & Silver Rates in Nepal (24K Hallmark, 22K Tejabi & Silver)",
+    description: "Daily updated official gold and silver market prices in Nepal per Tola (11.6638g), 10 Grams, 1 Gram, and 1 Lal published by the Federation of Nepal Gold and Silver Dealers' Association (FENEGOSIDA).",
+    url: "https://nepalicalc.com/gold",
+    keywords: [
+      "gold price in nepal today",
+      "fenegosida gold rate",
+      "chhapawal 24k gold price per tola",
+      "tejabi 22k gold price per tola",
+      "silver price in nepal today",
+    ],
+    variableMeasured: [
+      "24K Hallmark Fine Gold Rate per Tola (NPR)",
+      "22K Tejabi Gold Rate per Tola (NPR)",
+      "24K Fine Gold Rate per 10 Grams (NPR)",
+      "1 Lal Gold Price in Nepal (NPR)",
+      "Fine Silver Rate per Tola (NPR)",
+    ],
+    hasPart: [
+      {
+        name: "Nepal Traditional Gold Units Conversion Table (Tola, Lal, Aana, Ginni, Grams)",
+        description: "Official weight equivalence and live NPR pricing across 1 Lal, 1 Aana, 1 Gram, 1 Ginni (8g), 10 Grams, and 1 Tola (11.6638g).",
+        url: "https://nepalicalc.com/gold#gold-conversion-table",
+      },
+      {
+        name: "100-Year Nepal Gold Rate Historical Benchmark (1982 BS – 2083 BS)",
+        description: "Long-term historical gold price trajectory in Nepal from NPR 90/tola in 1982 BS to modern FENEGOSIDA rates.",
+        url: "https://nepalicalc.com/gold/history",
+      },
+    ],
+  });
+
   const faqs = [
     {
       question: "What is the price of gold in Nepal today per tola? (नेपालमा आज सुनको भाउ कति छ?)",
@@ -76,6 +108,10 @@ export default function GoldPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
       />
 
       <GoldCalculator />

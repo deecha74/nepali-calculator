@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     new Set([
       '',
       '/tax',
+      '/salary',
       '/tds',
       '/depreciation',
       '/corporate-tax',
@@ -27,7 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/emi',
       '/sip',
       '/gold',
+      '/silver',
       '/gold/history',
+      '/provident-fund',
       '/nea',
       '/date',
       '/forex',

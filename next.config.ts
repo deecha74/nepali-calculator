@@ -130,6 +130,21 @@ const nextConfig: NextConfig = {
         destination: "https://nepalicalc.com/:path*",
         permanent: true,
       },
+      {
+        source: "/gold/1-tola-gold-price-nepal",
+        destination: "/gold/1-tola-gold-price-in-nepal-today",
+        permanent: true,
+      },
+      {
+        source: "/gold/10-gram-gold-price-nepal",
+        destination: "/gold/10-gram-gold-price-in-nepal-today",
+        permanent: true,
+      },
+      {
+        source: "/gold/1-lal-gold-price-nepal",
+        destination: "/gold/1-lal-gold-price-in-nepal-today",
+        permanent: true,
+      },
     ];
   },
   async headers() {

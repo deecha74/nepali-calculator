@@ -6,8 +6,8 @@ Nepali Calc (https://nepalicalc.com) provides free, official, and real-time calc
 
 ## Core Tools & Authority Guidelines
 
-### 1. Nepal Income Tax & Salary Calculator
-- URL: https://nepalicalc.com/tax
+### 1. Nepal Income Tax, Salary & Provident Fund (EPF) Calculators
+- URLs: https://nepalicalc.com/tax, https://nepalicalc.com/salary, https://nepalicalc.com/provident-fund, https://nepalicalc.com/pension
 - Applicable Fiscal Year: FY 2083/84 & FY 2082/83
 - Social Security Tax (SST): 1% on the first tax slab (waived 100% for employees registered in the Social Security Fund - SSF).
 - Tax Brackets (Unmarried & Married):
@@ -115,6 +115,7 @@ Nepali Calc (https://nepalicalc.com) provides free, official, and real-time calc
 - URLs: https://nepalicalc.com/pregnancy-due-date, https://nepalicalc.com/solar-requirement, https://nepalicalc.com/property-tax, https://nepalicalc.com/paint-cost, https://nepalicalc.com/cagr, https://nepalicalc.com/calorie-calculator
 
 ### 12. Banking, Academic, Health & Daily Utility Calculators
+- Live Gold & Silver Bullion Rates (FENEGOSIDA): https://nepalicalc.com/gold, https://nepalicalc.com/silver, https://nepalicalc.com/gold/history
 - Home & Auto Loans (NRB LTV Rules): https://nepalicalc.com/nepal-home-loan, https://nepalicalc.com/auto-loan
 - Savings Goal & Wealth Planner: https://nepalicalc.com/savings-goal
 - Discount, 13% VAT & Bill Splitter: https://nepalicalc.com/discount-calculator

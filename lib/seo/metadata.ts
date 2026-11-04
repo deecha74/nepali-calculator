@@ -35,6 +35,10 @@ export function constructMetadata({
     metadataBase: new URL(SITE_CONFIG.url),
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        "en-NP": canonicalUrl,
+        "x-default": canonicalUrl,
+      },
     },
     openGraph: {
       type: "website",
@@ -138,18 +142,26 @@ export function generateGEODatasetSchema({
   description,
   url,
   keywords,
+  variableMeasured,
+  hasPart,
 }: {
   name: string;
   description: string;
   url: string;
   keywords: string[];
+  variableMeasured?: string[];
+  hasPart?: Array<{ name: string; description: string; url: string }>;
 }) {
+  const normalizedUrl = url.replace(
+    /https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g,
+    SITE_CONFIG.url
+  );
   return {
     "@context": "https://schema.org",
     "@type": "Dataset",
     name,
     description,
-    url: url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url),
+    url: normalizedUrl,
     keywords,
     creator: {
       "@type": "Organization",
@@ -158,6 +170,26 @@ export function generateGEODatasetSchema({
     },
     license: "https://creativecommons.org/licenses/by/4.0/",
     isAccessibleForFree: true,
+    ...(variableMeasured && variableMeasured.length > 0
+      ? {
+          variableMeasured: variableMeasured.map((v) => ({
+            "@type": "PropertyValue",
+            name: v,
+          })),
+        }
+      : {}),
+    ...(hasPart && hasPart.length > 0
+      ? {
+          hasPart: hasPart.map((part) => ({
+            "@type": "Dataset",
+            name: part.name,
+            description: part.description,
+            url: part.url,
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+          })),
+        }
+      : {}),
   };
 }
 

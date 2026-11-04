@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles, TrendingUp, CheckCircle, Scale, Coins, ArrowRight, ShieldCheck } from 'lucide-react';
-import { PROGRAMMATIC_GOLD_ITEMS, ProgrammaticGoldItem } from '@/lib/rates/programmaticGold';
-import { DEFAULT_GOLD_RATES } from '@/lib/rates/goldRates';
+import { ArrowLeft, Sparkles, Scale, Coins, ArrowRight } from 'lucide-react';
+import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { GoldCalculator } from '@/components/calculators/GoldCalculator';
 import { LiveGoldQuickAnswer } from '@/components/gold/LiveGoldQuickAnswer';
@@ -106,7 +105,11 @@ export default async function ProgrammaticGoldPage({
       {/* Featured Snippet Direct Answer Box (Google AEO Box) — 100% Real-Time Live */}
       <LiveGoldQuickAnswer
         unit={item.unit}
-        amount={item.unit === 'gram' ? (item.gramAmount ?? 1) : (item.tolaAmount ?? 1)}
+        amount={
+          item.unit === 'gram'
+            ? (item.gramAmount ?? 1)
+            : ((item.tolaAmount ?? 0) + (item.lalAmount ?? 0) / 100) || 1
+        }
         slug={item.slug}
         headlineAnswer={item.headlineAnswer}
         conversionFormula={item.conversionFormula}
