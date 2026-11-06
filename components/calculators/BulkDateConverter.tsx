@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { 
   Calendar, 
   Copy, 
@@ -41,6 +42,7 @@ const SAMPLE_EXCEL_DATA = `2080-05-14
 २०८०-०४-२२`;
 
 export function BulkDateConverter() {
+  const { t } = useLanguage();
   const [inputText, setInputText] = useState<string>(SAMPLE_EXCEL_DATA);
   const [mode, setMode] = useState<'auto' | 'bsToAd' | 'adToBs'>('auto');
   const [copiedColumn, setCopiedColumn] = useState<boolean>(false);
@@ -189,9 +191,9 @@ export function BulkDateConverter() {
             <FileSpreadsheet size={24} />
           </div>
           <div>
-            <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
-              Bulk Nepali Date Converter (एकमुष्ट मिति रूपान्तरण)
-            </h2>
+            <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+              {t('Bulk Nepali Date Converter', 'एकमुष्ट मिति रूपान्तरण')}
+            </h1>
             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
               Designed for Microsoft Excel & Google Sheets copy-paste (BS ⇄ AD)
             </p>

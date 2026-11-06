@@ -47,19 +47,6 @@ export default function OvertimePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">Nepal Labour Act 2074</span>
-          <span className="badge badge-neutral">Section 31 Compliant</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Overtime (OT) & Hourly Wage Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Calculate hourly basic wages, 1.5x overtime pay, and total monthly earnings for private, factory, and corporate employees in Nepal.
-        </p>
-      </div>
-
       <OvertimeCalculator />
 
       <AdBanner slotId="overtime-page-middle" format="horizontal" />

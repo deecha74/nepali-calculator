@@ -1,24 +1,26 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Keyboard, RotateCcw, Award, CheckCircle2, AlertCircle, Clock, Zap, Target } from 'lucide-react';
+import { RotateCcw, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 
 const SAMPLE_TEXTS = {
-  unicode: "नेपाल एक सुन्दर तथा प्राकृतिक विविधताले भरिपूर्ण देश हो। यहाँ विश्वकै सर्वोच्च शिखर सगरमाथा तथा विभिन्न हिमशृङ्खलाहरू रहेका छन्। लोकसेवा तथा विभिन्न सरकारी सेवामा कम्प्युटर सीप अनिवार्य गरिएको छ। नियमित अभ्यासले टाइपिङ गति र शुद्धता उच्च बनाउन सकिन्छ।",
-  english: "Nepal is a sovereign landlocked country located in South Asia along the Himalayan mountain range. It is renowned for Mount Everest, the highest peak on Earth, and its rich cultural heritage. Developing accurate typing skills with high words per minute is essential for administrative and computer-based examinations.",
-  preeti: "g]kfn Ps ;'Gb/ / k|fs[lts ljljwtf ePsf] b]z xf] . oxfF ;+;f/s} ;jf]{Rr lzv/ ;u/dfyf /x]sf] 5 . nfls;]jf tyf laleGg k/LIffx?df sDKo'6/ 6fOlkª clgjfo{ ul/Psf] 5 ."
+  english: "Nepal is a beautiful Himalayan nation known for Mount Everest and rich cultural heritage. Practicing regular typing with high accuracy helps you succeed in Loksewa, banking, and administrative exams.",
+  unicode: "नेपाल एक सुन्दर तथा प्राकृतिक विविधताले भरिपूर्ण देश हो। यहाँ विश्वकै सर्वोच्च शिखर सगरमाथा रहेको छ। नियमित अभ्यासले लोकसेवा तथा सरकारी सेवामा टाइपिङ गति र शुद्धता उच्च बनाउन सकिन्छ।",
+  preeti: "g]kfn Ps ;'Gb/ / k|fs[lts ljljwtf ePsf] b]z xf] . oxfF ;+;f/s} ;jf]{Rr lzv/ ;u/dfyf /x]sf] 5 .lgoldt cEof;n] 6fOlkª ult / z'4tf pRr agfpg ;lsG5 ."
 };
 
 export function TypingSpeedTest() {
   const { language, t } = useLanguage();
-  const [testMode, setTestMode] = useState<'unicode' | 'english' | 'preeti'>('unicode');
+  const [testMode, setTestMode] = useState<'english' | 'unicode' | 'preeti'>('english');
   const [durationSecs, setDurationSecs] = useState<number>(60);
   const [timeLeft, setTimeLeft] = useState<number>(60);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>('');
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const activeCharRef = useRef<HTMLSpanElement>(null);
+  const promptBoxRef = useRef<HTMLDivElement>(null);
 
   const targetText = SAMPLE_TEXTS[testMode];
 
@@ -40,9 +42,21 @@ export function TypingSpeedTest() {
     return () => clearInterval(timer);
   }, [isActive, timeLeft]);
 
+  // Keep current character scrolled into view inside the compact prompt box
+  useEffect(() => {
+    if (activeCharRef.current && promptBoxRef.current) {
+      const container = promptBoxRef.current;
+      const charEl = activeCharRef.current;
+      const offsetTop = charEl.offsetTop - container.offsetTop;
+      if (offsetTop > container.clientHeight - 44 || offsetTop < container.scrollTop) {
+        container.scrollTop = Math.max(0, offsetTop - 28);
+      }
+    }
+  }, [userInput]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
-    if (!isActive && !isFinished) {
+    if (!isActive && !isFinished && val.length > 0) {
       setIsActive(true);
     }
     setUserInput(val);
@@ -52,12 +66,15 @@ export function TypingSpeedTest() {
     }
   };
 
-  const resetTest = () => {
+  const resetTest = (focusInput = false) => {
     setUserInput('');
     setTimeLeft(durationSecs);
     setIsActive(false);
     setIsFinished(false);
-    if (inputRef.current) {
+    if (promptBoxRef.current) {
+      promptBoxRef.current.scrollTop = 0;
+    }
+    if (focusInput && inputRef.current) {
       inputRef.current.focus();
     }
   };
@@ -66,8 +83,7 @@ export function TypingSpeedTest() {
   const stats = useMemo(() => {
     const elapsedSecs = durationSecs - timeLeft || 1;
     const wordsTyped = userInput.trim().split(/\s+/).filter(Boolean).length;
-    
-    // Character by character check
+
     let correctChars = 0;
     for (let i = 0; i < userInput.length; i++) {
       if (userInput[i] === targetText[i]) {
@@ -76,10 +92,10 @@ export function TypingSpeedTest() {
     }
 
     const accuracy = userInput.length > 0 ? Math.round((correctChars / userInput.length) * 100) : 100;
-    const grossWpm = Math.round((wordsTyped / (elapsedSecs / 60))) || 0;
+    const grossWpm = userInput.length > 0 ? Math.round((wordsTyped / (elapsedSecs / 60))) || 0 : 0;
     const netWpm = Math.max(0, Math.round(grossWpm * (accuracy / 100)));
-
-    const isLoksewaPassed = netWpm >= 25 && accuracy >= 85;
+    const minPassWpm = testMode === 'english' ? 30 : 25;
+    const isLoksewaPassed = netWpm >= minPassWpm && accuracy >= 85;
 
     return {
       grossWpm,
@@ -87,61 +103,22 @@ export function TypingSpeedTest() {
       accuracy,
       correctChars,
       totalChars: userInput.length,
+      minPassWpm,
       isLoksewaPassed
     };
-  }, [userInput, targetText, durationSecs, timeLeft]);
+  }, [userInput, targetText, durationSecs, timeLeft, testMode]);
 
   return (
-    <div className="white-card" style={{ padding: '28px 24px', maxWidth: '880px', margin: '0 auto' }}>
-      {/* Header */}
-      <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '18px', marginBottom: '22px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">लोकसेवा तथा बैंक विशेष (Loksewa Benchmark)</span>
-          <span className="badge badge-emerald">२५ WPM उत्तीर्णाङ्क (Pass Criteria)</span>
-        </div>
-        <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
-          नेपाली तथा अंग्रेजी टाइपिङ स्पीड टेस्ट (Loksewa Typing Speed Test WPM)
-        </h1>
-        <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0 }}>
-          लोकसेवा आयोग, शिक्षक सेवा तथा बैंक परीक्षार्थीहरूका लागि नेपाली युनिकोड, प्रिती तथा अंग्रेजी टाइपिङ गति (WPM) र शुद्धता नाप्ने आधिकारिक अनलाइन टुल।
-        </p>
+    <div className="white-card" style={{ padding: 'clamp(14px, 3vw, 26px)', maxWidth: '860px', margin: '0 auto' }}>
+      {/* Clean Single-Line Header + Controls */}
+      <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '12px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+          <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 900, color: '#0f172a', margin: 0, letterSpacing: '-0.02em' }}>
+            {t('Typing Speed Test (WPM)', 'टाइपिङ स्पीड टेस्ट (WPM)')}
+          </h1>
 
-        {/* Controls: Mode & Duration */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginTop: '16px' }}>
-          {/* Mode Switch */}
-          <div style={{ display: 'flex', gap: '6px' }}>
-            {[
-              { id: 'unicode', name: 'नेपाली युनिकोड (Unicode)' },
-              { id: 'preeti', name: 'Preeti Font (प्रिती)' },
-              { id: 'english', name: 'English (अंग्रेजी)' }
-            ].map(m => (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => {
-                  setTestMode(m.id as any);
-                  resetTest();
-                }}
-                style={{
-                  padding: '7px 14px',
-                  borderRadius: '6px',
-                  border: '1.5px solid',
-                  borderColor: testMode === m.id ? '#003893' : '#cbd5e1',
-                  backgroundColor: testMode === m.id ? '#003893' : '#ffffff',
-                  color: testMode === m.id ? '#ffffff' : '#334155',
-                  fontSize: '12.5px',
-                  fontWeight: 800,
-                  cursor: 'pointer'
-                }}
-              >
-                {m.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Duration Switch */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#64748b' }}>समय:</span>
+          {/* Duration Pills + Quick Reset */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             {[30, 60, 120].map(s => (
               <button
                 key={s}
@@ -149,152 +126,241 @@ export function TypingSpeedTest() {
                 onClick={() => {
                   setDurationSecs(s);
                   setTimeLeft(s);
-                  resetTest();
+                  setUserInput('');
+                  setIsActive(false);
+                  setIsFinished(false);
                 }}
                 style={{
-                  padding: '5px 10px',
-                  borderRadius: '4px',
+                  padding: '4px 9px',
+                  borderRadius: '6px',
                   border: '1px solid',
                   borderColor: durationSecs === s ? '#003893' : '#cbd5e1',
                   backgroundColor: durationSecs === s ? '#eff6ff' : '#ffffff',
                   color: durationSecs === s ? '#003893' : '#64748b',
-                  fontSize: '12px',
+                  fontSize: '11.5px',
                   fontWeight: 800,
                   cursor: 'pointer'
                 }}
               >
-                {s < 60 ? `${s}s` : `${s / 60} min`}
+                {s < 60 ? `${s}s` : `${s / 60}m`}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => resetTest(true)}
+              title={t('Reset Test', 'पुनः सुरु')}
+              style={{
+                padding: '4px 8px',
+                borderRadius: '6px',
+                border: '1px solid #cbd5e1',
+                backgroundColor: '#f8fafc',
+                color: '#334155',
+                fontSize: '11.5px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px'
+              }}
+            >
+              <RotateCcw size={13} />
+            </button>
           </div>
+        </div>
+
+        {/* Single-Row Language Mode Tabs */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginTop: '10px' }}>
+          {[
+            { id: 'english', label: 'English' },
+            { id: 'unicode', label: t('Nepali Unicode', 'नेपाली युनिकोड') },
+            { id: 'preeti', label: t('Preeti Font', 'प्रिती फन्ट') }
+          ].map(m => (
+            <button
+              key={m.id}
+              type="button"
+              onClick={() => {
+                setTestMode(m.id as any);
+                setUserInput('');
+                setTimeLeft(durationSecs);
+                setIsActive(false);
+                setIsFinished(false);
+              }}
+              style={{
+                padding: '7px 8px',
+                borderRadius: '7px',
+                border: '1.5px solid',
+                borderColor: testMode === m.id ? '#003893' : '#e2e8f0',
+                backgroundColor: testMode === m.id ? '#003893' : '#f8fafc',
+                color: testMode === m.id ? '#ffffff' : '#334155',
+                fontSize: '12.5px',
+                fontWeight: 800,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}
+            >
+              {m.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Live Stats Strip */}
+      {/* Compact Single-Row 3-Stat Bar (Takes only 48px vertical height on mobile!) */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-          gap: '10px',
-          marginBottom: '20px'
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '8px',
+          marginBottom: '12px'
         }}
       >
-        <div style={{ padding: '12px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b' }}>समय बाँकी</div>
-          <div style={{ fontSize: '22px', fontWeight: 900, color: timeLeft <= 10 ? '#dc2626' : '#003893', marginTop: '2px' }}>
-            {timeLeft}s
-          </div>
+        <div style={{ padding: '7px 10px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b' }}>{t('Time', 'समय')}</span>
+          <span style={{ fontSize: '16px', fontWeight: 900, color: timeLeft <= 10 ? '#dc2626' : '#003893' }}>{timeLeft}s</span>
         </div>
 
-        <div style={{ padding: '12px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b' }}>NET SPEED</div>
-          <div style={{ fontSize: '22px', fontWeight: 900, color: '#16a34a', marginTop: '2px' }}>
-            {stats.netWpm} <span style={{ fontSize: '12px', fontWeight: 600 }}>WPM</span>
-          </div>
+        <div style={{ padding: '7px 10px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b' }}>WPM</span>
+          <span style={{ fontSize: '16px', fontWeight: 900, color: '#16a34a' }}>{stats.netWpm}</span>
         </div>
 
-        <div style={{ padding: '12px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b' }}>ACCURACY</div>
-          <div style={{ fontSize: '22px', fontWeight: 900, color: '#0f172a', marginTop: '2px' }}>
-            {stats.accuracy}%
-          </div>
-        </div>
-
-        <div style={{ padding: '12px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b' }}>GROSS SPEED</div>
-          <div style={{ fontSize: '22px', fontWeight: 900, color: '#64748b', marginTop: '2px' }}>
-            {stats.grossWpm} <span style={{ fontSize: '12px', fontWeight: 600 }}>WPM</span>
-          </div>
+        <div style={{ padding: '7px 10px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b' }}>{t('Acc', 'शुद्धता')}</span>
+          <span style={{ fontSize: '16px', fontWeight: 900, color: '#0f172a' }}>{stats.accuracy}%</span>
         </div>
       </div>
 
-      {/* Target Text Box */}
+      {/* Auto-Scrolling Live Highlighted Prompt Box (Max 3 lines visible so mobile never feels crowded) */}
       <div
+        ref={promptBoxRef}
+        onClick={() => inputRef.current?.focus()}
         style={{
-          padding: '16px 20px',
+          padding: '12px 14px',
           borderRadius: '8px',
-          backgroundColor: '#f1f5f9',
+          backgroundColor: '#f8fafc',
           border: '1.5px solid #cbd5e1',
-          fontSize: '16px',
-          lineHeight: '1.7',
-          color: '#334155',
+          fontSize: '15.5px',
+          lineHeight: '1.65',
+          color: '#64748b',
           fontFamily: testMode === 'preeti' ? 'Preeti, sans-serif' : 'inherit',
-          letterSpacing: '0.01em',
-          marginBottom: '16px',
-          userSelect: 'none'
+          marginBottom: '10px',
+          maxHeight: '112px',
+          overflowY: 'auto',
+          userSelect: 'none',
+          cursor: 'text',
+          position: 'relative'
         }}
       >
-        {targetText}
+        {targetText.split('').map((char, idx) => {
+          let color = '#64748b';
+          let bg = 'transparent';
+          const isCurrent = idx === userInput.length;
+          if (idx < userInput.length) {
+            if (userInput[idx] === char) {
+              color = '#15803d';
+            } else {
+              color = '#dc2626';
+              bg = '#fee2e2';
+            }
+          } else if (isCurrent) {
+            color = '#0f172a';
+            bg = '#dbeafe';
+          }
+          return (
+            <span
+              key={idx}
+              ref={isCurrent ? activeCharRef : undefined}
+              style={{
+                color,
+                backgroundColor: bg,
+                borderRadius: '2px',
+                fontWeight: isCurrent ? 800 : idx < userInput.length ? 600 : 400,
+                borderBottom: isCurrent ? '2px solid #003893' : 'none'
+              }}
+            >
+              {char}
+            </span>
+          );
+        })}
       </div>
 
-      {/* Typing Input Box */}
+      {/* Compact Typing Input Box */}
       <textarea
         ref={inputRef}
-        rows={4}
+        rows={3}
         value={userInput}
         disabled={isFinished}
         onChange={handleInputChange}
-        placeholder={isFinished ? "टाइपिङ परीक्षा समाप्त भयो। नतिजा तल हेर्नुहोस्।" : "माथिको वाक्य हेरेर यहाँ टाइपिङ सुरु गर्नुहोस् (टाइप गर्न थाल्ने बित्तिकै समय सुरु हुन्छ)..."}
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck={false}
+        placeholder={
+          isFinished
+            ? t('Test complete! See your score below.', 'परीक्षा समाप्त भयो!')
+            : t('Tap here and start typing...', 'यहाँ टाइप गर्न सुरु गर्नुहोस्...')
+        }
         style={{
           width: '100%',
-          padding: '14px 16px',
+          padding: '11px 14px',
           borderRadius: '8px',
           border: '2px solid #003893',
-          fontSize: '16px',
-          lineHeight: '1.6',
+          fontSize: '15.5px',
+          lineHeight: '1.5',
           fontFamily: testMode === 'preeti' ? 'Preeti, sans-serif' : 'inherit',
           outline: 'none',
           backgroundColor: isFinished ? '#f8fafc' : '#ffffff',
           resize: 'none',
-          boxShadow: '0 2px 8px rgba(0, 56, 147, 0.08)'
+          boxShadow: '0 2px 6px rgba(0, 56, 147, 0.06)'
         }}
       />
 
-      {/* Actions & Result */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px', flexWrap: 'wrap', gap: '12px' }}>
-        <button
-          type="button"
-          onClick={resetTest}
+      {/* Result Banner (Only shown when finished or actively typing) */}
+      {isFinished && (
+        <div
           style={{
-            backgroundColor: '#ffffff',
-            color: '#003893',
-            border: '1.5px solid #003893',
-            borderRadius: '6px',
-            padding: '8px 18px',
-            fontSize: '13px',
-            fontWeight: 800,
-            cursor: 'pointer',
-            display: 'inline-flex',
+            marginTop: '12px',
+            padding: '10px 14px',
+            borderRadius: '8px',
+            backgroundColor: stats.isLoksewaPassed ? '#ecfdf5' : '#fef2f2',
+            border: `1.5px solid ${stats.isLoksewaPassed ? '#10b981' : '#ef4444'}`,
+            display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '8px',
+            fontWeight: 700,
+            fontSize: '13px',
+            color: stats.isLoksewaPassed ? '#065f46' : '#991b1b'
           }}
         >
-          <RotateCcw size={15} />
-          <span>पुनः टाइपिङ सुरु (Reset Test)</span>
-        </button>
-
-        {isFinished && (
-          <div
-            style={{
-              padding: '8px 16px',
-              borderRadius: '6px',
-              backgroundColor: stats.isLoksewaPassed ? '#ecfdf5' : '#fef2f2',
-              border: `1.5px solid ${stats.isLoksewaPassed ? '#10b981' : '#ef4444'}`,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontWeight: 800,
-              fontSize: '13px',
-              color: stats.isLoksewaPassed ? '#065f46' : '#991b1b'
-            }}
-          >
-            {stats.isLoksewaPassed ? <CheckCircle2 size={18} color="#10b981" /> : <AlertCircle size={18} color="#ef4444" />}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            {stats.isLoksewaPassed ? <CheckCircle2 size={17} color="#10b981" /> : <AlertCircle size={17} color="#ef4444" />}
             <span>
-              {stats.isLoksewaPassed ? 'बधाई छ! लोकसेवा मानक (२५ WPM) उत्तीर्ण हुनुभयो।' : 'लोकसेवा मानक (२५ WPM) भन्दा कम। थप अभ्यास आवश्यक छ।'}
+              {stats.isLoksewaPassed
+                ? t(`Passed! (${stats.netWpm} WPM, ${stats.accuracy}% Accuracy)`, `उत्तीर्ण! (${stats.netWpm} WPM, ${stats.accuracy}% शुद्धता)`)
+                : t(`Score: ${stats.netWpm} WPM (${stats.minPassWpm} WPM needed for Loksewa)`, `नतिजा: ${stats.netWpm} WPM (${stats.minPassWpm} WPM आवश्यक)`)}
             </span>
           </div>
-        )}
-      </div>
+          <button
+            type="button"
+            onClick={() => resetTest(true)}
+            style={{
+              padding: '5px 12px',
+              borderRadius: '6px',
+              backgroundColor: '#003893',
+              color: '#ffffff',
+              border: 'none',
+              fontSize: '12px',
+              fontWeight: 800,
+              cursor: 'pointer'
+            }}
+          >
+            {t('Try Again', 'फेरि प्रयास गर्नुहोस्')}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

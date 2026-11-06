@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { 
   Flame, 
   Utensils, 
@@ -88,6 +89,7 @@ const DRINK_NUTRITION: Record<MomoDrink, { nameNep: string; kcal: number; sugar:
 };
 
 export function MomoCalorieCalculator() {
+  const { t } = useLanguage();
   const [momoType, setMomoType] = useState<MomoType>('buff');
   const [style, setStyle] = useState<MomoStyle>('steamed');
   const [pieces, setPieces] = useState<number>(10); // Standard plate = 10 pcs
@@ -184,9 +186,9 @@ export function MomoCalorieCalculator() {
             <Flame size={24} />
           </div>
           <div>
-            <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
-              Nepali Momo Calorie Counter (मोमो पोषण तथा क्यालोरी)
-            </h2>
+            <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+              {t('Nepali Momo Calorie Calculator', 'मोमो क्यालोरी क्याल्कुलेटर')}
+            </h1>
             <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
               Buff, Chicken, Veg, Paneer & Pork with Steamed, Kothey, Fried, C-Momo & Jhol
             </p>

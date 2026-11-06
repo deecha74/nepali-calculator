@@ -59,19 +59,6 @@ export default function CalorieCalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-blue">Mifflin-St Jeor Clinical Standard</span>
-          <span className="badge badge-neutral">दैनिक क्यालोरी, BMR र पानी हिसाब</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          Daily Calorie (TDEE), BMR & Water Intake Calculator
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Find your exact Basal Metabolic Rate (BMR), daily maintenance calories, fat-loss deficit target, and recommended daily water intake with Nepali Dal-Bhat nutrition equivalents.
-        </p>
-      </div>
-
       <CalorieBmrWaterCalculator />
 
       <AdBanner slotId="calorie-middle" format="horizontal" />

@@ -55,19 +55,6 @@ export default function LokSewaAgePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">Civil Service Nepal</span>
-          <span className="badge badge-neutral">PSC & Lok Sewa 2083/84</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Lok Sewa Age & Eligibility Calculator (लोक सेवा उमेर क्याल्कुलेटर)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '680px', margin: '8px auto 0' }}>
-          Instant age verification for Kharidar, Nayab Subba, Section Officer, and Health Service vacancies under Civil Service Act 2049 rules.
-        </p>
-      </div>
-
       <LokSewaAgeCalculator />
 
       <AdBanner slotId="loksewa-age-middle" format="horizontal" />

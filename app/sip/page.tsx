@@ -52,19 +52,6 @@ export default function SipPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>SEBON Approved Mutual Funds</span>
-          <span className="badge badge-emerald">Compounding Wealth Planner</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          SIP Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Calculate maturity wealth, compound interest gains, and year-by-year growth for systematic monthly investments in Nepal.
-        </p>
-      </div>
-
       <SipCalculator />
 
       <AdBanner slotId="sip-page-middle" format="horizontal" />

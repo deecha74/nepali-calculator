@@ -152,9 +152,9 @@ export function ForeignEmploymentCalculator() {
           <Plane size={24} />
         </div>
         <div>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
             वैदेशिक रोजगार तथा म्यानपावर लागत क्याल्कुलेटर
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
             DoFE Free Visa Free Ticket Regulations & Illegal Overcharge Detector
           </p>

@@ -15,7 +15,7 @@ import { Scale, Copy, Check, ArrowRightLeft } from 'lucide-react';
 // 1 Mana (माना) = 4 Muthi (approx 0.568 liters)
 // 1 Muthi (मुठी) = 1/4 Mana
 
-export function TraditionalUnitsConverter({ hideTitleTag = false }: { hideTitleTag?: boolean }) {
+export function TraditionalUnitsConverter({ hideTitleTag = false, customTitle }: { hideTitleTag?: boolean; customTitle?: string }) {
   const TitleHeading = hideTitleTag ? 'h2' : 'h1';
   const [category, setCategory] = useState<'weight' | 'volume'>('weight');
 
@@ -95,7 +95,7 @@ Via NepalCalc.com`;
             <span className="badge badge-neutral">Standard & Commercial</span>
           </div>
           <TitleHeading style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            Nepali Mana, Pathi, Muri & Dharni Converter
+            {customTitle || 'Nepali Mana, Pathi, Muri & Dharni Converter'}
           </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Convert traditional Nepali weights (धार्नी, पाउ, केजी) and volume units (माना, पाथी, मुरी, लिटर).

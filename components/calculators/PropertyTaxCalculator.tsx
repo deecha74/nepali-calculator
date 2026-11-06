@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Building2, Copy, Check, Landmark, ShieldCheck } from 'lucide-react';
 
 // Kathmandu Metropolitan City (KMC) / Municipal Integrated Property Tax (एकीकृत सम्पत्ति कर / घरजग्गा कर)
@@ -19,6 +20,7 @@ function calculateMunicipalPropertyTax(totalValuationNpr: number): number {
 }
 
 export function PropertyTaxCalculator() {
+  const { t } = useLanguage();
   const [landValueNpr, setLandValueNpr] = useState<number>(8500000);
   const [buildingValueNpr, setBuildingValueNpr] = useState<number>(6500000);
   const [propertyUse, setPropertyUse] = useState<'residential' | 'commercial'>('residential');
@@ -92,9 +94,9 @@ Calculated via NepalCalc.com/property-tax`;
               </span>
               <span className="badge badge-neutral">एकीकृत सम्पत्ति तथा घरजग्गा कर</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
-              Nepal Annual Property Tax Calculator (सम्पत्ति तथा भूमिकर २०८३/८४)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+              {t('Nepal Property Tax Calculator', 'सम्पत्ति तथा भूमिकर क्याल्कुलेटर')}
+            </h1>
           </div>
         </div>
 

@@ -53,19 +53,6 @@ export default function CitizenshipAgePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-green">Nepal Government Law</span>
-          <span className="badge badge-neutral">Citizenship Act 2063</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Citizenship 16-Year Age Calculator (नागरिकता उमेर क्याल्कुलेटर)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Verify if you have completed 16 years for Nepali Citizenship, check countdown dates, and prepare required Ward & DAO documents.
-        </p>
-      </div>
-
       <CitizenshipAgeCalculator />
 
       <AdBanner slotId="citizenship-age-middle" format="horizontal" />

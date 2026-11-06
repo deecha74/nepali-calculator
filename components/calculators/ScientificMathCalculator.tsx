@@ -48,9 +48,9 @@ export function ScientificMathCalculator() {
         <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#e0e7ff', color: '#4f46e5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Calculator size={22} />
         </div>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
+        <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
           Scientific, Percentage, Fraction, LCM/GCF & Logarithm Calculator
-        </h2>
+        </h1>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '20px' }}>

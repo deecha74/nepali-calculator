@@ -63,9 +63,9 @@ export function UniversalUnitConverter() {
         <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#ccfbf1', color: '#0d9488', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Scale size={22} />
         </div>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
+        <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
           Universal Length, Weight & Temperature Unit Converter
-        </h2>
+        </h1>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '20px' }}>

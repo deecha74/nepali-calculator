@@ -49,19 +49,6 @@ export default function PensionPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">Retirement Fund</span>
-          <span className="badge badge-neutral">EPF & CIT Compounding</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          EPF, CIT & Pension Retirement Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Project your total retirement corpus, compound interest earnings, and estimated monthly pension at age 58.
-        </p>
-      </div>
-
       <PensionCalculator />
 
       <AdBanner slotId="pension-page-middle" format="horizontal" />

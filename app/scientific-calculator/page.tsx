@@ -41,14 +41,7 @@ export default function ScientificCalculatorPage() {
   return (
     <div className="container" style={{ padding: 'clamp(20px, 4vw, 40px) 20px 80px' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div style={{ textAlign: 'center', marginBottom: '26px', maxWidth: '800px', margin: '0 auto 26px' }}>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, margin: '0 0 10px' }}>
-          Scientific Math, Trigonometry &amp; GCD / LCM Calculator
-        </h1>
-        <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', margin: 0 }}>
-          Quickly solve HCF/GCD, Least Common Multiple (LCM), trigonometric ratios (sin, cos, tan), and logarithms.
-        </p>
-      </div>
+
       <ScientificMathCalculator />
       <div style={{ marginTop: '36px', maxWidth: '1000px', margin: '36px auto 0' }}>
         <FAQAccordion items={faqs} title="Scientific Math & GCD/LCM FAQs" />

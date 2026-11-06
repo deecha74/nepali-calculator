@@ -54,19 +54,6 @@ export default function ForeignEmploymentPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">Department of Foreign Employment</span>
-          <span className="badge badge-neutral">Free Visa Free Ticket (२०७२)</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Foreign Employment & Manpower Cost Calculator (वैदेशिक रोजगार लागत)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '680px', margin: '8px auto 0' }}>
-          Know your legal rights under Nepal law. Compare government ceiling fees (Welfare, Insurance, SSF) with manpower demands to avoid being overcharged.
-        </p>
-      </div>
-
       <ForeignEmploymentCalculator />
 
       <AdBanner slotId="foreign-employment-middle" format="horizontal" />

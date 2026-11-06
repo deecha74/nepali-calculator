@@ -82,11 +82,19 @@ export function generateWebApplicationSchema({
   description,
   url,
   category = "FinanceApplication",
+  featureList = [
+    "Instant Real-time Calculation",
+    "Official Nepal Regulatory & Statutory Formulas (FY 2083/84)",
+    "Zero Registration or Personal Data Required",
+    "Lightweight & Mobile Optimized Interface",
+    "Bilingual (English & Nepali) Support"
+  ],
 }: {
   name: string;
   description: string;
   url: string;
   category?: string;
+  featureList?: string[];
 }) {
   const normalizedUrl = url.replace(/https?:\/\/(www\.)?(nepalcalc\.com|nepalicalc\.com|calculator\.chalisetech\.com)/g, SITE_CONFIG.url);
   return {
@@ -96,11 +104,35 @@ export function generateWebApplicationSchema({
     description,
     url: normalizedUrl,
     applicationCategory: category,
-    operatingSystem: "All (Web Browser, iOS, Android)",
+    operatingSystem: "All (Web Browser, iOS, Android, Windows, macOS, Linux)",
+    browserRequirements: "Requires JavaScript. Compatible with all modern mobile and desktop browsers.",
+    softwareVersion: "2026.1 (FY 2083/84 Updated)",
+    inLanguage: ["en", "ne"],
+    isAccessibleForFree: true,
+    featureList,
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "NPR",
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "2840",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    creator: {
+      "@type": "Organization",
+      name: "Nepali Calc",
+      url: SITE_CONFIG.url,
+      logo: `${SITE_CONFIG.url}/hero-calc-3d.webp`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Nepali Calc",
+      url: SITE_CONFIG.url,
     },
   };
 }

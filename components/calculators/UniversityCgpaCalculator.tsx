@@ -202,9 +202,9 @@ Calculated on NepalCalc.com/cgpa`;
               <span className="badge badge-blue">TU • KU • Pokhara • Purbanchal</span>
               <span className="badge badge-neutral">Semester CGPA & Target Grade</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
               University CGPA, Engineering GPA & Target Marks Calculator
-            </h2>
+            </h1>
           </div>
         </div>
 

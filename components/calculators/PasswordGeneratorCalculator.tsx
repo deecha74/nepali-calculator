@@ -48,9 +48,9 @@ export function PasswordGeneratorCalculator() {
           <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#dcfce7', color: '#16a34a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Lock size={22} />
           </div>
-          <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
+          <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
             Secure Password Generator & Entropy Checker
-          </h2>
+          </h1>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button type="button" onClick={() => setSeed((s) => s + 1)} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>

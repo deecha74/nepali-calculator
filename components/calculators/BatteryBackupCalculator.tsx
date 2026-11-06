@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { BatteryCharging, Copy, Check, Zap, Tv, Wifi, Lightbulb, Fan, Laptop } from 'lucide-react';
 
 export function BatteryBackupCalculator() {
+  const { t } = useLanguage();
   const [batteryCapacityAh, setBatteryCapacityAh] = useState<number>(150); // 150Ah tubular
   const [batteryVoltage, setBatteryVoltage] = useState<number>(12); // 12V single battery
   const [batteryCount, setBatteryCount] = useState<number>(1);
@@ -66,7 +68,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-blue">१२V ट्युबुलर ब्याट्री ब्याकअप समय</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
-            इन्भर्टर ब्याट्री ब्याकअप समय क्याल्कुलेटर (Inverter Backup Hours)
+            {t('Inverter Battery Backup Calculator', 'इन्भर्टर ब्याट्री ब्याकअप क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
             बत्ती, पंखा, वाइफाइ र टिभीको वाट खपत तथा ब्याट्री क्षमता (Ah) अनुसार इन्भर्टरले कति घण्टा धान्छ पत्ता लगाउनुहोस्।

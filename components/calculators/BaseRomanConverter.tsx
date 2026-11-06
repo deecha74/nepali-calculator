@@ -45,9 +45,9 @@ export function BaseRomanConverter() {
         <div style={{ width: '44px', height: '44px', borderRadius: '12px', backgroundColor: '#ede9fe', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Calculator size={22} />
         </div>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
+        <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
           Number Base (Binary/Hex/Octal/Decimal) & Roman Numeral Converter
-        </h2>
+        </h1>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>

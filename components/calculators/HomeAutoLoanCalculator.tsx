@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Home, Car, Copy, Check } from 'lucide-react';
 
 export function HomeAutoLoanCalculator({ defaultMode = 'home' }: { defaultMode?: 'home' | 'auto' }) {
+  const { t } = useLanguage();
   const [mode, setMode] = useState<'home' | 'auto'>(defaultMode);
   const [propertyOrVehiclePrice, setPropertyOrVehiclePrice] = useState<number>(
     defaultMode === 'home' ? 15000000 : 4500000
@@ -87,11 +89,11 @@ Calculated on NepalCalc.com`;
             {mode === 'home' ? <Home size={24} /> : <Car size={24} />}
           </div>
           <div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
               {mode === 'home'
                 ? 'Nepal Home Loan & Mortgage Calculator (घर कर्जा किस्ता)'
                 : 'Nepal Auto & EV Car/Bike Loan Calculator (गाडी कर्जा किस्ता)'}
-            </h2>
+            </h1>
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: '2px 0 0' }}>
               Includes NRB Down-Payment LTV Ratio & 50% DSTI Income Requirement
             </p>

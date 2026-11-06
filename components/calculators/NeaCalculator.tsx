@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Zap, Copy, Check } from 'lucide-react';
 import { NEA_SLABS_5A, METER_CAPACITIES } from '@/lib/rates/neaRates';
 
 export function NeaCalculator() {
+  const { t } = useLanguage();
   const [unitsConsumed, setUnitsConsumed] = useState<number>(120);
   const [meterCapacity, setMeterCapacity] = useState<string>('5A');
   const [paymentTiming, setPaymentTiming] = useState<'early' | 'normal' | 'late'>('early'); // early gives 2% rebate
@@ -75,7 +77,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-neutral">VAT & Rebate Rules</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            NEA Electricity Bill Calculator (विद्युत महसुल)
+            {t('NEA Electricity Bill Calculator', 'विद्युत महसुल क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate your monthly domestic power bill based on units consumed, ampere capacity, and payment rebates.

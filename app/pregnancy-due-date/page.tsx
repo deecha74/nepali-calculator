@@ -60,19 +60,6 @@ export default function PregnancyDueDatePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-blue">Bikram Sambat (BS) & English (AD)</span>
-          <span className="badge badge-neutral">प्रसूति मिति र गर्भावस्था हप्ता</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          Nepali Pregnancy Due Date & Trimester Calculator (BS & AD)
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Find your estimated delivery date in both Nepali Bikram Sambat (वि.सं.) and English calendars, track your current week and trimester, and check Nepal Government Aama Surakshya checkup milestones.
-        </p>
-      </div>
-
       <PregnancyDueDateCalculator />
 
       <AdBanner slotId="pregnancy-middle" format="horizontal" />

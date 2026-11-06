@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { BookOpen, Copy, Check, Info, ShieldCheck, MapPin } from 'lucide-react';
 import { toNepaliDigits } from '@/lib/nepaliDate';
 
 export function PassportFeeCalculator() {
+  const { t } = useLanguage();
   const [pageCount, setPageCount] = useState<'34' | '66'>('34');
   const [submissionLocation, setSubmissionLocation] = useState<'dao' | 'dop_urgent' | 'embassy'>('dao');
   const [isMinor, setIsMinor] = useState<boolean>(false); // Below 10 years
@@ -60,7 +62,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-blue">e-Passport Rates 2083</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
-            विद्युतीय राहदानी (e-Passport) दस्तुर क्याल्कुलेटर
+            {t('Nepal e-Passport Fee Calculator', 'विद्युतीय राहदानी (e-Passport) दस्तुर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
             जिल्ला प्रशासन कार्यालय (DAO), राहदानी विभाग त्रिपुरेश्वर (द्रुत सेवा) तथा विदेशस्थित नेपाली दूतावासको आधिकारिक राजस्व शुल्क।

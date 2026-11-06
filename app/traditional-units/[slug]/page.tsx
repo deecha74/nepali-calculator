@@ -74,7 +74,10 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
         </Link>
       </div>
 
-      {/* Direct Featured Answer Box (AEO Snippet) */}
+      {/* Interactive Live Converter — First Above the Fold */}
+      <TraditionalUnitsConverter hideTitleTag={false} customTitle={item.title} />
+
+      {/* Direct Featured Answer Box (AEO Snippet) — Placed Below Converter */}
       <div
         className="aeo-answer-container"
         style={{
@@ -82,6 +85,7 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
           border: '1.5px solid #bfdbfe',
           borderRadius: '16px',
           padding: '24px 28px',
+          marginTop: '32px',
           marginBottom: '32px',
           boxShadow: '0 8px 24px -4px rgba(37, 99, 235, 0.08)',
         }}
@@ -90,10 +94,10 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
           <Sparkles size={14} />
           <span>Official Standard Conversion • आधिकारिक रूपान्तरण</span>
         </div>
-        <h1 style={{ fontSize: 'clamp(22px, 3.2vw, 28px)', fontWeight: 900, color: '#0f172a', margin: '0 0 12px', lineHeight: 1.25 }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '16px', color: '#334155', lineHeight: 1.7, margin: '0 0 16px', fontWeight: 500 }}>
+        <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 900, color: '#0f172a', margin: '0 0 12px', lineHeight: 1.25 }}>
+          {item.shortTitle} — Quick Reference
+        </h2>
+        <p style={{ fontSize: '15px', color: '#334155', lineHeight: 1.7, margin: '0 0 16px', fontWeight: 500 }}>
           {item.headlineAnswer}
         </p>
 
@@ -102,9 +106,6 @@ export default async function ProgrammaticTraditionalUnitPage({ params }: PagePr
           <span>Standard Formula: {item.formula}</span>
         </div>
       </div>
-
-      {/* Interactive Live Converter */}
-      <TraditionalUnitsConverter hideTitleTag={true} />
 
       {/* Other Programmatic Conversions Matrix */}
       <section style={{ margin: '48px 0 24px' }}>

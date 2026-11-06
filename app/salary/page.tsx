@@ -56,21 +56,10 @@ export default function SalaryCalculatorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="badge badge-emerald">Net In-Hand Paycheck</span>
-          <span className="badge badge-blue">SSF 31% &amp; EPF/CIT</span>
-          <span className="badge badge-neutral">FY 2083/84 IRD Slabs</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginTop: '10px', color: 'var(--text-primary)' }}>
-          Nepal Salary Calculator (FY 2083/84) — Net Take-Home &amp; SSF Breakdown
-        </h1>
-        <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', marginTop: '6px', maxWidth: '780px', lineHeight: 1.6 }}>
-          Calculate your exact monthly in-hand paycheck after Social Security Fund (SSF 11% + 20%), Karmachari Sanchaya Kosh (EPF), Citizen Investment Trust (CIT), and monthly TDS deductions.
-        </p>
-      </div>
-
-      <IncomeTaxCalculator titleTag="h2" />
+      <IncomeTaxCalculator
+        titleTag="h1"
+        customTitle="Nepal Salary Calculator (FY 2083/84) — Net Take-Home & SSF"
+      />
 
       <AdBanner slotId="salary-page-mid" format="horizontal" />
 

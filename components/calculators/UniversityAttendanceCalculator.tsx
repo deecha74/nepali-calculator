@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { 
   GraduationCap, 
   CheckCircle2, 
@@ -14,6 +15,7 @@ import {
 } from 'lucide-react';
 
 export function UniversityAttendanceCalculator() {
+  const { t } = useLanguage();
   const [targetPct, setTargetPct] = useState<number>(75);
   const [totalClasses, setTotalClasses] = useState<number>(40);
   const [attendedClasses, setAttendedClasses] = useState<number>(32);
@@ -92,9 +94,9 @@ export function UniversityAttendanceCalculator() {
           <GraduationCap size={24} />
         </div>
         <div>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
-            University 75% Attendance & Bunk Calculator (विश्वविद्यालय हाजिरी)
-          </h2>
+          <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+            {t('University Attendance Calculator', 'विश्वविद्यालय हाजिरी क्याल्कुलेटर')}
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
             Tribhuvan University (TU), Kathmandu University (KU) & Pokhara University Exam Rule
           </p>

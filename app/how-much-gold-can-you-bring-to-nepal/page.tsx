@@ -110,40 +110,6 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aeoSchema) }} />
 
       {/* Page Header */}
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '840px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>
-            Department of Customs Nepal
-          </span>
-          <span className="badge badge-blue">CAAN AIP & Finance Act 2083/84</span>
-          <span className="badge badge-neutral">विदेशबाट सुन ल्याउने नियम</span>
-        </div>
-
-        <h1
-          style={{
-            fontSize: 'clamp(24px, 4vw, 38px)',
-            fontWeight: 900,
-            color: 'var(--text-primary)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-            margin: '0 0 12px',
-          }}
-        >
-          How Much Gold Can You Bring to Nepal? (Customs Rules & Duty Calculator)
-        </h1>
-
-        <p
-          className="aeo-answer-container"
-          style={{
-            fontSize: 'clamp(13.5px, 2vw, 15.5px)',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.6,
-            margin: '0 auto',
-          }}
-        >
-          <strong>Quick Answer:</strong> Under Nepal’s Department of Customs Personal Baggage Order (झिटिगुन्टा आदेश) and CAAN AIP customs guidelines, <strong>male passengers can bring up to 25 grams (~2.14 Tola)</strong> of personal gold ornaments duty-free, and <strong>female passengers can bring up to 50 grams (~4.29 Tola)</strong> of personal gold ornaments duty-free. Use the interactive calculator below to check excess customs duty per gram, Red Channel declaration rules, and raw gold restrictions.
-        </p>
-      </div>
 
       {/* Interactive Calculator */}
       <GoldCustomsCalculator />

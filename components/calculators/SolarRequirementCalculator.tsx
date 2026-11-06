@@ -109,9 +109,9 @@ Calculated via NepalCalc.com/solar-requirement`;
               </span>
               <span className="badge badge-neutral">सोलार प्यानल तथा ब्याट्री हिसाब</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
               Nepal Solar Panel, Battery & Inverter Sizing Calculator
-            </h2>
+            </h1>
           </div>
         </div>
 

@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { PiggyBank, Copy, Check } from 'lucide-react';
 
 export function SavingsGoalCalculator() {
+  const { t } = useLanguage();
   const [targetAmountNpr, setTargetAmountNpr] = useState<number>(2500000);
   const [currentSavingsNpr, setCurrentSavingsNpr] = useState<number>(200000);
   const [yearsToGoal, setYearsToGoal] = useState<number>(5);
@@ -64,9 +66,9 @@ Calculated on NepalCalc.com/savings-goal`;
             <PiggyBank size={24} />
           </div>
           <div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0 }}>
-              Savings Goal & Monthly Deposit Calculator (बचत लक्ष्य हिसाब)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0 }}>
+              {t('Savings Goal Calculator', 'बचत लक्ष्य क्याल्कुलेटर')}
+            </h1>
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: '2px 0 0' }}>
               Find out exactly how much to save each month to reach your target NPR goal
             </p>

@@ -14,7 +14,7 @@ import {
 import { POPULAR_BIKES_NEPAL, POPULAR_CARS_NEPAL, VehicleModel } from '@/lib/rates/nepalVehicles';
 import { useLanguage } from '@/components/LanguageContext';
 
-export function VehicleTaxCalculator({ titleTag = 'h1' }: { titleTag?: 'h1' | 'h2' } = {}) {
+export function VehicleTaxCalculator({ titleTag = 'h1', customTitle }: { titleTag?: 'h1' | 'h2'; customTitle?: string } = {}) {
   const { language, t } = useLanguage();
   const TitleHeading = titleTag;
   const [vehicleType, setVehicleType] = useState<'bike' | 'car'>('bike');
@@ -189,7 +189,7 @@ Via NepalCalc.com`;
             </span>
           </div>
           <TitleHeading style={{ fontSize: '26px', fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
-            {t('Bluebook Road Tax & Fine Calculator', 'सवारी ब्लुबुक कर तथा जरिवाना क्यालकुलेटर')}
+            {customTitle || t('Bluebook Road Tax & Fine Calculator', 'सवारी ब्लुबुक कर तथा जरिवाना क्यालकुलेटर')}
           </TitleHeading>
         </div>
 

@@ -50,19 +50,6 @@ export default function PreetiPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">Universal Font Support</span>
-          <span className="badge badge-neutral">Preeti ⇄ Unicode</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Preeti to Nepali Unicode Converter
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Convert traditional Preeti, Kantipur, and Sagarmatha fonts into standard Nepali Unicode text instantly.
-        </p>
-      </div>
-
       <PreetiConverter />
 
       <AdBanner slotId="preeti-page-middle" format="horizontal" />

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import Link from 'next/link';
 import {
   TrendingUp,
@@ -32,6 +33,7 @@ function getSebonBrokerCommissionRate(amount: number): number {
 }
 
 export function NepseWaccCalculator() {
+  const { t } = useLanguage();
   const [lots, setLots] = useState<ShareLot[]>([
     { id: '1', type: 'ipo_fpo', quantity: 10, pricePerShare: 100 },
     { id: '2', type: 'secondary', quantity: 50, pricePerShare: 480 },
@@ -187,9 +189,9 @@ Calculated via NepalCalc.com/nepse-wacc`;
               <span className="badge badge-blue">CDSC MeroShare Standard</span>
               <span className="badge badge-neutral">WACC & Share Average</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
-              NEPSE WACC & Share Average Price Calculator (औसत लागत मूल्य)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+              {t('NEPSE WACC & Average Price Calculator', 'नेप्से WACC तथा औसत मूल्य क्याल्कुलेटर')}
+            </h1>
           </div>
         </div>
 

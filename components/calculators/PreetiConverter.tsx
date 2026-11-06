@@ -37,9 +37,9 @@ export function PreetiConverter() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="badge badge-emerald">{t('Nepal Standard Font Converter', 'नेपाल मानक फन्ट रूपान्तरक')}</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             {t('Preeti to Nepali Unicode Converter', 'प्रिती देखि युनिकोड रूपान्तरण (Preeti to Unicode)')}
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             {t(
               'Instantly convert legacy Preeti/Kantipur font text to standard Nepali Unicode for Facebook, Word, websites, and mobile.',

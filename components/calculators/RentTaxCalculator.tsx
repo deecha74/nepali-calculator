@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Home, Copy, Check, Building2, MapPin } from 'lucide-react';
 
 export function RentTaxCalculator() {
+  const { t } = useLanguage();
   const [monthlyRent, setMonthlyRent] = useState<number>(30000);
   const [municipalityRate, setMunicipalityRate] = useState<number>(10); // Standard 10% in KMC, Lalitpur, Pokhara
   const [tenantType, setTenantType] = useState<'individual' | 'company'>('individual');
@@ -51,7 +53,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-blue">१०% घरबहाल कर (Local Rent Tax)</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
-            घरबहाल कर तथा भाडा सम्झौता क्याल्कुलेटर (House Rent Tax)
+            {t('House Rent Tax Calculator Nepal', 'घरबहाल कर क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
             काठमाडौँ, ललितपुर, पोखरा लगायत सम्पूर्ण स्थानीय तहमा लाग्ने १०% घरबहाल कर र घरधनीले पाउने खुद भाडा।

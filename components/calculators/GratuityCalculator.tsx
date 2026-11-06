@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Briefcase, Copy, Check } from 'lucide-react';
 
 export function GratuityCalculator() {
+  const { t } = useLanguage();
   const [basicSalary, setBasicSalary] = useState<number>(40000); // 40k basic
   const [yearsWorked, setYearsWorked] = useState<number>(5);
   const [accumulatedHomeLeaveDays, setAccumulatedHomeLeaveDays] = useState<number>(30); // Max 90
@@ -57,7 +59,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-neutral">8.33% Monthly Accrual</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            Gratuity & Separation Payout Calculator (उपदान हिसाब)
+            {t('Gratuity & Separation Payout Calculator', 'उपदान तथा अवकाश रकम क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate employee retirement gratuity and accumulated leave encashment per Nepal labour laws.

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -70,6 +71,7 @@ const ORIGIN_GUIDANCE: Record<
 };
 
 export function GoldCustomsCalculator() {
+  const { t } = useLanguage();
   const [gender, setGender] = useState<PassengerGender>('female');
   const [metalCategory, setMetalCategory] = useState<MetalCategory>('gold_ornaments');
   const [unit, setUnit] = useState<WeightUnit>('grams');
@@ -242,9 +244,9 @@ Calculated on NepalCalc.com/how-much-gold-can-you-bring-to-nepal`;
               </span>
               <span className="badge badge-neutral">झिटिगुन्टा आदेश २०८३/८४</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
-              Nepal Gold & Silver Customs Duty Calculator (भन्सार महसुल र छुट सीमा)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+              {t('Gold & Silver Customs Duty Calculator', 'सुनचाँदी भन्सार महसुल क्याल्कुलेटर')}
+            </h1>
           </div>
         </div>
 

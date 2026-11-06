@@ -28,14 +28,7 @@ export default function PasswordGeneratorPage() {
   return (
     <div className="container" style={{ padding: 'clamp(20px, 4vw, 40px) 20px 80px' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div style={{ textAlign: 'center', marginBottom: '26px', maxWidth: '800px', margin: '0 auto 26px' }}>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, margin: '0 0 10px' }}>
-          Secure Password Generator & Entropy Strength Checker
-        </h1>
-        <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', margin: 0 }}>
-          Create unbreakable passwords for MeroShare, TMS, mobile banking, and cloud accounts completely offline in your browser.
-        </p>
-      </div>
+
       <PasswordGeneratorCalculator />
       <div style={{ marginTop: '36px', maxWidth: '900px', margin: '36px auto 0' }}>
         <FAQAccordion items={faqs} title="Password Security FAQs" />

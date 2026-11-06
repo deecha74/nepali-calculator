@@ -83,9 +83,9 @@ Calculated on NepalCalc.com`;
             <span className="badge badge-emerald">WHO South Asian BMI Cutoff</span>
             <span className="badge badge-neutral">तौल र उचाइ</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             BMI (Body Mass Index) & Ideal Weight Calculator Nepal
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate your Body Mass Index with South Asian health criteria, obesity risk tiers, and ideal weight targets.
           </p>

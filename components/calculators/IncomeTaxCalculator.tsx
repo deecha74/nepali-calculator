@@ -19,9 +19,10 @@ import { useLanguage } from '@/components/LanguageContext';
 interface IncomeTaxCalculatorProps {
   initialMonthlySalary?: number;
   titleTag?: 'h1' | 'h2';
+  customTitle?: string;
 }
 
-export function IncomeTaxCalculator({ initialMonthlySalary, titleTag = 'h1' }: IncomeTaxCalculatorProps = {}) {
+export function IncomeTaxCalculator({ initialMonthlySalary, titleTag = 'h1', customTitle }: IncomeTaxCalculatorProps = {}) {
   const { language, t } = useLanguage();
   const defaultFY = getActiveFiscalYear();
   const [fiscalYear, setFiscalYear] = useState<string>(defaultFY);
@@ -170,7 +171,7 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-neutral">{t('Auto Slab Calculator', 'स्ल्याब अनुसार स्वतः हिसाब')}</span>
           </div>
           <TitleHeading style={{ fontSize: 'clamp(24px, 3vw, 30px)', fontWeight: 800, marginTop: '10px', color: 'var(--text-primary)' }}>
-            {t('Nepal Income Tax Calculator', 'नेपाल आयकर तथा तलब कर हिसाब')}
+            {customTitle || t('Nepal Income Tax Calculator', 'नेपाल आयकर तथा तलब कर हिसाब')}
           </TitleHeading>
           <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '4px' }}>
             {t(

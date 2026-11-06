@@ -198,9 +198,9 @@ export function CitizenshipAgeCalculator() {
           <ShieldCheck size={24} />
         </div>
         <div>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
             नेपाली नागरिकता १६ वर्षे उमेर क्याल्कुलेटर
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
             Nepal Citizenship Act 2063 (Section 8) & DAO Document Checklist
           </p>

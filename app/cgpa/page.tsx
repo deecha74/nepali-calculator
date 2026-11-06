@@ -65,19 +65,6 @@ export default function UniversityCgpaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-blue">TU IOE • FoM • KU • Pokhara • PoU</span>
-          <span className="badge badge-neutral">सेमेस्टर CGPA र प्रतिशत रूपान्तरण</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          University CGPA, Engineering GPA & Target Grade Calculator
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Calculate credit-weighted CGPA across 1 to 10 semesters, convert CGPA into percentage, and find out the exact SGPA you need in your remaining semesters to hit your graduation goal.
-        </p>
-      </div>
-
       <UniversityCgpaCalculator />
 
       <AdBanner slotId="cgpa-middle" format="horizontal" />

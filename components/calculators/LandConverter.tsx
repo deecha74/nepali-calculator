@@ -26,7 +26,7 @@ import {
 } from '@/lib/rates/landRates';
 import { useLanguage } from '@/components/LanguageContext';
 
-export function LandConverter({ initialSlug, titleTag = 'h1' }: { initialSlug?: string; titleTag?: 'h1' | 'h2' }) {
+export function LandConverter({ initialSlug, titleTag = 'h1', customTitle }: { initialSlug?: string; titleTag?: 'h1' | 'h2'; customTitle?: string }) {
   const { language, t } = useLanguage();
   const TitleHeading = titleTag;
   // Input mode: 'ropani' | 'bigha' | 'sqft'
@@ -121,7 +121,7 @@ Calculated on NepalCalc.com`;
             <span className="badge badge-neutral">{t('Dual System (Hill & Terai)', 'पहाड तथा तराई दोहोरो प्रणाली')}</span>
           </div>
           <TitleHeading style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            {t('Nepal Land Measurement & Price Calculator', 'जग्गा नापजाँच तथा मूल्य क्यालकुलेटर')}
+            {customTitle || t('Nepal Land Measurement & Price Calculator', 'जग्गा नापजाँच तथा मूल्य क्यालकुलेटर')}
           </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             {t(

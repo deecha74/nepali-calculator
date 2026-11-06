@@ -45,9 +45,9 @@ Calculated via NepalCalc.com`;
             <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>Nepal Rastra Bank CPI Standard</span>
             <span className="badge badge-neutral">Purchasing Power Analysis</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             Inflation & Purchasing Power Calculator Nepal
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             See how inflation in Nepal erodes your bank savings and what you need in the future to maintain current lifestyle.
           </p>

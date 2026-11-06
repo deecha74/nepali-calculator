@@ -47,19 +47,6 @@ export default function InflationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>NRB Consumer Price Index</span>
-          <span className="badge badge-neutral">Real Purchasing Power</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Inflation & Purchasing Power Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Calculate how inflation affects your hard-earned money and determine what you will need in the future to preserve your wealth.
-        </p>
-      </div>
-
       <InflationCalculator />
 
       <AdBanner slotId="inflation-page-middle" format="horizontal" />

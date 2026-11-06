@@ -64,19 +64,6 @@ export default function PaintBrickConcretePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-blue">Civil Engineering & Home Finishing</span>
-          <span className="badge badge-neutral">रङरोगन, इँटा र ढलान (M20) हिसाब</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          Paint Cost, Wall Brick & Concrete Mix (M20) Calculator
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          All-in-one civil engineering estimator for Nepal homeowners: calculate exact liters of paint/primer/putty, bricks for 4.5" and 9" walls, and M15/M20/M25 RCC slab materials.
-        </p>
-      </div>
-
       <PaintBrickConcreteCalculator />
 
       <AdBanner slotId="paint-brick-middle" format="horizontal" />

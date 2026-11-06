@@ -48,19 +48,6 @@ export default function BmiPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">WHO South Asian Standard</span>
-          <span className="badge badge-neutral">Health & Fitness</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          BMI (Body Mass Index) & Ideal Weight Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Determine whether your weight is healthy for your height using official South Asian risk guidelines.
-        </p>
-      </div>
-
       <BmiCalculator />
 
       <AdBanner slotId="bmi-page-middle" format="horizontal" />

@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Landmark, Copy, Check, ShieldCheck, ArrowRight, PiggyBank } from 'lucide-react';
 
-export function PensionCalculator() {
+export function PensionCalculator({ customTitle }: { customTitle?: string } = {}) {
   const [basicSalary, setBasicSalary] = useState<number>(45000);
   const [monthlyCit, setMonthlyCit] = useState<number>(5000); // 5k CIT voluntary
   const [currentAge, setCurrentAge] = useState<number>(28);
@@ -66,9 +66,9 @@ Calculated on NepalCalc.com`;
             <span className="badge badge-emerald">Karmachari Sanchaya Kosh (EPF)</span>
             <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>Nagarik Lagani Kosh (CIT)</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            EPF, CIT & Pension Retirement Calculator Nepal
-          </h2>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+            {customTitle || 'EPF, CIT & Pension Retirement Calculator Nepal'}
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate your accumulated provident fund balance, interest gains, and monthly pension payout at retirement age.
           </p>

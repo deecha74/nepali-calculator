@@ -49,19 +49,6 @@ export default function NumberToWordsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">Nepal Banking Standard</span>
-          <span className="badge badge-neutral">Cheque & Invoice Ready</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Nepali Number to Words Converter
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Convert numeric amounts into formal Nepali and English words for bank cheques, cash vouchers, and tax invoices.
-        </p>
-      </div>
-
       <NumberToWordsCalculator />
 
       <AdBanner slotId="number-words-page-middle" format="horizontal" />

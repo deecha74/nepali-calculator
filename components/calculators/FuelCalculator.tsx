@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Fuel, Copy, Check, Users } from 'lucide-react';
 
 export function FuelCalculator() {
+  const { t } = useLanguage();
   const [distanceKm, setDistanceKm] = useState<number>(200); // 200km (e.g. Kathmandu to Pokhara)
   const [mileageKmPerLiter, setMileageKmPerLiter] = useState<number>(14); // 14 km/l car
   const [fuelPricePerLiter, setFuelPricePerLiter] = useState<number>(168); // NOC Petrol price approx
@@ -46,7 +48,7 @@ Via NepalCalc.com`;
             <span className="badge badge-neutral">Trip Cost & Mileage</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            Fuel & Travel Cost Calculator (इन्धन खर्च)
+            {t('Fuel & Travel Cost Calculator', 'इन्धन तथा यात्रा खर्च क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate total petrol/diesel needed and split costs per person for highway or city trips in Nepal.

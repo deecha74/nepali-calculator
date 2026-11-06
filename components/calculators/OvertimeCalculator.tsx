@@ -58,9 +58,9 @@ Via NepalCalc.com`;
             <span className="badge badge-emerald">Nepal Labour Act 2074 (Section 31)</span>
             <span className="badge badge-neutral">1.5x Basic Pay</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             Overtime (OT) & Hourly Wage Calculator Nepal
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate overtime earnings and hourly pay compliant with Ministry of Labour & Employment guidelines.
           </p>

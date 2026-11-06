@@ -75,24 +75,14 @@ export default async function ProgrammaticLandPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <Link href="/land" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '12px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <Link href="/land" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>
           <ArrowLeft size={14} />
           <span>Back to All Land Converters</span>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span className="badge badge-emerald">Programmatic Land Tool</span>
-          <span className="badge badge-neutral">{item.formula}</span>
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px', maxWidth: '720px' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      <LandConverter initialSlug={item.slug} titleTag="h2" />
+      <LandConverter initialSlug={item.slug} titleTag="h1" customTitle={item.title} />
 
       <AdBanner slotId={`land-${item.slug}-bottom`} format="horizontal" />
 

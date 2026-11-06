@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { FileText, Copy, Check, Trash2 } from 'lucide-react';
 
 export function WordCounterCalculator() {
+  const { t } = useLanguage();
   const [text, setText] = useState<string>(
     'नेपालको संविधान २०७२ र लोक सेवा आयोगको कम्प्युटर टाइपिङ परीक्षामा शब्द तथा अक्षर गणना अत्यन्त उपयोगी हुन्छ। Paste your English or Nepali Unicode text here to count words, characters, sentences, and Loksewa keystrokes.'
   );
@@ -45,9 +47,9 @@ export function WordCounterCalculator() {
             <FileText size={22} />
           </div>
           <div>
-            <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
-              Nepali Unicode & English Word Counter (शब्द तथा अक्षर गणना)
-            </h2>
+            <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
+              {t('Word & Character Counter', 'शब्द तथा अक्षर गणना')}
+            </h1>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>

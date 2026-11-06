@@ -59,21 +59,6 @@ export default function SolarRequirementPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>
-            Rooftop Solar & NEA Net Metering
-          </span>
-          <span className="badge badge-neutral">घर तथा अफिसको सोलार सिस्टम हिसाब</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          Nepal Solar System, Panel & Battery Requirement Calculator
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Enter your monthly NEA electricity bill and desired backup hours to calculate exact solar kW capacity, 550W panel count, battery bank Ah, roof area in Aana, and installation budget in Nepal.
-        </p>
-      </div>
-
       <SolarRequirementCalculator />
 
       <AdBanner slotId="solar-middle" format="horizontal" />

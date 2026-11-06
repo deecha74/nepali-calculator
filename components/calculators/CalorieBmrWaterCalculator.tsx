@@ -78,9 +78,9 @@ Calculated on NepalCalc.com/calorie-calculator`;
             <Flame size={24} />
           </div>
           <div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
               Daily Calorie (TDEE), BMR & Water Intake Calculator
-            </h2>
+            </h1>
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: '2px 0 0' }}>
               दैनिक क्यालोरी, BMR र पानीको आवश्यकता (दाल-भात पोषण तुलना सहित)
             </p>

@@ -48,19 +48,6 @@ export default function LoanEligibilityPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-emerald">Nepal Rastra Bank Directive</span>
-          <span className="badge badge-neutral">Commercial Bank Criteria</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Bank Loan Eligibility Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Calculate the maximum Home Loan, Auto Loan, or Personal Loan amount commercial banks will approve based on your monthly income.
-        </p>
-      </div>
-
       <LoanEligibilityCalculator />
 
       <AdBanner slotId="loan-eligibility-page-middle" format="horizontal" />

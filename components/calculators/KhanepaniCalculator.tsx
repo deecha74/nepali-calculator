@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Droplets, Copy, Check, Info, ShieldCheck } from 'lucide-react';
 
 export function KhanepaniCalculator() {
+  const { t } = useLanguage();
   const [pipeSize, setPipeSize] = useState<string>('0.5'); // 1/2 inch
   const [litersUsed, setLitersUsed] = useState<number>(18000); // 18k liters default
   const [hasSewerage, setHasSewerage] = useState<boolean>(true); // 50% sewer charge
@@ -57,9 +59,9 @@ Calculated on NepalCalc.com`;
             <span className="badge badge-blue">KUKL & Nepal Water Supply Tariff</span>
             <span className="badge badge-neutral">खानेपानी महसुल</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            Drinking Water (खानेपानी) Bill Calculator Nepal
-          </h2>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+            {t('Khanepani Water Bill Calculator', 'खानेपानी महसुल क्याल्कुलेटर')}
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Calculate monthly drinking water and sewerage tariffs for Kathmandu Valley (KUKL) and municipalities across Nepal.
           </p>

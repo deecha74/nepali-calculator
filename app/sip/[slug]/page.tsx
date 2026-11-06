@@ -75,29 +75,24 @@ export default async function ProgrammaticSipPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <Link href="/sip" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '12px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <Link href="/sip" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>
           <ArrowLeft size={14} />
           <span>Back to All SIP Calculations</span>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>NPR {item.monthlyAmount.toLocaleString()}/month SIP</span>
-          <span className="badge badge-emerald">12% CAGR Benchmark</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(22px, 3.5vw, 32px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '4px', maxWidth: '750px', lineHeight: '1.6' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      {/* Quick Tenure Milestones Matrix */}
+      {/* Preloaded Interactive SIP Widget — First Above the Fold */}
+      <div style={{ marginBottom: '32px' }}>
+        <SipCalculator initialMonthlyAmount={item.monthlyAmount} customTitle={item.title} titleTag="h1" />
+      </div>
+
+      {/* Quick Tenure Milestones Matrix — Placed Below Calculator */}
       <div className="white-card" style={{ padding: 'clamp(16px, 3vw, 24px)', marginBottom: '32px', background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)' }}>
-        <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h2 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <TrendingUp size={18} color="#059669" />
           <span>Expected Maturity Milestones at 12% Annual Growth</span>
-        </h3>
+        </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
           <div style={{ padding: '16px', background: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
             <span style={{ fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>5 Years Milestone</span>
@@ -129,14 +124,6 @@ export default async function ProgrammaticSipPage({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Preloaded Interactive SIP Widget */}
-      <div style={{ marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '16px' }}>
-          Simulate & Customize Your NPR {item.monthlyAmount.toLocaleString()} Monthly Plan
-        </h2>
-        <SipCalculator initialMonthlyAmount={item.monthlyAmount} />
       </div>
 
       <AdBanner slotId={`sip-${item.slug}-bottom`} format="horizontal" />

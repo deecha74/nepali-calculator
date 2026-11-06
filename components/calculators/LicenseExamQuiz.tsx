@@ -158,7 +158,7 @@ export function LicenseExamQuiz() {
             </div>
 
             <h1 style={{ fontSize: '26px', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-              सवारी चालक अनुमतिपत्र अनलाइन लिखित परीक्षा (DOTM Mock Exam)
+              {t('Driving License (DOTM) Written Mock Exam', 'सवारी चालक अनुमतिपत्र लिखित परीक्षा')}
             </h1>
             <p style={{ fontSize: '14px', color: '#64748b', lineHeight: 1.6, margin: 0 }}>
               नेपाल यातायात व्यवस्था विभागको आधिकारिक ५०० प्रश्न संग्रहमा आधारित अनलाइन नमुना परीक्षा। परीक्षा सुरु गर्दा २० वटा प्रश्नहरू अनियमित रूपमा चयन गरिनेछ।

@@ -80,29 +80,24 @@ export default async function ProgrammaticForexPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <Link href="/forex" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '12px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <Link href="/forex" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>
           <ArrowLeft size={14} />
           <span>Back to All Forex Rates</span>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span className="badge badge-emerald">{item.flag} {item.code} to NPR</span>
-          <span className="badge badge-neutral">1 {item.code} ≈ NPR {unitBuyPrice.toFixed(2)}</span>
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px', maxWidth: '750px' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      {/* Live Conversion Quick Matrix */}
+      {/* Interactive Live Converter — First Above the Fold */}
+      <div style={{ marginBottom: '32px' }}>
+        <ForexCalculator initialCurrency={item.code} titleTag="h1" customTitle={item.title} />
+      </div>
+
+      {/* Live Conversion Quick Matrix — Placed Below Calculator */}
       <div className="white-card" style={{ padding: '24px', marginBottom: '32px' }}>
-        <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h2 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <TrendingUp size={18} color="#10b981" />
           <span>Quick Conversion Table: {item.code} to Nepalese Rupees (NPR)</span>
-        </h3>
+        </h2>
         <div style={{ overflowX: 'auto' }}>
           <table className="nepal-table">
             <thead>
@@ -129,14 +124,6 @@ export default async function ProgrammaticForexPage({
             </tbody>
           </table>
         </div>
-      </div>
-
-      {/* Interactive Live Converter */}
-      <div style={{ marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '16px' }}>
-          Interactive Live {item.name} Converter & Remittance Calculator
-        </h2>
-        <ForexCalculator initialCurrency={item.code} titleTag="h2" />
       </div>
 
       <AdBanner slotId={`forex-${item.slug}-bottom`} format="horizontal" />

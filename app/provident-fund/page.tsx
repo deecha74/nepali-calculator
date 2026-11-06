@@ -61,21 +61,7 @@ export default function ProvidentFundPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <span className="badge badge-emerald">Karmachari Sanchaya Kosh (EPF)</span>
-          <span className="badge badge-neutral">10% + 10% Matching</span>
-          <span className="badge badge-blue">FY 2083/84 Rates</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Nepal Provident Fund (EPF) Calculator — कर्मचारी सञ्चय कोष
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '720px', margin: '8px auto 0', lineHeight: 1.6 }}>
-          Calculate your Karmachari Sanchaya Kosh (EPF) maturity corpus, annual compound interest, CIT voluntary top-ups, and 90% EPF Special Loan eligibility.
-        </p>
-      </div>
-
-      <PensionCalculator />
+      <PensionCalculator customTitle="Nepal Provident Fund (EPF) Calculator — कर्मचारी सञ्चय कोष" />
 
       <AdBanner slotId="epf-page-mid" format="horizontal" />
 

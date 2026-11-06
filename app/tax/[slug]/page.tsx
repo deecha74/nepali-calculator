@@ -74,30 +74,24 @@ export default async function ProgrammaticSalaryTaxPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <Link href="/tax" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '12px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <Link href="/tax" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--text-muted)' }}>
           <ArrowLeft size={14} />
           <span>Back to General Income Tax Calculator</span>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="badge badge-emerald">Nepal Salary Tax Guide</span>
-          <span className="badge badge-neutral">NPR {item.monthlySalary.toLocaleString()} / month</span>
-          <span className="badge badge-blue">FY 2083/84</span>
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px', maxWidth: '750px', lineHeight: '1.6' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      {/* Quick Summary Card */}
+      {/* Interactive Calculator with Pre-filled Amount — First Above the Fold */}
+      <div style={{ marginBottom: '32px' }}>
+        <IncomeTaxCalculator initialMonthlySalary={item.monthlySalary} titleTag="h1" customTitle={item.title} />
+      </div>
+
+      {/* Quick Summary Card — Placed Below Calculator */}
       <div className="white-card" style={{ padding: '24px', marginBottom: '32px', background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)', border: '1px solid #e2e8f0' }}>
-        <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <h2 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Wallet size={18} color="#10b981" />
           <span>Quick Tax Summary for NPR {item.monthlySalary.toLocaleString()}/month (NPR {item.annualSalary.toLocaleString()}/year)</span>
-        </h3>
+        </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
           <div style={{ padding: '16px', background: '#ffffff', borderRadius: '12px', border: '1px solid #e5e7eb' }}>
@@ -130,14 +124,6 @@ export default async function ProgrammaticSalaryTaxPage({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Interactive Calculator with Pre-filled Amount */}
-      <div style={{ marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '16px' }}>
-          Interactive Tax Simulation & Deduction Planner
-        </h2>
-        <IncomeTaxCalculator initialMonthlySalary={item.monthlySalary} titleTag="h2" />
       </div>
 
       <AdBanner slotId={`tax-${item.slug}-bottom`} format="horizontal" />

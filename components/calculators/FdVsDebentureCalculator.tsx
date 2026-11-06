@@ -68,7 +68,7 @@ export function FdVsDebentureCalculator() {
           <span className="badge badge-emerald">५% व्यक्तिगत TDS कट्टी</span>
         </div>
         <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
-          मुद्दती निक्षेप vs बैंक ऋणपत्र तुलना (Fixed Deposit vs Debenture Yield)
+          {t('Fixed Deposit vs Debenture Calculator', 'मुद्दती निक्षेप vs ऋणपत्र तुलना')}
         </h1>
         <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0 }}>
           क वर्गका वाणिज्य बैंकको मुद्दती निक्षेप (FD) र वार्षिक ८.५%–१०.५% ब्याज दिने बैंक ऋणपत्र (Debenture) बीच खुद नाफा तथा ब्याज आम्दानीको तुलना।

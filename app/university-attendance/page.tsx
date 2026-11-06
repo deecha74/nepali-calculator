@@ -54,19 +54,6 @@ export default function UniversityAttendancePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">University Exams</span>
-          <span className="badge badge-neutral">TU, KU, PU & CTEVT</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          University 75% Attendance & Bunk Calculator (हाजिरी क्याल्कुलेटर)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Avoid NQ in final exams! Calculate your current percentage, safe bunk classes, and recovery attendance for TU, KU, and Pokhara University.
-        </p>
-      </div>
-
       <UniversityAttendanceCalculator />
 
       <AdBanner slotId="university-attendance-middle" format="horizontal" />

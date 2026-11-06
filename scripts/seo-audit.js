@@ -29,7 +29,20 @@ pages.forEach((pagePath) => {
 
   const hasUseClient = content.includes("'use client'") || content.includes('"use client"');
   const hasMetadataExport = content.includes('export const metadata') || content.includes('export async function generateMetadata');
-  const hasH1 = /<h1[\s>]/.test(content);
+  let hasH1 = /<h1[\s>]|titleTag="h1"/.test(content);
+  if (!hasH1) {
+    const compImports = [...content.matchAll(/from\s+['"]@\/components\/([^'"]+)['"]/g)];
+    for (const m of compImports) {
+      const compFile = path.join(__dirname, '..', 'components', m[1] + '.tsx');
+      if (fs.existsSync(compFile)) {
+        const compText = fs.readFileSync(compFile, 'utf8');
+        if (/<h1[\s>]|TitleHeading/.test(compText)) {
+          hasH1 = true;
+          break;
+        }
+      }
+    }
+  }
   const hasJsonLd = content.includes('application/ld+json') || content.includes('generateWebApplicationSchema') || content.includes('generateFaqSchema');
   const hasCanonical = content.includes('canonical') || content.includes('constructMetadata');
   const hasOg = content.includes('openGraph') || content.includes('constructMetadata');

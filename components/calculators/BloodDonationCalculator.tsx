@@ -84,7 +84,7 @@ export function BloodDonationCalculator() {
           <span className="badge badge-emerald">जीवनदान रक्तदान</span>
         </div>
         <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
-          रक्तदान योग्यता तथा रक्त समूह क्याल्कुलेटर (Blood Donation Eligibility & Match)
+          {t('Blood Donation & Group Match Calculator', 'रक्तदान योग्यता तथा रक्त समूह क्याल्कुलेटर')}
         </h1>
         <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0 }}>
           नेपाल रेडक्रस रक्तसञ्चार सेवाको मापदण्ड अनुसार ९०/१२० दिनको रक्तदान अन्तर, आगामी मिति तथा रक्त समूह अनुकूलता जाँच।

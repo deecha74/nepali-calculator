@@ -7,9 +7,10 @@ import { DEFAULT_FOREX_RATES } from '@/lib/rates/forexRates';
 interface ForexCalculatorProps {
   initialCurrency?: string;
   titleTag?: 'h1' | 'h2';
+  customTitle?: string;
 }
 
-export function ForexCalculator({ initialCurrency, titleTag = 'h1' }: ForexCalculatorProps = {}) {
+export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle }: ForexCalculatorProps = {}) {
   const TitleHeading = titleTag;
   const [selectedCurrency, setSelectedCurrency] = useState<string>(initialCurrency || "USD");
   const [foreignAmount, setForeignAmount] = useState<number>(1000);
@@ -76,7 +77,7 @@ Via NepalCalc.com`;
             <span className="badge badge-neutral">Remittance & Exchange</span>
           </div>
           <TitleHeading style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            Forex & Remittance Currency Converter
+            {customTitle || 'Forex & Remittance Currency Converter'}
           </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Convert USD, AUD, AED, SAR, QAR, JPY, and global remittances to Nepali Rupees (NPR).

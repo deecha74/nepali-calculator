@@ -54,19 +54,6 @@ export default function MomoCaloriePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-orange">Nepali Street Food</span>
-          <span className="badge badge-neutral">Fitness & Nutrition</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Nepali Momo Calorie Counter (मोमो क्यालोरी काउन्टर)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Check calories, protein, carbs, and fat in your favorite plate of Buff, Chicken, Veg, Fried, or Jhol Momo.
-        </p>
-      </div>
-
       <MomoCalorieCalculator />
 
       <AdBanner slotId="momo-calorie-middle" format="horizontal" />

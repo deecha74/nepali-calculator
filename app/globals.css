@@ -881,40 +881,129 @@ body.detail-page main > div > div > .white-card.hover-lift:hover {
   border-color: var(--border-hover);
 }
 
-/* General Cards & Badges */
+/* General Cards & Badges - Lightweight, Crisp, Modern */
 .white-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .result-card-highlight {
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border: 1.5px solid #cbd5e1;
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Universal Lightweight Form Inputs */
+.text-input,
+.select-input,
+.number-input {
+  width: 100%;
+  padding: 8px 12px;
+  height: 42px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.text-input:focus,
+.select-input:focus,
+.number-input:focus {
+  border-color: #003893;
+  box-shadow: 0 0 0 3px rgba(0, 56, 147, 0.12);
+}
+
+/* Lightweight Sleek Sliders */
+input[type="range"].range-slider,
+input[type="range"] {
+  accent-color: #003893;
 }
 
 @media (max-width: 768px) {
+  /* Tool-First Mobile Layout: Eliminate top dead space and push inputs right into view */
+  main > .container,
+  main > .calculator-page-container,
+  main > div > .container,
+  body.detail-page main > .container,
+  body.detail-page main > .calculator-page-container,
+  body.detail-page main > div > .container {
+    padding-top: 8px !important;
+    padding-bottom: 36px !important;
+  }
+
+  /* Hide decorative header badges & long intro descriptions above calculator inputs on mobile */
+  .white-card > div:first-child .badge,
+  .calculator-card > div:first-child .badge,
+  .white-card > div:first-child h1 + p,
+  .white-card > div:first-child h2 + p,
+  .calculator-card > div:first-child h1 + p,
+  .calculator-card > div:first-child h2 + p,
+  main > .container > div > h1 + p,
+  main > .container > div > div > .badge,
+  body.detail-page .white-card > div:first-child .badge,
+  body.detail-page .calculator-card > div:first-child .badge,
+  body.detail-page .white-card > div:first-child h1 + p,
+  body.detail-page .white-card > div:first-child h2 + p,
+  body.detail-page .calculator-card > div:first-child h1 + p,
+  body.detail-page .calculator-card > div:first-child h2 + p,
+  body.detail-page main > .container > div > h1 + p,
+  body.detail-page main > .container > div > div > .badge {
+    display: none !important;
+  }
+
+  /* Compact the calculator header bar so inputs appear immediately above the fold */
+  .white-card > div:first-child,
+  .calculator-card > div:first-child,
+  body.detail-page .white-card > div:first-child,
+  body.detail-page .calculator-card > div:first-child {
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+    gap: 8px !important;
+  }
+
+  .white-card > div:first-child h1,
+  .white-card > div:first-child h2,
+  .calculator-card > div:first-child h1,
+  .calculator-card > div:first-child h2,
+  main > .container > div > h1,
+  body.detail-page .white-card > div:first-child h1,
+  body.detail-page .white-card > div:first-child h2,
+  body.detail-page .calculator-card > div:first-child h1,
+  body.detail-page .calculator-card > div:first-child h2,
+  body.detail-page main > .container > div > h1 {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
   .white-card {
-    padding: 16px 14px !important;
-    border-radius: 16px !important;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
   }
   .result-card-highlight {
-    padding: 18px 14px !important;
+    padding: 16px 12px !important;
   }
   .stat-value {
-    font-size: 24px !important;
+    font-size: 22px !important;
   }
   .btn-primary, .btn-secondary, button.btn-primary, button.btn-secondary {
-    padding: 9px 14px !important;
-    font-size: 13px !important;
+    padding: 8px 12px !important;
+    font-size: 12.5px !important;
   }
   .text-input, .select-input {
-    padding: 10px 12px !important;
-    font-size: 14px !important;
+    padding: 8px 10px !important;
+    height: 40px !important;
+    font-size: 13.5px !important;
   }
   table {
     display: block;

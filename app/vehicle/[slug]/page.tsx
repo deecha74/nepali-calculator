@@ -70,24 +70,14 @@ export default async function ProgrammaticVehiclePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <Link href="/vehicle" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: '#6b7280', marginBottom: '12px' }}>
+      <div style={{ marginBottom: '12px' }}>
+        <Link href="/vehicle" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: '#6b7280' }}>
           <ArrowLeft size={14} />
           <span>Back to All Vehicles</span>
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span className="badge badge-blue">{item.name} Road Tax</span>
-          <span className="badge badge-neutral">{item.capacity}{item.fuelType === 'electric' ? (item.vehicleType === 'bike' ? 'W' : 'kW') : 'cc'}</span>
-        </div>
-        <h1 style={{ fontSize: '28px', fontWeight: 800, marginTop: '8px', color: '#111827' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '14px', color: '#4b5563', marginTop: '4px', maxWidth: '720px' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      <VehicleTaxCalculator titleTag="h2" />
+      <VehicleTaxCalculator titleTag="h1" customTitle={item.title} />
 
       <AdBanner slotId={`vehicle-${item.slug}-bottom`} format="horizontal" />
 

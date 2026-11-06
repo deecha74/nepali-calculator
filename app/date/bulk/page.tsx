@@ -53,19 +53,6 @@ export default function BulkDatePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">Spreadsheet Tool</span>
-          <span className="badge badge-neutral">Excel & CSV Friendly</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Bulk Nepali Date Converter (एकमुष्ट मिति रूपान्तरण)
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Convert full columns of Bikram Sambat (BS) and English (AD) dates simultaneously for accounting, HR, and banking data entry.
-        </p>
-      </div>
-
       <BulkDateConverter />
 
       <AdBanner slotId="bulk-date-middle" format="horizontal" />

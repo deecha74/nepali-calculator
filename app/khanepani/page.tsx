@@ -48,19 +48,6 @@ export default function KhanepaniPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-          <span className="badge badge-blue">Municipal Utility</span>
-          <span className="badge badge-neutral">KUKL Approved Rates</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          Drinking Water (खानेपानी) Bill Calculator Nepal
-        </h1>
-        <p style={{ fontSize: 'clamp(13px, 2vw, 15px)', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '640px', margin: '8px auto 0' }}>
-          Calculate monthly tap water consumption tariffs, slab increments, and 50% drainage sewerage fees.
-        </p>
-      </div>
-
       <KhanepaniCalculator />
 
       <AdBanner slotId="khanepani-page-middle" format="horizontal" />

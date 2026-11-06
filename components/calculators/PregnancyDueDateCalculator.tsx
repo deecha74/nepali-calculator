@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Heart, Calendar, Sparkles, Copy, Check, Baby, ShieldCheck } from 'lucide-react';
 import { convertAdToBsApprox } from '@/lib/nepaliDate';
 
 export function PregnancyDueDateCalculator() {
+  const { t } = useLanguage();
   const [lmpDateAd, setLmpDateAd] = useState<string>('2026-04-15');
   const [cycleLength, setCycleLength] = useState<number>(28);
   const [copied, setCopied] = useState<boolean>(false);
@@ -98,9 +100,9 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
               <span className="badge badge-blue">Bikram Sambat (BS) & AD</span>
               <span className="badge badge-neutral">आमा सुरक्षा तथा प्रसूति मिति</span>
             </div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
-              Nepali Pregnancy Due Date Calculator (प्रसूति मिति र हप्ता हिसाब)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
+              {t('Pregnancy Due Date Calculator', 'प्रसूति मिति क्याल्कुलेटर')}
+            </h1>
           </div>
         </div>
 

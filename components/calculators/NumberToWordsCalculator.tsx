@@ -31,9 +31,9 @@ export function NumberToWordsCalculator() {
             <span className="badge badge-emerald">Nepal Bank Cheque & Voucher Standard</span>
             <span className="badge badge-neutral">अङ्कलाई अक्षरमा</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             Nepali Number to Words (Cheque Writing) Converter
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Convert numeric figures into formal Nepali and English words for Bank Cheques, Invoices, and Legal Documents.
           </p>

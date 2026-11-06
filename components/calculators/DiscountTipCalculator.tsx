@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useLanguage } from '@/components/LanguageContext';
 import { Percent, Copy, Check } from 'lucide-react';
 
 export function DiscountTipCalculator() {
+  const { t } = useLanguage();
   const [originalPrice, setOriginalPrice] = useState<number>(4500);
   const [discountPercent, setDiscountPercent] = useState<number>(15);
   const [addNepalVat, setAddNepalVat] = useState<boolean>(false);
@@ -48,9 +50,9 @@ Calculated on NepalCalc.com/discount-calculator`;
             <Percent size={24} />
           </div>
           <div>
-            <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0 }}>
-              Discount, Tip & Group Bill Split Calculator (छुट तथा बिल बाँडफाँड)
-            </h2>
+            <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0 }}>
+              {t('Discount, Tip & Bill Split Calculator', 'छुट तथा बिल बाँडफाँड क्याल्कुलेटर')}
+            </h1>
           </div>
         </div>
         <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>

@@ -221,9 +221,9 @@ export function LokSewaAgeCalculator() {
           <Award size={24} />
         </div>
         <div>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '20px', fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
             लोक सेवा आयोग उमेर तथा योग्यता क्याल्कुलेटर
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '4px 0 0' }}>
             Civil Service Act 2049 & Public Service Commission (PSC) Age Criteria
           </p>

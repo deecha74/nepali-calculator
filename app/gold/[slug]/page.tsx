@@ -67,8 +67,8 @@ export default async function ProgrammaticGoldPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Breadcrumb & Navigation */}
-      <div style={{ marginBottom: '24px' }}>
+      {/* Compact Breadcrumb */}
+      <div style={{ marginBottom: '12px' }}>
         <Link
           href="/gold"
           style={{
@@ -78,44 +78,14 @@ export default async function ProgrammaticGoldPage({
             fontSize: '13px',
             fontWeight: 600,
             color: 'var(--text-muted)',
-            marginBottom: '12px',
           }}
         >
           <ArrowLeft size={14} />
           <span>Back to All Gold & Silver Calculators</span>
         </Link>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="badge badge-amber" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-            <Sparkles size={12} />
-            <span>FENEGOSIDA Rates</span>
-          </span>
-          <span className="badge badge-emerald">Live Daily Update</span>
-          <span className="badge badge-neutral">{item.badge}</span>
-        </div>
-
-        <h1 style={{ fontSize: '28px', fontWeight: 800, marginTop: '10px', color: 'var(--text-primary)' }}>
-          {item.title}
-        </h1>
-        <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px', maxWidth: '780px', lineHeight: '1.6' }}>
-          {item.metaDescription}
-        </p>
       </div>
 
-      {/* Featured Snippet Direct Answer Box (Google AEO Box) — 100% Real-Time Live */}
-      <LiveGoldQuickAnswer
-        unit={item.unit}
-        amount={
-          item.unit === 'gram'
-            ? (item.gramAmount ?? 1)
-            : ((item.tolaAmount ?? 0) + (item.lalAmount ?? 0) / 100) || 1
-        }
-        slug={item.slug}
-        headlineAnswer={item.headlineAnswer}
-        conversionFormula={item.conversionFormula}
-      />
-
-      {/* Pre-configured Interactive Calculator */}
+      {/* Pre-configured Interactive Calculator — First Above the Fold */}
       <GoldCalculator
         initialMetalType={item.metalType}
         initialWeightUnit={item.unit}
@@ -124,10 +94,25 @@ export default async function ProgrammaticGoldPage({
         initialGram={item.gramAmount ?? 11.66}
         initialMakingCharge={initialMaking}
         initialWastagePercent={initialWastage}
-        titleTag="h2"
-        customTitle={`Calculate ${item.shortTitle} with Making Charges & Jarti`}
+        titleTag="h1"
+        customTitle={item.title}
         customSubtitle={`Adjust weight, labor charges (ज्याला), and wastage (जर्ती) for ${item.shortTitle} in Nepal.`}
       />
+
+      {/* Featured Snippet Direct Answer Box (Google AEO Box) — Placed Below Calculator for Clean Mobile UX */}
+      <div style={{ marginTop: '28px' }}>
+        <LiveGoldQuickAnswer
+          unit={item.unit}
+          amount={
+            item.unit === 'gram'
+              ? (item.gramAmount ?? 1)
+              : ((item.tolaAmount ?? 0) + (item.lalAmount ?? 0) / 100) || 1
+          }
+          slug={item.slug}
+          headlineAnswer={item.headlineAnswer}
+          conversionFormula={item.conversionFormula}
+        />
+      </div>
 
       <AdBanner slotId={`gold-${item.slug}-mid`} format="horizontal" />
 

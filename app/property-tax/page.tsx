@@ -59,21 +59,6 @@ export default function PropertyTaxPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>
-            Local Government Economic Act 2083/84
-          </span>
-          <span className="badge badge-neutral">वडा कार्यालय घरजग्गा तथा सम्पत्ति कर</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          Nepal Annual Property Tax (Ghar Jagga Kar) Calculator
-        </h1>
-        <p style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Estimate your annual municipal property and house-land tax based on government land and building valuation, with automatic 10% early payment rebate calculation.
-        </p>
-      </div>
-
       <PropertyTaxCalculator />
 
       <AdBanner slotId="property-tax-middle" format="horizontal" />

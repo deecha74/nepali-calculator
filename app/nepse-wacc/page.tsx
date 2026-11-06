@@ -85,19 +85,6 @@ export default function NepseWaccPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aeoSchema) }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '28px', maxWidth: '820px', margin: '0 auto 28px' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-          <span className="badge badge-blue">CDSC MeroShare EDIS</span>
-          <span className="badge badge-neutral">बोनस, हकप्रद र दोस्रो बजार औसत मूल्य</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '-0.02em', margin: '0 0 10px' }}>
-          NEPSE WACC & Share Average Price Calculator
-        </h1>
-        <p className="aeo-answer-container" style={{ fontSize: 'clamp(13.5px, 2vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-          Calculate your exact Weighted Average Cost of Capital (WACC) across IPOs, secondary market TMS buys, bonus shares (Rs. 100 par value), and right shares—and preview your net profit after 5% or 7.5% CGT.
-        </p>
-      </div>
-
       <NepseWaccCalculator />
 
       <AdBanner slotId="nepse-wacc-middle" format="horizontal" />

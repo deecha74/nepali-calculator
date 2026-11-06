@@ -97,7 +97,7 @@ export function PostalShippingCalculator() {
           <span className="badge badge-blue">EMS International & Domestic</span>
         </div>
         <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
-          नेपाल हुलाक तथा ईएमएस पार्सल महसुल (Nepal Post Office & EMS Parcel Shipping)
+          {t('Nepal Post & EMS Parcel Rate Calculator', 'हुलाक तथा ईएमएस पार्सल महसुल')}
         </h1>
         <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0 }}>
           हुलाक सेवा विभाग (Nepal Post) को आधिकारिक दर अनुसार अमेरिका, बेलायत, जापान, अस्ट्रेलिया तथा नेपालका विभिन्न जिल्लामा पार्सल पठाउने खर्च।

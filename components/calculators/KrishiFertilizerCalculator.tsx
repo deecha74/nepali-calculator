@@ -98,7 +98,7 @@ export function KrishiFertilizerCalculator() {
           <span className="badge badge-blue">रासायनिक मल तथा बीउ दर</span>
         </div>
         <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
-          कृषि मलखाद तथा बीउ क्याल्कुलेटर (Fertilizer & Seed Dosage Calculator Nepal)
+          {t('Fertilizer & Seed Dosage Calculator', 'कृषि मलखाद तथा बीउ क्याल्कुलेटर')}
         </h1>
         <p style={{ fontSize: '13.5px', color: '#64748b', margin: 0 }}>
           नेपाल कृषि अनुसन्धान परिषद् (NARC) को सिफारिस अनुसार धान, मकै, गहुँ, आलु र तोरी खेतीका लागि युरिया, डीएपी र पोटास मलको सही मात्रा।

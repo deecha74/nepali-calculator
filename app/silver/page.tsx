@@ -95,27 +95,6 @@ export default function SilverPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
       />
 
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="badge badge-emerald">FENEGOSIDA Official Silver</span>
-          <span className="badge badge-neutral">999 Fine Silver (चाँदी)</span>
-        </div>
-        <h1 style={{ fontSize: 'clamp(24px, 3.8vw, 34px)', fontWeight: 800, marginTop: '10px', color: 'var(--text-primary)' }}>
-          Silver Price in Nepal Today (चाँदीको भाउ) — Live Rate &amp; Calculator
-        </h1>
-        <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', marginTop: '6px', maxWidth: '760px', lineHeight: 1.6 }}>
-          Check today&apos;s official FENEGOSIDA silver rate per Tola (11.6638g), 10 Grams, 1 Lal, and 1 Kg in Nepal, and calculate exact silver ornament or utensil costs.
-        </p>
-      </div>
-
-      <LiveGoldQuickAnswer
-        unit="tola"
-        amount={1}
-        slug="silver-price-in-nepal-today-per-tola"
-        headlineAnswer="Today's official silver price in Nepal is रु 4,100 per tola (11.6638g), रु 3,515 per 10 grams, and रु 3,51,500 per 1 kilogram as published by the Federation of Nepal Gold and Silver Dealers' Association (FENEGOSIDA)."
-        conversionFormula="1 Tola Silver = 11.6638 Grams = 100 Lal = 16 Aana"
-      />
-
       <GoldCalculator
         initialMetalType="silver"
         initialWeightUnit="tola"
@@ -124,10 +103,20 @@ export default function SilverPage() {
         initialGram={11.66}
         initialMakingCharge={400}
         initialWastagePercent={2}
-        titleTag="h2"
-        customTitle="Silver Price & Weight Converter Nepal (चाँदी क्यालकुलेटर)"
+        titleTag="h1"
+        customTitle="Silver Price in Nepal Today (चाँदीको भाउ) — Live Rate & Calculator"
         customSubtitle="Convert Tola, Lal, and Grams for 999 fine silver and estimate total ornament cost with Jyala & Jarti."
       />
+
+      <div style={{ marginTop: '28px' }}>
+        <LiveGoldQuickAnswer
+          unit="tola"
+          amount={1}
+          slug="silver-price-in-nepal-today-per-tola"
+          headlineAnswer="Today's official silver price in Nepal is रु 4,100 per tola (11.6638g), रु 3,515 per 10 grams, and रु 3,51,500 per 1 kilogram as published by the Federation of Nepal Gold and Silver Dealers' Association (FENEGOSIDA)."
+          conversionFormula="1 Tola Silver = 11.6638 Grams = 100 Lal = 16 Aana"
+        />
+      </div>
 
       <AdBanner slotId="silver-page-mid" format="horizontal" />
 

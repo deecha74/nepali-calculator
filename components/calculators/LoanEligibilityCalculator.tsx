@@ -57,9 +57,9 @@ Calculated on NepalCalc.com`;
             <span className="badge badge-emerald">Nepal Rastra Bank DSTI 50% Rule</span>
             <span className="badge badge-neutral">ऋण योग्यता हिसाब</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             Bank Loan Eligibility & DSTI Calculator Nepal
-          </h2>
+          </h1>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             Check the maximum Home or Auto loan amount commercial banks in Nepal will approve based on your salary.
           </p>

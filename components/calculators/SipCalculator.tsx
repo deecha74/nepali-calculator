@@ -22,14 +22,19 @@ interface SipCalculatorProps {
   initialMonthlyAmount?: number;
   initialReturnRate?: number;
   initialTenureYears?: number;
+  customTitle?: string;
+  titleTag?: 'h1' | 'h2';
 }
 
 export function SipCalculator({
   initialMonthlyAmount = 5000,
   initialReturnRate = 12,
   initialTenureYears = 10,
+  customTitle,
+  titleTag = 'h1',
 }: SipCalculatorProps = {}) {
   const { t } = useLanguage();
+  const TitleHeading = titleTag;
   const [monthlyAmount, setMonthlyAmount] = useState<number>(initialMonthlyAmount);
   const [returnRate, setReturnRate] = useState<number>(initialReturnRate);
   const [tenureYears, setTenureYears] = useState<number>(initialTenureYears);
@@ -86,9 +91,9 @@ Calculated on NepalCalc.com`;
             </span>
             <span className="badge badge-emerald">{t('Nepal Mutual Funds', 'नेपाल म्युचुअल फण्ड')}</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            {t('Systematic Investment Plan (SIP) Calculator Nepal', 'नेपाल व्यवस्थित लगानी योजना (SIP) क्याल्कुलेटर')}
-          </h2>
+          <TitleHeading style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
+            {customTitle || t('Systematic Investment Plan (SIP) Calculator Nepal', 'नेपाल व्यवस्थित लगानी योजना (SIP) क्याल्कुलेटर')}
+          </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             {t(
               'Calculate maturity returns for NIBL Sahabhagita, Siddhartha, NMB, and open-ended mutual funds.',
