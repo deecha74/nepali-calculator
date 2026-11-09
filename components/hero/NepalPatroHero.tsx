@@ -70,27 +70,28 @@ export function NepalPatroHero() {
   // Active day defaults to today's real day
   const activeDay = selectedDay || heroDays.find((d) => d.isToday) || heroDays.find((d) => d.bsDay === todayBs.bsDay) || heroDays[0];
 
-  // Dynamic next upcoming festival calculation
+  // Dynamic next upcoming festival calculation (strictly AFTER activeDay/today so it never duplicates Today's event)
   const upcomingFestival = useMemo(() => {
-    const cur = getTodayBsDate();
+    const refMonth = activeDay ? activeDay.bsMonth : todayBs.bsMonth;
+    const refDay = activeDay ? activeDay.bsDay : todayBs.bsDay;
     const upcomingList = KNOWN_FESTIVALS_2083.filter(
-      (f) => f.month > cur.bsMonth || (f.month === cur.bsMonth && f.day >= cur.bsDay)
+      (f) => f.month > refMonth || (f.month === refMonth && f.day > refDay)
     );
     if (upcomingList.length > 0) {
       const next = upcomingList[0];
       let diff = 0;
-      if (next.month === cur.bsMonth) {
-        diff = next.day - cur.bsDay;
+      if (next.month === refMonth) {
+        diff = next.day - refDay;
       } else {
-        diff = (30 - cur.bsDay) + next.day;
+        diff = (heroMeta.totalDays - refDay) + next.day;
       }
       return {
         ...next,
-        daysRemaining: Math.max(0, diff),
+        daysRemaining: Math.max(1, diff),
       };
     }
     return null;
-  }, [heroYear, heroMonth]);
+  }, [activeDay, todayBs.bsMonth, todayBs.bsDay, heroMeta.totalDays]);
 
   const handleHeroPrevMonth = () => {
     if (heroMonth === 1) {
@@ -201,50 +202,6 @@ export function NepalPatroHero() {
           >
             {/* Foreground Content */}
             <div style={{ position: 'relative', zIndex: 1 }}>
-
-              {/* Top Subtitle Badge: Live Patro Status */}
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.95)',
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
-                  boxShadow: '0 2px 10px rgba(11, 43, 92, 0.06)',
-                  marginBottom: '12px',
-                  width: 'fit-content',
-                }}
-              >
-                <NepalFlagAnimated size={18} />
-                <span style={{ fontSize: '11px', fontWeight: 900, color: '#059669', display: 'flex', alignItems: 'center' }}>
-                  ((•))
-                </span>
-                <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#0b2b5c', letterSpacing: '0.04em' }}>
-                  NEPAL LIVE PATRO
-                </span>
-                <span
-                  style={{
-                    fontSize: '10px',
-                    fontWeight: 800,
-                    color: '#059669',
-                    backgroundColor: '#ecfdf5',
-                    border: '1px solid #a7f3d0',
-                    padding: '2px 7px',
-                    borderRadius: '9999px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#059669' }} />
-                  LIVE
-                </span>
-              </div>
 
               {/* Massive Bold Heading: Dynamic BS Date matching image */}
               <h1
@@ -429,12 +386,16 @@ export function NepalPatroHero() {
                   }}
                 >
                   <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#dc2626', flexShrink: 0 }} />
-                  <span style={{ color: '#dc2626', fontWeight: 800 }}>{t('Today', 'आज')} :</span>
+                  <span style={{ color: '#dc2626', fontWeight: 800 }}>
+                    {activeDay.isToday ? t('Today', 'आज') : `${toNepaliDigits(activeDay.bsDay)} ${heroMeta.monthNameNep}`} :
+                  </span>
                   <span style={{ color: '#0f172a', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {activeDay.eventNep || (activeDay.isWeekend ? 'साप्ताहिक बिदा' : 'पञ्च पर्व / पुण्यूणा')}
+                    {language === 'ne'
+                      ? (activeDay.eventNep || `${activeDay.tithi}${activeDay.isWeekend ? ' • साप्ताहिक बिदा' : ''}`)
+                      : (activeDay.eventEng || activeDay.eventNep || `${activeDay.tithi}${activeDay.isWeekend ? ' • Weekend' : ''}`)}
                   </span>
                   <span style={{ color: '#dc2626', fontWeight: 800 }}>
-                    - {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Workday', 'कार्यदिन')}
+                    - {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Regular Day', 'सामान्य दिन')}
                   </span>
                 </div>
 
@@ -462,7 +423,9 @@ export function NepalPatroHero() {
                       {language === 'ne' ? upcomingFestival.eventNep : upcomingFestival.eventEng}
                     </span>
                     <span style={{ color: '#b45309', fontWeight: 800 }}>
-                      - {upcomingFestival.daysRemaining === 0 ? t('Today', 'आज') : (language === 'ne' ? `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि` : `in ${upcomingFestival.daysRemaining} days`)}
+                      - {upcomingFestival.daysRemaining === 1
+                        ? t('Tomorrow', 'भोलि')
+                        : (language === 'ne' ? `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि` : `in ${upcomingFestival.daysRemaining} days`)}
                     </span>
                   </div>
                 )}
@@ -525,7 +488,7 @@ export function NepalPatroHero() {
 
               {heroRightTab === 'tools' ? (
                 <Link
-                  href="#all-tools"
+                  href="/tools"
                   style={{
                     fontSize: '12px',
                     fontWeight: 700,

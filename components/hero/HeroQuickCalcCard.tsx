@@ -54,53 +54,55 @@ export function HeroQuickCalcCard({
 
   const taxCalculation = useMemo(() => {
     const annualSalary = monthlySalary * 12;
-    // FY 2083/84 / 2081/82 IRD Slabs
-    const basicExemption = taxMarital === 'single' ? 500000 : 600000;
+    // Official FY 2083/84 IRD Slabs (10 Lakh Base Slab)
+    const basicExemption = 1000000;
     let tax = 0;
 
     if (annualSalary <= basicExemption) {
-      tax = annualSalary * 0.01; // 1% Social Security Tax
+      tax = annualSalary * 0.01; // 1% Social Security Tax (0% if enrolled in SSF)
     } else {
-      // First slab (1% SST)
+      // First 10,00,000 (1% SST)
       tax = basicExemption * 0.01;
       let remaining = annualSalary - basicExemption;
 
-      // Next 200,000 (10% or single/married standard)
-      const slab2 = taxMarital === 'single' ? 200000 : 200000;
+      // Next 5,00,000 (10L - 15L @ 10%)
       if (remaining > 0) {
-        const taxable = Math.min(remaining, slab2);
+        const taxable = Math.min(remaining, 500000);
         tax += taxable * 0.10;
         remaining -= taxable;
       }
 
-      // Next 300,000 (20%)
+      // Next 10,00,000 (15L - 25L @ 20%)
       if (remaining > 0) {
-        const taxable = Math.min(remaining, 300000);
+        const taxable = Math.min(remaining, 1000000);
         tax += taxable * 0.20;
         remaining -= taxable;
       }
 
-      // Next 1,000,000 (30%)
+      // Next 15,00,000 (25L - 40L @ 27%)
       if (remaining > 0) {
-        const taxable = Math.min(remaining, 1000000);
-        tax += taxable * 0.30;
+        const taxable = Math.min(remaining, 1500000);
+        tax += taxable * 0.27;
         remaining -= taxable;
       }
 
-      // Above 20,00,000 / 50,00,000 (36% to 39%)
+      // Above 40,00,000 (29%)
       if (remaining > 0) {
-        tax += remaining * 0.36;
+        tax += remaining * 0.29;
       }
     }
 
+    const ssfAnnualTax = Math.max(0, tax - Math.min(annualSalary, basicExemption) * 0.01);
     const monthlyTax = Math.round(tax / 12);
+    const ssfMonthlyTax = Math.round(ssfAnnualTax / 12);
     const netMonthly = Math.max(0, monthlySalary - monthlyTax);
-    const effectiveRate = monthlySalary > 0 ? ((monthlyTax / monthlySalary) * 100).toFixed(1) : '0';
+    const effectiveRate = monthlySalary > 0 ? ((tax / annualSalary) * 100).toFixed(1) : '0.0';
 
     return {
       annualSalary,
       annualTax: Math.round(tax),
       monthlyTax,
+      ssfMonthlyTax,
       netMonthly,
       effectiveRate,
     };
@@ -479,9 +481,9 @@ export function HeroQuickCalcCard({
             {/* Quick Preset Salary Chips matching image */}
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               {[
-                { label: '3k', val: 30000 },
-                { label: '5k', val: 50000 },
-                { label: '7.5k', val: 75000 },
+                { label: '30k', val: 30000 },
+                { label: '50k', val: 50000 },
+                { label: '75k', val: 75000 },
                 { label: '1 Lakh', val: 100000 },
                 { label: '1.5 Lakh', val: 150000 },
               ].map((chip) => {
@@ -542,13 +544,13 @@ export function HeroQuickCalcCard({
                 NPR {taxCalculation.netMonthly.toLocaleString('en-IN')}
               </div>
 
-              {/* Row 3: Annual Taxable left, green change right */}
+              {/* Row 3: Annual Taxable left, SSF tax info right */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px' }}>
                 <span style={{ color: '#64748b' }}>
-                  Annual Taxable: NPR {(monthlySalary * 12).toLocaleString('en-IN')}
+                  Annual Gross: NPR {(monthlySalary * 12).toLocaleString('en-IN')}
                 </span>
                 <span style={{ color: '#059669', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
-                  ▲ NPR 322/mo (4.8%)
+                  ✓ With SSF: NPR {taxCalculation.ssfMonthlyTax.toLocaleString('en-IN')}/mo tax
                 </span>
               </div>
             </div>

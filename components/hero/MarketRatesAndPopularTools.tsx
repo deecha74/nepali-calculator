@@ -326,7 +326,7 @@ export function PopularToolsCard() {
         </div>
 
         <Link
-          href="#all-tools"
+          href="/tools"
           style={{
             display: 'inline-flex',
             alignItems: 'center',

@@ -101,6 +101,7 @@ const BS_2083_MONTH_SPECS = [
   { month: 9, days: 30, startDay: 4, prevDays: 29, adStart: new Date(2026, 11, 16) }, // Poush
   { month: 10, days: 29, startDay: 6, prevDays: 30, adStart: new Date(2027, 0, 15) }, // Magh
   { month: 11, days: 30, startDay: 0, prevDays: 29, adStart: new Date(2027, 1, 13) }, // Falgun
+  { month: 12, days: 30, startDay: 2, prevDays: 30, adStart: new Date(2027, 2, 15) }, // Chaitra
 ];
 
 /**
@@ -170,20 +171,22 @@ export const KNOWN_FESTIVALS_2083: FestivalEvent[] = [
   { month: 6, day: 24, eventNep: 'औंसी श्राद्ध / पितृ विसर्जन', eventEng: 'Pitri Aunsi', isGazettedHoliday: true },
   { month: 6, day: 25, eventNep: 'घटस्थापना व्रत / नवरात्र आरम्भ', eventEng: 'Ghatasthapana (Dashain Begins)', isGazettedHoliday: true },
   { month: 6, day: 31, eventNep: 'दशैँ बिदा / फूलपाती', eventEng: 'Phulpati (Dashain Holiday)', isGazettedHoliday: true },
-  // Kartik
-  { month: 7, day: 1, eventNep: 'फूलपाती (दशैँ बिदा)', eventEng: 'Phulpati (Dashain Holiday)', isGazettedHoliday: true },
-  { month: 7, day: 2, eventNep: 'महाअष्टमी (दशैँ बिदा)', eventEng: 'Maha Ashtami', isGazettedHoliday: true },
-  { month: 7, day: 3, eventNep: 'महानवमी (दशैँ बिदा)', eventEng: 'Maha Navami', isGazettedHoliday: true },
-  { month: 7, day: 4, eventNep: 'विजया दशमी (दशैँ मुख्य टिका)', eventEng: 'Vijaya Dashami Tika', isGazettedHoliday: true },
-  { month: 7, day: 5, eventNep: 'एकादशी (दशैँ बिदा)', eventEng: 'Papankusha Ekadashi', isGazettedHoliday: true },
-  { month: 7, day: 6, eventNep: 'द्वादशी (दशैँ बिदा)', eventEng: 'Dashain Dwadashi', isGazettedHoliday: true },
+  // Kartik 2083 (Official Nepal Panchanga Nirnayak Samiti Schedule - Oct/Nov 2026)
+  { month: 7, day: 1, eventNep: 'महाअष्टमी व्रत / कालरात्रि पूजा (दशैँ बिदा)', eventEng: 'Maha Ashtami (Dashain Holiday)', isGazettedHoliday: true },
+  { month: 7, day: 2, eventNep: 'महानवमी पर्व (दशैँ बिदा)', eventEng: 'Maha Navami (Dashain Holiday)', isGazettedHoliday: true },
+  { month: 7, day: 3, eventNep: 'दशैँ बिदा (दशमी तिथि)', eventEng: 'Dashain Holiday', isGazettedHoliday: true },
+  { month: 7, day: 4, eventNep: 'विजया दशमी (दशैँ मुख्य टीका)', eventEng: 'Vijaya Dashami Tika', isGazettedHoliday: true },
+  { month: 7, day: 5, eventNep: 'पापांकुशा एकादशी (दशैँ बिदा)', eventEng: 'Papankusha Ekadashi (Dashain Holiday)', isGazettedHoliday: true },
+  { month: 7, day: 6, eventNep: 'द्वादशी (दशैँ बिदा)', eventEng: 'Dashain Dwadashi Holiday', isGazettedHoliday: true },
   { month: 7, day: 8, eventNep: 'कोजाग्रत पूर्णिमा (दशैँ समापन)', eventEng: 'Kojagrat Purnima', isGazettedHoliday: false },
-  { month: 7, day: 15, eventNep: 'धनतेरस (धनत्रयोदशी)', eventEng: 'Dhanteras', isGazettedHoliday: false },
-  { month: 7, day: 16, eventNep: 'काग तिहार / कुकुर तिहार', eventEng: 'Kag Tihar & Kukur Tihar', isGazettedHoliday: false },
-  { month: 7, day: 17, eventNep: 'लक्ष्मी पूजा / दिपावली', eventEng: 'Laxmi Puja (Deepawali)', isGazettedHoliday: true },
-  { month: 7, day: 18, eventNep: 'गाई पूजा / गोवर्धन पूजा / म्हपूजा', eventEng: 'Govardhan Puja & Mha Puja', isGazettedHoliday: true },
-  { month: 7, day: 19, eventNep: 'भाइटीका (तिहार मुख्य बिदा)', eventEng: 'Bhai Tika (Tihar Holiday)', isGazettedHoliday: true },
-  { month: 7, day: 23, eventNep: 'छठ पर्व (सूर्य पूजा)', eventEng: 'Chhath Parva', isGazettedHoliday: true },
+  { month: 7, day: 19, eventNep: 'रमा एकादशी व्रत', eventEng: 'Rama Ekadashi Vrata', isGazettedHoliday: false },
+  { month: 7, day: 20, eventNep: 'धनतेरस / धनत्रयोदशी (तिहार आरम्भ)', eventEng: 'Dhanteras (Tihar Begins)', isGazettedHoliday: false },
+  { month: 7, day: 21, eventNep: 'काग तिहार / धन्वन्तरी जयन्ती', eventEng: 'Kaag Tihar & Dhanwantari Jayanti', isGazettedHoliday: false },
+  { month: 7, day: 22, eventNep: 'कुकुर तिहार / लक्ष्मी पूजा (दिपावली)', eventEng: 'Kukur Tihar & Laxmi Puja (Deepawali)', isGazettedHoliday: true },
+  { month: 7, day: 23, eventNep: 'गाई तिहार / औंसी (तिहार बिदा)', eventEng: 'Gai Tihar & Aunsi (Tihar Holiday)', isGazettedHoliday: true },
+  { month: 7, day: 24, eventNep: 'गोवर्धन पूजा / म्ह पूजा / नेपाल संवत् ११४७', eventEng: 'Govardhan Puja, Mha Puja & Nepal Sambat 1147', isGazettedHoliday: true },
+  { month: 7, day: 25, eventNep: 'भाइटीका / किजा पूजा (तिहार मुख्य बिदा)', eventEng: 'Bhai Tika (Tihar Main Holiday)', isGazettedHoliday: true },
+  { month: 7, day: 29, eventNep: 'छठ पर्व (सूर्य षष्ठी पूजा)', eventEng: 'Chhath Parva', isGazettedHoliday: true },
   // Mangsir
   { month: 8, day: 15, eventNep: 'उधौली पर्व / योमरी पुन्ही', eventEng: 'Udhauli & Yomari Punhi', isGazettedHoliday: true },
   // Poush
@@ -239,16 +242,29 @@ export function generateMonthDays(bsYear: number = 2083, bsMonth: number = 6): {
     const adDateStr = `${y}-${m}-${d}`;
     const adMonthName = adDateObj.toLocaleDateString('en-US', { month: 'short' });
 
-    // Tithi mapping for Ashwin or general lunisolar cycle
-    // In Ashwin 2083: Day 1 starts at Chaturdashi (13), Day 2 is Aunsi (15), Day 3 is Pratipada (0)...
-    const tithiSequence = [
+    // Tithi mapping for Ashwin, Kartik, or general lunisolar cycle
+    const ashwinTithiSequence = [
       'चतुर्दशी', 'औंसी', 'प्रतिपदा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी',
       'षष्ठी', 'सप्तमी', 'अष्टमी', 'नवमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी',
       'चतुर्दशी', 'पूर्णिमा', 'प्रतिपदा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी',
       'षष्ठी', 'सप्तमी', 'अष्टमी', 'नवमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी', 'चतुर्दशी'
     ];
-    const tithiShort = bsMonth === 6 ? (tithiSequence[i] || TITHI_NAMES[i % 15]) : TITHI_NAMES[i % 15];
-    const isShukla = i >= 2 && i <= 16;
+    const kartikTithiSequence = [
+      'अष्टमी', 'नवमी', 'दशमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी', 'पूर्णिमा',
+      'प्रतिपदा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'अष्टमी',
+      'नवमी', 'दशमी', 'एकादशी', 'त्रयोदशी', 'चतुर्दशी', 'चतुर्दशी', 'औंसी',
+      'प्रतिपदा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी'
+    ];
+    const tithiShort =
+      bsMonth === 6
+        ? (ashwinTithiSequence[i] || TITHI_NAMES[i % 15])
+        : bsMonth === 7
+        ? (kartikTithiSequence[i] || TITHI_NAMES[i % 15])
+        : TITHI_NAMES[i % 15];
+    const isShukla =
+      bsMonth === 7
+        ? (i <= 7 || i >= 23)
+        : (i >= 2 && i <= 16);
     const paksha: 'शुक्ल पक्ष' | 'कृष्ण पक्ष' = isShukla ? 'शुक्ल पक्ष' : 'कृष्ण पक्ष';
     const tithi = `${tithiShort} (${paksha})`;
 

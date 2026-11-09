@@ -28,13 +28,13 @@ export function IncomeTaxCalculator({ initialMonthlySalary, titleTag = 'h1', cus
   const [fiscalYear, setFiscalYear] = useState<string>(defaultFY);
   const [isMarried, setIsMarried] = useState<boolean>(false);
   const [isFemale, setIsFemale] = useState<boolean>(false);
-  const [inSsf, setInSsf] = useState<boolean>(true);
+  const [inSsf, setInSsf] = useState<boolean>(false);
   const [isMonthlyInput, setIsMonthlyInput] = useState<boolean>(true);
 
-  // Salary & Deductions
-  const [salaryInput, setSalaryInput] = useState<number>(initialMonthlySalary ?? 85000);
+  // Salary & Deductions (default 0 deductions so standard slab rates apply cleanly out of the box)
+  const [salaryInput, setSalaryInput] = useState<number>(initialMonthlySalary ?? 100000);
   const [citEpf, setCitEpf] = useState<number>(0);
-  const [lifeInsurance, setLifeInsurance] = useState<number>(40000);
+  const [lifeInsurance, setLifeInsurance] = useState<number>(0);
   const [healthInsurance, setHealthInsurance] = useState<number>(0);
 
   const [copied, setCopied] = useState<boolean>(false);
@@ -62,20 +62,25 @@ export function IncomeTaxCalculator({ initialMonthlySalary, titleTag = 'h1', cus
 
     let remainingTaxable = taxableIncome;
     let totalTax = 0;
-    const slabBreakdown: { label: string; taxableInSlab: number; rate: number; taxAmount: number }[] = [];
+    const slabBreakdown: {
+      label: string;
+      taxableInSlab: number;
+      rate: number;
+      maxTaxInBand: number | null;
+      taxAmount: number;
+    }[] = [];
 
     for (let i = 0; i < slabs.length; i++) {
       const slab = slabs[i];
-      if (remainingTaxable <= 0) break;
+      const taxableInSlab = remainingTaxable > 0 ? Math.min(remainingTaxable, slab.limit) : 0;
 
-      const taxableInSlab = Math.min(remainingTaxable, slab.limit);
-      
-      // If enrolled in SSF, the 1% SST on first slab is waived!
+      // Standard rate is 1% on first 10,00,000 (Rs 10,000 max); 0% only if user explicitly enables SSF
       let effectiveRate = slab.rate;
       if (i === 0 && inSsf && currentConfig.ssfExemptsFirstSlabTax) {
         effectiveRate = 0;
       }
 
+      const maxTaxInBand = Number.isFinite(slab.limit) ? slab.limit * effectiveRate : null;
       const taxInSlab = taxableInSlab * effectiveRate;
       totalTax += taxInSlab;
 
@@ -83,10 +88,11 @@ export function IncomeTaxCalculator({ initialMonthlySalary, titleTag = 'h1', cus
         label: slab.label,
         taxableInSlab,
         rate: effectiveRate,
+        maxTaxInBand,
         taxAmount: taxInSlab,
       });
 
-      remainingTaxable -= taxableInSlab;
+      remainingTaxable = Math.max(0, remainingTaxable - taxableInSlab);
     }
 
     // Female individual tax rebate (10% rebate on total tax)
@@ -502,21 +508,25 @@ Calculated via NepalCalc.com`;
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px', textAlign: 'left' }}>
             <thead>
               <tr style={{ background: '#f8fafc', borderBottom: '1px solid var(--border-subtle)' }}>
-                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Income Slab', 'आम्दानी स्ल्याब')}</th>
-                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Taxable in Bracket', 'कर लाग्ने रकम')}</th>
+                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Annual Taxable Income (Rs.)', 'वार्षिक करयोग्य आम्दानी (रू.)')}</th>
                 <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Tax Rate', 'कर दर')}</th>
-                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569', textAlign: 'right' }}>{t('Tax Payable', 'तिर्नुपर्ने कर')}</th>
+                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Maximum Tax in This Band', 'यस स्ल्याबको अधिकतम कर')}</th>
+                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569' }}>{t('Your Taxable in Bracket', 'तपाईंको कर लाग्ने रकम')}</th>
+                <th style={{ padding: '10px 14px', fontWeight: 600, color: '#475569', textAlign: 'right' }}>{t('Your Tax Payable', 'तपाईंले तिर्नुपर्ने कर')}</th>
               </tr>
             </thead>
             <tbody>
               {calculation.slabBreakdown.map((item, idx) => (
-                <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <td style={{ padding: '10px 14px', fontWeight: 500 }}>{item.label}</td>
-                  <td style={{ padding: '10px 14px', fontFamily: 'var(--font-mono)' }}>
-                    रु {Math.round(item.taxableInSlab).toLocaleString('en-IN')}
-                  </td>
+                <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9', opacity: item.taxableInSlab > 0 ? 1 : 0.72 }}>
+                  <td style={{ padding: '10px 14px', fontWeight: 600 }}>{item.label}</td>
                   <td style={{ padding: '10px 14px' }}>
                     <span className="badge badge-neutral">{(item.rate * 100).toFixed(0)}%</span>
+                  </td>
+                  <td style={{ padding: '10px 14px', fontFamily: 'var(--font-mono)', color: '#475569' }}>
+                    {item.maxTaxInBand !== null ? `Rs ${Math.round(item.maxTaxInBand).toLocaleString('en-IN')}` : t('No upper limit', 'सीमा छैन')}
+                  </td>
+                  <td style={{ padding: '10px 14px', fontFamily: 'var(--font-mono)' }}>
+                    रु {Math.round(item.taxableInSlab).toLocaleString('en-IN')}
                   </td>
                   <td style={{ padding: '10px 14px', textAlign: 'right', fontWeight: 700, fontFamily: 'var(--font-mono)', color: item.taxAmount > 0 ? '#e11d48' : '#64748b' }}>
                     रु {Math.round(item.taxAmount).toLocaleString('en-IN')}
@@ -526,7 +536,7 @@ Calculated via NepalCalc.com`;
             </tbody>
             <tfoot>
               <tr style={{ fontWeight: 800, background: '#f8fafc', borderTop: '2px solid var(--border-subtle)' }}>
-                <td style={{ padding: '12px 14px' }} colSpan={3}>{t('Total Annual Tax Payable', 'जम्मा वार्षिक तिर्नुपर्ने कर')}</td>
+                <td style={{ padding: '12px 14px' }} colSpan={4}>{t('Total Annual Tax Payable', 'जम्मा वार्षिक तिर्नुपर्ने कर')}</td>
                 <td style={{ padding: '12px 14px', textAlign: 'right', fontFamily: 'var(--font-mono)', color: '#e11d48', fontSize: '15px' }}>
                   रु {Math.round(calculation.totalTax).toLocaleString('en-IN')}
                 </td>

@@ -129,7 +129,7 @@ export default function AboutPage() {
 
           <div className="mobile-stack-buttons" style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
             <Link 
-              href="/#all-tools" 
+              href="/tools" 
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 transition: 'all 0.2s ease'
               }}
             >
-              <span>Explore All 50+ Calculators</span>
+              <span>Explore All 70+ Calculators</span>
               <ArrowRight size={16} />
             </Link>
 

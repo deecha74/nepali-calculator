@@ -351,7 +351,7 @@ export function Navbar() {
                             </div>
 
                             <Link
-                              href="/#all-tools"
+                              href="/tools"
                               onClick={() => setActiveDropdown(null)}
                               style={{
                                 fontSize: '12px',
