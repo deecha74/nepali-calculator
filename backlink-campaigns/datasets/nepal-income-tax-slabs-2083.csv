@@ -1,0 +1,13 @@
+slab_order,filing_status,band_amount_npr,cumulative_limit_npr,regular_tax_rate_pct,ssf_contributor_rate_pct,reference_url
+1,Unmarried (Single),500000,500000,1,0,https://nepalicalc.com/tax
+2,Unmarried (Single),200000,700000,10,10,https://nepalicalc.com/tax
+3,Unmarried (Single),300000,1000000,20,20,https://nepalicalc.com/tax
+4,Unmarried (Single),1000000,2000000,30,30,https://nepalicalc.com/tax
+5,Unmarried (Single),3000000,5000000,36,36,https://nepalicalc.com/tax
+6,Unmarried (Single),Above 5000000,999999999,39,39,https://nepalicalc.com/tax
+1,Married (Couple),600000,600000,1,0,https://nepalicalc.com/tax
+2,Married (Couple),200000,800000,10,10,https://nepalicalc.com/tax
+3,Married (Couple),300000,1100000,20,20,https://nepalicalc.com/tax
+4,Married (Couple),900000,2000000,30,30,https://nepalicalc.com/tax
+5,Married (Couple),3000000,5000000,36,36,https://nepalicalc.com/tax
+6,Married (Couple),Above 5000000,999999999,39,39,https://nepalicalc.com/tax

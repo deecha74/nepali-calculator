@@ -6,11 +6,23 @@ import { DonutChart } from '@/components/DonutChart';
 import { LeadCaptureModal } from '@/components/LeadCaptureModal';
 import { useLanguage } from '@/components/LanguageContext';
 
-export function EmiCalculator() {
+interface EmiCalculatorProps {
+  initialAmount?: number;
+  initialRate?: number;
+  initialTenure?: number;
+  customTitle?: string;
+}
+
+export function EmiCalculator({
+  initialAmount = 5000000,
+  initialRate = 10.5,
+  initialTenure = 15,
+  customTitle,
+}: EmiCalculatorProps = {}) {
   const { language, t } = useLanguage();
-  const [loanAmount, setLoanAmount] = useState<number>(5000000); // 50 Lakhs default
-  const [annualInterestRate, setAnnualInterestRate] = useState<number>(10.5); // 10.5%
-  const [tenureYears, setTenureYears] = useState<number>(15); // 15 years
+  const [loanAmount, setLoanAmount] = useState<number>(initialAmount);
+  const [annualInterestRate, setAnnualInterestRate] = useState<number>(initialRate);
+  const [tenureYears, setTenureYears] = useState<number>(initialTenure);
   const [copied, setCopied] = useState<boolean>(false);
   const [showLeadModal, setShowLeadModal] = useState<boolean>(false);
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
@@ -102,7 +114,7 @@ Via NepalCalc.com`;
             {t('Nepal Commercial Banks (NRB Regulated)', 'नेपालका वाणिज्य बैंकहरू (राष्ट्र बैंक मापदण्ड)')}
           </span>
           <h1 style={{ fontSize: '26px', fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
-            {t('Bank Loan EMI & Amortization Calculator', 'बैंक लोन ईएमआई (EMI) तथा किस्ता क्यालकुलेटर')}
+            {customTitle || t('Bank Loan EMI & Amortization Calculator', 'बैंक लोन ईएमआई (EMI) तथा किस्ता क्यालकुलेटर')}
           </h1>
         </div>
 

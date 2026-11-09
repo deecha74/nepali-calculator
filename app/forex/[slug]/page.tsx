@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, DollarSign, TrendingUp } from 'lucide-react';
 import { PROGRAMMATIC_FOREX_CONVERSIONS, DEFAULT_FOREX_RATES, ProgrammaticForexConversion } from '@/lib/rates/forexRates';
 import { constructMetadata, generateWebApplicationSchema, SITE_CONFIG } from '@/lib/seo/metadata';
 import { ForexCalculator } from '@/components/calculators/ForexCalculator';
+import { CountryFlag } from '@/components/hero/MarketRatesAndPopularTools';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { AdBanner } from '@/components/AdBanner';
 
@@ -111,7 +112,10 @@ export default async function ProgrammaticForexPage({
               {conversionTiers.map((amt) => (
                 <tr key={amt}>
                   <td style={{ fontWeight: 700 }}>
-                    {item.flag} {amt.toLocaleString()} {item.code}
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px' }}>
+                      <CountryFlag code={item.code} size={15} />
+                      <span>{amt.toLocaleString()} {item.code}</span>
+                    </span>
                   </td>
                   <td style={{ color: '#059669', fontWeight: 700 }}>
                     रु {(amt * unitBuyPrice).toLocaleString('en-IN', { maximumFractionDigits: 2 })}
@@ -138,21 +142,23 @@ export default async function ProgrammaticForexPage({
             <Link
               key={f.slug}
               href={`/forex/${f.slug}`}
+              className="hover-lift"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '7px',
                 padding: '8px 14px',
                 borderRadius: '8px',
                 background: '#f8fafc',
                 fontSize: '12px',
-                fontWeight: 600,
+                fontWeight: 700,
                 color: '#334155',
                 textDecoration: 'none',
                 border: '1px solid #e2e8f0',
               }}
             >
-              <span>{f.flag} {f.code} to NPR</span>
+              <CountryFlag code={f.code} size={16} />
+              <span>{f.code} to NPR</span>
               <ArrowRight size={12} />
             </Link>
           ))}

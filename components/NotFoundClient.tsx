@@ -2,15 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Home, 
-  BookOpen, 
-  ArrowRight, 
-  ReceiptText, 
-  Coins, 
-  Landmark, 
-  Compass, 
-  Car, 
+import {
+  Home,
+  BookOpen,
+  ArrowRight,
+  ReceiptText,
+  Coins,
+  Landmark,
+  Compass,
+  Car,
   CalendarDays,
   FileQuestion
 } from 'lucide-react';
@@ -83,9 +83,9 @@ export function NotFoundClient() {
   ];
 
   return (
-    <main 
-      style={{ 
-        minHeight: '85vh', 
+    <main
+      style={{
+        minHeight: '85vh',
         backgroundColor: '#ffffff',
         background: 'radial-gradient(circle at 50% 0%, #f0f7ff 0%, #ffffff 75%)',
         padding: 'clamp(50px, 8vw, 90px) 20px 80px',
@@ -96,22 +96,22 @@ export function NotFoundClient() {
       }}
     >
       <div className="container" style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
-        
+
         {/* Error Pill Badge */}
-        <div 
-          style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: '8px', 
-            padding: '6px 16px', 
-            borderRadius: '9999px', 
-            backgroundColor: '#fee2e2', 
-            border: '1px solid #fecaca', 
-            color: '#dc2626', 
-            fontSize: '12px', 
-            fontWeight: 800, 
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '6px 16px',
+            borderRadius: '9999px',
+            backgroundColor: '#fee2e2',
+            border: '1px solid #fecaca',
+            color: '#dc2626',
+            fontSize: '12px',
+            fontWeight: 800,
             letterSpacing: '0.04em',
-            marginBottom: '20px' 
+            marginBottom: '20px'
           }}
         >
           <FileQuestion size={14} />
@@ -121,11 +121,11 @@ export function NotFoundClient() {
         </div>
 
         {/* Big 404 Graphic Heading */}
-        <h1 
-          style={{ 
-            fontSize: 'clamp(80px, 15vw, 140px)', 
-            fontWeight: 900, 
-            lineHeight: 1, 
+        <h1
+          style={{
+            fontSize: 'clamp(80px, 15vw, 140px)',
+            fontWeight: 900,
+            lineHeight: 1,
             margin: '0 0 16px',
             letterSpacing: '-0.04em',
             background: 'linear-gradient(135deg, #003893 0%, #2563eb 45%, #06b6d4 100%)',
@@ -216,11 +216,11 @@ export function NotFoundClient() {
           </div>
 
           {/* Tools Grid - strictly in single active language */}
-          <div 
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-              gap: '16px' 
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '16px'
             }}
           >
             {quickLinks.map((tool) => {

@@ -1,0 +1,38 @@
+{
+  "title": "Open Dataset of Nepal Statutory Financial Slabs, Customary Land Measurement Units (Ropani/Bigha), and Utility Tariffs (2082/83–2083/84 BS)",
+  "upload_type": "dataset",
+  "description": "Structured reference datasets for Nepal's statutory income tax brackets (IRD), customary land measurement conversions (Ropani-Aana-Paisa-Daam & Bigha-Kattha-Dhur), and utility rates. Canonical interactive calculators and live verification tools are hosted at https://nepalicalc.com.",
+  "creators": [
+    {
+      "name": "Chalise, Deepak",
+      "affiliation": "NepaliCalc.com"
+    }
+  ],
+  "keywords": [
+    "Nepal",
+    "Income Tax Nepal",
+    "Bikram Sambat",
+    "Ropani to Aana",
+    "Bigha to Kattha",
+    "NEPSE",
+    "NepaliCalc"
+  ],
+  "license": "cc-by-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://nepalicalc.com",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://nepalicalc.com/tax",
+      "relation": "isCompiledBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://nepalicalc.com/land",
+      "relation": "isCompiledBy",
+      "scheme": "url"
+    }
+  ]
+}

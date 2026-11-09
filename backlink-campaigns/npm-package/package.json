@@ -1,0 +1,23 @@
+{
+  "name": "nepalicalc-utils",
+  "version": "1.0.0",
+  "description": "Zero-dependency utility for Nepal land unit conversions (Ropani, Aana, Paisa, Daam, Bigha, Kattha, Dhur to Sq.Ft) and Nepal income tax slab calculations. Official companion to NepaliCalc.com.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "homepage": "https://nepalicalc.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nepalicalc/nepalicalc-utils.git"
+  },
+  "keywords": [
+    "nepal",
+    "nepali-calculator",
+    "ropani-to-aana",
+    "bigha-to-kattha",
+    "nepal-income-tax",
+    "bikram-sambat",
+    "nepalicalc"
+  ],
+  "author": "NepaliCalc <info@nepalicalc.com> (https://nepalicalc.com)",
+  "license": "MIT"
+}

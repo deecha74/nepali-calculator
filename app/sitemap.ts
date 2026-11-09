@@ -7,6 +7,7 @@ import { PROGRAMMATIC_FOREX_CONVERSIONS } from '@/lib/rates/forexRates';
 import { PROGRAMMATIC_SIP_SCENARIOS } from '@/lib/rates/programmaticSip';
 import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
+import { PROGRAMMATIC_EMI_SCENARIOS } from '@/lib/rates/programmaticEmi';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
 const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
@@ -175,6 +176,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticEmiRoutes = PROGRAMMATIC_EMI_SCENARIOS.map((emi) => ({
+    url: `${baseUrl}/emi/${emi.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -184,6 +192,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticSipRoutes,
     ...programmaticGoldRoutes,
     ...programmaticTraditionalUnitRoutes,
+    ...programmaticEmiRoutes,
     ...blogRoutes,
   ];
 }

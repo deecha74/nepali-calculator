@@ -20,11 +20,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/nepal-flag.svg", type: "image/svg+xml" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.png", sizes: "192x192", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/nepal-flag.svg",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
@@ -65,6 +66,7 @@ import { LanguageProvider } from "@/components/LanguageContext";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { ParallaxMountainBackground } from "@/components/ParallaxMountainBackground";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { TactileClickFeedback } from "@/components/TactileClickFeedback";
 
 const rootSchema = {
   "@context": "https://schema.org",
@@ -75,7 +77,7 @@ const rootSchema = {
       "name": SITE_CONFIG.shortName,
       "alternateName": ["Nepali Calculator", "NepalCalc"],
       "url": SITE_CONFIG.url,
-      "logo": `${SITE_CONFIG.url}/hero-calc-3d.webp`,
+      "logo": `${SITE_CONFIG.url}/nepalicalc-logo.png`,
       "description": SITE_CONFIG.description,
       "founder": {
         "@type": "Person",
@@ -121,6 +123,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <LanguageProvider>
           <AOSInit />
+          <TactileClickFeedback />
           <ParallaxMountainBackground />
           <Navbar />
           <main style={{ minHeight: 'calc(100vh - 200px)', position: 'relative', zIndex: 1, overflowX: 'clip' }}>{children}</main>

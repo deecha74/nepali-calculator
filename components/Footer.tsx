@@ -16,6 +16,7 @@ import {
 import { useLanguage } from '@/components/LanguageContext';
 import { NepalCalcLogo } from '@/components/NepalCalcLogo';
 import { DOC_GENERATORS } from '@/lib/documents/meta';
+import { EmbedWidgetButton } from '@/components/EmbedWidgetModal';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -340,6 +341,7 @@ export function Footer() {
             <Link href="/calendar" className="footer-link" style={{ color: '#003893', fontWeight: 700 }}>
               नेपाली पात्रो २०८३
             </Link>
+            <EmbedWidgetButton />
           </div>
         </div>
 

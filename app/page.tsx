@@ -58,15 +58,29 @@ import { PROGRAMMATIC_VEHICLE_TAXES } from '@/lib/rates/programmaticVehicles';
 import { PROGRAMMATIC_SALARY_TAXES } from '@/lib/rates/programmaticTax';
 import { PROGRAMMATIC_SIP_SCENARIOS } from '@/lib/rates/programmaticSip';
 import { PROGRAMMATIC_FOREX_CONVERSIONS } from '@/lib/rates/forexRates';
+import { PROGRAMMATIC_EMI_SCENARIOS } from '@/lib/rates/programmaticEmi';
+import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
+import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 import { NepalPatroHero } from '@/components/hero/NepalPatroHero';
 import { DashainAndUpcomingEvents } from '@/components/hero/DashainAndUpcomingEvents';
-import { MarketRatesAndPopularTools } from '@/components/hero/MarketRatesAndPopularTools';
+import { MarketRatesAndPopularTools, CountryFlag } from '@/components/hero/MarketRatesAndPopularTools';
 import { SecurityGuaranteeBanner } from '@/components/SecurityGuaranteeBanner';
 import { DocumentHub } from '@/components/documents/DocumentHub';
 import { DocHomeSection } from '@/components/documents-gen/DocHub';
 import { AdBanner } from '@/components/AdBanner';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { useLanguage } from '@/components/LanguageContext';
+
+const CATEGORY_EMOJIS: Record<string, string> = {
+  tax: '💼',
+  land: '📐',
+  stocks: '📈',
+  vehicle: '🚗',
+  finance: '🏦',
+  utilities: '🔥',
+  education: '🎓',
+  all: '✨',
+};
 
 export default function HomePage() {
   const { language, t } = useLanguage();
@@ -247,10 +261,7 @@ export default function HomePage() {
       {/* Legal Document Generators */}
       <DocHomeSection />
 
-      {/* 5. Official Regulatory Acts & Interactive Document Reader (User Documents Feature) */}
-      <DocumentHub isHomepage={true} />
-
-      {/* 6. Complete 35+ Tool Directory with Live Search & Category Filters */}
+      {/* 6. Complete 70+ Tool Directory with Live Search & Category Filters */}
       <div id="all-tools" className="container" style={{ padding: '64px 20px 72px' }}>
 
         {/* Section Header */}
@@ -274,7 +285,7 @@ export default function HomePage() {
             }}
           >
             <Sparkles size={13} color="#6366f1" />
-            <span>{t('All 35+ Nepal Calculators & Converters', 'नेपालका सबै ३५+ क्यालकुलेटर तथा रूपान्तरण औजारहरू')}</span>
+            <span>{t('All 70+ Nepal Calculators & Converters', 'नेपालका सबै ७०+ क्यालकुलेटर तथा रूपान्तरण औजारहरू')}</span>
           </div>
 
           <h2
@@ -312,8 +323,8 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Instant Search Bar - Modern Floating Input */}
-        <div style={{ maxWidth: '560px', margin: '0 auto 28px', position: 'relative' }} data-aos="fade-up">
+        {/* Instant Search Bar - Modern Floating Input matching Image 2 */}
+        <div style={{ maxWidth: '640px', margin: '0 auto 24px', position: 'relative' }} data-aos="fade-up">
           <Search
             size={18}
             style={{
@@ -321,46 +332,67 @@ export default function HomePage() {
               left: '18px',
               top: '50%',
               transform: 'translateY(-50%)',
-              color: '#6366f1',
+              color: '#0b2b5c',
             }}
           />
           <input
             type="text"
             className="cute-search-input"
             placeholder={t(
-              'Search 35+ tools (e.g. tax, land, gold, bluebook, salary)... 🔍',
-              'कुनै पनि उपकरण खोज्नुहोस् (जस्तै: tax, land, gold, bluebook, salary)... 🔍'
+              'Search for tools (e.g. tax, loan, gold, bluebook, salary)...',
+              'उपकरण खोज्नुहोस् (जस्तै: tax, loan, gold, bluebook, salary)...'
             )}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%',
-              padding: '13px 20px 13px 46px',
+              padding: '13px 85px 13px 46px',
               fontSize: '14px',
               borderRadius: '9999px',
-              border: '1.5px solid #e0e7ff',
+              border: '1.5px solid #e2e8f0',
               backgroundColor: '#ffffff',
               color: '#0f172a',
               outline: 'none',
-              boxShadow: '0 8px 24px -4px rgba(99, 102, 241, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)',
+              boxShadow: '0 4px 18px rgba(11, 43, 92, 0.05)',
               fontFamily: 'var(--font-sans)',
               transition: 'all 0.2s ease',
             }}
             onFocus={(e) => {
-              e.currentTarget.style.borderColor = '#6366f1';
-              e.currentTarget.style.boxShadow = '0 0 0 4px rgba(99, 102, 241, 0.14), 0 10px 25px -4px rgba(99, 102, 241, 0.12)';
+              e.currentTarget.style.borderColor = '#0b2b5c';
+              e.currentTarget.style.boxShadow = '0 0 0 3px rgba(11, 43, 92, 0.12)';
             }}
             onBlur={(e) => {
-              e.currentTarget.style.borderColor = '#e0e7ff';
-              e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(99, 102, 241, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)';
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.boxShadow = '0 4px 18px rgba(11, 43, 92, 0.05)';
             }}
           />
+          <div
+            style={{
+              position: 'absolute',
+              right: '12px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '3px 8px',
+              borderRadius: '6px',
+              border: '1px solid #e2e8f0',
+              backgroundColor: '#f8fafc',
+              fontSize: '11px',
+              fontWeight: 700,
+              color: '#64748b',
+              pointerEvents: 'none',
+            }}
+          >
+            Ctrl + K
+          </div>
         </div>
 
-        {/* Category Pill Filters */}
+        {/* Category Pill Filters matching Image 2 */}
         <div
           data-aos="fade-up"
           className="category-pills-track"
+          style={{ justifyContent: 'center', marginBottom: '22px' }}
         >
           {CALCULATOR_CATEGORIES.map((cat) => {
             const count = cat.id === 'all'
@@ -386,10 +418,10 @@ export default function HomePage() {
                   flexShrink: 0,
                   whiteSpace: 'nowrap',
                   transition: 'all 0.18s ease',
-                  border: isActive ? '1.5px solid #2563eb' : '1.5px solid #e2e8f0',
-                  background: isActive ? 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' : '#ffffff',
+                  border: isActive ? '1.5px solid #0b2b5c' : '1.5px solid #e2e8f0',
+                  background: isActive ? '#0b2b5c' : '#ffffff',
                   color: isActive ? '#ffffff' : '#334155',
-                  boxShadow: isActive ? '0 4px 14px -2px rgba(37, 99, 235, 0.35)' : '0 1px 3px rgba(15, 23, 42, 0.04)'
+                  boxShadow: isActive ? '0 4px 14px -2px rgba(11, 43, 92, 0.35)' : '0 1px 3px rgba(15, 23, 42, 0.04)'
                 }}
               >
                 <span>{language === 'ne' ? cat.nepaliName : cat.name}</span>
@@ -398,7 +430,7 @@ export default function HomePage() {
                   fontWeight: 800,
                   padding: '1px 6px',
                   borderRadius: '9999px',
-                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.25)' : '#f1f5f9',
+                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : '#f1f5f9',
                   color: isActive ? '#ffffff' : '#64748b'
                 }}>
                   {count}
@@ -408,15 +440,15 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* Count Bar */}
-        <div className="count-bar-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', gap: '8px', flexWrap: 'wrap' }}>
-          <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0, whiteSpace: 'nowrap' }}>
+        {/* Subheader Row matching Image 2 */}
+        <div className="count-bar-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px', paddingBottom: '12px', borderBottom: '1.5px solid #f1f5f9', gap: '8px', flexWrap: 'wrap' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#0b2b5c', margin: 0, whiteSpace: 'nowrap' }}>
             {selectedCategory === 'all'
               ? t(`All Calculators (${filteredTools.length})`, `सबै क्यालकुलेटरहरू (${filteredTools.length})`)
               : `${language === 'ne' ? CALCULATOR_CATEGORIES.find((c) => c.id === selectedCategory)?.nepaliName : CALCULATOR_CATEGORIES.find((c) => c.id === selectedCategory)?.name} (${filteredTools.length})`}
           </h3>
-          <span style={{ fontSize: '12.5px', color: '#64748b', fontWeight: 500 }}>
-            {t('Click any card to start calculating', 'हिसाब सुरु गर्न कुनै पनि कार्डमा क्लिक गर्नुहोस्')}
+          <span style={{ fontSize: '12.5px', color: '#ff5a5f', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+            {t('Click any card to start calculating →', 'हिसाब सुरु गर्न कुनै पनि कार्डमा क्लिक गर्नुहोस् →')}
           </span>
         </div>
 
@@ -424,17 +456,17 @@ export default function HomePage() {
         {filteredTools.length > 1 && (
           <div className="tools-carousel-hint">
             <span style={{ fontSize: '12px', fontWeight: 600, color: '#64748b', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ color: '#003893' }}>←</span>
+              <span style={{ color: '#0b2b5c' }}>←</span>
               <span>{t('Swipe calculators', 'दायाँ-बायाँ सारेर हेर्नुहोस्')}</span>
-              <span style={{ color: '#003893' }}>→</span>
+              <span style={{ color: '#0b2b5c' }}>→</span>
             </span>
-            <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#003893', backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '2px 8px', borderRadius: '9999px' }}>
+            <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#0b2b5c', backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', padding: '2px 8px', borderRadius: '9999px' }}>
               {activeToolSlide + 1} / {filteredTools.length}
             </span>
           </div>
         )}
 
-        {/* Modern Vibrant Cards Grid & Mobile Carousel */}
+        {/* Modern Vibrant Cards Grid & Mobile Carousel matching Image 2 */}
         <div
           ref={toolsCarouselRef}
           onScroll={handleToolScroll}
@@ -443,6 +475,7 @@ export default function HomePage() {
           {filteredTools.map((tool) => {
             const cat = categoryMap[tool.category];
             const categoryLabel = language === 'ne' ? (cat?.nepaliName || 'दैनिक हिसाब') : (cat?.name || 'Tool');
+            const categoryEmoji = CATEGORY_EMOJIS[tool.category] || '⚡';
 
             return (
               <div
@@ -456,79 +489,93 @@ export default function HomePage() {
                   style={{
                     width: '100%',
                     height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    padding: '18px 20px',
+                    borderRadius: '16px',
+                    border: '1.5px solid #eef2f6',
+                    backgroundColor: '#ffffff',
+                    boxShadow: '0 2px 8px rgba(11, 43, 92, 0.04)',
+                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                    textDecoration: 'none',
                   }}
                 >
-                  {/* Top Signature Accent Stripe */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '3.5px',
-                      backgroundColor: tool.color,
-                      opacity: 0.9,
-                    }}
-                  />
-
                   <div>
-                    {/* Top Row: Squircle Icon + Fast Action Launch Pill */}
-                    <div className="tool-card-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                      <div
-                        className="smallpdf-icon-box"
-                        style={{
-                          backgroundColor: tool.bgLight,
-                          border: `1.5px solid ${tool.color}30`,
-                          boxShadow: `0 4px 14px -3px ${tool.color}25`,
-                        }}
-                      >
-                        {renderIcon(tool, 20)}
+                    {/* Top Row: Squircle Icon + Title | "Open →" pill button */}
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', marginBottom: '10px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
+                        <div
+                          style={{
+                            width: '42px',
+                            height: '42px',
+                            borderRadius: '12px',
+                            backgroundColor: tool.bgLight,
+                            display: 'grid',
+                            placeItems: 'center',
+                            flexShrink: 0,
+                            boxShadow: `0 2px 8px -2px ${tool.color}35`,
+                          }}
+                        >
+                          {renderIcon(tool, 20)}
+                        </div>
+                        <div style={{ minWidth: 0, flex: 1 }}>
+                          <h4
+                            style={{
+                              fontSize: '15px',
+                              fontWeight: 800,
+                              color: '#0b2b5c',
+                              margin: 0,
+                              lineHeight: 1.28,
+                              letterSpacing: '-0.01em',
+                            }}
+                          >
+                            {language === 'ne' ? tool.nepaliName : tool.name}
+                          </h4>
+                          <div
+                            style={{
+                              fontSize: '11px',
+                              fontWeight: 600,
+                              color: '#64748b',
+                              marginTop: '2px',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {language === 'ne' ? tool.name : tool.nepaliName}
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Fast Action Launch Pill */}
-                      <div className="tool-card-action-badge">
-                        <span>{t('Open', 'हिसाब')}</span>
-                        <ArrowRight size={12} className="tool-action-arrow" />
+                      {/* "Open →" pill button */}
+                      <div
+                        className="tool-card-action-badge"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          padding: '4px 10px',
+                          borderRadius: '9999px',
+                          backgroundColor: '#ffffff',
+                          border: '1px solid #e2e8f0',
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          color: '#0b2b5c',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <span>{t('Open', 'खोल्नुहोस्')}</span>
+                        <ArrowRight size={11} className="tool-action-arrow" />
                       </div>
                     </div>
 
-                    {/* Bold Title & Clean Dual-Language Subline */}
-                    <div style={{ marginBottom: '8px' }}>
-                      <h4
-                        className="tool-card-title"
-                        style={{
-                          fontSize: '16.5px',
-                          fontWeight: 800,
-                          color: '#0f172a',
-                          letterSpacing: '-0.015em',
-                          margin: 0,
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {language === 'ne' ? tool.nepaliName : tool.name}
-                      </h4>
-                      <div
-                        style={{
-                          fontSize: '12px',
-                          fontWeight: 600,
-                          color: '#64748b',
-                          marginTop: '3px',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {language === 'ne' ? tool.name : tool.nepaliName}
-                      </div>
-                    </div>
-
-                    {/* Description */}
+                    {/* Middle: 2-line Description */}
                     <p
-                      className="tool-card-desc"
                       style={{
                         fontSize: '12.5px',
-                        color: '#475569',
-                        lineHeight: '1.5',
+                        color: '#64748b',
+                        lineHeight: 1.5,
                         margin: 0,
                         display: '-webkit-box',
                         WebkitLineClamp: 2,
@@ -538,50 +585,6 @@ export default function HomePage() {
                     >
                       {tool.description}
                     </p>
-                  </div>
-
-                  {/* Card Footer: Category with Colored Dot + Free Instant Tag */}
-                  <div
-                    className="tool-card-footer"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      marginTop: '14px',
-                      paddingTop: '11px',
-                      borderTop: '1px solid #f1f5f9',
-                    }}
-                  >
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', fontWeight: 700, color: '#64748b' }}>
-                      <span
-                        style={{
-                          width: '7px',
-                          height: '7px',
-                          borderRadius: '50%',
-                          backgroundColor: tool.color,
-                          display: 'inline-block',
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span>{categoryLabel}</span>
-                    </span>
-
-                    {/* <span
-                      style={{
-                        fontSize: '11px',
-                        fontWeight: 800,
-                        color: tool.color,
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        backgroundColor: `${tool.color}10`,
-                        padding: '2px 8px',
-                        borderRadius: '6px',
-                        letterSpacing: '0.02em',
-                      }}
-                    >
-                      {t('Free Instant', 'निःशुल्क')}
-                    </span> */}
                   </div>
                 </Link>
               </div>
@@ -697,7 +700,7 @@ export default function HomePage() {
           </div>
 
           <div className="two-up-mobile-carousel">
-            {PROGRAMMATIC_VEHICLE_TAXES.slice(0, 8).map((veh) => (
+            {PROGRAMMATIC_VEHICLE_TAXES.slice(0, 12).map((veh) => (
               <Link
                 key={veh.slug}
                 href={`/vehicle/${veh.slug}`}
@@ -767,32 +770,35 @@ export default function HomePage() {
         </section>
 
         {/* Programmatic SEO Showcase 4: Monthly SIP & Forex Remittance */}
-        <div data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '56px' }}>
+        <div data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '24px' }}>
           {/* SIP Links */}
           <div className="white-card" style={{ padding: '24px', borderRadius: '4px' }}>
             <span className="badge badge-blue">Mutual Fund SIP</span>
             <h4 style={{ fontSize: '18px', fontWeight: 800, marginTop: '8px', marginBottom: '12px' }}>
               Monthly SIP Investment Milestones
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {PROGRAMMATIC_SIP_SCENARIOS.map((sip) => (
                 <Link
                   key={sip.slug}
                   href={`/sip/${sip.slug}`}
+                  className="hover-lift"
                   style={{
-                    display: 'flex',
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
+                    gap: '6px',
                     padding: '8px 12px',
-                    borderRadius: '4px',
+                    borderRadius: '8px',
                     background: '#f8fafc',
-                    fontSize: '13px',
-                    fontWeight: 600,
+                    border: '1px solid #e2e8f0',
+                    fontSize: '12px',
+                    fontWeight: 700,
                     color: '#0f172a',
+                    textDecoration: 'none',
                   }}
                 >
-                  <span>NPR {sip.monthlyAmount.toLocaleString()}/month SIP</span>
-                  <ArrowRight size={14} color="#003893" />
+                  <span>NPR {sip.monthlyAmount.toLocaleString()}/mo SIP</span>
+                  <ArrowRight size={12} color="#003893" />
                 </Link>
               ))}
             </div>
@@ -809,21 +815,126 @@ export default function HomePage() {
                 <Link
                   key={fx.slug}
                   href={`/forex/${fx.slug}`}
+                  className="hover-lift"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '7px',
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#0f172a',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <CountryFlag code={fx.code} size={16} />
+                  <span>{fx.code} to NPR</span>
+                  <ArrowRight size={12} color="#64748b" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Programmatic SEO Showcase 5: Bank Loan EMI, Traditional Units & Gold Weights */}
+        <div data-aos="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '56px' }}>
+          {/* Bank Loan EMI Scenarios */}
+          <div className="white-card" style={{ padding: '24px', borderRadius: '4px' }}>
+            <span className="badge badge-blue">NRB Commercial Banks</span>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, marginTop: '8px', marginBottom: '12px' }}>
+              Bank Loan EMI by Loan Amount
+            </h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {PROGRAMMATIC_EMI_SCENARIOS.map((emi) => (
+                <Link
+                  key={emi.slug}
+                  href={`/emi/${emi.slug}`}
+                  className="hover-lift"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '8px 14px',
-                    borderRadius: '4px',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
                     background: '#f8fafc',
                     border: '1px solid #e2e8f0',
                     fontSize: '12px',
-                    fontWeight: 600,
-                    color: '#0f172a',
+                    fontWeight: 700,
+                    color: '#0b2b5c',
+                    textDecoration: 'none',
                   }}
                 >
-                  <span>{fx.flag} {fx.code} to NPR</span>
+                  <span>{emi.displayLabel} EMI</span>
                   <ArrowRight size={12} color="#64748b" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Traditional Nepali Units (Dharni, Pathi, Muri, Mana, Kosh) */}
+          <div className="white-card" style={{ padding: '24px', borderRadius: '4px' }}>
+            <span className="badge badge-emerald">मौलिक नापतौल (Traditional Units)</span>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, marginTop: '8px', marginBottom: '12px' }}>
+              Dharni, Pathi, Muri, Mana & Haat
+            </h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {PROGRAMMATIC_TRADITIONAL_UNITS.map((unit) => (
+                <Link
+                  key={unit.slug}
+                  href={`/traditional-units/${unit.slug}`}
+                  className="hover-lift"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#0f172a',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span>{unit.shortTitle} ({unit.fromUnitNepali})</span>
+                  <ArrowRight size={12} color="#059669" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Gold & Silver Weight Rates (Lal, Tola, Gram) */}
+          <div className="white-card" style={{ padding: '24px', borderRadius: '4px' }}>
+            <span className="badge badge-amber" style={{ background: '#fef3c7', color: '#b45309' }}>FENEGOSIDA Bullion</span>
+            <h4 style={{ fontSize: '18px', fontWeight: 800, marginTop: '8px', marginBottom: '12px' }}>
+              Gold & Silver Price by Weight (Tola, Lal & Gram)
+            </h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {PROGRAMMATIC_GOLD_ITEMS.slice(0, 10).map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/gold/${g.slug}`}
+                  className="hover-lift"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#0f172a',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span>{g.shortTitle}</span>
+                  <ArrowRight size={12} color="#d97706" />
                 </Link>
               ))}
             </div>
@@ -836,6 +947,9 @@ export default function HomePage() {
         {/* FAQs */}
         <FAQAccordion items={HOME_FAQS} />
       </div>
+
+      {/* Official Regulatory Acts & Interactive Document Reader */}
+      <DocumentHub isHomepage={true} />
     </div>
   );
 }

@@ -1,0 +1,178 @@
+{
+  "generatedAt": "2026-11-09T15:44:56.058Z",
+  "safetyRules": [
+    "Always use canonical_url pointing to https://nepalicalc.com when syndicating articles",
+    "Limit publishing to 1-2 high-quality pieces per week (natural link velocity)",
+    "Keep anchor text 75% branded/URL (\"NepaliCalc\", \"nepalicalc.com/tax\") and 25% topic-descriptive"
+  ],
+  "tiers": [
+    {
+      "tier": "Tier 1: Nepal Digital PR, News & Financial Portals (Highest Local SEO Power)",
+      "drRange": "DR 50 - 80",
+      "linkType": "Editorial Dofollow",
+      "sites": [
+        {
+          "name": "TechLekh",
+          "url": "https://techlekh.com/contact-us/",
+          "niche": "Nepal Tech, Apps & Digital Utilities",
+          "pitchAngle": "Feature NepaliCalc as a free 70+ all-in-one Nepali financial, Patro & legal document web app"
+        },
+        {
+          "name": "GadgetByte Nepal",
+          "url": "https://www.gadgetbytenepal.com/contact-us/",
+          "niche": "Nepal Tech, EVs & Consumer Utilities",
+          "pitchAngle": "EV (kW) vs Petrol (CC) Bluebook Tax & NEA Charging Cost Calculator study"
+        },
+        {
+          "name": "ICT Frame",
+          "url": "https://ictframe.com/",
+          "niche": "IT & E-Governance in Nepal",
+          "pitchAngle": "Open-source Bikram Sambat & Nepal public utility calculation platform"
+        },
+        {
+          "name": "Merolagani / ShareSansar / NepaliPaisa",
+          "url": "https://merolagani.com",
+          "niche": "NEPSE Share Market & SIP Investing",
+          "pitchAngle": "Interactive WACC, Right Share Price Adjustment, Debentures & Broker Commission tools"
+        },
+        {
+          "name": "Bizmandu / NewBusinessAge / FiscalNepal",
+          "url": "https://www.newbusinessage.com",
+          "niche": "Taxation, Banking, Remittance & Economy",
+          "pitchAngle": "Data study: How FY 2082/83 & 2083/84 Income Tax & SSF slabs impact salaried earners"
+        }
+      ]
+    },
+    {
+      "tier": "Tier 2: Academic & Scientific DOI Repositories (High-Trust Authority Backlinks)",
+      "drRange": "DR 87 - 95",
+      "linkType": "Permanent DOI Citation + Dofollow External Link",
+      "sites": [
+        {
+          "name": "Zenodo (CERN Open Science)",
+          "url": "https://zenodo.org/deposit/new",
+          "dr": 91,
+          "action": "Upload backlink-campaigns/datasets/nepal-open-datasets.zip to get a permanent CERN DOI linking to https://nepalicalc.com"
+        },
+        {
+          "name": "Figshare Academic Repository",
+          "url": "https://figshare.com/",
+          "dr": 89,
+          "action": "Publish the Bikram Sambat 1970-2100 BS & Nepal Land Conversion CSV dataset with nepalicalc.com as live reference"
+        },
+        {
+          "name": "OSF.io (Center for Open Science)",
+          "url": "https://osf.io/",
+          "dr": 87,
+          "action": "Create an Open Science project for \"Nepal Financial & Customary Measurement Standards\" linking to NepaliCalc calculators"
+        },
+        {
+          "name": "Kaggle Datasets",
+          "url": "https://www.kaggle.com/datasets",
+          "dr": 90,
+          "action": "Upload the CSV datasets from backlink-campaigns/datasets/ and set Provenance/Source URL to https://nepalicalc.com"
+        },
+        {
+          "name": "HuggingFace Datasets",
+          "url": "https://huggingface.co/new-dataset",
+          "dr": 90,
+          "action": "Publish dataset card with YAML metadata linking to nepalicalc.com (trains LLMs to cite NepaliCalc)"
+        }
+      ]
+    },
+    {
+      "tier": "Tier 3: Open-Source Package & Developer Registries",
+      "drRange": "DR 90 - 96",
+      "linkType": "Dofollow Homepage / Repository Link",
+      "sites": [
+        {
+          "name": "NPM Registry (npmjs.com)",
+          "url": "https://www.npmjs.com/",
+          "dr": 93,
+          "action": "Run `cd backlink-campaigns/npm-package && npm publish` to get an instant DR 93 Dofollow Homepage link"
+        },
+        {
+          "name": "GitHub Pages & Repositories",
+          "url": "https://github.com/new",
+          "dr": 96,
+          "action": "Push `backlink-campaigns/datasets` and `npm-package` to a public GitHub repo with Website URL set to https://nepalicalc.com"
+        },
+        {
+          "name": "GitHub Gists",
+          "url": "https://gist.github.com/",
+          "dr": 96,
+          "action": "Automated via `GITHUB_TOKEN` in this script"
+        }
+      ]
+    },
+    {
+      "tier": "Tier 4: SaaS, Startup & Utility Directories",
+      "drRange": "DR 75 - 92",
+      "linkType": "Dofollow / High-Trust Profile Backlink",
+      "sites": [
+        {
+          "name": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/new",
+          "dr": 91,
+          "action": "Launch \"NepaliCalc — 70+ Free Financial, Land, Tax & Patro Calculators for Nepal\""
+        },
+        {
+          "name": "AlternativeTo",
+          "url": "https://alternativeto.net/",
+          "dr": 88,
+          "action": "List NepaliCalc as a modern web alternative to Hamro Patro / Nepal Tax Calculators"
+        },
+        {
+          "name": "MicroLaunch",
+          "url": "https://microlaunch.net/",
+          "dr": 72,
+          "action": "Submit product launch (provides a clean Dofollow badge backlink)"
+        },
+        {
+          "name": "Uneed.best",
+          "url": "https://www.uneed.best/",
+          "dr": 74,
+          "action": "Submit under Finance & Daily Productivity Tools"
+        },
+        {
+          "name": "IndieHackers",
+          "url": "https://www.indiehackers.com/products/new",
+          "dr": 83,
+          "action": "Create product page for NepaliCalc.com"
+        }
+      ]
+    },
+    {
+      "tier": "Tier 5: Nepal Niche Resource Pages & Outdated Content Reclamation (Search Dorks)",
+      "drRange": "DR 25 - 65 (.np & regional)",
+      "linkType": "Contextual In-Content Dofollow",
+      "searchDorks": [
+        {
+          "category": "Outdated Nepal Income Tax Guides (CA & Law Firms)",
+          "query": "\"income tax\" \"nepal\" (\"2078/79\" OR \"2079/80\" OR \"2080/81\") -site:nepalicalc.com",
+          "targetUrl": "https://nepalicalc.com/tax"
+        },
+        {
+          "category": "Nepal Real Estate Ropani/Bigha Blogs",
+          "query": "(\"ropani to aana\" OR \"bigha to kattha\") (\"calculator\" OR \"conversion\") -site:nepalicalc.com",
+          "targetUrl": "https://nepalicalc.com/land"
+        },
+        {
+          "category": "Nepal Remittance & Abroad Study Consultancies",
+          "query": "(\"send money to nepal\" OR \"study in australia from nepal\") (\"exchange rate\" OR \"aud to npr\")",
+          "targetUrl": "https://nepalicalc.com/forex"
+        },
+        {
+          "category": "Nepal Engineering & College Resource Pages (.edu.np)",
+          "query": "site:.edu.np (\"resources\" OR \"useful links\" OR \"downloads\" OR \"tools\")",
+          "targetUrl": "https://nepalicalc.com"
+        },
+        {
+          "category": "High-Traffic Quora Questions on Nepal Finance",
+          "query": "site:quora.com (\"income tax in nepal\" OR \"ropani to sq ft\" OR \"send money to nepal\" OR \"nepse broker commission\")",
+          "targetUrl": "https://nepalicalc.com"
+        }
+      ]
+    }
+  ]
+}

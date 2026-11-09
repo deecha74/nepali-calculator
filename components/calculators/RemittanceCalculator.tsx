@@ -19,6 +19,7 @@ import {
 import { useLanguage } from '@/components/LanguageContext';
 import { REMITTANCE_CORRIDORS, REMITTANCE_CHANNELS, RemittanceCorridor, RemittanceChannel } from '@/lib/rates/remittanceRates';
 import { toNepaliDigits } from '@/lib/nepaliDate';
+import { CountryFlag } from '@/components/hero/MarketRatesAndPopularTools';
 
 export function RemittanceCalculator() {
   const { language, t } = useLanguage();
@@ -196,18 +197,23 @@ Calculated via Nepali Calc: https://nepalcalc.com/remittance-calculator`;
               <Send size={15} color="var(--primary)" />
               {t('Sending Country / Currency', 'पैसा पठाउने देश / मुद्रा')}
             </label>
-            <select
-              className="select-input"
-              value={selectedCurrencyCode}
-              onChange={(e) => setSelectedCurrencyCode(e.target.value)}
-              style={{ fontSize: '15px', fontWeight: 600 }}
-            >
-              {REMITTANCE_CORRIDORS.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.flag} {c.code} — {isNe ? c.nameNe : c.nameEn} ({isNe ? c.countryNe : c.countryEn})
-                </option>
-              ))}
-            </select>
+            <div style={{ position: 'relative' }}>
+              <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
+                <CountryFlag code={selectedCurrencyCode} size={17} />
+              </span>
+              <select
+                className="select-input"
+                value={selectedCurrencyCode}
+                onChange={(e) => setSelectedCurrencyCode(e.target.value)}
+                style={{ fontSize: '15px', fontWeight: 600, paddingLeft: '44px' }}
+              >
+                {REMITTANCE_CORRIDORS.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.code} — {isNe ? c.nameNe : c.nameEn} ({isNe ? c.countryNe : c.countryEn})
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           {/* Amount Sent Input */}
@@ -223,8 +229,9 @@ Calculated via Nepali Calc: https://nepalcalc.com/remittance-calculator`;
               </span>
             </div>
             <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: 'var(--text-muted)', fontSize: '15px' }}>
-                {corridor.flag} {corridor.code}
+              <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: 'var(--text-muted)', fontSize: '15px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <CountryFlag code={corridor.code} size={16} />
+                <span>{corridor.code}</span>
               </span>
               <input
                 type="number"

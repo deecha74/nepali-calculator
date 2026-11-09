@@ -13,12 +13,11 @@ import {
   ArrowRight,
   Sun,
   Calendar as CalendarIcon,
-  Sparkles,
-  Star
+  Calculator as CalcIcon,
+  Sparkles
 } from 'lucide-react';
 import { toNepaliDigits, NEPALI_MONTHS } from '@/lib/nepaliDate';
 import { useLanguage } from '@/components/LanguageContext';
-import { TODAY_RASHIFAL } from '@/lib/rashifalData';
 import { NepalFlagAnimated } from '@/components/NepalFlagAnimated';
 import {
   generateMonthDays,
@@ -28,6 +27,7 @@ import {
   KNOWN_FESTIVALS_2083
 } from '@/lib/calendarData';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HeroQuickCalcCard } from './HeroQuickCalcCard';
 
 interface CityWeather {
   cityNep: string;
@@ -120,29 +120,7 @@ export function NepalPatroHero() {
     setSelectedDay(mDays.find((d) => d.isToday) || mDays.find((d) => d.bsDay === cur.bsDay) || null);
   };
 
-  const [heroRightTab, setHeroRightTab] = useState<'calendar' | 'rashifal'>('calendar');
-  const [selectedRashiId, setSelectedRashiId] = useState<string>('aries');
-  const [liveHoroscope, setLiveHoroscope] = useState<string | null>(null);
-  const [isLiveApi, setIsLiveApi] = useState(false);
-
-  // Live Horoscope API Fetcher
-  useEffect(() => {
-    let active = true;
-    async function loadLiveHoroscope() {
-      try {
-        const res = await fetch(`/api/horoscope?sign=${selectedRashiId}`);
-        if (res.ok) {
-          const json = await res.json();
-          if (active && json?.data?.livePredictionEng) {
-            setLiveHoroscope(json.data.livePredictionEng);
-            setIsLiveApi(Boolean(json.data.isLiveApi));
-          }
-        }
-      } catch (err) { }
-    }
-    loadLiveHoroscope();
-    return () => { active = false; };
-  }, [selectedRashiId]);
+  const [heroRightTab, setHeroRightTab] = useState<'tools' | 'calendar'>('tools');
 
   useEffect(() => {
     setMounted(true);
@@ -165,7 +143,6 @@ export function NepalPatroHero() {
   }, [language]);
 
   const currentCity = NEPAL_CITIES[activeCityIndex];
-  const activeRashi = TODAY_RASHIFAL.find((r) => r.id === selectedRashiId) || TODAY_RASHIFAL[0];
 
   return (
     <section
@@ -176,38 +153,40 @@ export function NepalPatroHero() {
         minHeight: '480px',
       }}
     >
-      {/* Full Colored Panorama Background: Everest, River & Kathmandu City */}
+      {/* Full Scenic Panorama Background: Kathmandu Heritage Sunrise & Himalayas */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image
-          src="/nepal-hero-panorama.webp"
-          alt="Mount Everest, Himalayan River, and Kathmandu City"
+          src="/hero-kathmandu-sunrise.webp"
+          alt="Kathmandu Valley Temples and Himalayan Sunrise"
           fill
           priority
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoUAAsAPxFysFCsJqSisAgBgCIJbACdL1Ds1QIBcG2o1Q4zIAD+sT4Fu9dCjNp+lX821Ex4unqmYs8q08l9NBc4pqvsbg5Be0Sj/XtHa2tMhXEa99LLiu/E6v8DfgAA"
           sizes="100vw"
-          quality={90}
+          quality={88}
           style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
         />
-        {/* Nepal Red & Blue Blended Twilight Atmospheric Overlay */}
+        {/* Soft Scenic Mountain Daylight Atmospheric Overlay matching design */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(135deg, rgba(150, 15, 38, 0.68) 0%, rgba(25, 20, 65, 0.52) 45%, rgba(0, 56, 147, 0.68) 100%)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(240, 246, 255, 0.45) 45%, rgba(215, 235, 255, 0.3) 100%)',
           }}
         />
-        {/* Soft Vignette Depth */}
+        {/* Soft Left Side Light Wash for text contrast */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle at 50% 50%, transparent 40%, rgba(10, 15, 30, 0.5) 100%)',
+            background: 'radial-gradient(ellipse at 15% 45%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.25) 65%, transparent 100%)',
           }}
         />
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
-        {/* Main 2-Column Grid: Left (Cultural Details) + Right (Clean Calendar Card) */}
+        {/* Main 2-Column Grid: Left (Cultural Details) + Right (Clean Card) */}
         <div className="hero-patro-grid">
 
           {/* LEFT COLUMN: Open Heritage Canvas */}
@@ -224,141 +203,266 @@ export function NepalPatroHero() {
             <div style={{ position: 'relative', zIndex: 1 }}>
 
               {/* Top Subtitle Badge: Live Patro Status */}
-              <div className="hero-live-badge">
-                <span className="pulse-dot" />
-                <span className="hero-live-badge-text">
-                  {language === 'ne' ? 'नेपाल आधिकारिक समय · प्रत्यक्ष पात्रो' : 'Nepal Live Patro & Time'}
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.95)',
+                  padding: '4px 12px',
+                  borderRadius: '9999px',
+                  boxShadow: '0 2px 10px rgba(11, 43, 92, 0.06)',
+                  marginBottom: '12px',
+                  width: 'fit-content',
+                }}
+              >
+                <NepalFlagAnimated size={18} />
+                <span style={{ fontSize: '11px', fontWeight: 900, color: '#059669', display: 'flex', alignItems: 'center' }}>
+                  ((•))
                 </span>
-                <span className="hero-live-badge-year">२०८३</span>
+                <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#0b2b5c', letterSpacing: '0.04em' }}>
+                  NEPAL LIVE PATRO
+                </span>
+                <span
+                  style={{
+                    fontSize: '10px',
+                    fontWeight: 800,
+                    color: '#059669',
+                    backgroundColor: '#ecfdf5',
+                    border: '1px solid #a7f3d0',
+                    padding: '2px 7px',
+                    borderRadius: '9999px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#059669' }} />
+                  LIVE
+                </span>
               </div>
 
-              {/* Massive Bold Heading: Dynamic BS Date - Modern Mukta Devanagari */}
-              <h1 className="hero-main-title">
+              {/* Massive Bold Heading: Dynamic BS Date matching image */}
+              <h1
+                className="hero-main-title"
+                style={{
+                  color: '#0b2b5c',
+                  textShadow: 'none',
+                  fontSize: 'clamp(28px, 4.2vw, 44px)',
+                  fontWeight: 900,
+                  margin: '0 0 8px',
+                  lineHeight: 1.18,
+                  letterSpacing: '-0.015em',
+                }}
+              >
                 {toNepaliDigits(activeDay.bsDay)} {heroMeta.monthNameNep} {toNepaliDigits(heroYear)}, {activeDay.dayNameNep}
               </h1>
 
               {/* Gregorian English Date & Vikram Sambat */}
-              <div className="hero-subdate-wrap">
-                <span className="hero-ad-date">
-                  {activeDay.adMonthName} {activeDay.adDay}, {new Date(activeDay.adDate).getFullYear()}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '8px 12px',
+                  fontSize: '14px',
+                  color: '#334155',
+                  fontWeight: 600,
+                  marginBottom: '16px',
+                }}
+              >
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                  <CalendarIcon size={14} color="#64748b" />
+                  <span>{activeDay.adMonthName} {activeDay.adDay}, {new Date(activeDay.adDate).getFullYear()}</span>
                 </span>
-                <span className="hero-subdate-sep">•</span>
-                <span className="hero-tithi-tag">
-                  <Sparkles size={13} color="#fde047" />
-                  <span>{t('Bikram Sambat', 'विक्रम संवत्')} ({activeDay.tithiShort})</span>
+                <span style={{ color: '#94a3b8' }}>•</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                  <Sun size={14} color="#f59e0b" />
+                  <span>Bikram Sambat {toNepaliDigits(heroYear)}</span>
                 </span>
               </div>
 
-              {/* Live Nepal Time - Modern Glassmorphic Pill */}
-              <div className="hero-live-clock-card">
-                <Clock size={15} color="#fef08a" />
-                <span className="clock-label">{t('Time:', 'समय:')}</span>
-                <span className="clock-time-val">
-                  {mounted ? timeStr : 'राति १०:४४:३४'}
-                </span>
-                <span className="clock-npt-badge">NPT</span>
-              </div>
-
-              {/* Weather Pill (Floating Frosted Glass with Location Switcher) */}
-              <div className="hero-weather-pill-wrap" style={{ position: 'relative', display: 'inline-block' }}>
-                <div className="hero-pill-badge" style={{ color: '#003893' }}>
-                  <span style={{ fontSize: '15px' }}>{currentCity.icon}</span>
-                  <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    <strong style={{ color: '#003893' }}>{language === 'ne' ? currentCity.cityNep : currentCity.cityEng}</strong> · <span style={{ color: '#003893', fontWeight: 800 }}>{currentCity.temp}°C</span> · {language === 'ne' ? currentCity.conditionNep : currentCity.conditionEng}
+              {/* Capsules Row 1: Time & Weather */}
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px', marginBottom: '12px' }}>
+                {/* Time Pill */}
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.88)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: '1.5px solid rgba(255, 255, 255, 0.95)',
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    boxShadow: '0 2px 10px rgba(11, 43, 92, 0.05)',
+                    fontSize: '13px',
+                    color: '#0b2b5c',
+                  }}
+                >
+                  <Clock size={14} color="#2563eb" />
+                  <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 600 }}>{t('Time', 'Time')}</span>
+                  <span style={{ fontWeight: 800, fontSize: '13.5px' }}>
+                    {mounted ? timeStr : '02:36:44 PM NPT'}
                   </span>
+                  <span
+                    style={{
+                      fontSize: '9.5px',
+                      fontWeight: 800,
+                      backgroundColor: '#eff6ff',
+                      border: '1px solid #dbeafe',
+                      color: '#1d4ed8',
+                      padding: '1px 5px',
+                      borderRadius: '5px',
+                    }}
+                  >
+                    NST
+                  </span>
+                </div>
+
+                {/* Weather Pill */}
+                <div style={{ position: 'relative', display: 'inline-block' }}>
                   <button
                     type="button"
                     onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
-                      background: 'rgba(0, 56, 147, 0.08)',
-                      border: '1px solid rgba(0, 56, 147, 0.2)',
+                      gap: '7px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.88)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1.5px solid rgba(255, 255, 255, 0.95)',
+                      padding: '6px 14px',
                       borderRadius: '9999px',
-                      color: '#003893',
-                      fontSize: '11px',
-                      fontWeight: 800,
+                      boxShadow: '0 2px 10px rgba(11, 43, 92, 0.05)',
+                      fontSize: '13px',
+                      color: '#0b2b5c',
                       cursor: 'pointer',
-                      padding: '3px 8px',
-                      marginLeft: '2px',
-                      flexShrink: 0
                     }}
                   >
-                    <RefreshCw size={11} />
-                    <span>{t('Change', 'फेर्नुहोस्')}</span>
+                    <span>{currentCity.icon}</span>
+                    <span style={{ fontWeight: 700 }}>
+                      {language === 'ne' ? currentCity.cityNep : currentCity.cityEng}
+                    </span>
+                    <span style={{ color: '#94a3b8' }}>•</span>
+                    <span style={{ fontWeight: 700 }}>{currentCity.temp}°C - {language === 'ne' ? currentCity.conditionNep : currentCity.conditionEng}</span>
+                    <ChevronRight size={14} color="#64748b" />
                   </button>
-                </div>
 
-                {/* City Picker Dropdown */}
-                {cityDropdownOpen && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 'calc(100% + 8px)',
-                      left: 0,
-                      backgroundColor: '#ffffff',
-                      border: '1.5px solid #003893',
-                      borderRadius: '12px',
-                      boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
-                      zIndex: 50,
-                      width: '260px',
-                      maxHeight: '240px',
-                      overflowY: 'auto',
-                      padding: '6px'
-                    }}
-                  >
-                    <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b', padding: '6px 8px', textTransform: 'uppercase' }}>
-                      {t('Select City', 'सहर रोज्नुहोस्')}
+                  {/* City Picker Dropdown */}
+                  {cityDropdownOpen && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: 'calc(100% + 8px)',
+                        left: 0,
+                        backgroundColor: '#ffffff',
+                        border: '1.5px solid #003893',
+                        borderRadius: '12px',
+                        boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
+                        zIndex: 50,
+                        width: '260px',
+                        maxHeight: '240px',
+                        overflowY: 'auto',
+                        padding: '6px'
+                      }}
+                    >
+                      <div style={{ fontSize: '11px', fontWeight: 800, color: '#64748b', padding: '6px 8px', textTransform: 'uppercase' }}>
+                        {t('Select City', 'सहर रोज्नुहोस्')}
+                      </div>
+                      {NEPAL_CITIES.map((c, idx) => (
+                        <button
+                          key={c.cityEng}
+                          type="button"
+                          onClick={() => {
+                            setActiveCityIndex(idx);
+                            setCityDropdownOpen(false);
+                          }}
+                          style={{
+                            width: '100%',
+                            textAlign: 'left',
+                            padding: '8px 10px',
+                            backgroundColor: idx === activeCityIndex ? '#eff6ff' : 'transparent',
+                            border: 'none',
+                            borderRadius: '6px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            color: '#0f172a',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          <span>{c.icon} {language === 'ne' ? c.cityNep : c.cityEng}</span>
+                          <span style={{ color: '#003893', fontWeight: 800 }}>{c.temp}°C</span>
+                        </button>
+                      ))}
                     </div>
-                    {NEPAL_CITIES.map((c, idx) => (
-                      <button
-                        key={c.cityEng}
-                        type="button"
-                        onClick={() => {
-                          setActiveCityIndex(idx);
-                          setCityDropdownOpen(false);
-                        }}
-                        style={{
-                          width: '100%',
-                          textAlign: 'left',
-                          padding: '8px 10px',
-                          backgroundColor: idx === activeCityIndex ? '#eff6ff' : 'transparent',
-                          border: 'none',
-                          borderRadius: '6px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          fontSize: '13px',
-                          fontWeight: 600,
-                          color: '#0f172a',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        <span>{c.icon} {language === 'ne' ? c.cityNep : c.cityEng}</span>
-                        <span style={{ color: '#003893', fontWeight: 800 }}>{c.temp}°C</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
               {/* Event Holiday Pills (Dynamically reflects activeDay) */}
-              <div className="hero-holiday-pills-wrap" style={{ display: 'flex', flexDirection: 'column' }}>
-                <div className="hero-pill-badge hero-today-holiday-pill">
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: activeDay.isHoliday ? '#ef4444' : '#10b981', boxShadow: activeDay.isHoliday ? '0 0 8px #ef4444' : '0 0 8px #10b981', flexShrink: 0 }} />
-                  <span>
-                    <strong>{activeDay.isToday ? t('Today', 'आज') : activeDay.dayNameNep}</strong> · {activeDay.eventNep || (activeDay.isWeekend ? 'साप्ताहिक बिदा' : 'शुभ दिन')} · <span style={{ color: activeDay.isHoliday ? '#dc2626' : '#059669', fontWeight: 800 }}>{activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Workday', 'कार्यदिन')}</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    backgroundColor: 'rgba(254, 242, 242, 0.92)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(254, 202, 202, 0.9)',
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    fontSize: '12.5px',
+                    width: 'fit-content',
+                    maxWidth: '100%',
+                    boxShadow: '0 2px 8px rgba(220, 38, 38, 0.06)',
+                  }}
+                >
+                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#dc2626', flexShrink: 0 }} />
+                  <span style={{ color: '#dc2626', fontWeight: 800 }}>{t('Today', 'आज')} :</span>
+                  <span style={{ color: '#0f172a', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {activeDay.eventNep || (activeDay.isWeekend ? 'साप्ताहिक बिदा' : 'पञ्च पर्व / पुण्यूणा')}
+                  </span>
+                  <span style={{ color: '#dc2626', fontWeight: 800 }}>
+                    - {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Workday', 'कार्यदिन')}
                   </span>
                 </div>
 
                 {upcomingFestival && (
-                  <div className="hero-pill-badge">
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b', boxShadow: '0 0 8px #f59e0b', flexShrink: 0 }} />
-                    <span>
-                      {language === 'ne'
-                        ? <><strong>अब आउने</strong> · {upcomingFestival.eventNep} · <span style={{ color: '#d97706', fontWeight: 800 }}>{upcomingFestival.daysRemaining === 0 ? 'आज' : `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि`}</span></>
-                        : <><strong>Upcoming</strong> · {upcomingFestival.eventEng} · <span style={{ color: '#d97706', fontWeight: 800 }}>{upcomingFestival.daysRemaining === 0 ? 'Today' : `in ${upcomingFestival.daysRemaining} days`}</span></>}
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      backgroundColor: 'rgba(255, 251, 235, 0.92)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(254, 240, 138, 0.9)',
+                      padding: '6px 14px',
+                      borderRadius: '9999px',
+                      fontSize: '12.5px',
+                      width: 'fit-content',
+                      maxWidth: '100%',
+                      boxShadow: '0 2px 8px rgba(217, 119, 6, 0.06)',
+                    }}
+                  >
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#d97706', flexShrink: 0 }} />
+                    <span style={{ color: '#d97706', fontWeight: 800 }}>{t('Upcoming', 'अब आउने')} :</span>
+                    <span style={{ color: '#0f172a', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {language === 'ne' ? upcomingFestival.eventNep : upcomingFestival.eventEng}
+                    </span>
+                    <span style={{ color: '#b45309', fontWeight: 800 }}>
+                      - {upcomingFestival.daysRemaining === 0 ? t('Today', 'आज') : (language === 'ne' ? `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि` : `in ${upcomingFestival.daysRemaining} days`)}
                     </span>
                   </div>
                 )}
@@ -368,44 +472,73 @@ export function NepalPatroHero() {
           </div>
 
 
-          {/* RIGHT COLUMN: Art Nouveau Ivory Parchment Calendar Card */}
+          {/* RIGHT COLUMN: White Rounded Interactive Card matching image */}
           <div className="hero-calendar-card">
-            {/* Tab Switcher: [ 📅 मासिक पात्रो (Calendar) ]  [ 🔮 दैनिक राशिफल (Daily Horoscope) ] */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
-              <div className="segmented-control" style={{ padding: '3px' }}>
+            {/* Tab Switcher: [ 🛡️ Quick Tools ]  [ 📅 Monthly Alert / Patro ] */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+              <div style={{ display: 'inline-flex', backgroundColor: '#f1f5f9', padding: '3px', borderRadius: '9999px', border: '1px solid #e2e8f0' }}>
+                <button
+                  type="button"
+                  onClick={() => setHeroRightTab('tools')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '12px',
+                    fontWeight: 750,
+                    padding: '5px 14px',
+                    borderRadius: '9999px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    backgroundColor: heroRightTab === 'tools' ? '#ffffff' : 'transparent',
+                    color: heroRightTab === 'tools' ? '#0f172a' : '#64748b',
+                    boxShadow: heroRightTab === 'tools' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span style={{ color: '#dc2626' }}>🛡️</span>
+                  <span>{t('Quick Tools', 'Quick Tools')}</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => setHeroRightTab('calendar')}
-                  className={`segmented-btn ${heroRightTab === 'calendar' ? 'active' : ''}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '5px',
+                    gap: '6px',
                     fontSize: '12px',
-                    padding: '5px 12px'
+                    fontWeight: 750,
+                    padding: '5px 14px',
+                    borderRadius: '9999px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    backgroundColor: heroRightTab === 'calendar' ? '#ffffff' : 'transparent',
+                    color: heroRightTab === 'calendar' ? '#0f172a' : '#64748b',
+                    boxShadow: heroRightTab === 'calendar' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+                    transition: 'all 0.15s ease',
                   }}
                 >
-                  <CalendarIcon size={13} />
-                  <span>{t('Monthly Patro', 'मासिक पात्रो')}</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setHeroRightTab('rashifal')}
-                  className={`segmented-btn ${heroRightTab === 'rashifal' ? 'active' : ''}`}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '5px',
-                    fontSize: '12px',
-                    padding: '5px 12px'
-                  }}
-                >
-                  <Sparkles size={13} color={heroRightTab === 'rashifal' ? '#d4af37' : '#64748b'} />
-                  <span>{t('Daily Horoscope', 'दैनिक राशिफल')}</span>
+                  <span>📅</span>
+                  <span>{t('Monthly Patro', 'Monthly Alert')}</span>
                 </button>
               </div>
 
-              {heroRightTab === 'calendar' ? (
+              {heroRightTab === 'tools' ? (
+                <Link
+                  href="#all-tools"
+                  style={{
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#1d4ed8',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span>{t('All 70+ Tools →', 'All 70+ Tools →')}</span>
+                </Link>
+              ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <button
                     type="button"
@@ -460,27 +593,13 @@ export function NepalPatroHero() {
                     <ChevronRight size={16} />
                   </button>
                 </div>
-              ) : (
-                <Link
-                  href="/rashifal"
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    color: '#003893',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    textDecoration: 'none'
-                  }}
-                >
-                  <span>{t('Full 12 Signs', 'सबै १२ राशि')}</span>
-                  <ArrowRight size={13} />
-                </Link>
               )}
             </div>
 
-            {/* TAB 1: CALENDAR VIEW */}
-            {heroRightTab === 'calendar' ? (
+            {/* TAB CONTENT: Quick Tools (Option A) or Monthly Calendar View */}
+            {heroRightTab === 'tools' ? (
+              <HeroQuickCalcCard onSwitchToPatro={() => setHeroRightTab('calendar')} hideHeader={true} />
+            ) : (
               <>
                 {/* Header Subtitle: आश्विन २०८३ सेप्टेम्बर – अक्टोबर २०२६ */}
                 <div style={{ marginBottom: '14px' }}>
@@ -707,171 +826,6 @@ export function NepalPatroHero() {
                   </Link>
                 </div>
               </>
-            ) : (
-              /* TAB 2: DAILY RASHIFAL (HOROSCOPE) VIEW */
-              <div>
-                {/* 12 Rashi Selection Bar */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(6, 1fr)',
-                    gap: '6px',
-                    marginBottom: '16px'
-                  }}
-                >
-                  {TODAY_RASHIFAL.map((rashi) => {
-                    const isRashiActive = rashi.id === selectedRashiId;
-                    return (
-                      <button
-                        key={rashi.id}
-                        type="button"
-                        onClick={() => setSelectedRashiId(rashi.id)}
-                        style={{
-                          padding: '6px 4px',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          backgroundColor: isRashiActive ? '#003893' : '#f8fafc',
-                          color: isRashiActive ? '#ffffff' : '#0f172a',
-                          border: isRashiActive ? '1.5px solid #003893' : '1px solid #e2e8f0',
-                          borderRadius: '6px',
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease'
-                        }}
-                      >
-                        <span style={{ fontSize: '15px', lineHeight: 1 }}>{rashi.symbol}</span>
-                        <span style={{ fontSize: '11px', fontWeight: 800, marginTop: '2px' }}>
-                          {language === 'ne' ? rashi.nepaliName : rashi.englishName}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Active Rashi Details Card */}
-                <div
-                  style={{
-                    backgroundColor: '#faf7f2',
-                    border: '1.5px solid #ebe2d3',
-                    borderRadius: '8px',
-                    padding: '16px',
-                    marginBottom: '14px'
-                  }}
-                >
-                  {/* Top Details & Stars */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '26px' }}>{activeRashi.symbol}</span>
-                      <div>
-                        <h3 style={{ fontSize: '16px', fontWeight: 900, color: '#0f172a', margin: 0 }}>
-                          {activeRashi.nepaliName} ({activeRashi.englishName})
-                        </h3>
-                        <span style={{ fontSize: '11px', color: '#64748b' }}>
-                          {activeRashi.sanskritName}
-                        </span>
-                      </div>
-                    </div>
-                    {/* 5-Star Rating */}
-                    <div style={{ display: 'flex', gap: '2px', color: '#f59e0b' }}>
-                      {Array.from({ length: 5 }).map((_, idx) => (
-                        <Star key={idx} size={14} fill={idx < activeRashi.rating ? '#f59e0b' : 'none'} color="#f59e0b" />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Auspicious Badges */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', marginBottom: '12px', textAlign: 'center' }}>
-                    <div style={{ backgroundColor: '#ffffff', padding: '6px', borderRadius: '4px', border: '1px solid #ebd8c0' }}>
-                      <div style={{ fontSize: '10px', color: '#64748b' }}>शुभ अङ्क</div>
-                      <div style={{ fontSize: '13px', fontWeight: 800, color: '#003893' }}>{toNepaliDigits(activeRashi.luckyNumber)}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#ffffff', padding: '6px', borderRadius: '4px', border: '1px solid #ebd8c0' }}>
-                      <div style={{ fontSize: '10px', color: '#64748b' }}>शुभ रङ्ग</div>
-                      <div style={{ fontSize: '11px', fontWeight: 700, color: '#047857' }}>{activeRashi.luckyColorNep}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#ffffff', padding: '6px', borderRadius: '4px', border: '1px solid #ebd8c0' }}>
-                      <div style={{ fontSize: '10px', color: '#64748b' }}>शुभ दिशा</div>
-                      <div style={{ fontSize: '11px', fontWeight: 700, color: '#0284c7' }}>{activeRashi.luckyDirectionNep}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#ffffff', padding: '6px', borderRadius: '4px', border: '1px solid #ebd8c0' }}>
-                      <div style={{ fontSize: '10px', color: '#64748b' }}>स्वामी ग्रह</div>
-                      <div style={{ fontSize: '11px', fontWeight: 700, color: '#b45309' }}>{activeRashi.rulingPlanetNep}</div>
-                    </div>
-                  </div>
-
-                  {/* Live API Status Bar */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b' }}>
-                      {t('Daily Prediction', 'दैनिक फलादेश')}
-                    </span>
-                    {isLiveApi && (
-                      <span
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '5px',
-                          fontSize: '10px',
-                          fontWeight: 800,
-                          color: '#065f46',
-                          backgroundColor: '#d1fae5',
-                          padding: '2px 8px',
-                          borderRadius: '4px',
-                          border: '1px solid #a7f3d0'
-                        }}
-                      >
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-                        {t('Live Horoscope API', 'प्रत्यक्ष राशिफल')}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Main Prediction */}
-                  <p style={{ fontSize: '13px', color: '#1e293b', lineHeight: 1.6, margin: '0 0 10px', fontWeight: 500 }}>
-                    {language === 'ne' ? activeRashi.predictionNep : (liveHoroscope || activeRashi.predictionEng)}
-                  </p>
-
-                  {/* English Live Prediction Translation Pill (when in Nepali mode) */}
-                  {language === 'ne' && liveHoroscope && (
-                    <div style={{ fontSize: '11px', color: '#334155', backgroundColor: '#ffffff', padding: '8px 10px', borderRadius: '4px', border: '1px solid #e2e8f0', marginBottom: '10px', lineHeight: 1.5 }}>
-                      <span style={{ fontWeight: 800, color: '#003893' }}>Live Astrological Forecast: </span>
-                      {liveHoroscope}
-                    </div>
-                  )}
-
-                  {/* Highlights */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '12px' }}>
-                    <div style={{ color: '#047857', fontWeight: 600 }}>
-                      💼 {language === 'ne' ? activeRashi.careerFinanceNep : 'Favorable career & business growth.'}
-                    </div>
-                    <div style={{ color: '#2563eb', fontWeight: 600 }}>
-                      🩺 {language === 'ne' ? activeRashi.healthNep : 'Good vitality; take balanced meals.'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '10px', borderTop: '1px solid #f1f5f9' }}>
-                  <span style={{ fontSize: '11px', color: '#64748b' }}>
-                    २५ आश्विन २०८३ • दैनिक फलादेश
-                  </span>
-                  <Link
-                    href="/rashifal"
-                    style={{
-                      color: '#003893',
-                      fontSize: '12px',
-                      fontWeight: 800,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      textDecoration: 'none'
-                    }}
-                  >
-                    <span>विस्तृत राशिफल हेर्नुहोस्</span>
-                    <ArrowRight size={13} />
-                  </Link>
-                </div>
-              </div>
             )}
 
           </div>

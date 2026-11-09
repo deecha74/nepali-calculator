@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { DollarSign, ArrowRightLeft, Copy, Check } from 'lucide-react';
 import { DEFAULT_FOREX_RATES } from '@/lib/rates/forexRates';
+import { CountryFlag } from '@/components/hero/MarketRatesAndPopularTools';
 
 interface ForexCalculatorProps {
   initialCurrency?: string;
@@ -94,17 +95,23 @@ Via NepalCalc.com`;
         <div>
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">Select Foreign Currency</label>
-            <select
-              className="select-input"
-              value={selectedCurrency}
-              onChange={(e) => setSelectedCurrency(e.target.value)}
-            >
-              {DEFAULT_FOREX_RATES.map((curr) => (
-                <option key={curr.code} value={curr.code}>
-                  {curr.flag} {curr.code} — {curr.name} (Unit: {curr.unit})
-                </option>
-              ))}
-            </select>
+            <div style={{ position: 'relative' }}>
+              <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
+                <CountryFlag code={selectedCurrency} size={17} />
+              </span>
+              <select
+                className="select-input"
+                value={selectedCurrency}
+                onChange={(e) => setSelectedCurrency(e.target.value)}
+                style={{ paddingLeft: '44px' }}
+              >
+                {DEFAULT_FOREX_RATES.map((curr) => (
+                  <option key={curr.code} value={curr.code}>
+                    {curr.code} — {curr.name} (Unit: {curr.unit})
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
