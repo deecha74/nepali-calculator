@@ -667,8 +667,12 @@ export function LiveForexCard() {
         if (res.ok) {
           const data = await res.json();
           if (isMounted) {
-            if (Array.isArray(data.nrbCurrencies) && data.nrbCurrencies.length > 0) {
-              setCurrencies(data.nrbCurrencies);
+            const liveCurrenciesList = Array.isArray(data.nrbCurrencies) && data.nrbCurrencies.length > 0
+              ? data.nrbCurrencies
+              : (Array.isArray(data.forex?.currencies) && data.forex.currencies.length > 0 ? data.forex.currencies : null);
+
+            if (liveCurrenciesList) {
+              setCurrencies(liveCurrenciesList);
               setIsLive(true);
             } else if (data.forex && typeof data.forex === 'object') {
               const updated = DEFAULT_FOREX_RATES.map((c) => {

@@ -12,10 +12,11 @@ interface NrbRateItem {
 
 export async function GET(request: NextRequest) {
   try {
-    let nprPerUsd = 153.44; // Default realistic baseline
+    let nprPerUsd = 151.73; // Default realistic baseline
     let forexRates: Record<string, number> = {};
     let nrbCurrencies: Array<{ code: string; name: string; flag: string; unit: number; buyNpr: number; sellNpr: number }> = [];
     let isLiveNrb = false;
+    let nrbPublishedDate: string | null = null;
 
     // 1. PRIMARY SOURCE: Official Nepal Rastra Bank (NRB) Forex API
     try {
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
         const payload = nrbData?.data?.payload;
         if (Array.isArray(payload) && payload.length > 0 && Array.isArray(payload[0]?.rates)) {
           const ratesList: NrbRateItem[] = payload[0].rates;
+          nrbPublishedDate = payload[0]?.date || null;
           
           const flagMap: Record<string, string> = {
             USD: '🇺🇸', EUR: '🇪🇺', GBP: '🇬🇧', AUD: '🇦🇺', CAD: '🇨🇦',
@@ -245,7 +247,10 @@ export async function GET(request: NextRequest) {
         usdToNpr: nprPerUsd,
         USD: nprPerUsd,
         currencies,
+        isLiveNrb,
+        publishedDate: nrbPublishedDate,
       },
+      nrbCurrencies: currencies,
       weather: {
         kathmandu: {
           temp: ktmTemp,

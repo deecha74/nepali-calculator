@@ -19,6 +19,7 @@ export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle 
   const [copied, setCopied] = useState<boolean>(false);
   const [forexRates, setForexRates] = useState(DEFAULT_FOREX_RATES);
   const [isLive, setIsLive] = useState(false);
+  const [publishedDate, setPublishedDate] = useState<string>('');
 
   React.useEffect(() => {
     async function loadLiveForex() {
@@ -26,19 +27,27 @@ export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle 
         const res = await fetch('/api/live-rates');
         if (res.ok) {
           const data = await res.json();
-          if (Array.isArray(data.forex?.currencies)) {
+          const list = Array.isArray(data.forex?.currencies) && data.forex.currencies.length > 0
+            ? data.forex.currencies
+            : (Array.isArray(data.nrbCurrencies) ? data.nrbCurrencies : null);
+
+          if (list) {
             setForexRates(prev => prev.map(item => {
-              const matched = data.forex.currencies.find((c: any) => c.code === item.code);
+              const matched = list.find((c: any) => c.code === item.code);
               if (matched) {
                 return {
                   ...item,
                   buyNpr: matched.buyNpr,
                   sellNpr: matched.sellNpr,
+                  unit: matched.unit || item.unit,
                 };
               }
               return item;
             }));
             setIsLive(true);
+            if (data.forex?.publishedDate) {
+              setPublishedDate(data.forex.publishedDate);
+            }
           }
         }
       } catch (e) {
@@ -51,11 +60,12 @@ export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle 
   const rate = forexRates.find((r) => r.code === selectedCurrency) || forexRates[0];
 
   const convertedValue = useMemo(() => {
-    const singleUnitBuy = rate.buyNpr / rate.unit;
     if (direction === 'foreignToNpr') {
+      const singleUnitBuy = rate.buyNpr / rate.unit;
       return (foreignAmount || 0) * singleUnitBuy;
     } else {
-      return (foreignAmount || 0) / singleUnitBuy;
+      const singleUnitSell = rate.sellNpr / rate.unit;
+      return (foreignAmount || 0) / singleUnitSell;
     }
   }, [foreignAmount, rate, direction]);
 
@@ -73,15 +83,38 @@ Via NepalCalc.com`;
     <div className="white-card" style={{ padding: '28px', maxWidth: '1000px', margin: '0 auto' }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '24px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '18px' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="badge badge-emerald">Nepal Rastra Bank Standard</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '3px 9px',
+                borderRadius: '9999px',
+                fontSize: '11px',
+                fontWeight: 800,
+                backgroundColor: isLive ? '#ecfdf5' : '#eff6ff',
+                color: isLive ? '#059669' : '#1d4ed8',
+                border: isLive ? '1px solid #a7f3d0' : '1px solid #bfdbfe',
+              }}
+            >
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: isLive ? '#059669' : '#1d4ed8',
+                }}
+              />
+              {isLive ? `Live NRB Rates (${publishedDate || 'Today'})` : 'Nepal Rastra Bank Standard'}
+            </span>
             <span className="badge badge-neutral">Remittance & Exchange</span>
           </div>
           <TitleHeading style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             {customTitle || 'Forex & Remittance Currency Converter'}
           </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-            Convert USD, AUD, AED, SAR, QAR, JPY, and global remittances to Nepali Rupees (NPR).
+            Real-time Nepal Rastra Bank (NRB) buying and selling exchange rates for remittances and forex.
           </p>
         </div>
 
@@ -105,7 +138,7 @@ Via NepalCalc.com`;
                 onChange={(e) => setSelectedCurrency(e.target.value)}
                 style={{ paddingLeft: '44px' }}
               >
-                {DEFAULT_FOREX_RATES.map((curr) => (
+                {forexRates.map((curr) => (
                   <option key={curr.code} value={curr.code}>
                     {curr.code} — {curr.name} (Unit: {curr.unit})
                   </option>
@@ -141,13 +174,29 @@ Via NepalCalc.com`;
 
         <div>
           <div className="result-card-highlight">
-            <span className="stat-label">Converted Equivalent</span>
+            <span className="stat-label">
+              {direction === 'foreignToNpr' ? 'Converted Equivalent in Nepali Rupees (NPR)' : `Converted Equivalent in ${rate.code}`}
+            </span>
             <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
               {direction === 'foreignToNpr' ? `रु ${Math.round(convertedValue).toLocaleString('en-IN')}` : `${(Math.round(convertedValue * 100) / 100).toLocaleString('en-IN')} ${rate.code}`}
             </div>
-            <span className="stat-subvalue">
-              Official Reference Rate: {rate.unit} {rate.code} = रु {rate.buyNpr} (Buy) / रु {rate.sellNpr} (Sell)
-            </span>
+            <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+              <div>
+                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Buying Rate (Bank Buys)</span>
+                <div style={{ fontSize: '14px', fontWeight: 800, color: '#ffffff' }}>
+                  {rate.unit} {rate.code} = रु {rate.buyNpr}
+                </div>
+              </div>
+              <div>
+                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Selling Rate (Bank Sells)</span>
+                <div style={{ fontSize: '14px', fontWeight: 800, color: '#ffffff' }}>
+                  {rate.unit} {rate.code} = रु {rate.sellNpr}
+                </div>
+              </div>
+            </div>
+            <div style={{ marginTop: '10px', fontSize: '11px', color: '#94a3b8' }}>
+              Source: Official Nepal Rastra Bank (NRB) Daily Exchange Bulletin.
+            </div>
           </div>
         </div>
       </div>
