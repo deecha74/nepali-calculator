@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import path from 'path';
 import {
   AUTHORITY_ARTICLES,
   DATASET_FILES,
@@ -6,6 +9,7 @@ import {
   WIKIPEDIA_CITATIONS,
 } from '@/lib/seo/backlinkCampaignData';
 
+const execAsync = promisify(exec);
 const DEFAULT_ADMIN_KEY = 'nepalicalc-admin-2083';
 
 function isAuthorized(req: NextRequest): boolean {
@@ -27,6 +31,7 @@ export async function GET(req: NextRequest) {
       authorized: true,
       hasDevtoEnv: Boolean(process.env.DEVTO_API_KEY),
       hasGithubEnv: Boolean(process.env.GITHUB_TOKEN),
+      hasNpmEnv: Boolean(process.env.NPM_TOKEN),
     },
     { headers: { 'X-Robots-Tag': 'noindex, nofollow, noarchive' } }
   );
@@ -43,6 +48,66 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const action = body?.action;
+
+    // 0A. Run `node scripts/backlink-engine.js <mode>` directly from the UI
+    if (action === 'run_engine') {
+      const subcommand = body?.subcommand === 'publish' ? 'publish' : 'all';
+      const scriptPath = path.join(process.cwd(), 'scripts', 'backlink-engine.js');
+      try {
+        const { stdout, stderr } = await execAsync(`node "${scriptPath}" ${subcommand}`, {
+          cwd: process.cwd(),
+          timeout: 45000,
+        });
+        return NextResponse.json({
+          ok: true,
+          command: `node scripts/backlink-engine.js ${subcommand}`,
+          output: [stdout, stderr].filter(Boolean).join('\n').trim(),
+        });
+      } catch (err: unknown) {
+        const errObj = err as { stdout?: string; stderr?: string; message?: string };
+        return NextResponse.json(
+          {
+            ok: false,
+            command: `node scripts/backlink-engine.js ${subcommand}`,
+            error: errObj.message || 'Command execution failed.',
+            output: [errObj.stdout, errObj.stderr].filter(Boolean).join('\n').trim(),
+          },
+          { status: 500 }
+        );
+      }
+    }
+
+    // 0B. Run `npm publish` inside `backlink-campaigns/npm-package` directly from the UI
+    if (action === 'publish_npm') {
+      const npmDir = path.join(process.cwd(), 'backlink-campaigns', 'npm-package');
+      const npmToken = (body?.npmToken || process.env.NPM_TOKEN || '').trim();
+      const authFlag = npmToken ? ` --//registry.npmjs.org/:_authToken=${npmToken}` : '';
+
+      try {
+        const { stdout, stderr } = await execAsync(`npm publish --access public${authFlag}`, {
+          cwd: npmDir,
+          timeout: 45000,
+        });
+        return NextResponse.json({
+          ok: true,
+          command: 'cd backlink-campaigns/npm-package && npm publish --access public',
+          output: [stdout, stderr].filter(Boolean).join('\n').trim() || 'Published nepalicalc-utils to NPM!',
+          url: 'https://www.npmjs.com/package/nepalicalc-utils',
+        });
+      } catch (err: unknown) {
+        const errObj = err as { stdout?: string; stderr?: string; message?: string };
+        return NextResponse.json(
+          {
+            ok: false,
+            command: 'cd backlink-campaigns/npm-package && npm publish --access public',
+            error:
+              'NPM Publish requires an NPM Automation Token (or running `npm login` in terminal). Paste an NPM Automation Token from npmjs.com -> Access Tokens -> Generate New Token (Automation).',
+            output: [errObj.stdout, errObj.stderr, errObj.message].filter(Boolean).join('\n').trim(),
+          },
+          { status: 400 }
+        );
+      }
+    }
 
     // 1. Live Wikipedia Citation & Dead-Link API Scanner
     if (action === 'scan_wikipedia') {
@@ -198,4 +263,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: msg }, { status: 500 });
   }
 }
-

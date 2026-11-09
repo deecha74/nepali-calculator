@@ -79,6 +79,90 @@ export default function BacklinkCommandCenter() {
   const [wikiScanning, setWikiScanning] = useState(false);
   const [wikiStats, setWikiStats] = useState<Record<string, WikiScanStat>>({});
 
+  // Live Terminal Command Runner State
+  const [cmdStatus, setCmdStatus] = useState<{
+    loading: boolean;
+    command: string;
+    output: string;
+    isError?: boolean;
+  }>({
+    loading: false,
+    command: '',
+    output: '',
+  });
+  const [npmTokenInput, setNpmTokenInput] = useState('');
+  const [showNpmTokenBox, setShowNpmTokenBox] = useState(false);
+
+  async function handleRunEngine(subcommand: 'all' | 'publish') {
+    setCmdStatus({
+      loading: true,
+      command: `node scripts/backlink-engine.js ${subcommand}`,
+      output: `Running "node scripts/backlink-engine.js ${subcommand}" on server... please wait (~5-10s)...`,
+    });
+    try {
+      const res = await fetch('/api/admin/backlinks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': passkey.trim(),
+        },
+        body: JSON.stringify({ action: 'run_engine', subcommand }),
+      });
+      const data = await res.json();
+      setCmdStatus({
+        loading: false,
+        command: data.command || `node scripts/backlink-engine.js ${subcommand}`,
+        output: data.output || data.error || 'Finished.',
+        isError: !res.ok || !data.ok,
+      });
+    } catch (err: unknown) {
+      setCmdStatus({
+        loading: false,
+        command: `node scripts/backlink-engine.js ${subcommand}`,
+        output: err instanceof Error ? err.message : 'Failed to execute command.',
+        isError: true,
+      });
+    }
+  }
+
+  async function handleRunNpmPublish() {
+    setCmdStatus({
+      loading: true,
+      command: 'cd backlink-campaigns/npm-package && npm publish --access public',
+      output: 'Running npm publish on server...',
+    });
+    try {
+      const res = await fetch('/api/admin/backlinks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': passkey.trim(),
+        },
+        body: JSON.stringify({
+          action: 'publish_npm',
+          npmToken: npmTokenInput.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setShowNpmTokenBox(true);
+      }
+      setCmdStatus({
+        loading: false,
+        command: data.command || 'npm publish --access public',
+        output: [data.error, data.output].filter(Boolean).join('\n\n'),
+        isError: !res.ok || !data.ok,
+      });
+    } catch (err: unknown) {
+      setCmdStatus({
+        loading: false,
+        command: 'npm publish --access public',
+        output: err instanceof Error ? err.message : 'Failed to execute npm publish.',
+        isError: true,
+      });
+    }
+  }
+
   useEffect(() => {
     try {
       const savedDone = localStorage.getItem(STORAGE_KEY_DONE);
@@ -527,26 +611,201 @@ export default function BacklinkCommandCenter() {
             </p>
           </div>
 
-          <button
-            onClick={handleLock}
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
+            <button
+              type="button"
+              onClick={() => handleRunEngine('all')}
+              disabled={cmdStatus.loading}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                backgroundColor: '#10b981',
+                border: 'none',
+                color: '#ffffff',
+                padding: '10px 16px',
+                borderRadius: '12px',
+                fontSize: '13px',
+                fontWeight: 800,
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
+              }}
+            >
+              <RefreshCw size={14} />
+              <span>
+                {cmdStatus.loading && cmdStatus.command.includes('all')
+                  ? 'Running Engine...'
+                  : '⚡ Run backlink-engine.js all'}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleRunEngine('publish')}
+              disabled={cmdStatus.loading}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                backgroundColor: '#f59e0b',
+                border: 'none',
+                color: '#0f172a',
+                padding: '10px 16px',
+                borderRadius: '12px',
+                fontSize: '13px',
+                fontWeight: 800,
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.25)',
+              }}
+            >
+              <Send size={14} />
+              <span>
+                {cmdStatus.loading && cmdStatus.command.includes('publish')
+                  ? 'Publishing...'
+                  : '🚀 Run backlink-engine.js publish'}
+              </span>
+            </button>
+
+            <button
+              onClick={handleLock}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                border: '1px solid rgba(255, 255, 255, 0.28)',
+                color: '#ffffff',
+                padding: '10px 16px',
+                borderRadius: '12px',
+                fontSize: '13px',
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              <Lock size={14} />
+              <span>Lock Session</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Live Terminal Output Panel (Displays when any command is executed from UI) */}
+        {(cmdStatus.loading || cmdStatus.output) && (
+          <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              backgroundColor: 'rgba(255, 255, 255, 0.12)',
-              border: '1px solid rgba(255, 255, 255, 0.28)',
-              color: '#ffffff',
-              padding: '10px 16px',
-              borderRadius: '12px',
-              fontSize: '13px',
-              fontWeight: 700,
-              cursor: 'pointer',
+              backgroundColor: '#0f172a',
+              borderRadius: '18px',
+              border: `1.5px solid ${cmdStatus.isError ? '#ef4444' : '#334155'}`,
+              padding: '18px 22px',
+              marginBottom: '24px',
+              color: '#f8fafc',
             }}
           >
-            <Lock size={14} />
-            <span>Lock Session</span>
-          </button>
-        </div>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '10px',
+                marginBottom: '10px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span
+                  style={{
+                    padding: '3px 10px',
+                    borderRadius: '6px',
+                    backgroundColor: cmdStatus.loading
+                      ? '#2563eb'
+                      : cmdStatus.isError
+                        ? '#dc2626'
+                        : '#059669',
+                    color: '#ffffff',
+                    fontSize: '11.5px',
+                    fontWeight: 800,
+                  }}
+                >
+                  {cmdStatus.loading ? 'RUNNING' : cmdStatus.isError ? 'ACTION NEEDED' : 'SUCCESS'}
+                </span>
+                <code style={{ fontSize: '13px', color: '#93c5fd', fontWeight: 700 }}>
+                  $ {cmdStatus.command}
+                </code>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setCmdStatus({ loading: false, command: '', output: '' })}
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  border: 'none',
+                  color: '#cbd5e1',
+                  padding: '4px 10px',
+                  borderRadius: '6px',
+                  fontSize: '12px',
+                  cursor: 'pointer',
+                }}
+              >
+                Close Output ✕
+              </button>
+            </div>
+
+            {showNpmTokenBox && cmdStatus.command.includes('npm publish') && (
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                  marginBottom: '12px',
+                  padding: '12px',
+                  backgroundColor: '#1e293b',
+                  borderRadius: '10px',
+                }}
+              >
+                <input
+                  type="password"
+                  value={npmTokenInput}
+                  onChange={(e) => setNpmTokenInput(e.target.value)}
+                  placeholder="Paste NPM Automation Token (from npmjs.com -> Access Tokens -> Generate Token)"
+                  style={{
+                    flex: '1 1 320px',
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    border: '1px solid #475569',
+                    backgroundColor: '#0f172a',
+                    color: '#ffffff',
+                    fontSize: '12.5px',
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={handleRunNpmPublish}
+                  style={{
+                    ...btnPrimaryStyle,
+                    backgroundColor: '#10b981',
+                  }}
+                >
+                  <Send size={14} />
+                  <span>Retry npm publish with Token</span>
+                </button>
+              </div>
+            )}
+
+            <pre
+              style={{
+                margin: 0,
+                fontSize: '12.5px',
+                lineHeight: 1.6,
+                fontFamily: 'monospace',
+                whiteSpace: 'pre-wrap',
+                maxHeight: '280px',
+                overflowY: 'auto',
+                color: '#e2e8f0',
+              }}
+            >
+              {cmdStatus.output}
+            </pre>
+          </div>
+        )}
 
         {/* Navigation Tabs Bar */}
         <div
@@ -754,6 +1013,21 @@ export default function BacklinkCommandCenter() {
                       </div>
 
                       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>
+                        {p.id === 'npm-registry' && (
+                          <button
+                            type="button"
+                            onClick={handleRunNpmPublish}
+                            disabled={cmdStatus.loading}
+                            style={{
+                              ...btnPrimaryStyle,
+                              backgroundColor: '#059669',
+                            }}
+                          >
+                            <Send size={14} />
+                            <span>⚡ Run npm publish</span>
+                          </button>
+                        )}
+
                         <button
                           type="button"
                           onClick={handleQuickAction}
