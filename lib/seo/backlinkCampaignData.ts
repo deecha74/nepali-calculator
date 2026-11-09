@@ -337,19 +337,19 @@ export const AUTHORITY_ARTICLES: AuthorityArticleItem[] = [
   {
     id: 'art-1-tax-study',
     filename: '01-nepal-media-pr-tax-study-en-ne.md',
-    title: 'Nepal Income Tax Slabs FY 2082/83 & 2083/84: Complete SSF vs CIT Salary Take-Home Analysis',
+    title: 'Nepal Income Tax Slabs FY 2083/84: Complete 10 Lakh Base Slab, SSF vs CIT Salary Take-Home Analysis',
     canonicalUrl: `${SITE_URL}/tax`,
     tags: ['nepal', 'finance', 'tax', 'payroll'],
     platformTarget: 'Medium, Substack & Nepal Financial Media (Bilingual EN + NE)',
-    summary: 'Complete data study comparing Regular 1% Tax vs. SSF 0% Base Exemption across Rs 40K–1.5L monthly salaries in Nepal, including a ready-to-send Nepali press release summary.',
+    summary: 'Complete FY 2083/84 data study covering the expanded NPR 10,00,000 base bracket (1% Regular / 0% in SSF) across Rs 40K–2L monthly salaries in Nepal, including a Nepali press release summary.',
     markdownWithFrontmatter: `---
-title: "Nepal Income Tax Slabs FY 2082/83 & 2083/84: Complete SSF vs CIT Salary Take-Home Analysis"
+title: "Nepal Income Tax Slabs FY 2083/84: Complete 10 Lakh Base Slab, SSF vs CIT Salary Take-Home Analysis"
 canonical_url: "${SITE_URL}/tax"
 tags: ["nepal", "finance", "tax", "payroll"]
 published: false
 ---
 
-# Nepal Income Tax Slabs FY 2082/83 & 2083/84: Complete SSF vs. Non-SSF Take-Home Salary Analysis
+# Nepal Income Tax Slabs FY 2083/84: Complete 10 Lakh Base Bracket & SSF Take-Home Salary Analysis
 
 Calculating accurate monthly take-home pay in Nepal requires navigating the Inland Revenue Department (IRD) progressive tax brackets, Social Security Fund (SSF) 31% contribution rules (11% employee + 20% employer), Citizen Investment Trust (CIT) deductions, and female tax rebates.
 
@@ -357,55 +357,55 @@ To help HR teams, Chartered Accountants, and salaried professionals avoid manual
 
 ---
 
-## 1. Official IRD Progressive Tax Slabs (Individual vs. Married Couple)
+## 1. Official IRD Progressive Tax Slabs for FY 2083/84 (New Law)
 
-Under the current Finance Act of Nepal, the baseline exemption threshold is **NPR 5,00,000** for unmarried individuals and **NPR 6,00,000** for married couples filing jointly:
+Under the FY 2083/84 structure, the initial 1% Social Security Tax bracket is expanded up to **NPR 10,00,000 (10 Lakh)**, with 5 progressive tiers:
 
-| Slab Tier | Unmarried (Single) Band | Married (Couple) Band | Regular Tax Rate (EPF/CIT) | SSF Contributor Rate |
-| :--- | :--- | :--- | :---: | :---: |
-| **1st Slab (Social Security Tax)** | First NPR 5,00,000 | First NPR 6,00,000 | **1%** | **0% (Exempt)** |
-| **2nd Slab** | Next NPR 2,00,000 | Next NPR 2,00,000 | **10%** | **10%** |
-| **3rd Slab** | Next NPR 3,00,000 | Next NPR 3,00,000 | **20%** | **20%** |
-| **4th Slab** | Up to NPR 20,00,000 | Up to NPR 20,00,000 | **30%** | **30%** |
-| **5th Slab (Surcharge Band)** | NPR 20L – 50L | NPR 20L – 50L | **36%** | **36%** |
-| **6th Slab (High Earner Band)** | Above NPR 50,00,000 | Above NPR 50,00,000 | **39%** | **39%** |
+| Slab Tier | Annual Income Band (NPR) | Regular Tax Rate (EPF/CIT) | SSF Contributor Rate | Max Tax in Band |
+| :--- | :--- | :---: | :---: | :---: |
+| **1st Slab (Base Bracket)** | **First NPR 10,00,000 (Up to 10 Lakh)** | **1%** | **0% (Exempt)** | NPR 10,000 (NPR 0 in SSF) |
+| **2nd Slab** | **Next NPR 5,00,000 (10L – 15L)** | **10%** | **10%** | NPR 50,000 |
+| **3rd Slab** | **Next NPR 10,00,000 (15L – 25L)** | **20%** | **20%** | NPR 2,00,000 |
+| **4th Slab** | **Next NPR 15,00,000 (25L – 40L)** | **27%** | **27%** | NPR 4,05,000 |
+| **5th Slab (Top Tier)** | **Above NPR 40,00,000 (Above 40 Lakh)** | **29%** | **29%** | Progressive Ceiling Rate |
 
-> **Key Statutory Rule**: Employees enrolled in the **Social Security Fund (SSF)** are 100% exempt from the initial 1% Social Security Tax on the first NPR 5 Lakh (Single) / NPR 6 Lakh (Married), saving NPR 5,000 to NPR 6,000 annually right at the base tier.
+> **Key Statutory Rule**: Employees enrolled in the **Social Security Fund (SSF)** are 100% exempt from the initial 1% Social Security Tax on the first **NPR 10,00,000 (10 Lakh)**, meaning **zero income tax** on annual taxable income up to NPR 10 Lakh! *(For retrospective FY 2082/83 & 2081/82 audits, the prior 5 Lakh Single / 6 Lakh Married base slabs apply).*
 
 ---
 
-## 2. Worked Salary Matrix: How Much Tax Do You Actually Pay?
+## 2. Worked Salary Matrix (FY 2083/84): How Much Tax Do You Actually Pay?
 
-Below is the benchmark comparison for an unmarried professional in Nepal (12 months gross salary, no additional CIT deduction):
+Below is the benchmark comparison for a salaried professional in Nepal (12 months gross salary under FY 2083/84):
 
-| Monthly Gross Salary | Annual Gross Income | Annual Tax (Regular 1% Base) | Annual Tax (With SSF Exemption) | Effective Tax Rate | Live Breakdown Link |
+| Monthly Gross Salary | Annual Gross Income | Annual Tax (Regular 1% Base) | Annual Tax (With SSF 0% up to 10L) | Effective Tax Rate (SSF) | Live Breakdown Link |
 | :--- | :--- | :--- | :--- | :---: | :--- |
-| **NPR 40,000 / mo** | NPR 4,80,000 | NPR 4,800 | NPR 0 | 1.0% / 0% | [View 40K Breakdown](${SITE_URL}/tax) |
-| **NPR 60,000 / mo** | NPR 7,20,000 | NPR 29,000 | NPR 24,000 | 4.03% | [View 60K Breakdown](${SITE_URL}/tax) |
-| **NPR 80,000 / mo** | NPR 9,60,000 | NPR 77,000 | NPR 72,000 | 8.02% | [View 80K Breakdown](${SITE_URL}/tax) |
-| **NPR 1,00,000 / mo** | NPR 12,00,000 | NPR 1,45,000 | NPR 1,40,000 | 12.08% | [View 1 Lakh Breakdown](${SITE_URL}/tax) |
-| **NPR 1,50,000 / mo** | NPR 18,00,000 | NPR 3,25,000 | NPR 3,20,000 | 18.06% | [View 1.5L Breakdown](${SITE_URL}/tax) |
+| **NPR 40,000 / mo** | NPR 4,80,000 | NPR 4,800 | **NPR 0** | 0.00% | [View 40K Breakdown](${SITE_URL}/tax/tax-on-40000-salary-nepal) |
+| **NPR 60,000 / mo** | NPR 7,20,000 | NPR 7,200 | **NPR 0** | 0.00% | [View 60K Breakdown](${SITE_URL}/tax/tax-on-60000-salary-nepal) |
+| **NPR 80,000 / mo** | NPR 9,60,000 | NPR 9,600 | **NPR 0** | 0.00% | [View 80K Breakdown](${SITE_URL}/tax/tax-on-80000-salary-nepal) |
+| **NPR 1,00,000 / mo** | NPR 12,00,000 | NPR 30,000 | **NPR 20,000** | 1.67% | [View 1 Lakh Breakdown](${SITE_URL}/tax/tax-on-100000-salary-nepal) |
+| **NPR 1,50,000 / mo** | NPR 18,00,000 | NPR 1,20,000 | **NPR 1,10,000** | 6.11% | [View 1.5L Breakdown](${SITE_URL}/tax/tax-on-150000-salary-nepal) |
+| **NPR 2,00,000 / mo** | NPR 24,00,000 | NPR 2,40,000 | **NPR 2,30,000** | 9.58% | [View 2L Breakdown](${SITE_URL}/tax/tax-on-200000-salary-nepal) |
 
 ### How CIT, Life Insurance & Health Insurance Reduce Your Tax
 Before applying the slab rates above, Nepali taxpayers can legally deduct:
-1. **Retirement Fund Contribution (SSF / EPF / CIT)**: Up to **1/3rd of assessable income** or **NPR 5,00,000** (for SSF) / **NPR 3,00,000** (for EPF/CIT), whichever is lower.
+1. **Retirement Fund Contribution (SSF / EPF / CIT)**: Up to **1/3rd of assessable income** or **NPR 5,00,000**, whichever is lower.
 2. **Life Insurance Premium**: Up to **NPR 40,000** per year.
 3. **Health Insurance Premium**: Up to **NPR 20,000** per year.
 4. **Remote Area Allowance**: Up to **NPR 50,000** (Category A to E districts).
 5. **Female Tax Rebate**: **10% flat discount** on total tax liability for solo female employment income.
 
-You can test custom combinations of SSF, CIT, insurance deductions, and festival bonuses using the interactive [Nepal Salary & Income Tax Calculator at NepaliCalc.com](${SITE_URL}/tax).
+You can test custom combinations of SSF, CIT, insurance deductions, and switch between FY 2083/84 and FY 2082/83 using the interactive [Nepal Salary & Income Tax Calculator at NepaliCalc.com](${SITE_URL}/tax).
 
 ---
 
 ## ३. नेपाली सारांश (Nepali Press Release Summary for Local Media)
 
-**शीर्षक: आ.व. २०८२/८३ तथा २०८३/८४ को आयकर स्ल्याब, सामाजिक सुरक्षा कोष (SSF) र तलब करको पूर्ण विवरण**
+**शीर्षक: आ.व. २०८३/८४ को नयाँ आयकर स्ल्याब (१० लाखसम्म १% वा SSF मा ०%), छुट र तलब करको पूर्ण विवरण**
 
-नेपालको प्रचलित आयकर ऐन अनुसार अविवाहित व्यक्तिका लागि वार्षिक रु. ५,००,००० र विवाहित दम्पतीका लागि रु. ६,००,००० सम्मको आम्दानीमा १ प्रतिशत मात्र सामाजिक सुरक्षा कर लाग्ने व्यवस्था छ। तर योगदानमा आधारित सामाजिक सुरक्षा कोष (SSF) मा आबद्ध श्रमिक तथा कर्मचारीहरूलाई सुरुको १ प्रतिशत कर पूर्ण रूपमा छुट हुन्छ।
+आर्थिक वर्ष २०८३/८४ को नयाँ कर संरचना अनुसार सुरुको **रु. १०,००,००० (१० लाख)** सम्मको वार्षिक करयोग्य आम्दानीमा १ प्रतिशत मात्र सामाजिक सुरक्षा कर लाग्ने व्यवस्था छ। अझ विशेष कुरा, योगदानमा आधारित **सामाजिक सुरक्षा कोष (SSF)** मा आबद्ध श्रमिक तथा कर्मचारीहरूलाई सुरुको १० लाखसम्मको १ प्रतिशत कर पूर्ण रूपमा छुट (०% कर) हुन्छ। १० लाखभन्दा माथिको आम्दानीमा क्रमशः १०% (१०–१५ लाख), २०% (१५–२५ लाख), २७% (२५–४० लाख) र २९% (४० लाखमाथि) कर लाग्दछ।
 
 साथै नागरिक लगानी कोष (CIT), कर्मचारी सञ्चय कोष (EPF), जीवन बीमा (रु. ४०,००० सम्म) र स्वास्थ्य बीमा (रु. २०,००० सम्म) कट्टा गरी करयोग्य आय घटाउन सकिन्छ। आफ्नो मासिक वा वार्षिक तलबबाट कति कर काटिन्छ र हातमा कति खुद तलब (Net Take-Home Salary) आउँछ भनी तुरुन्तै हिसाब गर्न [NepaliCalc को आयकर क्यालकुलेटर (${SITE_URL}/tax)](${SITE_URL}/tax) प्रयोग गर्न सकिन्छ।`,
-    cleanBodyMarkdown: `# Nepal Income Tax Slabs FY 2082/83 & 2083/84: Complete SSF vs. Non-SSF Take-Home Salary Analysis
+    cleanBodyMarkdown: `# Nepal Income Tax Slabs FY 2083/84: Complete 10 Lakh Base Bracket & SSF Take-Home Salary Analysis
 
 Calculating accurate monthly take-home pay in Nepal requires navigating the Inland Revenue Department (IRD) progressive tax brackets, Social Security Fund (SSF) 31% contribution rules (11% employee + 20% employer), Citizen Investment Trust (CIT) deductions, and female tax rebates.
 
@@ -413,32 +413,32 @@ To help HR teams, Chartered Accountants, and salaried professionals avoid manual
 
 ---
 
-## 1. Official IRD Progressive Tax Slabs (Individual vs. Married Couple)
+## 1. Official IRD Progressive Tax Slabs for FY 2083/84 (New Law)
 
-Under the current Finance Act of Nepal, the baseline exemption threshold is **NPR 5,00,000** for unmarried individuals and **NPR 6,00,000** for married couples filing jointly:
+Under the FY 2083/84 structure, the initial 1% Social Security Tax bracket is expanded up to **NPR 10,00,000 (10 Lakh)**, with 5 progressive tiers:
 
-| Slab Tier | Unmarried (Single) Band | Married (Couple) Band | Regular Tax Rate (EPF/CIT) | SSF Contributor Rate |
-| :--- | :--- | :--- | :---: | :---: |
-| **1st Slab (Social Security Tax)** | First NPR 5,00,000 | First NPR 6,00,000 | **1%** | **0% (Exempt)** |
-| **2nd Slab** | Next NPR 2,00,000 | Next NPR 2,00,000 | **10%** | **10%** |
-| **3rd Slab** | Next NPR 3,00,000 | Next NPR 3,00,000 | **20%** | **20%** |
-| **4th Slab** | Up to NPR 20,00,000 | Up to NPR 20,00,000 | **30%** | **30%** |
-| **5th Slab (Surcharge Band)** | NPR 20L – 50L | NPR 20L – 50L | **36%** | **36%** |
-| **6th Slab (High Earner Band)** | Above NPR 50,00,000 | Above NPR 50,00,000 | **39%** | **39%** |
+| Slab Tier | Annual Income Band (NPR) | Regular Tax Rate (EPF/CIT) | SSF Contributor Rate | Max Tax in Band |
+| :--- | :--- | :---: | :---: | :---: |
+| **1st Slab (Base Bracket)** | **First NPR 10,00,000 (Up to 10 Lakh)** | **1%** | **0% (Exempt)** | NPR 10,000 (NPR 0 in SSF) |
+| **2nd Slab** | **Next NPR 5,00,000 (10L – 15L)** | **10%** | **10%** | NPR 50,000 |
+| **3rd Slab** | **Next NPR 10,00,000 (15L – 25L)** | **20%** | **20%** | NPR 2,00,000 |
+| **4th Slab** | **Next NPR 15,00,000 (25L – 40L)** | **27%** | **27%** | NPR 4,05,000 |
+| **5th Slab (Top Tier)** | **Above NPR 40,00,000 (Above 40 Lakh)** | **29%** | **29%** | Progressive Ceiling Rate |
 
-> **Key Statutory Rule**: Employees enrolled in the **Social Security Fund (SSF)** are 100% exempt from the initial 1% Social Security Tax on the first NPR 5 Lakh (Single) / NPR 6 Lakh (Married), saving NPR 5,000 to NPR 6,000 annually right at the base tier.
+> **Key Statutory Rule**: Employees enrolled in the **Social Security Fund (SSF)** are 100% exempt from the initial 1% Social Security Tax on the first **NPR 10,00,000 (10 Lakh)**, meaning **zero income tax** on annual taxable income up to NPR 10 Lakh!
 
 ---
 
-## 2. Worked Salary Matrix: How Much Tax Do You Actually Pay?
+## 2. Worked Salary Matrix (FY 2083/84): How Much Tax Do You Actually Pay?
 
-| Monthly Gross Salary | Annual Gross Income | Annual Tax (Regular 1% Base) | Annual Tax (With SSF Exemption) | Effective Tax Rate | Live Breakdown Link |
+| Monthly Gross Salary | Annual Gross Income | Annual Tax (Regular 1% Base) | Annual Tax (With SSF 0% up to 10L) | Effective Tax Rate (SSF) | Live Breakdown Link |
 | :--- | :--- | :--- | :--- | :---: | :--- |
-| **NPR 40,000 / mo** | NPR 4,80,000 | NPR 4,800 | NPR 0 | 1.0% / 0% | [View 40K Breakdown](${SITE_URL}/tax) |
-| **NPR 60,000 / mo** | NPR 7,20,000 | NPR 29,000 | NPR 24,000 | 4.03% | [View 60K Breakdown](${SITE_URL}/tax) |
-| **NPR 80,000 / mo** | NPR 9,60,000 | NPR 77,000 | NPR 72,000 | 8.02% | [View 80K Breakdown](${SITE_URL}/tax) |
-| **NPR 1,00,000 / mo** | NPR 12,00,000 | NPR 1,45,000 | NPR 1,40,000 | 12.08% | [View 1 Lakh Breakdown](${SITE_URL}/tax) |
-| **NPR 1,50,000 / mo** | NPR 18,00,000 | NPR 3,25,000 | NPR 3,20,000 | 18.06% | [View 1.5L Breakdown](${SITE_URL}/tax) |
+| **NPR 40,000 / mo** | NPR 4,80,000 | NPR 4,800 | **NPR 0** | 0.00% | [View 40K Breakdown](${SITE_URL}/tax/tax-on-40000-salary-nepal) |
+| **NPR 60,000 / mo** | NPR 7,20,000 | NPR 7,200 | **NPR 0** | 0.00% | [View 60K Breakdown](${SITE_URL}/tax/tax-on-60000-salary-nepal) |
+| **NPR 80,000 / mo** | NPR 9,60,000 | NPR 9,600 | **NPR 0** | 0.00% | [View 80K Breakdown](${SITE_URL}/tax/tax-on-80000-salary-nepal) |
+| **NPR 1,00,000 / mo** | NPR 12,00,000 | NPR 30,000 | **NPR 20,000** | 1.67% | [View 1 Lakh Breakdown](${SITE_URL}/tax/tax-on-100000-salary-nepal) |
+| **NPR 1,50,000 / mo** | NPR 18,00,000 | NPR 1,20,000 | **NPR 1,10,000** | 6.11% | [View 1.5L Breakdown](${SITE_URL}/tax/tax-on-150000-salary-nepal) |
+| **NPR 2,00,000 / mo** | NPR 24,00,000 | NPR 2,40,000 | **NPR 2,30,000** | 9.58% | [View 2L Breakdown](${SITE_URL}/tax/tax-on-200000-salary-nepal) |
 
 You can test custom combinations of SSF, CIT, insurance deductions, and festival bonuses using the interactive [Nepal Salary & Income Tax Calculator at NepaliCalc.com](${SITE_URL}/tax).
 
@@ -446,9 +446,9 @@ You can test custom combinations of SSF, CIT, insurance deductions, and festival
 
 ## ३. नेपाली सारांश (Nepali Press Release Summary for Local Media)
 
-**शीर्षक: आ.व. २०८२/८३ तथा २०८३/८४ को आयकर स्ल्याब, सामाजिक सुरक्षा कोष (SSF) र तलब करको पूर्ण विवरण**
+**शीर्षक: आ.व. २०८३/८४ को नयाँ आयकर स्ल्याब (१० लाखसम्म १% वा SSF मा ०%), छुट र तलब करको पूर्ण विवरण**
 
-नेपालको प्रचलित आयकर ऐन अनुसार अविवाहित व्यक्तिका लागि वार्षिक रु. ५,००,००० र विवाहित दम्पतीका लागि रु. ६,००,००० सम्मको आम्दानीमा १ प्रतिशत मात्र सामाजिक सुरक्षा कर लाग्ने व्यवस्था छ। तर योगदानमा आधारित सामाजिक सुरक्षा कोष (SSF) मा आबद्ध श्रमिक तथा कर्मचारीहरूलाई सुरुको १ प्रतिशत कर पूर्ण रूपमा छुट हुन्छ। आफ्नो मासिक वा वार्षिक तलबबाट कति कर काटिन्छ भनी तुरुन्तै हिसाब गर्न [NepaliCalc को आयकर क्यालकुलेटर (${SITE_URL}/tax)](${SITE_URL}/tax) प्रयोग गर्न सकिन्छ।`,
+आर्थिक वर्ष २०८३/८४ को नयाँ कर संरचना अनुसार सुरुको **रु. १०,००,००० (१० लाख)** सम्मको वार्षिक करयोग्य आम्दानीमा १ प्रतिशत मात्र सामाजिक सुरक्षा कर लाग्ने व्यवस्था छ। तर योगदानमा आधारित **सामाजिक सुरक्षा कोष (SSF)** मा आबद्ध श्रमिक तथा कर्मचारीहरूलाई सुरुको १० लाखसम्मको १ प्रतिशत कर पूर्ण रूपमा छुट (०% कर) हुन्छ। आफ्नो मासिक वा वार्षिक तलबबाट कति कर काटिन्छ भनी तुरुन्तै हिसाब गर्न [NepaliCalc को आयकर क्यालकुलेटर (${SITE_URL}/tax)](${SITE_URL}/tax) प्रयोग गर्न सकिन्छ।`,
   },
   {
     id: 'art-2-bs-engine',
@@ -750,25 +750,27 @@ export const COMMUNITY_POSTS: CommunityPostItem[] = [
     platform: 'Reddit',
     communityName: 'r/Nepal',
     submitUrl: 'https://www.reddit.com/r/Nepal/submit',
-    title: '[Guide] How much Income Tax & SSF you actually pay on a 40k to 1.5L monthly salary in Nepal (FY 2082/83 - 2083/84 table)',
+    title: '[Guide] How much Income Tax & SSF you actually pay on a 40k to 2L monthly salary in Nepal (FY 2083/84 — 10 Lakh Base Slab)',
     targetUrl: `${SITE_URL}/tax`,
-    bodyMarkdown: `A lot of people starting new jobs or switching between SSF and regular PF/CIT companies ask how much in-hand salary they will actually receive after tax. 
+    bodyMarkdown: `A lot of people starting new jobs or switching between SSF and regular PF/CIT companies ask how much in-hand salary they will actually receive after tax under the **FY 2083/84** rules (where the first **Rs. 10,00,000** is taxed at just **1%**, or **0%** if enrolled in SSF).
 
-Here is a quick reference table for **Unmarried** vs **Married** employees in Nepal based on the current IRD slabs:
+Here is a quick reference table based on the current IRD FY 2083/84 slabs:
 
-| Monthly Gross | Annual Gross | Tax (Regular 1% Slab) | Tax (If enrolled in SSF - 0% base slab) |
+| Monthly Gross | Annual Gross | Tax (Regular 1% Base Slab) | Tax (If enrolled in SSF - 0% up to 10L) |
 | :--- | :--- | :--- | :--- |
-| Rs. 40,000 | Rs. 4,80,000 | Rs. 4,800/yr (Rs. 400/mo) | **Rs. 0** (Exempt up to 5L) |
-| Rs. 60,000 | Rs. 7,20,000 | Rs. 29,000/yr | **Rs. 24,000/yr** |
-| Rs. 80,000 | Rs. 9,60,000 | Rs. 77,000/yr | **Rs. 72,000/yr** |
-| Rs. 1,00,000 | Rs. 12,00,000 | Rs. 1,45,000/yr | **Rs. 1,40,000/yr** |
+| Rs. 40,000 | Rs. 4,80,000 | Rs. 4,800/yr (Rs. 400/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 60,000 | Rs. 7,20,000 | Rs. 7,200/yr (Rs. 600/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 80,000 | Rs. 9,60,000 | Rs. 9,600/yr (Rs. 800/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 1,00,000 | Rs. 12,00,000 | Rs. 30,000/yr | **Rs. 20,000/yr** |
+| Rs. 1,50,000 | Rs. 18,00,000 | Rs. 1,20,000/yr | **Rs. 1,10,000/yr** |
+| Rs. 2,00,000 | Rs. 24,00,000 | Rs. 2,40,000/yr | **Rs. 2,30,000/yr** |
 
 **3 Quick Tax-Saving Tips in Nepal:**
-1. **CIT / EPF Deduction**: You can deduct up to 1/3rd of your income (or max Rs. 3,00,000) via Citizen Investment Trust (CIT) to drop your taxable income out of the 20% or 30% bracket.
+1. **CIT / EPF / SSF Deduction**: You can deduct up to 1/3rd of your income (or max Rs. 5,00,000) via Retirement Funds (SSF/EPF/CIT) to lower your taxable income out of the 10%, 20%, or 27% brackets.
 2. **Insurance Deductions**: Up to Rs. 40,000 for Life Insurance + Rs. 20,000 for Health Insurance are deductible from taxable income.
-3. **Female Tax Rebate**: Unmarried/solo-filing women get a flat 10% rebate on total tax liability.
+3. **Female Tax Rebate**: Solo-filing salaried women get a flat 10% rebate on total tax liability.
 
-*(If you want to test your exact salary with Dashain bonus, CIT, and insurance deductions, I put together a free ad-light calculator here: ${SITE_URL}/tax)*`,
+*(If you want to test your exact salary with Dashain bonus, CIT, and insurance deductions—or switch between FY 2083/84 and FY 2082/83—I put together a free calculator here: ${SITE_URL}/tax)*`,
   },
   {
     id: 'reddit-nepalistock-nepse',
@@ -798,18 +800,19 @@ Here is a quick reference table for **Unmarried** vs **Married** employees in Ne
     platform: 'Quora',
     communityName: 'Quora — Income Tax in Nepal',
     submitUrl: 'https://www.google.com/search?q=site%3Aquora.com+%22income+tax%22+%22nepal%22',
-    title: 'How is income tax calculated on salary in Nepal?',
+    title: 'How is income tax calculated on salary in Nepal (FY 2083/84)?',
     targetUrl: `${SITE_URL}/tax`,
-    bodyMarkdown: `In Nepal, personal income tax is levied progressively by the Inland Revenue Department (IRD) based on whether you file as an **Unmarried Individual** or a **Married Couple**, and whether you contribute to the **Social Security Fund (SSF)**:
+    bodyMarkdown: `In Nepal, under the **FY 2083/84** Inland Revenue Department (IRD) structure, personal income tax is levied progressively across five streamlined slabs:
 
-1. **First Rs. 5,00,000 (Single) / Rs. 6,00,000 (Married)**: 1% Social Security Tax (or **0%** if enrolled in SSF).
-2. **Next Rs. 2,00,000**: 10%
-3. **Next Rs. 3,00,000**: 20%
-4. **Up to Rs. 20,00,000**: 30%
-5. **Rs. 20,00,001 to Rs. 50,00,000**: 36%
-6. **Above Rs. 50,00,000**: 39%
+1. **First Rs. 10,00,000 (Up to 10 Lakh)**: **1%** Social Security Tax (or **0%** if enrolled in the Social Security Fund / SSF).
+2. **Next Rs. 5,00,000 (10L to 15L)**: **10%**
+3. **Next Rs. 10,00,000 (15L to 25L)**: **20%**
+4. **Next Rs. 15,00,000 (25L to 40L)**: **27%**
+5. **Above Rs. 40,00,000 (Above 40 Lakh)**: **29%**
 
-Before applying these slabs, you can deduct up to 1/3rd of your income contributed to SSF/EPF/CIT (up to Rs. 3–5 Lakhs), Rs. 40,000 for Life Insurance, and Rs. 20,000 for Health Insurance.
+*(Note: For retrospective FY 2082/83 & 2081/82 tax audits, the prior Rs. 5,00,000 Single / Rs. 6,00,000 Married base slabs apply).*
+
+Before applying these slabs, you can deduct up to 1/3rd of your assessable income contributed to SSF/EPF/CIT (up to Rs. 5,00,000), Rs. 40,000 for Life Insurance, and Rs. 20,000 for Health Insurance.
 
 You can check your exact monthly take-home salary and slab breakdown using the Nepal Salary Tax Calculator at ${SITE_URL}/tax.`,
   },
@@ -856,21 +859,16 @@ export const DATASET_FILES: DatasetFileItem[] = [
   {
     filename: 'nepal-income-tax-slabs-2083.csv',
     mimeType: 'text/csv;charset=utf-8;',
-    description: 'Official IRD Nepal Income Tax Slabs (FY 2082/83 & 2083/84) for Single & Married Taxpayers (Regular vs SSF)',
+    description: 'Official IRD Nepal Income Tax Slabs (FY 2083/84 New 10L Base Rule + FY 2082/83 Reference)',
     content: [
-      'slab_order,filing_status,band_amount_npr,cumulative_limit_npr,regular_tax_rate_pct,ssf_contributor_rate_pct,reference_url',
-      `1,Unmarried (Single),500000,500000,1,0,${SITE_URL}/tax`,
-      `2,Unmarried (Single),200000,700000,10,10,${SITE_URL}/tax`,
-      `3,Unmarried (Single),300000,1000000,20,20,${SITE_URL}/tax`,
-      `4,Unmarried (Single),1000000,2000000,30,30,${SITE_URL}/tax`,
-      `5,Unmarried (Single),3000000,5000000,36,36,${SITE_URL}/tax`,
-      `6,Unmarried (Single),Above 5000000,999999999,39,39,${SITE_URL}/tax`,
-      `1,Married (Couple),600000,600000,1,0,${SITE_URL}/tax`,
-      `2,Married (Couple),200000,800000,10,10,${SITE_URL}/tax`,
-      `3,Married (Couple),300000,1100000,20,20,${SITE_URL}/tax`,
-      `4,Married (Couple),900000,2000000,30,30,${SITE_URL}/tax`,
-      `5,Married (Couple),3000000,5000000,36,36,${SITE_URL}/tax`,
-      `6,Married (Couple),Above 5000000,999999999,39,39,${SITE_URL}/tax`,
+      'fiscal_year,slab_order,filing_status,band_amount_npr,cumulative_limit_npr,regular_tax_rate_pct,ssf_contributor_rate_pct,reference_url',
+      `2083/84,1,All Resident Taxpayers,1000000,1000000,1,0,${SITE_URL}/tax`,
+      `2083/84,2,All Resident Taxpayers,500000,1500000,10,10,${SITE_URL}/tax`,
+      `2083/84,3,All Resident Taxpayers,1000000,2500000,20,20,${SITE_URL}/tax`,
+      `2083/84,4,All Resident Taxpayers,1500000,4000000,27,27,${SITE_URL}/tax`,
+      `2083/84,5,All Resident Taxpayers,Above 4000000,999999999,29,29,${SITE_URL}/tax`,
+      `2082/83,1,Unmarried (Single),500000,500000,1,0,${SITE_URL}/tax`,
+      `2082/83,1,Married (Couple),600000,600000,1,0,${SITE_URL}/tax`,
     ].join('\n'),
   },
   {

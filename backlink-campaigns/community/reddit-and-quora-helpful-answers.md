@@ -4,26 +4,28 @@
 
 ---
 
-## 1. Reddit Post for `r/Nepal` — Salary, SSF & Tax Cheat Sheet
-**Suggested Title**: `[Guide] How much Income Tax & SSF you actually pay on a 40k to 1.5L monthly salary in Nepal (FY 2082/83 - 2083/84 table)`
+## 1. Reddit Post for `r/Nepal` — Salary, SSF & Tax Cheat Sheet (FY 2083/84 — 10 Lakh Base Slab)
+**Suggested Title**: `[Guide] How much Income Tax & SSF you actually pay on a 40k to 2L monthly salary in Nepal (FY 2083/84 — 10 Lakh Base Slab)`
 
 **Body (Copy & Paste Markdown)**:
 ```markdown
-A lot of people starting new jobs or switching between SSF and regular PF/CIT companies ask how much in-hand salary they will actually receive after tax. 
+A lot of people starting new jobs or switching between SSF and regular PF/CIT companies ask how much in-hand salary they will actually receive after tax under the **FY 2083/84** rules (where the first **Rs. 10,00,000** is taxed at just **1%**, or **0%** if enrolled in SSF).
 
-Here is a quick reference table for **Unmarried** vs **Married** employees in Nepal based on the current IRD slabs:
+Here is a quick reference table based on the current IRD FY 2083/84 slabs:
 
-| Monthly Gross | Annual Gross | Tax (Regular 1% Slab) | Tax (If enrolled in SSF - 0% base slab) |
+| Monthly Gross | Annual Gross | Tax (Regular 1% Base Slab) | Tax (If enrolled in SSF - 0% up to 10L) |
 | :--- | :--- | :--- | :--- |
-| Rs. 40,000 | Rs. 4,80,000 | Rs. 4,800/yr (Rs. 400/mo) | **Rs. 0** (Exempt up to 5L) |
-| Rs. 60,000 | Rs. 7,20,000 | Rs. 29,000/yr | **Rs. 24,000/yr** |
-| Rs. 80,000 | Rs. 9,60,000 | Rs. 77,000/yr | **Rs. 72,000/yr** |
-| Rs. 1,00,000 | Rs. 12,00,000 | Rs. 1,45,000/yr | **Rs. 1,40,000/yr** |
+| Rs. 40,000 | Rs. 4,80,000 | Rs. 4,800/yr (Rs. 400/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 60,000 | Rs. 7,20,000 | Rs. 7,200/yr (Rs. 600/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 80,000 | Rs. 9,60,000 | Rs. 9,600/yr (Rs. 800/mo) | **Rs. 0** (Exempt up to 10L) |
+| Rs. 1,00,000 | Rs. 12,00,000 | Rs. 30,000/yr | **Rs. 20,000/yr** |
+| Rs. 1,50,000 | Rs. 18,00,000 | Rs. 1,20,000/yr | **Rs. 1,10,000/yr** |
+| Rs. 2,00,000 | Rs. 24,00,000 | Rs. 2,40,000/yr | **Rs. 2,30,000/yr** |
 
 **3 Quick Tax-Saving Tips in Nepal:**
-1. **CIT / EPF Deduction**: You can deduct up to 1/3rd of your income (or max Rs. 3,00,000) via Citizen Investment Trust (CIT) to drop your taxable income out of the 20% or 30% bracket.
+1. **CIT / EPF / SSF Deduction**: You can deduct up to 1/3rd of your income (or max Rs. 5,00,000) via Retirement Funds (SSF/EPF/CIT) to lower your taxable income out of the 10%, 20%, or 27% brackets.
 2. **Insurance Deductions**: Up to Rs. 40,000 for Life Insurance + Rs. 20,000 for Health Insurance are deductible from taxable income.
-3. **Female Tax Rebate**: Unmarried/solo-filing women get a flat 10% rebate on total tax liability.
+3. **Female Tax Rebate**: Solo-filing salaried women get a flat 10% rebate on total tax liability.
 
 *(If you want to test your exact salary with Dashain bonus, CIT, and insurance deductions, I put together a free ad-light calculator here: https://nepalicalc.com/tax)*
 ```
