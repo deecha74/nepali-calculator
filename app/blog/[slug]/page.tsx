@@ -17,6 +17,11 @@ import {
   Zap
 } from 'lucide-react';
 import { BLOG_POSTS } from '@/lib/blog/posts';
+import {
+  getBlogPostFaqs,
+  getProgrammaticClusterLinksForPost,
+  getRelatedBlogPosts,
+} from '@/lib/blog/seoEnhancer';
 import { constructMetadata, SITE_CONFIG } from '@/lib/seo/metadata';
 import { ShareButton } from '@/components/blog/ShareButton';
 import { BlogStickyToolCta } from '@/components/blog/BlogStickyToolCta';
@@ -65,9 +70,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return constructMetadata({
     title: `${post.title} | Nepali Calc Guide`,
-    description: post.excerpt,
+    description: `${post.excerpt} (${post.titleNep})`,
     path: `/blog/${post.slug}`,
-    keywords: post.keywords,
+    keywords: [...post.keywords, post.titleNep, post.category],
   });
 }
 
@@ -79,32 +84,78 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const authoritySource = getAuthorityForCategory(post.category);
+  const relatedPosts = getRelatedBlogPosts(post, BLOG_POSTS, 6);
+  const clusterLinks = getProgrammaticClusterLinksForPost(post);
+  const faqs = getBlogPostFaqs(post, authoritySource);
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.publishedDate,
-    author: {
-      '@type': 'Person',
-      name: post.author.name,
-      jobTitle: post.author.role,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_CONFIG.shortName,
-      url: SITE_CONFIG.url,
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_CONFIG.url}/blog/${post.slug}`,
-    },
-    speakable: {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['.aeo-answer-container', 'h1', '.blog-direct-answer'],
-    },
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${SITE_CONFIG.url}/blog/${post.slug}#article`,
+        headline: post.title,
+        alternativeHeadline: post.titleNep,
+        description: post.excerpt,
+        keywords: [...post.keywords, post.titleNep, post.category].join(', '),
+        datePublished: post.publishedDate,
+        dateModified: post.publishedDate,
+        inLanguage: ['en-NP', 'ne-NP'],
+        author: {
+          '@type': 'Person',
+          name: post.author.name,
+          jobTitle: post.author.role,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_CONFIG.shortName,
+          url: SITE_CONFIG.url,
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${SITE_CONFIG.url}/blog/${post.slug}`,
+        },
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['.aeo-answer-container', 'h1', '.blog-direct-answer'],
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: SITE_CONFIG.url,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog & Nepal Guides',
+            item: `${SITE_CONFIG.url}/blog`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: post.title,
+            item: `${SITE_CONFIG.url}/blog/${post.slug}`,
+          },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer,
+          },
+        })),
+      },
+    ],
   };
 
   return (
@@ -172,9 +223,32 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Main Title */}
-          <h1 style={{ fontSize: 'clamp(26px, 3.8vw, 38px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', lineHeight: 1.25, margin: '0 0 20px' }}>
+          <h1 style={{ fontSize: 'clamp(26px, 3.8vw, 38px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-0.02em', lineHeight: 1.25, margin: '0 0 12px' }}>
             {post.title}
           </h1>
+
+          {/* Bilingual Nepali Title & Summary Banner for Devanagari Search Indexing */}
+          {post.titleNep && (
+            <div
+              lang="ne"
+              style={{
+                backgroundColor: '#f8fafc',
+                borderLeft: '4px solid #0b2b5c',
+                padding: '12px 16px',
+                borderRadius: '0 12px 12px 0',
+                marginBottom: '20px',
+              }}
+            >
+              <div style={{ fontSize: '15.5px', fontWeight: 800, color: '#0b2b5c', marginBottom: '4px' }}>
+                {post.titleNep}
+              </div>
+              {post.excerptNep && (
+                <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
+                  {post.excerptNep}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Author Strip */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '16px', borderTop: '1px solid #e2e8f0' }}>
@@ -353,6 +427,79 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
           </section>
         ))}
+
+        {/* Contextual Programmatic SEO & Related Calculators Hub */}
+        {clusterLinks.length > 0 && (
+          <section style={{ marginTop: '36px', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 900, color: '#0f172a', marginBottom: '12px' }}>
+              Related Nepal Calculators & Worked Examples
+            </h2>
+            <p style={{ fontSize: '14px', color: '#475569', marginBottom: '16px', lineHeight: 1.6 }}>
+              Verify exact calculations, slab breakdowns, and statutory conversions using our related reference calculators:
+            </p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '12px',
+              }}
+            >
+              {clusterLinks.map((item, cIdx) => (
+                <Link
+                  key={cIdx}
+                  href={item.href}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    padding: '14px 16px',
+                    borderRadius: '12px',
+                    backgroundColor: '#f8fafc',
+                    border: '1.5px solid #cbd5e1',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: '#0b2b5c' }}>{item.label}</span>
+                    <ArrowRight size={15} color="#0b2b5c" />
+                  </div>
+                  <span style={{ fontSize: '12.5px', color: '#475569', marginTop: '6px', lineHeight: 1.5 }}>
+                    {item.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Frequently Asked Questions (FAQ) Section for Long-Tail & AI Overviews */}
+        {faqs.length > 0 && (
+          <section style={{ marginTop: '36px', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '22px', fontWeight: 900, color: '#0f172a', marginBottom: '16px' }}>
+              Frequently Asked Questions (FAQ)
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {faqs.map((faq, fIdx) => (
+                <div
+                  key={fIdx}
+                  style={{
+                    backgroundColor: '#f8fafc',
+                    border: '1.5px solid #e2e8f0',
+                    borderRadius: '14px',
+                    padding: '18px 20px',
+                  }}
+                >
+                  <h3 style={{ fontSize: '15.5px', fontWeight: 800, color: '#0f172a', margin: '0 0 8px', lineHeight: 1.4 }}>
+                    {faq.question}
+                  </h3>
+                  <p style={{ fontSize: '14.5px', color: '#334155', margin: 0, lineHeight: 1.7 }}>
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Conclusion */}
         <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '28px', marginTop: '36px' }}>

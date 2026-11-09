@@ -30,9 +30,10 @@ export default function BlogPage() {
       name: 'Nepali Calc',
       url: SITE_CONFIG.url,
     },
-    blogPost: BLOG_POSTS.slice(0, 20).map((post) => ({
+    blogPost: BLOG_POSTS.map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
+      alternativeHeadline: post.titleNep,
       description: post.excerpt,
       url: `${SITE_CONFIG.url}/blog/${post.slug}`,
       datePublished: post.publishedDate,

@@ -25,6 +25,7 @@ const report = [];
 
 pages.forEach((pagePath) => {
   const relPath = path.relative(path.join(__dirname, '..'), pagePath).replace(/\\/g, '/');
+  if (relPath.startsWith('app/admin/')) return;
   const content = fs.readFileSync(pagePath, 'utf8');
 
   const hasUseClient = content.includes("'use client'") || content.includes('"use client"');
