@@ -105,27 +105,17 @@ export function Footer() {
         {/* Legal Document Generators section */}
         <div
           id="footer-document-generators"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '14px 20px',
-            padding: '16px 20px',
-            marginBottom: '36px',
-            borderRadius: '16px',
-            background: 'linear-gradient(135deg, #eef2ff, #f5f3ff)',
-            border: '1px solid #e0e7ff',
-          }}
+          className="footer-doc-banner"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: 32, height: 32, borderRadius: 10, background: '#4f46e5', color: '#fff', display: 'grid', placeItems: 'center' }}>
+          <div className="footer-doc-banner-header">
+            <div style={{ width: 32, height: 32, borderRadius: 10, background: '#4f46e5', color: '#fff', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
               <ScrollText size={16} />
             </div>
-            <Link href="/document-generators" style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', textDecoration: 'none' }}>
+            <Link href="/document-generators" style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', textDecoration: 'none', whiteSpace: 'nowrap' }}>
               {t('Legal Document Generators', 'कानुनी कागजात जेनेरेटर')}
             </Link>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', flex: 1 }}>
+          <div className="footer-doc-pills">
             {DOC_GENERATORS.map((d) => (
               <Link key={d.slug} href={d.href} className="footer-pill-link">
                 {t(d.shortEn, d.shortNe)}

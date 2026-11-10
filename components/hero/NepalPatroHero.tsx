@@ -367,63 +367,33 @@ export function NepalPatroHero() {
               </div>
 
               {/* Event Holiday Pills (Dynamically reflects activeDay) */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    backgroundColor: 'rgba(254, 242, 242, 0.92)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(254, 202, 202, 0.9)',
-                    padding: '6px 14px',
-                    borderRadius: '9999px',
-                    fontSize: '12.5px',
-                    width: 'fit-content',
-                    maxWidth: '100%',
-                    boxShadow: '0 2px 8px rgba(220, 38, 38, 0.06)',
-                  }}
-                >
-                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#dc2626', flexShrink: 0 }} />
-                  <span style={{ color: '#dc2626', fontWeight: 800 }}>
-                    {activeDay.isToday ? t('Today', 'आज') : `${toNepaliDigits(activeDay.bsDay)} ${heroMeta.monthNameNep}`} :
-                  </span>
-                  <span style={{ color: '#0f172a', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div className="hero-festival-badges">
+                <div className="hero-event-pill hero-event-pill-today">
+                  <div className="hero-event-label" style={{ color: '#dc2626' }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#dc2626', flexShrink: 0 }} />
+                    <span>{activeDay.isToday ? t('Today', 'आज') : `${toNepaliDigits(activeDay.bsDay)} ${heroMeta.monthNameNep}`} :</span>
+                  </div>
+                  <span className="hero-event-title">
                     {language === 'ne'
                       ? (activeDay.eventNep || `${activeDay.tithi}${activeDay.isWeekend ? ' • साप्ताहिक बिदा' : ''}`)
                       : (activeDay.eventEng || activeDay.eventNep || `${activeDay.tithi}${activeDay.isWeekend ? ' • Weekend' : ''}`)}
                   </span>
-                  <span style={{ color: '#dc2626', fontWeight: 800 }}>
-                    - {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Regular Day', 'सामान्य दिन')}
+                  <span className="hero-event-tag hero-event-tag-red">
+                    {activeDay.isHoliday ? t('Public Holiday', 'सार्वजनिक बिदा') : t('Regular Day', 'सामान्य दिन')}
                   </span>
                 </div>
 
                 {upcomingFestival && (
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      backgroundColor: 'rgba(255, 251, 235, 0.92)',
-                      backdropFilter: 'blur(12px)',
-                      WebkitBackdropFilter: 'blur(12px)',
-                      border: '1px solid rgba(254, 240, 138, 0.9)',
-                      padding: '6px 14px',
-                      borderRadius: '9999px',
-                      fontSize: '12.5px',
-                      width: 'fit-content',
-                      maxWidth: '100%',
-                      boxShadow: '0 2px 8px rgba(217, 119, 6, 0.06)',
-                    }}
-                  >
-                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#d97706', flexShrink: 0 }} />
-                    <span style={{ color: '#d97706', fontWeight: 800 }}>{t('Upcoming', 'अब आउने')} :</span>
-                    <span style={{ color: '#0f172a', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <div className="hero-event-pill hero-event-pill-upcoming">
+                    <div className="hero-event-label" style={{ color: '#d97706' }}>
+                      <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#d97706', flexShrink: 0 }} />
+                      <span>{t('Upcoming', 'अब आउने')} :</span>
+                    </div>
+                    <span className="hero-event-title">
                       {language === 'ne' ? upcomingFestival.eventNep : upcomingFestival.eventEng}
                     </span>
-                    <span style={{ color: '#b45309', fontWeight: 800 }}>
-                      - {upcomingFestival.daysRemaining === 1
+                    <span className="hero-event-tag hero-event-tag-amber">
+                      {upcomingFestival.daysRemaining === 1
                         ? t('Tomorrow', 'भोलि')
                         : (language === 'ne' ? `${toNepaliDigits(upcomingFestival.daysRemaining)} दिनपछि` : `in ${upcomingFestival.daysRemaining} days`)}
                     </span>
@@ -439,10 +409,11 @@ export function NepalPatroHero() {
           <div className="hero-calendar-card">
             {/* Tab Switcher: [ 🛡️ Quick Tools ]  [ 📅 Monthly Alert / Patro ] */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
-              <div style={{ display: 'inline-flex', backgroundColor: '#f1f5f9', padding: '3px', borderRadius: '9999px', border: '1px solid #e2e8f0' }}>
+              <div style={{ display: 'inline-flex', backgroundColor: '#f1f5f9', padding: '3px', borderRadius: '9999px', border: '1px solid #e2e8f0', maxWidth: '100%' }}>
                 <button
                   type="button"
                   onClick={() => setHeroRightTab('tools')}
+                  className="hero-switcher-btn"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -457,6 +428,7 @@ export function NepalPatroHero() {
                     color: heroRightTab === 'tools' ? '#0f172a' : '#64748b',
                     boxShadow: heroRightTab === 'tools' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
                     transition: 'all 0.15s ease',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   <span style={{ color: '#dc2626' }}>🛡️</span>
@@ -465,6 +437,7 @@ export function NepalPatroHero() {
                 <button
                   type="button"
                   onClick={() => setHeroRightTab('calendar')}
+                  className="hero-switcher-btn"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -479,6 +452,7 @@ export function NepalPatroHero() {
                     color: heroRightTab === 'calendar' ? '#0f172a' : '#64748b',
                     boxShadow: heroRightTab === 'calendar' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
                     transition: 'all 0.15s ease',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   <span>📅</span>
@@ -491,12 +465,14 @@ export function NepalPatroHero() {
                   href="/tools"
                   style={{
                     fontSize: '12px',
-                    fontWeight: 700,
+                    fontWeight: 800,
                     color: '#1d4ed8',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '4px',
                     textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    padding: '4px 6px',
                   }}
                 >
                   <span>{t('All 70+ Tools →', 'All 70+ Tools →')}</span>

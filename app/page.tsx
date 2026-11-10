@@ -501,51 +501,23 @@ export default function HomePage() {
                     textDecoration: 'none',
                   }}
                 >
-                  <div>
-                    {/* Top Row: Squircle Icon + Title | "Open →" pill button */}
-                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', marginBottom: '10px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
-                        <div
-                          style={{
-                            width: '42px',
-                            height: '42px',
-                            borderRadius: '12px',
-                            backgroundColor: tool.bgLight,
-                            display: 'grid',
-                            placeItems: 'center',
-                            flexShrink: 0,
-                            boxShadow: `0 2px 8px -2px ${tool.color}35`,
-                          }}
-                        >
-                          {renderIcon(tool, 20)}
-                        </div>
-                        <div style={{ minWidth: 0, flex: 1 }}>
-                          <h4
-                            style={{
-                              fontSize: '15px',
-                              fontWeight: 800,
-                              color: '#0b2b5c',
-                              margin: 0,
-                              lineHeight: 1.28,
-                              letterSpacing: '-0.01em',
-                            }}
-                          >
-                            {language === 'ne' ? tool.nepaliName : tool.name}
-                          </h4>
-                          <div
-                            style={{
-                              fontSize: '11px',
-                              fontWeight: 600,
-                              color: '#64748b',
-                              marginTop: '2px',
-                              whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                            }}
-                          >
-                            {language === 'ne' ? tool.name : tool.nepaliName}
-                          </div>
-                        </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                    {/* Top Row: Squircle Icon on left + "Open →" pill button on right */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '12px', width: '100%' }}>
+                      <div
+                        className="smallpdf-icon-box"
+                        style={{
+                          width: '42px',
+                          height: '42px',
+                          borderRadius: '12px',
+                          backgroundColor: tool.bgLight,
+                          display: 'grid',
+                          placeItems: 'center',
+                          flexShrink: 0,
+                          boxShadow: `0 2px 8px -2px ${tool.color}35`,
+                        }}
+                      >
+                        {renderIcon(tool, 20)}
                       </div>
 
                       {/* "Open →" pill button */}
@@ -554,10 +526,10 @@ export default function HomePage() {
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '4px',
+                          gap: '5px',
                           padding: '4px 10px',
                           borderRadius: '9999px',
-                          backgroundColor: '#ffffff',
+                          backgroundColor: '#f8fafc',
                           border: '1px solid #e2e8f0',
                           fontSize: '11px',
                           fontWeight: 700,
@@ -570,8 +542,40 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    {/* Middle: 2-line Description */}
+                    {/* Middle: Title & Subtitle taking full width */}
+                    <h4
+                      className="tool-card-title"
+                      style={{
+                        fontSize: '15px',
+                        fontWeight: 800,
+                        color: '#0b2b5c',
+                        margin: '0 0 3px 0',
+                        lineHeight: 1.3,
+                        letterSpacing: '-0.01em',
+                        wordBreak: 'normal',
+                        overflowWrap: 'break-word',
+                        hyphens: 'none',
+                      }}
+                    >
+                      {language === 'ne' ? tool.nepaliName : tool.name}
+                    </h4>
+                    <div
+                      style={{
+                        fontSize: '11.5px',
+                        fontWeight: 600,
+                        color: '#64748b',
+                        marginBottom: '8px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {language === 'ne' ? tool.name : tool.nepaliName}
+                    </div>
+
+                    {/* Description taking full width */}
                     <p
+                      className="tool-card-desc"
                       style={{
                         fontSize: '12.5px',
                         color: '#64748b',

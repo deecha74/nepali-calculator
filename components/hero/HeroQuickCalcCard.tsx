@@ -289,102 +289,62 @@ export function HeroQuickCalcCard({
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '2px',
           borderBottom: '1.5px solid #f1f5f9',
-          marginBottom: '18px',
+          marginBottom: '16px',
         }}
       >
         <button
           type="button"
           onClick={() => setActiveTab('tax')}
+          className="hero-quick-tab-btn"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '4px',
-            padding: '6px 4px 10px',
-            border: 'none',
             borderBottom: activeTab === 'tax' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            backgroundColor: 'transparent',
             color: activeTab === 'tax' ? '#1d4ed8' : '#64748b',
             fontWeight: activeTab === 'tax' ? 800 : 600,
-            fontSize: '12px',
-            cursor: 'pointer',
-            transition: 'all 0.15s ease',
           }}
         >
-          <Users size={16} color={activeTab === 'tax' ? '#1d4ed8' : '#64748b'} />
+          <Users size={15} color={activeTab === 'tax' ? '#1d4ed8' : '#64748b'} />
           <span>{t('Salary Tax', 'Salary Tax')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('land')}
+          className="hero-quick-tab-btn"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '4px',
-            padding: '6px 4px 10px',
-            border: 'none',
             borderBottom: activeTab === 'land' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            backgroundColor: 'transparent',
             color: activeTab === 'land' ? '#1d4ed8' : '#64748b',
             fontWeight: activeTab === 'land' ? 800 : 600,
-            fontSize: '12px',
-            cursor: 'pointer',
-            transition: 'all 0.15s ease',
           }}
         >
-          <Home size={16} color={activeTab === 'land' ? '#1d4ed8' : '#64748b'} />
+          <Home size={15} color={activeTab === 'land' ? '#1d4ed8' : '#64748b'} />
           <span>{t('Land', 'Land')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('emi')}
+          className="hero-quick-tab-btn"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '4px',
-            padding: '6px 4px 10px',
-            border: 'none',
             borderBottom: activeTab === 'emi' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            backgroundColor: 'transparent',
             color: activeTab === 'emi' ? '#1d4ed8' : '#64748b',
             fontWeight: activeTab === 'emi' ? 800 : 600,
-            fontSize: '12px',
-            cursor: 'pointer',
-            transition: 'all 0.15s ease',
           }}
         >
-          <CreditCard size={16} color={activeTab === 'emi' ? '#1d4ed8' : '#64748b'} />
+          <CreditCard size={15} color={activeTab === 'emi' ? '#1d4ed8' : '#64748b'} />
           <span>{t('Loan EMI', 'Loan EMI')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('date')}
+          className="hero-quick-tab-btn"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '4px',
-            padding: '6px 4px 10px',
-            border: 'none',
             borderBottom: activeTab === 'date' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            backgroundColor: 'transparent',
             color: activeTab === 'date' ? '#1d4ed8' : '#64748b',
             fontWeight: activeTab === 'date' ? 800 : 600,
-            fontSize: '12px',
-            cursor: 'pointer',
-            transition: 'all 0.15s ease',
           }}
         >
-          <Clock size={16} color={activeTab === 'date' ? '#1d4ed8' : '#64748b'} />
+          <Clock size={15} color={activeTab === 'date' ? '#1d4ed8' : '#64748b'} />
           <span>{t('Due & Age', 'Due & Age')}</span>
         </button>
       </div>
@@ -396,8 +356,8 @@ export function HeroQuickCalcCard({
         {activeTab === 'tax' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {/* Header row: Monthly Gross Salary + Capsule Switcher */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <label style={{ fontSize: '14.5px', fontWeight: 800, color: '#0f172a' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+              <label style={{ fontSize: 'clamp(13px, 3.4vw, 14.5px)', fontWeight: 800, color: '#0f172a' }}>
                 {t('Monthly Gross Salary', 'Monthly Gross Salary')}
               </label>
               <div
@@ -406,6 +366,7 @@ export function HeroQuickCalcCard({
                   backgroundColor: '#f1f5f9',
                   borderRadius: '9999px',
                   padding: '2px',
+                  flexShrink: 0,
                 }}
               >
                 <button
@@ -413,9 +374,9 @@ export function HeroQuickCalcCard({
                   onClick={() => setTaxMarital('single')}
                   style={{
                     border: 'none',
-                    padding: '4px 14px',
+                    padding: '3px 12px',
                     borderRadius: '9999px',
-                    fontSize: '11.5px',
+                    fontSize: '11px',
                     fontWeight: 700,
                     cursor: 'pointer',
                     backgroundColor: taxMarital === 'single' ? '#1d4ed8' : 'transparent',
@@ -431,9 +392,9 @@ export function HeroQuickCalcCard({
                   onClick={() => setTaxMarital('married')}
                   style={{
                     border: 'none',
-                    padding: '4px 14px',
+                    padding: '3px 12px',
                     borderRadius: '9999px',
-                    fontSize: '11.5px',
+                    fontSize: '11px',
                     fontWeight: 700,
                     cursor: 'pointer',
                     backgroundColor: taxMarital === 'married' ? '#1d4ed8' : 'transparent',
@@ -479,7 +440,7 @@ export function HeroQuickCalcCard({
             </div>
 
             {/* Quick Preset Salary Chips matching image */}
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '5px' }}>
               {[
                 { label: '30k', val: 30000 },
                 { label: '50k', val: 50000 },
@@ -493,18 +454,11 @@ export function HeroQuickCalcCard({
                     key={chip.label}
                     type="button"
                     onClick={() => setMonthlySalary(chip.val)}
+                    className="hero-preset-chip"
                     style={{
-                      flex: 1,
-                      minWidth: '55px',
-                      padding: '5px 8px',
-                      borderRadius: '8px',
                       border: isSelected ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
                       backgroundColor: isSelected ? '#eff6ff' : '#f8fafc',
                       color: isSelected ? '#1d4ed8' : '#64748b',
-                      fontSize: '11.5px',
-                      fontWeight: isSelected ? 800 : 600,
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
                     }}
                   >
                     {chip.label}
@@ -516,40 +470,47 @@ export function HeroQuickCalcCard({
             {/* Clean Result Layout matching image */}
             <div
               style={{
-                borderTop: '1px solid #f1f5f9',
-                paddingTop: '12px',
-                marginTop: '2px',
+                backgroundColor: '#f8fafc',
+                border: '1.5px solid #e2e8f0',
+                borderRadius: '12px',
+                padding: '12px 14px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '4px',
+                gap: '6px',
               }}
             >
               {/* Row 1: Net In-Hand left, Tax right */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
                 <span style={{ fontSize: '12px', color: '#64748b', fontWeight: 600 }}>
                   {t('Net In-Hand (Monthly)', 'Net In-Hand (Monthly)')}
                 </span>
-                <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ fontSize: '12.5px', fontWeight: 800, color: '#dc2626' }}>
-                    Tax: NPR {taxCalculation.monthlyTax.toLocaleString('en-IN')}/mo
-                  </span>
-                  <span style={{ fontSize: '11px', color: '#64748b' }}>
-                    ({taxCalculation.effectiveRate}%)
-                  </span>
-                </div>
+                <span
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 800,
+                    color: '#dc2626',
+                    backgroundColor: '#fef2f2',
+                    border: '1px solid #fee2e2',
+                    padding: '2px 8px',
+                    borderRadius: '9999px',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Tax: NPR {taxCalculation.monthlyTax.toLocaleString('en-IN')}/mo ({taxCalculation.effectiveRate}%)
+                </span>
               </div>
 
               {/* Row 2: Big Bold NPR Net Amount */}
-              <div style={{ fontSize: '26px', fontWeight: 900, color: '#0b2b5c', letterSpacing: '-0.02em', margin: '2px 0' }}>
+              <div style={{ fontSize: 'clamp(24px, 6.2vw, 28px)', fontWeight: 900, color: '#0b2b5c', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                 NPR {taxCalculation.netMonthly.toLocaleString('en-IN')}
               </div>
 
-              {/* Row 3: Annual Taxable left, SSF tax info right */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px' }}>
-                <span style={{ color: '#64748b' }}>
-                  Annual Gross: NPR {(monthlySalary * 12).toLocaleString('en-IN')}
+              {/* Row 3: Annual Gross left, SSF tax info right */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px 10px', fontSize: '11.5px', borderTop: '1px solid #e2e8f0', paddingTop: '6px' }}>
+                <span style={{ color: '#64748b', whiteSpace: 'nowrap' }}>
+                  Annual: NPR {(monthlySalary * 12).toLocaleString('en-IN')}
                 </span>
-                <span style={{ color: '#059669', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                <span style={{ color: '#059669', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px', whiteSpace: 'nowrap' }}>
                   ✓ With SSF: NPR {taxCalculation.ssfMonthlyTax.toLocaleString('en-IN')}/mo tax
                 </span>
               </div>
@@ -706,32 +667,32 @@ export function HeroQuickCalcCard({
             )}
 
             {/* Quick presets */}
-            <div style={{ display: 'flex', gap: '5px' }}>
+            <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
               <button
                 type="button"
                 onClick={() => { setLandRegion('hilly'); setRopani(0); setAana(4); setPaisa(0); setDaam(0); }}
-                style={{ padding: '3px 8px', borderRadius: '5px', fontSize: '10.5px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 600 }}
+                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
               >
                 ४ आना (घडेरी)
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('hilly'); setRopani(1); setAana(0); setPaisa(0); setDaam(0); }}
-                style={{ padding: '3px 8px', borderRadius: '5px', fontSize: '10.5px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 600 }}
+                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
               >
                 १ रोपनी
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('terai'); setBigha(0); setKattha(10); setDhur(0); }}
-                style={{ padding: '3px 8px', borderRadius: '5px', fontSize: '10.5px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 600 }}
+                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
               >
                 १० कट्ठा
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('terai'); setBigha(1); setKattha(0); setDhur(0); }}
-                style={{ padding: '3px 8px', borderRadius: '5px', fontSize: '10.5px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 600 }}
+                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
               >
                 १ बिघा
               </button>
@@ -808,7 +769,7 @@ export function HeroQuickCalcCard({
             </div>
 
             {/* Quick Loan Chips */}
-            <div style={{ display: 'flex', gap: '5px' }}>
+            <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
               {[1000000, 2500000, 5000000, 10000000].map((amt) => (
                 <button
                   key={amt}
@@ -816,14 +777,16 @@ export function HeroQuickCalcCard({
                   onClick={() => setLoanAmount(amt)}
                   style={{
                     flex: 1,
-                    border: loanAmount === amt ? '1px solid #0b2b5c' : '1px solid #cbd5e1',
+                    minWidth: '55px',
+                    border: loanAmount === amt ? '1.5px solid #0b2b5c' : '1px solid #cbd5e1',
                     background: loanAmount === amt ? '#eff6ff' : '#f8fafc',
                     color: loanAmount === amt ? '#0b2b5c' : '#475569',
-                    fontSize: '10.5px',
-                    fontWeight: 700,
-                    padding: '4px',
+                    fontSize: '11px',
+                    fontWeight: 800,
+                    padding: '5px 4px',
                     borderRadius: '6px',
                     cursor: 'pointer',
+                    textAlign: 'center',
                   }}
                 >
                   {amt >= 10000000 ? '१ करोड' : `${amt / 100000} लाख`}
