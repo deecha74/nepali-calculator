@@ -7,6 +7,18 @@ export * from './goldRates';
 export * from './programmaticGold';
 export * from './goldHistory';
 export * from './forexRates';
+export * from './bankLoanRates';
+export * from './airportCustomsRates';
+export * from './programmaticInterest';
+export * from './programmaticConstruction';
+export * from './programmaticNea';
+export * from './programmaticTds';
+export * from './programmaticMalpot';
+export * from './traditionalUnitRates';
+export * from './programmaticEmi';
+export * from './programmaticSip';
+export * from './programmaticTax';
+export * from './programmaticVehicles';
 
 export interface RateEngineStatus {
   activeFiscalYear: string;

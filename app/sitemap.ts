@@ -8,6 +8,12 @@ import { PROGRAMMATIC_SIP_SCENARIOS } from '@/lib/rates/programmaticSip';
 import { PROGRAMMATIC_GOLD_ITEMS } from '@/lib/rates/programmaticGold';
 import { PROGRAMMATIC_TRADITIONAL_UNITS } from '@/lib/rates/traditionalUnitRates';
 import { PROGRAMMATIC_EMI_SCENARIOS } from '@/lib/rates/programmaticEmi';
+import { PROGRAMMATIC_BANK_LOAN_SCENARIOS } from '@/lib/rates/bankLoanRates';
+import { PROGRAMMATIC_INTEREST_SCENARIOS } from '@/lib/rates/programmaticInterest';
+import { PROGRAMMATIC_CONSTRUCTION_SCENARIOS } from '@/lib/rates/programmaticConstruction';
+import { PROGRAMMATIC_NEA_BILLS } from '@/lib/rates/programmaticNea';
+import { PROGRAMMATIC_TDS_SCENARIOS } from '@/lib/rates/programmaticTds';
+import { PROGRAMMATIC_MALPOT_SCENARIOS } from '@/lib/rates/programmaticMalpot';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
 const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
@@ -47,6 +53,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/gpa',
       '/fuel',
       '/customs',
+      '/customs/airport-baggage',
+      '/emi/banks',
       '/gratuity',
       '/inflation',
       '/overtime',
@@ -183,6 +191,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticBankLoanRoutes = PROGRAMMATIC_BANK_LOAN_SCENARIOS.map((bankLoan) => ({
+    url: `${baseUrl}/emi/banks/${bankLoan.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticInterestRoutes = PROGRAMMATIC_INTEREST_SCENARIOS.map((scenario) => ({
+    url: `${baseUrl}/interest/${scenario.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticConstructionRoutes = PROGRAMMATIC_CONSTRUCTION_SCENARIOS.map((scenario) => ({
+    url: `${baseUrl}/house-construction/${scenario.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticNeaRoutes = PROGRAMMATIC_NEA_BILLS.map((bill) => ({
+    url: `${baseUrl}/nea/${bill.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticTdsRoutes = PROGRAMMATIC_TDS_SCENARIOS.map((tds) => ({
+    url: `${baseUrl}/tds/${tds.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticMalpotRoutes = PROGRAMMATIC_MALPOT_SCENARIOS.map((malpot) => ({
+    url: `${baseUrl}/malpot/${malpot.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -193,6 +243,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticGoldRoutes,
     ...programmaticTraditionalUnitRoutes,
     ...programmaticEmiRoutes,
+    ...programmaticBankLoanRoutes,
+    ...programmaticInterestRoutes,
+    ...programmaticConstructionRoutes,
+    ...programmaticNeaRoutes,
+    ...programmaticTdsRoutes,
+    ...programmaticMalpotRoutes,
     ...blogRoutes,
   ];
 }

@@ -13,355 +13,89 @@ export interface ProgrammaticSalaryTax {
   takeHomeMonthlySsf: number;
 }
 
-export const PROGRAMMATIC_SALARY_TAXES: ProgrammaticSalaryTax[] = [
-  {
-    slug: "tax-on-30000-salary-nepal",
-    monthlySalary: 30000,
-    annualSalary: 360000,
-    title: "Tax on 30,000 Salary in Nepal — Monthly & Yearly Income Tax (FY 2083/84)",
-    metaDescription: "Calculate tax on NPR 30,000 monthly salary (NPR 3,60,000/yr) in Nepal. Detailed single vs married breakdown, SSF deductions, and net in-hand monthly salary.",
-    keywords: ["tax on 30000 salary in nepal", "30k salary tax nepal", "income tax for 30000 monthly salary nepal"],
-    singleAnnualTaxNormal: 3600,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 3600,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 29700,
-    takeHomeMonthlySsf: 30000,
-  },
-  {
-    slug: "tax-on-40000-salary-nepal",
-    monthlySalary: 40000,
-    annualSalary: 480000,
-    title: "Tax on 40,000 Salary in Nepal — Income Tax & Net Take-Home (FY 2083/84)",
-    metaDescription: "Tax calculation on NPR 40,000 monthly salary (NPR 4,80,000 annual) in Nepal. Falls within 1% base bracket with 0% tax under SSF registration.",
-    keywords: ["tax on 40000 salary in nepal", "40k salary tax nepal", "nepal tax calculator 40000 per month"],
-    singleAnnualTaxNormal: 4800,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 4800,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 39600,
-    takeHomeMonthlySsf: 40000,
-  },
-  {
-    slug: "tax-on-50000-salary-nepal",
-    monthlySalary: 50000,
-    annualSalary: 600000,
-    title: "Tax on 50,000 Salary in Nepal — Monthly & Yearly Calculation (FY 2083/84)",
-    metaDescription: "How much tax is deducted on NPR 50,000 monthly salary (NPR 6 Lakh/year) in Nepal? Compare single and married tax brackets, SSF benefits, and net salary.",
-    keywords: ["tax on 50000 salary in nepal", "50k salary tax nepal", "salary tax 50000 per month nepal"],
-    singleAnnualTaxNormal: 6000,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 6000,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 49500,
-    takeHomeMonthlySsf: 50000,
-  },
-  {
-    slug: "tax-on-60000-salary-nepal",
-    monthlySalary: 60000,
-    annualSalary: 720000,
-    title: "Tax on 60,000 Salary in Nepal — Single vs Married Tax Brackets (FY 2083/84)",
-    metaDescription: "Calculate tax on NPR 60,000 monthly salary (NPR 7,20,000 annually) in Nepal. Understand 1% SST, 10% slab deductions, CIT/EPF tax savings, and take-home pay.",
-    keywords: ["tax on 60000 salary in nepal", "60000 monthly salary tax nepal", "60k salary income tax nepal"],
-    singleAnnualTaxNormal: 7200,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 7200,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 59400,
-    takeHomeMonthlySsf: 60000,
-  },
-  {
-    slug: "tax-on-75000-salary-nepal",
-    monthlySalary: 75000,
-    annualSalary: 900000,
-    title: "Tax on 75,000 Salary in Nepal — Income Tax & SSF Rebates (FY 2083/84)",
-    metaDescription: "Income tax calculation for NPR 75,000 monthly salary (NPR 9 Lakh yearly) in Nepal. Breakdown of tax brackets, life insurance deductions, and net monthly pay.",
-    keywords: ["tax on 75000 salary in nepal", "75k salary tax nepal", "salary tax 75000 nepal"],
-    singleAnnualTaxNormal: 9000,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 9000,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 74250,
-    takeHomeMonthlySsf: 75000,
-  },
-  {
-    slug: "tax-on-100000-salary-nepal",
-    monthlySalary: 100000,
-    annualSalary: 1200000,
-    title: "Tax on 1 Lakh (100,000) Salary in Nepal — 1,00,000 Monthly Tax (FY 2083/84)",
-    metaDescription: "What is the tax on 1 Lakh (NPR 1,00,000) monthly salary in Nepal? Detailed 12 Lakhs annual slab analysis, 10% slab crossing, CIT deductions, and take home pay.",
-    keywords: ["tax on 1 lakh salary in nepal", "tax on 100000 salary in nepal", "1 lakh salary tax nepal", "100k salary tax nepal"],
-    singleAnnualTaxNormal: 30000,
-    singleAnnualTaxSsf: 20000,
-    marriedAnnualTaxNormal: 30000,
-    marriedAnnualTaxSsf: 20000,
-    takeHomeMonthlyNormal: 97500,
-    takeHomeMonthlySsf: 98333,
-  },
-  {
-    slug: "tax-on-150000-salary-nepal",
-    monthlySalary: 150000,
-    annualSalary: 1800000,
-    title: "Tax on 1.5 Lakh (150,000) Salary in Nepal — Full Tax Slab Breakdown",
-    metaDescription: "Detailed income tax on NPR 1,50,000 monthly salary (NPR 18 Lakh/year) in Nepal. Higher tax brackets (10%, 20%), EPF/CIT tax-saving limits, and take-home pay.",
-    keywords: ["tax on 1.5 lakh salary in nepal", "tax on 150000 salary in nepal", "150k monthly salary tax nepal"],
-    singleAnnualTaxNormal: 120000,
-    singleAnnualTaxSsf: 110000,
-    marriedAnnualTaxNormal: 120000,
-    marriedAnnualTaxSsf: 110000,
-    takeHomeMonthlyNormal: 140000,
-    takeHomeMonthlySsf: 140833,
-  },
-  {
-    slug: "tax-on-200000-salary-nepal",
-    monthlySalary: 200000,
-    annualSalary: 2400000,
-    title: "Tax on 2 Lakh (200,000) Salary in Nepal — High Earner Tax & SSF (FY 2083/84)",
-    metaDescription: "Annual and monthly tax on NPR 2,00,000 monthly salary (NPR 24 Lakh/year) in Nepal. Tax brackets, maximum allowed tax rebates, and net take-home salary.",
-    keywords: ["tax on 2 lakh salary in nepal", "tax on 200000 salary in nepal", "2 lakh salary tax in nepal"],
-    singleAnnualTaxNormal: 240000,
-    singleAnnualTaxSsf: 230000,
-    marriedAnnualTaxNormal: 240000,
-    marriedAnnualTaxSsf: 230000,
-    takeHomeMonthlyNormal: 180000,
-    takeHomeMonthlySsf: 180833,
-  },
-  {
-    slug: "tax-on-300000-salary-nepal",
-    monthlySalary: 300000,
-    annualSalary: 3600000,
-    title: "Tax on 3 Lakh (300,000) Salary in Nepal — Executive Income Tax Breakdown",
-    metaDescription: "Tax breakdown for NPR 3,00,000 monthly salary (NPR 36 Lakh annually) in Nepal. 20% and 27% tax brackets, SSF ceiling, and effective tax rate calculations.",
-    keywords: ["tax on 3 lakh salary in nepal", "tax on 300000 salary nepal", "3 lakh salary tax in nepal"],
-    singleAnnualTaxNormal: 557000,
-    singleAnnualTaxSsf: 547000,
-    marriedAnnualTaxNormal: 557000,
-    marriedAnnualTaxSsf: 547000,
-    takeHomeMonthlyNormal: 253583,
-    takeHomeMonthlySsf: 254417,
-  },
-  {
-    slug: "tax-on-45000-salary-nepal",
-    monthlySalary: 45000,
-    annualSalary: 540000,
-    title: "Tax on 45,000 Salary in Nepal — FY 2083/84 Slab & Net Pay",
-    metaDescription: "Calculate income tax on NPR 45,000 monthly salary (NPR 5,40,000/yr) in Nepal. Compare unmarried vs married brackets, SSF waiver, and net salary.",
-    keywords: ["tax on 45000 salary in nepal", "45k salary tax nepal", "salary calculator 45000 nepal"],
-    singleAnnualTaxNormal: 5400,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 5400,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 44550,
-    takeHomeMonthlySsf: 45000,
-  },
-  {
-    slug: "tax-on-80000-salary-nepal",
-    monthlySalary: 80000,
-    annualSalary: 960000,
-    title: "Tax on 80,000 Salary in Nepal — Monthly TDS & Take-Home Pay (FY 2083/84)",
-    metaDescription: "How much tax is deducted on NPR 80,000 monthly salary (NPR 9.6 Lakh/yr) in Nepal? Falls within the 10 Lakh 1% base slab (0% tax if enrolled in SSF).",
-    keywords: ["tax on 80000 salary in nepal", "80k salary tax nepal", "80000 monthly salary tax nepal"],
-    singleAnnualTaxNormal: 9600,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 9600,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 79200,
-    takeHomeMonthlySsf: 80000,
-  },
-  {
-    slug: "tax-on-90000-salary-nepal",
-    monthlySalary: 90000,
-    annualSalary: 1080000,
-    title: "Tax on 90,000 Salary in Nepal — FY 2083/84 Income Tax Guide",
-    metaDescription: "Calculate tax on NPR 90,000 monthly salary (NPR 10.8 Lakh/yr) in Nepal. First 10 Lakh at 1% (0% in SSF) and remaining NPR 80,000 at 10%.",
-    keywords: ["tax on 90000 salary in nepal", "90k salary tax nepal", "income tax on 90000 salary nepal"],
-    singleAnnualTaxNormal: 18000,
-    singleAnnualTaxSsf: 8000,
-    marriedAnnualTaxNormal: 18000,
-    marriedAnnualTaxSsf: 8000,
-    takeHomeMonthlyNormal: 88500,
-    takeHomeMonthlySsf: 89333,
-  },
-  {
-    slug: "tax-on-120000-salary-nepal",
-    monthlySalary: 120000,
-    annualSalary: 1440000,
-    title: "Tax on 1.2 Lakh (120,000) Salary in Nepal — FY 2083/84 Slabs",
-    metaDescription: "Income tax calculation on NPR 1,20,000 monthly salary (NPR 14.4 Lakh/yr) in Nepal. First 10 Lakh at 1% (0% SSF) and next 4.4 Lakh at 10%.",
-    keywords: ["tax on 120000 salary in nepal", "1.2 lakh salary tax nepal", "120k salary tax calculator nepal"],
-    singleAnnualTaxNormal: 54000,
-    singleAnnualTaxSsf: 44000,
-    marriedAnnualTaxNormal: 54000,
-    marriedAnnualTaxSsf: 44000,
-    takeHomeMonthlyNormal: 115500,
-    takeHomeMonthlySsf: 116333,
-  },
-  {
-    slug: "tax-on-250000-salary-nepal",
-    monthlySalary: 250000,
-    annualSalary: 3000000,
-    title: "Tax on 2.5 Lakh (250,000) Salary in Nepal — FY 2083/84 Tax",
-    metaDescription: "Calculate annual and monthly TDS on NPR 2,50,000 monthly salary (NPR 30 Lakh/yr) in Nepal under FY 2083/84 slabs (1%, 10%, 20% & 27%).",
-    keywords: ["tax on 2.5 lakh salary in nepal", "tax on 250000 salary nepal", "250k salary tax nepal"],
-    singleAnnualTaxNormal: 395000,
-    singleAnnualTaxSsf: 385000,
-    marriedAnnualTaxNormal: 395000,
-    marriedAnnualTaxSsf: 385000,
-    takeHomeMonthlyNormal: 217083,
-    takeHomeMonthlySsf: 217917,
-  },
-  {
-    slug: "tax-on-500000-salary-nepal",
-    monthlySalary: 500000,
-    annualSalary: 6000000,
-    title: "Tax on 5 Lakh (500,000) Salary in Nepal — Executive Tax Guide",
-    metaDescription: "Executive income tax breakdown for NPR 5,00,000 monthly salary (NPR 60 Lakh/yr) in Nepal. Covers 27% and 29% top FY 2083/84 IRD tax brackets.",
-    keywords: ["tax on 5 lakh salary in nepal", "tax on 500000 salary nepal", "ceo salary tax calculator nepal"],
-    singleAnnualTaxNormal: 1245000,
-    singleAnnualTaxSsf: 1235000,
-    marriedAnnualTaxNormal: 1245000,
-    marriedAnnualTaxSsf: 1235000,
-    takeHomeMonthlyNormal: 396250,
-    takeHomeMonthlySsf: 397083,
-  },
-  {
-    slug: "tax-on-25000-salary-nepal",
-    monthlySalary: 25000,
-    annualSalary: 300000,
-    title: "Tax on 25,000 Salary in Nepal — Monthly TDS & SSF Exemption (FY 2083/84)",
-    metaDescription: "How much tax is deducted on NPR 25,000 monthly salary (NPR 3,00,000/yr) in Nepal? Only 1% Social Security Tax (Rs 250/mo) or 0% if enrolled in SSF.",
-    keywords: ["tax on 25000 salary in nepal", "25k salary tax nepal", "income tax on 25000 per month nepal"],
-    singleAnnualTaxNormal: 3000,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 3000,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 24750,
-    takeHomeMonthlySsf: 25000,
-  },
-  {
-    slug: "tax-on-35000-salary-nepal",
-    monthlySalary: 35000,
-    annualSalary: 420000,
-    title: "Tax on 35,000 Salary in Nepal — Monthly & Yearly Tax Breakdown",
-    metaDescription: "Calculate income tax on NPR 35,000 monthly salary (NPR 4,20,000/yr) in Nepal. Falls within the base 1% bracket (NPR 4,200/yr) and 0% under SSF.",
-    keywords: ["tax on 35000 salary in nepal", "35k salary tax nepal", "35000 monthly salary tax nepal"],
-    singleAnnualTaxNormal: 4200,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 4200,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 34650,
-    takeHomeMonthlySsf: 35000,
-  },
-  {
-    slug: "tax-on-55000-salary-nepal",
-    monthlySalary: 55000,
-    annualSalary: 660000,
-    title: "Tax on 55,000 Salary in Nepal — FY 2083/84 Slab & SSF Exemption",
-    metaDescription: "Income tax calculation on NPR 55,000 monthly salary (NPR 6.6 Lakh/yr) in Nepal. Within the 10 Lakh base bracket: 1% regular tax (Rs 6,600/yr) or 0% in SSF.",
-    keywords: ["tax on 55000 salary in nepal", "55k salary tax nepal", "salary calculator 55000 nepal"],
-    singleAnnualTaxNormal: 6600,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 6600,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 54450,
-    takeHomeMonthlySsf: 55000,
-  },
-  {
-    slug: "tax-on-65000-salary-nepal",
-    monthlySalary: 65000,
-    annualSalary: 780000,
-    title: "Tax on 65,000 Salary in Nepal — Monthly TDS & Take-Home Pay",
-    metaDescription: "Calculate annual and monthly income tax on NPR 65,000 salary (NPR 7,80,000/yr) in Nepal. Falls within the 10 Lakh base bracket (1% regular or 0% SSF).",
-    keywords: ["tax on 65000 salary in nepal", "65k salary tax nepal", "65000 monthly salary tax nepal"],
-    singleAnnualTaxNormal: 7800,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 7800,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 64350,
-    takeHomeMonthlySsf: 65000,
-  },
-  {
-    slug: "tax-on-70000-salary-nepal",
-    monthlySalary: 70000,
-    annualSalary: 840000,
-    title: "Tax on 70,000 Salary in Nepal — FY 2083/84 Income Tax & SSF",
-    metaDescription: "What is the income tax on NPR 70,000 monthly salary (NPR 8.4 Lakh/yr) in Nepal? Within the 10 Lakh base bracket: NPR 8,400/yr regular or NPR 0 under SSF.",
-    keywords: ["tax on 70000 salary in nepal", "70k salary tax nepal", "income tax on 70000 salary nepal"],
-    singleAnnualTaxNormal: 8400,
-    singleAnnualTaxSsf: 0,
-    marriedAnnualTaxNormal: 8400,
-    marriedAnnualTaxSsf: 0,
-    takeHomeMonthlyNormal: 69300,
-    takeHomeMonthlySsf: 70000,
-  },
-  {
-    slug: "tax-on-85000-salary-nepal",
-    monthlySalary: 85000,
-    annualSalary: 1020000,
-    title: "Tax on 85,000 Salary in Nepal — Monthly & Annual Tax Breakdown",
-    metaDescription: "Calculate income tax on NPR 85,000 monthly salary (NPR 10.2 Lakh/yr) in Nepal. First 10 Lakh at 1% (0% in SSF) and NPR 20,000 at 10%.",
-    keywords: ["tax on 85000 salary in nepal", "85k salary tax nepal", "85000 monthly salary tax nepal"],
-    singleAnnualTaxNormal: 12000,
-    singleAnnualTaxSsf: 2000,
-    marriedAnnualTaxNormal: 12000,
-    marriedAnnualTaxSsf: 2000,
-    takeHomeMonthlyNormal: 84000,
-    takeHomeMonthlySsf: 84833,
-  },
-  {
-    slug: "tax-on-110000-salary-nepal",
-    monthlySalary: 110000,
-    annualSalary: 1320000,
-    title: "Tax on 1.1 Lakh (110,000) Salary in Nepal — FY 2083/84 Slabs",
-    metaDescription: "Calculate tax on NPR 1,10,000 monthly salary (NPR 13.2 Lakh/yr) in Nepal. First 10 Lakh at 1% (0% SSF) and next 3.2 Lakh at 10%.",
-    keywords: ["tax on 110000 salary in nepal", "1.1 lakh salary tax nepal", "110k salary tax calculator nepal"],
-    singleAnnualTaxNormal: 42000,
-    singleAnnualTaxSsf: 32000,
-    marriedAnnualTaxNormal: 42000,
-    marriedAnnualTaxSsf: 32000,
-    takeHomeMonthlyNormal: 106500,
-    takeHomeMonthlySsf: 107333,
-  },
-  {
-    slug: "tax-on-130000-salary-nepal",
-    monthlySalary: 130000,
-    annualSalary: 1560000,
-    title: "Tax on 1.3 Lakh (130,000) Salary in Nepal — Income Tax & Net Pay",
-    metaDescription: "How much tax is deducted on NPR 1,30,000 monthly salary (NPR 15.6 Lakh/yr) in Nepal? Full FY 2083/84 progressive slab breakdown (1%, 10%, 20%).",
-    keywords: ["tax on 130000 salary in nepal", "1.3 lakh salary tax nepal", "130k monthly salary tax nepal"],
-    singleAnnualTaxNormal: 72000,
-    singleAnnualTaxSsf: 62000,
-    marriedAnnualTaxNormal: 72000,
-    marriedAnnualTaxSsf: 62000,
-    takeHomeMonthlyNormal: 124000,
-    takeHomeMonthlySsf: 124833,
-  },
-  {
-    slug: "tax-on-175000-salary-nepal",
-    monthlySalary: 175000,
-    annualSalary: 2100000,
-    title: "Tax on 1.75 Lakh (175,000) Salary in Nepal — Senior Engineer/Banker Tax",
-    metaDescription: "Income tax calculation on NPR 1,75,000 monthly salary (NPR 21 Lakh/yr) in Nepal under FY 2083/84 slabs (10L base, 10%, and 20% brackets).",
-    keywords: ["tax on 175000 salary in nepal", "1.75 lakh salary tax nepal", "175k salary tax calculator nepal"],
-    singleAnnualTaxNormal: 180000,
-    singleAnnualTaxSsf: 170000,
-    marriedAnnualTaxNormal: 180000,
-    marriedAnnualTaxSsf: 170000,
-    takeHomeMonthlyNormal: 160000,
-    takeHomeMonthlySsf: 160833,
-  },
-  {
-    slug: "tax-on-400000-salary-nepal",
-    monthlySalary: 400000,
-    annualSalary: 4800000,
-    title: "Tax on 4 Lakh (400,000) Salary in Nepal — High Earner Tax Breakdown",
-    metaDescription: "Executive tax calculation on NPR 4,00,000 monthly salary (NPR 48 Lakh/yr) in Nepal. Detailed 27% and 29% FY 2083/84 brackets and SSF ceiling.",
-    keywords: ["tax on 4 lakh salary in nepal", "tax on 400000 salary nepal", "400k monthly salary tax nepal"],
-    singleAnnualTaxNormal: 897000,
-    singleAnnualTaxSsf: 887000,
-    marriedAnnualTaxNormal: 897000,
-    marriedAnnualTaxSsf: 887000,
-    takeHomeMonthlyNormal: 325250,
-    takeHomeMonthlySsf: 326083,
-  },
+function computeAnnualTax(annualSalary: number, isSsf: boolean): number {
+  let tax = 0;
+  let remaining = annualSalary;
+
+  // Band 1: Up to 10,00,000 (1% without SSF, 0% with SSF)
+  const band1 = Math.min(remaining, 1000000);
+  if (!isSsf) {
+    tax += band1 * 0.01;
+  }
+  remaining -= band1;
+
+  // Band 2: Next 5,00,000 (10L - 15L) @ 10%
+  if (remaining > 0) {
+    const band2 = Math.min(remaining, 500000);
+    tax += band2 * 0.10;
+    remaining -= band2;
+  }
+
+  // Band 3: Next 10,00,000 (15L - 25L) @ 20%
+  if (remaining > 0) {
+    const band3 = Math.min(remaining, 1000000);
+    tax += band3 * 0.20;
+    remaining -= band3;
+  }
+
+  // Band 4: Next 15,00,000 (25L - 40L) @ 27%
+  if (remaining > 0) {
+    const band4 = Math.min(remaining, 1500000);
+    tax += band4 * 0.27;
+    remaining -= band4;
+  }
+
+  // Band 5: Above 40,00,000 @ 29%
+  if (remaining > 0) {
+    tax += remaining * 0.29;
+  }
+
+  return Math.round(tax);
+}
+
+function makeSalaryItem(monthly: number): ProgrammaticSalaryTax {
+  const annual = monthly * 12;
+  const singleNormal = computeAnnualTax(annual, false);
+  const singleSsf = computeAnnualTax(annual, true);
+  const marriedNormal = singleNormal; // In 2083/84 base tiers are unified at 10L base
+  const marriedSsf = singleSsf;
+  const takeHomeNormal = Math.round(monthly - singleNormal / 12);
+  const takeHomeSsf = Math.round(monthly - singleSsf / 12);
+
+  const formattedMonthly = monthly.toLocaleString('en-IN');
+  const formattedAnnual = annual.toLocaleString('en-IN');
+  const lakhText = (monthly / 100000) >= 1 ? `${(monthly / 100000).toFixed(monthly % 100000 === 0 ? 0 : 2)} Lakh` : `${monthly / 1000}k`;
+
+  return {
+    slug: `tax-on-${monthly}-salary-nepal`,
+    monthlySalary: monthly,
+    annualSalary: annual,
+    title: `Tax on ${formattedMonthly} Salary in Nepal — Monthly & Yearly Income Tax (FY 2083/84)`,
+    metaDescription: `Calculate exact tax on NPR ${formattedMonthly} monthly salary (NPR ${formattedAnnual}/yr, ${lakhText}) in Nepal under latest IRD rules. Single vs married slabs, SSF 100% SST waiver, and in-hand take-home pay.`,
+    keywords: [
+      `tax on ${monthly} salary in nepal`,
+      `tax on ${lakhText.toLowerCase()} salary nepal`,
+      `income tax on ${formattedMonthly} nepal`,
+      `${monthly} salary in hand nepal`,
+      `salary tax ${formattedMonthly} nepal 2083`,
+    ],
+    singleAnnualTaxNormal: singleNormal,
+    singleAnnualTaxSsf: singleSsf,
+    marriedAnnualTaxNormal: marriedNormal,
+    marriedAnnualTaxSsf: marriedSsf,
+    takeHomeMonthlyNormal: takeHomeNormal,
+    takeHomeMonthlySsf: takeHomeSsf,
+  };
+}
+
+// All high, medium, and low search volume monthly salaries in Nepal
+const MONTHLY_SALARIES = [
+  15000, 20000, 22000, 25000, 28000, 30000, 32000, 35000, 38000, 40000,
+  42000, 45000, 48000, 50000, 55000, 60000, 65000, 70000, 75000, 80000,
+  85000, 90000, 95000, 100000, 110000, 120000, 125000, 130000, 140000,
+  150000, 160000, 175000, 180000, 200000, 225000, 250000, 275000, 300000,
+  350000, 400000, 450000, 500000, 600000, 750000, 1000000,
 ];
+
+// Generate programmatic salary tax list
+export const PROGRAMMATIC_SALARY_TAXES: ProgrammaticSalaryTax[] = MONTHLY_SALARIES.map(makeSalaryItem);

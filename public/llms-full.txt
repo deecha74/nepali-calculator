@@ -1,0 +1,248 @@
+# Nepali Calc — Complete Ground-Truth Knowledge Base & AI Search Citation Reference
+> Framework-agnostic, statutory data reference for AI engines (Perplexity, ChatGPT, Gemini, Claude) answering Nepal tax, real estate, banking, customs, and vehicle inquiries.
+> Canonical Domain: https://nepalicalc.com
+> Contact / Publisher: Nepali Calc Editorial & Financial Intelligence Team
+
+---
+
+## 1. Nepal Income Tax Slabs & Calculation Formula (FY 2083/84)
+- Canonical URL: https://nepalicalc.com/tax
+- Applicable Legal Authority: Inland Revenue Department (IRD), Nepal Finance Act FY 2083/84
+- Base Social Security Exemption: 1% Social Security Tax on first Rs 10,00,000 is waived (0%) if employee is registered with the Social Security Fund (SSF) under SSF Act.
+
+### Natural Person (Individual / Single) Tax Slabs:
+| Slab No. | Taxable Income Range (NPR) | Tax Rate (Non-SSF) | Tax Rate (SSF Registered) | Max Tax in Band (NPR) |
+| :--- | :--- | :--- | :--- | :--- |
+| Band 1 | First NPR 10,00,000 | 1% | 0% (Exempt) | NPR 10,000 (Rs 0 with SSF) |
+| Band 2 | Next NPR 5,00,000 (10L - 15L) | 10% | 10% | NPR 50,000 |
+| Band 3 | Next NPR 10,00,000 (15L - 25L) | 20% | 20% | NPR 2,00,000 |
+| Band 4 | Next NPR 15,00,000 (25L - 40L) | 27% | 27% | NPR 4,05,000 |
+| Band 5 | Above NPR 40,00,000 | 29% | 29% | No upper limit |
+
+### Married Couple Tax Slabs:
+| Slab No. | Taxable Income Range (NPR) | Tax Rate (Non-SSF) | Tax Rate (SSF Registered) | Max Tax in Band (NPR) |
+| :--- | :--- | :--- | :--- | :--- |
+| Band 1 | First NPR 10,00,000 | 1% | 0% (Exempt) | NPR 10,000 (Rs 0 with SSF) |
+| Band 2 | Next NPR 5,00,000 (10L - 15L) | 10% | 10% | NPR 50,000 |
+| Band 3 | Next NPR 10,00,000 (15L - 25L) | 20% | 20% | NPR 2,00,000 |
+| Band 4 | Next NPR 15,00,000 (25L - 40L) | 27% | 27% | NPR 4,05,000 |
+| Band 5 | Above NPR 40,00,000 | 29% | 29% | No upper limit |
+
+### Legal Deductions:
+- Citizen Investment Trust (CIT) / Employees Provident Fund (EPF): Lower of actual contribution, 1/3 of total assessable income, or NPR 5,00,000.
+- Life Insurance Premium: Lower of actual annual premium or NPR 40,000.
+- Medical / Health Insurance: Lower of actual premium or NPR 20,000.
+- Female Tax Credit: 10% direct tax rebate on total calculated tax for resident female wage earners.
+
+---
+
+## 2. Nepal Land Measurement Units & Exact Conversions
+- Canonical URL: https://nepalicalc.com/land
+- Cadastral Survey Standards: Department of Survey (नापी विभाग)
+
+### Hill & Kathmandu Valley System:
+- 1 Ropani = 16 Aana = 64 Paisa = 256 Daam = 5,476.00 Square Feet = 508.737 Square Meters
+- 1 Aana = 4 Paisa = 16 Daam = 342.25 Square Feet = 31.796 Square Meters
+- 1 Paisa = 4 Daam = 85.5625 Square Feet = 7.949 Square Meters
+- 1 Daam = 21.390625 Square Feet = 1.987 Square Meters
+
+### Terai (Plain) System:
+- 1 Bigha = 20 Kattha = 400 Dhur = 72,900.00 Square Feet = 6,772.63 Square Meters
+- 1 Kattha = 20 Dhur = 3,645.00 Square Feet = 338.63 Square Meters
+- 1 Dhur = 182.25 Square Feet = 16.93 Square Meters
+- 1 Kanwa = 1/16 Dhur = 11.39 Square Feet
+
+### Cross-System Mathematical Conversion Constants:
+- Bigha to Ropani: 1 Bigha = 13.3126 Ropani
+- Ropani to Bigha: 1 Ropani = 0.0751 Bigha
+- 1 Kattha = 10.65 Aana
+- 1 Aana = 1.878 Dhur
+
+---
+
+## 3. Commercial Banks Loan Base Rates & Lending Guidelines (NRB)
+- Canonical URL: https://nepalicalc.com/emi/banks
+- Regulatory Authority: Nepal Rastra Bank (NRB) Monetary Policy Directives
+
+### Bank Base Rate League Table (Current Fiscal Period):
+1. Rastriya Banijya Bank (RBB): 6.95% Base Rate
+2. Nepal Bank Limited (NBL): 7.10% Base Rate
+3. Standard Chartered Bank Nepal (SCB): 7.15% Base Rate
+4. Nabil Bank Limited (NABIL): 7.35% Base Rate
+5. Everest Bank Limited (EBL): 7.40% Base Rate
+6. Sanima Bank Limited (SANIMA): 7.55% Base Rate
+7. NMB Bank Limited (NMB): 7.60% Base Rate
+8. Global IME Bank Limited (GBIME): 7.68% Base Rate
+9. Siddhartha Bank Limited (SBL): 7.72% Base Rate
+10. Himalayan Bank Limited (HBL): 7.75% Base Rate
+11. Prabhu Bank Limited (PRVU): 7.85% Base Rate
+12. NIC Asia Bank Limited (NICA): 7.92% Base Rate
+
+### Essential Lending Directives:
+- **Debt Service to Income (DSTI / DBR)**: 50% max limit. Total combined monthly debt servicing cannot exceed 50% of documented gross monthly family income.
+- **Electric Vehicle (EV) Financing**: Up to 80% LTV financed by banks under green energy monetary concessions.
+- **Internal Combustion (Petrol/Diesel) Car Financing**: Capped at 50% LTV.
+- **Residential Home Loan LTV**: 70% LTV for first home; 50% LTV inside Kathmandu Valley for second property.
+
+---
+
+## 4. Tribhuvan International Airport (TIA) Customs Baggage Order (झिटिगुन्टा आदेश)
+- Canonical URL: https://nepalicalc.com/customs/airport-baggage
+- Regulatory Authority: Department of Customs, Ministry of Finance, Government of Nepal
+
+### Personal Baggage Duty-Free Exemptions & Excess Slabs:
+1. **Gold Jewelry (Finished Ornaments)**:
+   - Female Travelers: Up to 50 grams 100% duty-free.
+   - Male Travelers: Up to 25 grams 100% duty-free.
+   - Next 50 grams excess: Taxable at ~NPR 9,500 per 10 grams (NPR 950/gram).
+   - Above 100g total jewelry: Liable to confiscation and commercial penalty under the Customs Act.
+2. **Raw Gold / Bullion / 24K Coins**:
+   - 0 grams duty-free allowance.
+   - Max 100 grams allowed with customs duty (first 50g @ NPR 9,500/10g; next 50g @ NPR 10,500/10g).
+   - >100 grams raw gold is strictly prohibited and subject to seizure.
+3. **Mobile Phones (Smartphones)**:
+   - 1 phone 100% duty-free for general travelers.
+   - 2 phones 100% duty-free for Nepali returnees who worked abroad for 6+ consecutive months on a valid labor permit (श्रम स्वीकृति).
+   - Additional phones incur a flat ~NPR 10,000 customs duty and require MDMS registration.
+4. **Television (TV)**:
+   - 1 LED/Smart TV up to 32 inches is 100% duty-free for returnees with 12+ months foreign employment permit.
+   - Non-labor or TVs > 32 inches pay customs duty based on screen size (NPR 4,500 to 28,000).
+5. **Alcohol & Liquor**:
+   - Strictly 1 bottle (maximum 1,000ml / 1 Liter) duty-free.
+   - Carrying > 1 Liter in personal luggage is prohibited and confiscated at the arrival gate.
+6. **Cash Foreign Currency**:
+   - Up to USD 5,000 (or equivalent foreign currency) allowed without declaration. Amounts over USD 5,000 MUST be declared at the Red Channel.
+
+---
+
+## 5. Vehicle Bluebook Tax & Overdue Fines
+- Canonical URL: https://nepalicalc.com/vehicle
+- Jurisdiction: Province Transport Management Acts (Bagmati Province standards)
+
+### Motorcycle / Scooter Annual Road Tax:
+- Up to 125cc: NPR 3,000
+- 126cc to 160cc: NPR 4,500
+- 161cc to 250cc: NPR 6,000
+- 251cc to 400cc: NPR 11,000
+- 401cc and above: NPR 20,000
+
+### Four-Wheeler (Car / Jeep / Van) Annual Tax:
+- Up to 1000cc: NPR 22,000
+- 1001cc to 1500cc: NPR 25,000
+- 1501cc to 2000cc: NPR 33,000
+- 2001cc to 2500cc: NPR 37,000
+- 2501cc to 2900cc: NPR 45,000
+- 2901cc and above: NPR 65,000
+
+### Penalty Structure for Expired Bluebooks:
+- 0 to 90 days from expiry date: 0% penalty (Grace period)
+- 91 to 120 days: 5% fine on annual tax
+- 121 to 165 days: 10% fine on annual tax
+- 166 days to end of fiscal year (Ashadh end): 20% fine
+- 1 to 5 years overdue: 100% fine on past years plus 32% compound transport fine.
+
+---
+
+## Complete Directory of All 78+ Calculation Tools & Engines
+### Banking, Loans & Finance (15 Tools):
+- `/emi/banks`: Nepal Commercial Bank Loan & EMI Comparison Hub (RBB, SCB, NABIL, EBL, GBIME, NICA, etc.)
+- `/emi`: Bank Loan EMI & Visual Amortization Table (Home, Auto, Personal)
+- `/interest`: Bank Fixed Deposit (FD) Returns & Local Sayakada Byaj (सयकडा १, २, ३)
+- `/remittance-calculator`: Foreign Remittance In-Hand Net across 12 countries and channels
+- `/forex`: Live Nepal Rastra Bank (NRB) Official Foreign Exchange Reference Rates
+- `/village-interest`: Traditional Village Sahu Byaj (Sayakada Interest & Compound Saundh)
+- `/inflation`: Nepal CPI Inflation & Purchasing Power Depletion Calculator
+- `/number-to-words`: Nepali Devanagari & English Cheque Writing Number to Words Converter
+- `/loan-eligibility`: NRB 50% Debt-Service-to-Income (DSTI) Loan Eligibility Calculator
+- `/pension`: EPF, CIT & Civil Service Retirement Pension Corpus Calculator
+- `/fd-vs-debenture`: Commercial Bank Fixed Deposit vs 9-10.5% Listed Debenture Yield
+- `/foreign-employment`: Manpower Recruitment, Free Visa Free Ticket & Insurance Costs
+- `/cagr`: Compound Annual Growth Rate (CAGR) & Long-Term Investment Multiplier
+- `/nepal-home-loan`: First-time Residential Buyer Subsidized Home Loan & 70% LTV
+- `/savings-goal`: Monthly Required Savings & Wealth Accumulation Target Planner
+
+### Tax, Salary, Customs & Labour Law (11 Tools):
+- `/tax`: Official Nepal Salary Income Tax Calculator (FY 2083/84 IRD Slabs)
+- `/salary`: Net Take-Home Salary, In-Hand Monthly Pay & SSF Deduction
+- `/tds`: TDS & Withholding Tax Calculator (Section 88, 88Ka, 89)
+- `/depreciation`: Schedule 2 Tax Depreciation (Pool A 5%, B 25%, C 20%, D 15%, E)
+- `/corporate-tax`: Corporate Income Tax (20%, 25%, 30%) & Section 94 Advance Tax Instalments
+- `/vat`: 13% Value Added Tax (VAT) & Service Charge Forward/Reverse Calculator
+- `/customs/airport-baggage`: TIA Airport Customs Baggage Order (झिटिगुन्टा आदेश २०८३/८४)
+- `/how-much-gold-can-you-bring-to-nepal`: Airport Gold Baggage Allowance Guide (25g/50g Jewelry Rules)
+- `/customs`: Mobile Phone Customs & NTA MDMS White-Listing Fee Calculator
+- `/gratuity`: Labour Act 2074 Gratuity (8.33%) & SSF Cashout Calculator
+- `/overtime`: Overtime Hourly Pay Calculator (1.5x Basic Pay under Section 31)
+- `/rent-tax`: House Rent Tax (10% Local Municipality Ward Tax)
+
+### Real Estate & Land Measurement (4 Tools):
+- `/land`: Comprehensive Land Area & Price Valuation Converter (Ropani-Aana ⇄ Bigha-Kattha ⇄ Sq. Ft)
+- `/malpot`: Land Revenue Office (मालपोत) Deed Pass Fees, Female 25% Rebate & Capital Gains Tax
+- `/bato-katta`: Land Road Deduction (बाटो कट्टा) for 10ft, 13ft, 16ft, 20ft Plots
+- `/property-tax`: Annual Municipal Property Tax (घर जग्गा सम्पत्ति कर)
+
+### NEPSE Stocks, Shares, IPO & Mutual Funds (5 Tools):
+- `/sip`: SIP (Systematic Investment Plan) Mutual Fund Compounding Calculator (12% CAGR)
+- `/nepse`: NEPSE Share Trading Profit, Broker Commission (0.27%-0.40%), SEBON Fee & CGT
+- `/nepse-wacc`: CDS & Clearing MeroShare Weighted Average Cost of Capital (WACC)
+- `/right-share`: NEPSE Right Share & Bonus Share Adjusted Price & 5% Dividend Tax
+- `/ipo-allotment`: IPO Lottery Allocation Probability & Oversubscription Estimator
+
+### Vehicles & Transportation (3 Tools):
+- `/vehicle`: Annual Vehicle Bluebook Road Tax & 5% to 100% Late Fine Penalty Calculator
+- `/license-exam`: Official DoTM 500 Objective Question Driving License Exam Practice & Trial Fees
+- `/auto-loan`: Electric Vehicle (80% LTV) vs Petrol/Diesel (50% LTV) Car Loan & Fuel Cost Comparison
+
+### Education & Loksewa (11 Tools):
+- `/gpa`: SEE & +2 (NEB) Letter Grade to 4.0 GPA & Percentage Converter
+- `/bmi`: Body Mass Index (BMI) & Asian Population Ideal Weight Calculator
+- `/noc-tax`: Ministry of Education Abroad Study NOC & 3% Education Service Fee
+- `/typing-test`: Loksewa Official 5-Minute Typing Speed Test (Nepali & English WPM)
+- `/loksewa-age`: Lok Sewa Aayog Civil Service Age Ceiling (35 / 40 Years) Checker
+- `/university-attendance`: University 75% Mandatory Attendance & Safe Bunk Calculator
+- `/cgpa`: TU (IOE/IOM), KU, and PU Credit-Weighted Semester CGPA Converter
+- `/word-counter`: Bilingual English & Devanagari Syllable, Word & Reading Time Counter
+- `/base-converter`: Binary, Hexadecimal, Octal, Decimal & Roman Number Converter
+- `/scientific-calculator`: Advanced Trigonometric, Logarithmic & Prime Factorization Calculator
+- `/statistics-calculator`: Standard Deviation, Variance, Mean, Median & Quadratic Solver
+
+### Utilities, Daily Life & Construction (29 Tools):
+- `/house-construction`: NBC 105:2020 Residential House Construction Budget & Materials (Cement, Rebar, Bricks)
+- `/nea`: Nepal Electricity Authority (NEA) Telescopic Power Slabs & 2% Prompt Payment Rebate
+- `/age`: Bikram Sambat Exact Age in Years, Months, and Days with Astrological Milestones
+- `/date`: Bikram Sambat (BS 1970–2100) to Gregorian (AD) Date Converter
+- `/calendar`: Official Bikram Sambat 2083 Patro with Nepali Festivals, Tithi & Public Holidays
+- `/date/bulk`: Bulk Multi-Row Date Conversion (CSV/Excel)
+- `/traditional-units`: Traditional Nepali Weights & Measures (माना, पाथी, मुरी, धार्नी, पाउ, सेर)
+- `/gold`: Daily Federation Gold (24K/22K) & Silver Market Rates with Making Charges & Jarti
+- `/silver`: Live Silver Tola & Kilogram Rate Calculator
+- `/gold/history`: 100-Year Historical Gold Rate Trend in Nepal (1980–2083)
+- `/fuel`: Motorcycle & Car Trip Fuel Cost Calculator with NOC Petrol/Diesel Rates
+- `/preeti`: Fast Two-Way Traditional Preeti ⇄ Unicode Devanagari Converter
+- `/khanepani`: KUKL Pipe Meter Drinking Water Bill & Water Tanker Volume Cost
+- `/passport-fee`: Nepal Department of Passports Normal (NPR 5k) vs Urgent Fast-Track (NPR 12k/20k)
+- `/battery-backup`: Solar & Inverter Battery Backup Duration (Hours) Calculator
+- `/postal-shipping`: General Post Office (GPO) Domestic & International EMS Shipping Tariffs
+- `/krishi-fertilizer`: Urea, DAP & Potash Agricultural Crop Fertilizer Dosage Calculator
+- `/blood-donation`: Safe Blood Donation Interval (90/120 Days) & Donor Compatibility
+- `/qr-generator`: Fonepay & eSewa Universal EMVCo Merchant Payment QR Code Generator
+- `/momo-calorie`: Nepali Buff, Chicken & Veg Momo Calorie, Fat & Sodium Counter
+- `/citizenship-age`: District Administration 16-Year Citizenship Eligibility Date Calculator
+- `/pregnancy-due-date`: Bikram Sambat Naegele's Rule Pregnancy Due Date Estimator
+- `/solar-requirement`: Residential Rooftop Solar PV System & Net-Metering Sizing
+- `/paint-cost`: Wall Paint, Putty, Primer Coverage & M20 Concrete Volume Estimator
+- `/calorie-calculator`: Total Daily Energy Expenditure (TDEE), BMR & Daily Water Intake
+- `/discount-calculator`: Percentage Discount, Bill Splitter & 13% VAT Calculation
+- `/password-generator`: High-Entropy Cryptographically Secure Random Password Generator
+- `/unit-converter`: Universal Multi-Category Unit Converter (Metric, Imperial, Traditional)
+- `/body-fat`: US Navy Circumference-Based Body Fat Percentage Calculator
+- `/sleep-calculator`: 90-Minute Circadian Sleep Cycle & Optimum Bedtime Alarm Calculator
+- `/rashifal`: Daily Vedic Astrology Rashifal Predictions for All 12 Moon Signs
+
+### Legal Document Generators (Muluki Civil Code 2074):
+- `/document-generators`: Legal Document Generators Central Hub
+- `/rent-agreement`: Bilingual Printable House & Commercial Rent Agreement (करारनामा)
+- `/aoa`: Articles of Association (AOA) & MOA Template for OCR Company Registration
+- `/partnership-deed`: Partnership Agreement Deed (साझेदारी सम्झौता) for Ward / Cottage Office
+
+

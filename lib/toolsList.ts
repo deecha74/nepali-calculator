@@ -26,6 +26,32 @@ export const CALCULATOR_CATEGORIES = [
 
 export const CALCULATOR_TOOLS: CalculatorTool[] = [
   {
+    id: "bank-loan-comparison",
+    name: "Nepal Bank Loan & EMI Comparison",
+    nepaliName: "वाणिज्य बैंक कर्जा तथा किस्ता तुलना",
+    description: "Compare Home, EV, Auto, and Abroad Study loan rates across top Class A commercial banks (NABIL, GBIME, RBB, NICA, SCB) with base rates and 50% DSTI limits.",
+    category: "finance",
+    slug: "/emi/banks",
+    icon: "Building2",
+    color: "#003893",
+    bgLight: "#eff6ff",
+    badge: "Trending",
+    searchKeywords: ["bank loan comparison", "nabil bank home loan", "global ime car loan", "rbb loan interest rate", "nic asia ghar karja", "commercial bank base rate", "बैंक कर्जा", "सस्तो ऋण", "emi comparison"],
+  },
+  {
+    id: "airport-baggage-duty",
+    name: "Airport Baggage & Customs Duty (TIA)",
+    nepaliName: "विमानस्थल लगेज तथा भन्सार महसुल (झिटिगुन्टा)",
+    description: "Calculate Tribhuvan International Airport customs duty on gold jewelry, raw gold, extra iPhones, laptops, TVs, and alcohol under official Department of Customs rules.",
+    category: "tax",
+    slug: "/customs/airport-baggage",
+    icon: "Plane",
+    color: "#dc2626",
+    bgLight: "#fef2f2",
+    badge: "New",
+    searchKeywords: ["airport baggage duty", "tia customs", "how much gold can you bring to nepal", "iphone customs duty nepal airport", "nepal airport tv duty", "shram swikriti phone allowance", "झिटिगुन्टा", "विमानस्थल भन्सार", "airport customs"],
+  },
+  {
     id: "remittance-calculator",
     name: "Foreign Remittance In-Hand Net",
     nepaliName: "वैदेशिक रेमिट्यान्स हिसाब",
