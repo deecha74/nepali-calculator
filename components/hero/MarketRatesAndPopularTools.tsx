@@ -229,7 +229,7 @@ const QUICK_POPULAR_TOOLS: QuickToolItem[] = [
     nameNep: "लाइसेन्स लिखित परीक्षा",
     subEng: "500+ Official MCQs",
     subNep: "वर्ग 'क' र 'ख' मोडल प्रश्न",
-    slug: "/license-exam",
+    slug: "/license",
     icon: Award,
     color: "#8b5cf6",
     bgLight: "#f5f3ff",

@@ -158,7 +158,7 @@ export default function AllToolsDirectoryPage() {
         { label: 'Vehicle Bluebook Tax & Fines', href: '/vehicle', icon: <Car size={13} color="#ea580c" /> },
         { label: 'EV vs Petrol Auto Loan EMI', href: '/auto-loan', icon: <Calculator size={13} color="#ea580c" /> },
         { label: 'Fuel Mileage & Trip Splitter', href: '/fuel', icon: <Fuel size={13} color="#ea580c" /> },
-        { label: 'Driving License Written Exam', href: '/license-exam', icon: <ShieldCheck size={13} color="#ea580c" /> },
+        { label: 'Driving License Written Exam', href: '/license', icon: <ShieldCheck size={13} color="#ea580c" /> },
         { label: 'NEA Electricity Bill Calculator', href: '/nea', icon: <Zap size={13} color="#ea580c" /> },
         { label: 'Home Solar Panel & Net Metering', href: '/solar-requirement', icon: <Sparkles size={13} color="#ea580c" /> },
         { label: 'Inverter & Battery Backup Hours', href: '/battery-backup', icon: <BatteryCharging size={13} color="#ea580c" /> },

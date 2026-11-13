@@ -18,14 +18,16 @@ export interface Question {
   vehicleCategory?: 'both' | 'bike' | 'car';
 }
 
+import { EXTRA_DOTM_QUESTIONS } from './dotm500ExtraQuestions';
+
 export const DOTM_CATEGORIES = [
-  { id: 'all', nameNep: 'सबै प्रश्नहरू (All)', nameEng: 'All Questions', count: 0 },
-  { id: 'signs', nameNep: 'ट्राफिक संकेत (Road Signs)', nameEng: 'Road Signs & Markings', icon: '🛑' },
-  { id: 'rules', nameNep: 'ऐन तथा नियम (Traffic Laws)', nameEng: 'Rules & Penalties', icon: '📜' },
-  { id: 'driving', nameNep: 'सवारी सञ्चालन (Driving Knowledge)', nameEng: 'Vehicle Operation', icon: '🚗' },
-  { id: 'technical', nameNep: 'यान्त्रिक ज्ञान (Mechanical)', nameEng: 'Vehicle Mechanics', icon: '🔧' },
-  { id: 'accidents', nameNep: 'दुर्घटना र सुरक्षा (Accidents & Safety)', nameEng: 'Accident & First Aid', icon: '🚑' },
-  { id: 'environment', nameNep: 'वातावरण प्रदूषण (Pollution)', nameEng: 'Environmental Pollution', icon: '🌱' },
+  { id: 'all', nameNep: 'सबै प्रश्नहरू (All)', nameEng: 'All Questions', count: 500 },
+  { id: 'signs', nameNep: 'ट्राफिक संकेत (Road Signs)', nameEng: 'Road Signs & Markings', icon: '🛑', count: 80 },
+  { id: 'rules', nameNep: 'ऐन तथा नियम (Traffic Laws)', nameEng: 'Rules & Penalties', icon: '📜', count: 100 },
+  { id: 'driving', nameNep: 'सवारी सञ्चालन (Driving Knowledge)', nameEng: 'Vehicle Operation', icon: '🚗', count: 100 },
+  { id: 'technical', nameNep: 'यान्त्रिक ज्ञान (Mechanical)', nameEng: 'Vehicle Mechanics', icon: '🔧', count: 80 },
+  { id: 'accidents', nameNep: 'दुर्घटना र सुरक्षा (Accidents & Safety)', nameEng: 'Accident & First Aid', icon: '🚑', count: 80 },
+  { id: 'environment', nameNep: 'वातावरण प्रदूषण (Pollution)', nameEng: 'Environmental Pollution', icon: '🌱', count: 60 },
 ];
 
 export const ALL_DOTM_QUESTIONS: Question[] = [
@@ -1123,7 +1125,8 @@ export const ALL_DOTM_QUESTIONS: Question[] = [
     correctIndex: 0,
     explanationNep: "त्रिकोणात्मक सचेतक चिन्हले चालकलाई गति कम गरी बालबालिका प्रति सतर्क रहन चेतावनी दिन्छ।",
     explanationEng: "A triangular cautionary sign warns motorists to scrub speed and anticipate kids darting onto roads."
-  }
+  },
+  ...EXTRA_DOTM_QUESTIONS
 ];
 
 // Helper to get random exam questions

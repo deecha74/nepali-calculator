@@ -145,6 +145,16 @@ const nextConfig: NextConfig = {
         destination: "/gold/1-lal-gold-price-in-nepal-today",
         permanent: true,
       },
+      {
+        source: "/license-exam",
+        destination: "/license",
+        permanent: true,
+      },
+      {
+        source: "/license-exam/:path*",
+        destination: "/license/:path*",
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -285,7 +285,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/license-exam" className="footer-link" style={{ color: '#0284c7', fontWeight: 700 }}>
+                <Link href="/license" className="footer-link" style={{ color: '#0284c7', fontWeight: 700 }}>
                   ✦ {t('Driving License Written Exam', 'सवारी चालक लिखित परीक्षा क्विज')}
                 </Link>
               </li>

@@ -507,7 +507,7 @@ export const ALL_SEARCHABLE_TOOLS: SearchToolItem[] = [
   {
     name: 'Driving License Written Exam (DOTM Quiz)',
     nepName: 'सवारी चालक लिखित परीक्षा (यातायात ५००+ क्विज)',
-    href: '/license-exam',
+    href: '/license',
     category: 'Vehicles & Power',
     nepCategory: 'सवारी तथा बिल',
     keywords: ['license exam', 'dotm quiz', 'driving test', 'likhit pariksha', 'कार बाइक लिखित'],

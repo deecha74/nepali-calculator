@@ -15,6 +15,7 @@ import { PROGRAMMATIC_NEA_BILLS } from '@/lib/rates/programmaticNea';
 import { PROGRAMMATIC_TDS_SCENARIOS } from '@/lib/rates/programmaticTds';
 import { PROGRAMMATIC_MALPOT_SCENARIOS } from '@/lib/rates/programmaticMalpot';
 import { PROGRAMMATIC_BAGGAGE_ITEMS } from '@/lib/rates/programmaticBaggage';
+import { PROGRAMMATIC_LIKHIT_SCENARIOS } from '@/lib/rates/programmaticLikhit';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
 const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
@@ -68,7 +69,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/documents',
       '/rashifal',
       '/calendar',
-      '/license-exam',
+      '/license',
+      '/license/mock-test',
+      '/license/questions',
+      '/license/traffic-signs',
+      '/license/eye-test',
+      '/license/trial',
+      '/license/result',
+      '/likhit-result',
+      '/eye-test',
+      '/traffic-signs',
       '/passport-fee',
       '/noc-tax',
       '/rent-tax',
@@ -241,6 +251,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticLikhitRoutes = PROGRAMMATIC_LIKHIT_SCENARIOS.map((scenario) => ({
+    url: `${baseUrl}/likhit-result/${scenario.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -258,6 +275,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticTdsRoutes,
     ...programmaticMalpotRoutes,
     ...programmaticBaggageRoutes,
+    ...programmaticLikhitRoutes,
     ...blogRoutes,
   ];
 }

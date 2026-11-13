@@ -41,7 +41,8 @@ import {
   Keyboard,
   Package,
   Home as HomeIcon,
-  BatteryCharging
+  BatteryCharging,
+  CheckCircle2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LiveGoldTicker } from '@/components/LiveGoldTicker';
@@ -197,7 +198,7 @@ export function Navbar() {
       dropdownLeft: '-260px',
       subtitle: t('License Exam, Passport, Patro, Typing & Citizen Tools', 'लाइसेन्स परीक्षा, राहदानी, पात्रो र नागरिक सेवा'),
       col1: [
-        { name: t('Driving License Written Exam', 'सवारी चालक लिखित परीक्षा'), href: '/license-exam', desc: 'Official DOTM mock quiz & random 20 test', badge: 'DOTM', icon: <Car size={15} color="#2563eb" /> },
+        { name: t('Driving License (Likhit & Trial)', 'सवारी चालक अनुमतिपत्र (लाइसेन्स)'), href: '/license', desc: t('Mock test, eye test, traffic signs & result', 'नमुना परीक्षा, आँखा जाँच, चिन्ह र नतिजा'), badge: 'DOTM', icon: <Car size={15} color="#2563eb" /> },
         { name: t('MRP & E-Passport Fee', 'ई-राहदानी (Passport) दस्तुर'), href: '/passport-fee', desc: 'Normal, urgent & express passport fees', icon: <BookOpen size={15} color="#003893" /> },
         { name: t('Detailed Nepali Patro 2083', 'नेपाली पात्रो (क्यालेन्डर)'), href: '/calendar', desc: 'Festivals, tithi, holidays & panchang', badge: 'Patro', icon: <Calendar size={15} color="#c8102e" /> },
         { name: t('Date Converter (BS ⇄ AD)', 'मिति रूपान्तरण (BS ⇄ AD)'), href: '/date', desc: 'Bikram Sambat to Gregorian dates', icon: <Calendar size={15} color="#9333ea" /> },

@@ -76,7 +76,7 @@ export const citizenServicesPosts: BlogPost[] = [
     },
     toolLink: {
       title: 'Practice 20-Question Driving License Mock Quiz',
-      href: '/license-exam',
+      href: '/license',
       iconText: 'GraduationCap',
     },
     keywords: ['driving license likhit exam nepal', 'dotm quiz test nepal', 'bike license exam nepal', 'dotm online exam'],

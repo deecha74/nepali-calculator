@@ -520,7 +520,7 @@ export const CALCULATOR_TOOLS: CalculatorTool[] = [
     nepaliName: "सवारी चालक लिखित परीक्षा",
     description: "Practice official 100-mark DOTM computer written exam for motorcycle (Cat A) and car (Cat B) with instant pass/fail score.",
     category: "vehicle",
-    slug: "/license-exam",
+    slug: "/license",
     icon: "Car",
     color: "#2563eb",
     bgLight: "#dbeafe",
