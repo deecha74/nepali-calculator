@@ -771,39 +771,76 @@ body.detail-page main > div > div > .white-card.hover-lift:hover {
   transform: translateY(1px);
 }
 
-/* Neumorphic Segmented Control Pill Track */
+/* Butter-Smooth Segmented Control Track */
 .segmented-control {
   display: inline-flex;
   align-items: center;
-  background: #f4efe4;
-  border-radius: var(--radius-full);
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
   padding: 3px;
-  box-shadow: inset 2px 2px 5px rgba(44, 34, 20, 0.1), inset -2px -2px 5px rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  gap: 2px;
+  gap: 3px;
+  position: relative;
+  user-select: none;
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .segmented-btn {
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
+  padding: 7px 15px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   border: none;
   background: transparent;
-  color: #6e665d;
+  color: #64748b;
   cursor: pointer;
   white-space: nowrap !important;
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.12s ease;
+  will-change: transform, background-color, box-shadow;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.25;
 }
 
-.segmented-btn:hover {
-  color: #0b2b5c;
+.segmented-btn:hover:not(.active) {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .segmented-btn.active {
   background: #ffffff;
-  color: #0b2b5c;
-  box-shadow: 2px 2px 6px rgba(44, 34, 20, 0.1), -2px -2px 6px rgba(255, 255, 255, 0.95), inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+  color: #003893;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.segmented-btn:active {
+  transform: scale(0.978) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Butter-Smooth Tab Content Transitions */
+@keyframes butterSmoothFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel-smooth,
+.tab-content-enter,
+.tab-content-smooth {
+  animation: butterSmoothFadeSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
 }
 
 /* Neumorphic Quick Calculator Preset Chips */
@@ -933,6 +970,24 @@ body.detail-page main > div > div > .white-card.hover-lift:hover {
   box-shadow: 0 0 0 3px rgba(0, 56, 147, 0.12);
 }
 
+.input-with-prefix,
+.input-with-prefix-wrap input,
+.has-prefix,
+input.text-input.input-with-prefix {
+  padding-left: 42px !important;
+}
+
+.prefix-symbol {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  color: #64748b;
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Lightweight Sleek Sliders */
 input[type="range"].range-slider,
 input[type="range"] {
@@ -1012,15 +1067,89 @@ input[type="range"] {
     font-size: 12.5px !important;
   }
   .text-input, .select-input {
-    padding: 8px 10px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
     height: 40px !important;
     font-size: 13.5px !important;
+  }
+  .text-input:not(.input-with-prefix):not(.has-prefix),
+  .select-input:not(.has-prefix) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .input-with-prefix,
+  .input-with-prefix-wrap input,
+  .has-prefix,
+  .select-input.has-prefix,
+  input.text-input.input-with-prefix {
+    padding-left: 42px !important;
   }
   table {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile Above-the-Fold Instant Result & Sticky Bar */
+  .mobile-instant-pill {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-sticky-result-bar {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Default state on screens > 768px */
+.mobile-instant-pill {
+  display: none !important;
+}
+
+.mobile-sticky-result-bar {
+  display: none !important;
+}
+
+/* Responsive Table / Card Breakdown */
+.desktop-only-table {
+  display: block;
+}
+
+.mobile-only-slabs {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .desktop-only-table {
+    display: none !important;
+  }
+  .mobile-only-slabs {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
@@ -1182,32 +1311,6 @@ input[type="range"] {
   transform: scale(1.15);
 }
 
-/* Segmented Buttons */
-.segmented-control {
-  display: inline-flex;
-  background: #f3f4f6;
-  padding: 4px;
-  border-radius: var(--radius-md);
-}
-
-.segmented-btn {
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 600;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.segmented-btn.active {
-  background: #ffffff;
-  color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
-}
-
 /* Tactile Button Feedback */
 button {
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1226,7 +1329,6 @@ button:active,
 .btn-amber-gold:active,
 .btn-dark-pill:active,
 .filter-pill:active,
-.segmented-btn:active,
 .btn-tactile:active,
 .hover-lift:active,
 .neu-btn:active,
@@ -3008,31 +3110,200 @@ html, body {
   border: 1px solid #fde68a;
 }
 
+/* ========================================================
+   HERO QUICK CALC CARD & WIDGET TABS (BUTTER-SMOOTH)
+   ======================================================== */
+
+.hero-quick-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 16px;
+  gap: 2px;
+}
+
 .hero-quick-tab-btn {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 6px 2px 10px;
+  gap: 5px;
+  padding: 8px 4px 12px;
   border: none;
   background-color: transparent;
-  font-size: clamp(10.5px, 2.7vw, 12px);
+  border-radius: 10px 10px 0 0;
+  font-size: clamp(11px, 2.7vw, 12.5px);
+  font-weight: 600;
+  color: #64748b;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  user-select: none;
+  outline: none;
 }
 
+.hero-quick-tab-btn:hover {
+  color: #0b2b5c;
+  background-color: #f1f5f9;
+}
+
+.hero-quick-tab-btn:hover svg {
+  color: #003893 !important;
+  transform: translateY(-1.5px) scale(1.08);
+}
+
+.hero-quick-tab-btn svg {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease;
+}
+
+.hero-quick-tab-btn.active {
+  color: #003893;
+  font-weight: 800;
+  background-color: rgba(0, 56, 147, 0.04);
+}
+
+.hero-quick-tab-btn.active svg {
+  color: #003893 !important;
+  transform: translateY(-1px);
+}
+
+/* Fluid Animated Indicator Bar with Pill Ends & Subtle Glow */
+.hero-quick-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  border-radius: 9999px;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.hero-quick-tab-btn:hover:not(.active)::after {
+  background-color: #93c5fd;
+  transform: scaleX(0.5);
+  opacity: 0.7;
+}
+
+.hero-quick-tab-btn.active::after {
+  background-color: #003893;
+  transform: scaleX(1);
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(0, 56, 147, 0.35);
+}
+
+/* Preset Salary & Land Chips */
 .hero-preset-chip {
   flex: 1;
   min-width: 0;
-  padding: 6px 2px;
+  padding: 6px 4px;
   border-radius: 8px;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 11.5px;
+  font-weight: 750;
   cursor: pointer;
   text-align: center;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #64748b;
+}
+
+.hero-preset-chip:hover:not(.active) {
+  border-color: #93c5fd !important;
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.hero-preset-chip.active {
+  border: 1.5px solid #003893 !important;
+  background-color: #eff6ff !important;
+  color: #003893 !important;
+  font-weight: 850;
+  box-shadow: 0 2px 6px rgba(0, 56, 147, 0.15);
+}
+
+.hero-preset-chip:active {
+  transform: scale(0.97);
+}
+
+/* Top Switcher Button (Quick Tools vs Monthly Patro) */
+.hero-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 750;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+  color: #64748b;
+  background-color: transparent;
+}
+
+.hero-switcher-btn:hover:not(.active) {
+  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-0.5px);
+}
+
+.hero-switcher-btn.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.hero-switcher-btn:active {
+  transform: scale(0.97);
+}
+
+/* Capsule Pill Toggle (Single / Married, Hilly / Terai) */
+.hero-pill-toggle {
+  display: inline-flex;
+  background-color: #f1f5f9;
+  border-radius: 9999px;
+  padding: 2.5px;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.hero-pill-btn {
+  border: none;
+  padding: 3.5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: transparent;
+  color: #64748b;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hero-pill-btn:hover:not(.active) {
+  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-pill-btn.active {
+  background-color: #003893;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 56, 147, 0.28);
+}
+
+.hero-pill-btn:active {
+  transform: scale(0.96);
 }
 
 @media (max-width: 640px) {

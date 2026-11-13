@@ -95,9 +95,17 @@ export function AlgebraMatrixStatisticsSolver({ defaultMode = 'quadratic' }: { d
               <input type="number" value={c} onChange={(e) => setC(parseFloat(e.target.value) || 0)} className="text-input" style={{ width: '100%' }} />
             </div>
           </div>
-          <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700 }}>Discriminant (Δ = b² - 4ac): {quadResult.discriminant}</div>
-            <div style={{ fontSize: '26px', fontWeight: 900, color: '#38bdf8', marginTop: '6px' }}>{quadResult.roots}</div>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Discriminant (Δ = b² - 4ac): {quadResult.discriminant}</div>
+            <div style={{ fontSize: '28px', fontWeight: 900, color: '#003893', marginTop: '6px', fontFamily: 'var(--font-mono)' }}>{quadResult.roots}</div>
           </div>
         </div>
       ) : (

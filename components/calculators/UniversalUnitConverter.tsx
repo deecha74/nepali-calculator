@@ -157,11 +157,20 @@ export function UniversalUnitConverter() {
         </div>
       </div>
 
-      <div style={{ marginTop: '22px', padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-        <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+      <div
+        style={{
+          marginTop: '22px',
+          padding: '24px',
+          borderRadius: '16px',
+          backgroundColor: '#ffffff',
+          border: '2px solid #003893',
+          boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+        }}
+      >
+        <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
           {t('Converted Output', 'रूपान्तरित नतिजा')}
         </div>
-        <div style={{ fontSize: '32px', fontWeight: 900, color: '#2dd4bf', marginTop: '4px' }}>
+        <div style={{ fontSize: '36px', fontWeight: 900, color: '#003893', marginTop: '6px', fontFamily: 'var(--font-mono)' }}>
           {Number(result.converted.toFixed(6))}
         </div>
       </div>

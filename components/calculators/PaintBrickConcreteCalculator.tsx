@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Home, Copy, Check } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 export function PaintBrickConcreteCalculator() {
   const { t } = useLanguage();
@@ -65,6 +66,7 @@ export function PaintBrickConcreteCalculator() {
       brickCostNpr,
       mortarCementBags,
       wetVolumeCft,
+      dryVolumeCft: Math.round(dryVolumeCft),
       cementBags50Kg,
       sandCft,
       aggregateCft,
@@ -127,8 +129,52 @@ Calculated on NepalCalc.com/paint-cost`;
         </button>
       </div>
 
+      {/* Mobile-only instant above-the-fold result */}
+      <MobileInstantResult
+        primaryLabel={
+          activeTab === 'paint'
+            ? t('Estimated Paint Cost', 'अनुमानित रङरोगन खर्च')
+            : activeTab === 'brick'
+            ? t('Total Brick Cost', 'इँटाको कुल लागत')
+            : t('Cement Bags (50kg)', 'सिमेन्ट बोरा संख्या')
+        }
+        primaryValue={
+          activeTab === 'paint'
+            ? `रु ${calculation.totalPaintCostNpr.toLocaleString('en-IN')}`
+            : activeTab === 'brick'
+            ? `रु ${calculation.brickCostNpr.toLocaleString('en-IN')}`
+            : `${calculation.cementBags50Kg} ${t('Bags', 'बोरा')}`
+        }
+        primarySubtext={
+          activeTab === 'paint'
+            ? `${calculation.paintLitersNeeded} ${t('Liters Emulsion Paint', 'लिटर इमल्सन रङ')}`
+            : activeTab === 'brick'
+            ? `${calculation.totalBricksWithWastage.toLocaleString('en-IN')} ${t('Bricks (+5% buffer)', 'इँटा (५% टुटफुट सहित)')}`
+            : `${calculation.sandCft} CFT ${t('Sand', 'बालुवा')} • ${calculation.aggregateCft} CFT ${t('Gitti', 'गिट्टी')}`
+        }
+        secondaryLabel={
+          activeTab === 'paint'
+            ? t('Primer', 'प्राइमर')
+            : activeTab === 'brick'
+            ? t('Mortar Bags', 'मसला सिमेन्ट')
+            : t('Dry Volume', 'सुख्खा आयतन')
+        }
+        secondaryValue={
+          activeTab === 'paint'
+            ? `${calculation.primerLitersNeeded}L`
+            : activeTab === 'brick'
+            ? `${calculation.mortarCementBags} ${t('Bags', 'बोरा')}`
+            : `${Math.round(calculation.dryVolumeCft)} CFT`
+        }
+        badge={activeTab === 'paint' ? 'Paint & Putty' : activeTab === 'brick' ? 'Brick Masonry' : 'M20 Concrete'}
+        accentColor="blue"
+        onCopy={handleCopy}
+        copied={copied}
+        targetDetailsId="materials-breakdown-details"
+      />
+
       {/* Mode Tabs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '24px' }}>
+      <div className="segmented-control" style={{ width: '100%', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px', marginBottom: '24px', padding: '4px' }}>
         {[
           { id: 'paint', label: t('🎨 Paint & Putty', '🎨 रङ तथा पुटि') },
           { id: 'brick', label: t('🧱 Wall Bricks', '🧱 गारोको इँटा') },
@@ -137,16 +183,12 @@ Calculated on NepalCalc.com/paint-cost`;
           <button
             key={tab.id}
             type="button"
+            className={`segmented-btn ${activeTab === tab.id ? 'active' : ''}`}
             onClick={() => setActiveTab(tab.id as 'paint' | 'brick' | 'concrete')}
             style={{
-              padding: '11px',
-              borderRadius: '10px',
-              fontWeight: 700,
+              padding: '10px 8px',
               fontSize: '13px',
-              border: activeTab === tab.id ? '2px solid #2563eb' : '1px solid var(--border-subtle)',
-              background: activeTab === tab.id ? '#eff6ff' : '#f8fafc',
-              color: activeTab === tab.id ? '#1e40af' : '#475569',
-              cursor: 'pointer',
+              fontWeight: 700,
             }}
           >
             {tab.label}
@@ -155,7 +197,7 @@ Calculated on NepalCalc.com/paint-cost`;
       </div>
 
       {activeTab === 'paint' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <div key="paint" className="tab-panel-smooth" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           <div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
@@ -198,25 +240,33 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {t('Estimated Paint, Primer & Putty Cost', 'अनुमानित रङ, प्राइमर तथा पुटि खर्च')}
             </div>
-            <div style={{ fontSize: '30px', fontWeight: 900, color: '#38bdf8', margin: '6px 0 12px' }}>
-              NPR {calculation.totalPaintCostNpr.toLocaleString('en-IN')}
+            <div style={{ fontSize: '34px', fontWeight: 900, color: '#003893', margin: '6px 0 16px', fontFamily: 'var(--font-mono)' }}>
+              रु {calculation.totalPaintCostNpr.toLocaleString('en-IN')}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: '#475569', borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Topcoat Emulsion Paint:', 'मुख्य इमल्सन रङ:')}</span>
-                <strong>{calculation.paintLitersNeeded} {t('Liters', 'लिटर')}</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.paintLitersNeeded} {t('Liters', 'लिटर')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Wall Primer (1 Coat):', 'वाल प्राइमर (१ कोट):')}</span>
-                <strong>{calculation.primerLitersNeeded} {t('Liters', 'लिटर')}</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.primerLitersNeeded} {t('Liters', 'लिटर')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Wall Putty (2 Coats):', 'वाल पुटि (२ कोट):')}</span>
-                <strong>{calculation.puttyKgNeeded} KG</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.puttyKgNeeded} KG</strong>
               </div>
             </div>
           </div>
@@ -224,7 +274,7 @@ Calculated on NepalCalc.com/paint-cost`;
       )}
 
       {activeTab === 'brick' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <div key="brick" className="tab-panel-smooth" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           <div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
               <div>
@@ -280,21 +330,30 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {t('Total Bricks Required (5% Wastage Buffer)', 'कुल इँटा संख्या (५% टुटफुट सहित)')}
             </div>
-            <div style={{ fontSize: '30px', fontWeight: 900, color: '#fbbf24', margin: '6px 0 12px' }}>
-              {calculation.totalBricksWithWastage.toLocaleString('en-IN')} {t('Bricks', 'वटा इँटा')}
+            <div style={{ fontSize: '34px', fontWeight: 900, color: '#003893', margin: '6px 0 16px', fontFamily: 'var(--font-mono)' }}>
+              {calculation.totalBricksWithWastage.toLocaleString('en-IN')}{' '}
+              <span style={{ fontSize: '14px', fontWeight: 500, color: '#64748b' }}>{t('Bricks', 'वटा इँटा')}</span>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: '#475569', borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Total Brick Cost:', 'कुल इँटा खर्च:')}</span>
-                <strong>NPR {calculation.brickCostNpr.toLocaleString('en-IN')}</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>रु {calculation.brickCostNpr.toLocaleString('en-IN')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Mortar Cement (1:5):', 'गारोको सिमेन्ट (१:५):')}</span>
-                <strong>{calculation.mortarCementBags} {t('Bags (50kg)', 'बोरा (५० केजी)')}</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.mortarCementBags} {t('Bags (50kg)', 'बोरा (५० केजी)')}</strong>
               </div>
             </div>
           </div>
@@ -302,7 +361,7 @@ Calculated on NepalCalc.com/paint-cost`;
       )}
 
       {activeTab === 'concrete' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <div key="concrete" className="tab-panel-smooth" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           <div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
@@ -345,21 +404,30 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {t(`${mixGrade} Concrete Materials (${calculation.wetVolumeCft.toFixed(0)} CFT Wet Volume)`, `${mixGrade} ढलान सामग्री (${calculation.wetVolumeCft.toFixed(0)} घनफिट आयतन)`)}
             </div>
-            <div style={{ fontSize: '30px', fontWeight: 900, color: '#34d399', margin: '6px 0 12px' }}>
-              {calculation.cementBags50Kg} {t('Bags Cement', 'बोरा सिमेन्ट')}
+            <div style={{ fontSize: '34px', fontWeight: 900, color: '#003893', margin: '6px 0 16px', fontFamily: 'var(--font-mono)' }}>
+              {calculation.cementBags50Kg}{' '}
+              <span style={{ fontSize: '14px', fontWeight: 500, color: '#64748b' }}>{t('Bags Cement', 'बोरा सिमेन्ट')}</span>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: '#475569', borderTop: '1px solid #e2e8f0', paddingTop: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('River Sand:', 'बालुवा:')}</span>
-                <strong>{calculation.sandCft} CFT (~{(calculation.sandCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.sandCft} CFT (~{(calculation.sandCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>{t('Crushed Stone Aggregate:', 'गिट्टी:')}</span>
-                <strong>{calculation.aggregateCft} CFT (~{(calculation.aggregateCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
+                <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>{calculation.aggregateCft} CFT (~{(calculation.aggregateCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
               </div>
             </div>
           </div>

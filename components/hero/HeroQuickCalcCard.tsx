@@ -282,70 +282,42 @@ export function HeroQuickCalcCard({
         </div>
       )}
 
-      {/* 4 Multi-Tool Tabs matching image */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '2px',
-          borderBottom: '1.5px solid #f1f5f9',
-          marginBottom: '16px',
-        }}
-      >
+      {/* 4 Multi-Tool Tabs with butter-smooth hover and active indicator */}
+      <div className="hero-quick-tabs-nav">
         <button
           type="button"
           onClick={() => setActiveTab('tax')}
-          className="hero-quick-tab-btn"
-          style={{
-            borderBottom: activeTab === 'tax' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            color: activeTab === 'tax' ? '#1d4ed8' : '#64748b',
-            fontWeight: activeTab === 'tax' ? 800 : 600,
-          }}
+          className={`hero-quick-tab-btn ${activeTab === 'tax' ? 'active' : ''}`}
         >
-          <Users size={15} color={activeTab === 'tax' ? '#1d4ed8' : '#64748b'} />
-          <span>{t('Salary Tax', 'Salary Tax')}</span>
+          <Users size={16} />
+          <span>{t('Salary Tax', 'तलब कर')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('land')}
-          className="hero-quick-tab-btn"
-          style={{
-            borderBottom: activeTab === 'land' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            color: activeTab === 'land' ? '#1d4ed8' : '#64748b',
-            fontWeight: activeTab === 'land' ? 800 : 600,
-          }}
+          className={`hero-quick-tab-btn ${activeTab === 'land' ? 'active' : ''}`}
         >
-          <Home size={15} color={activeTab === 'land' ? '#1d4ed8' : '#64748b'} />
-          <span>{t('Land', 'Land')}</span>
+          <Home size={16} />
+          <span>{t('Land', 'जग्गा नाप')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('emi')}
-          className="hero-quick-tab-btn"
-          style={{
-            borderBottom: activeTab === 'emi' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            color: activeTab === 'emi' ? '#1d4ed8' : '#64748b',
-            fontWeight: activeTab === 'emi' ? 800 : 600,
-          }}
+          className={`hero-quick-tab-btn ${activeTab === 'emi' ? 'active' : ''}`}
         >
-          <CreditCard size={15} color={activeTab === 'emi' ? '#1d4ed8' : '#64748b'} />
-          <span>{t('Loan EMI', 'Loan EMI')}</span>
+          <CreditCard size={16} />
+          <span>{t('Loan EMI', 'ऋण किस्ता')}</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('date')}
-          className="hero-quick-tab-btn"
-          style={{
-            borderBottom: activeTab === 'date' ? '2.5px solid #1d4ed8' : '2.5px solid transparent',
-            color: activeTab === 'date' ? '#1d4ed8' : '#64748b',
-            fontWeight: activeTab === 'date' ? 800 : 600,
-          }}
+          className={`hero-quick-tab-btn ${activeTab === 'date' ? 'active' : ''}`}
         >
-          <Clock size={15} color={activeTab === 'date' ? '#1d4ed8' : '#64748b'} />
-          <span>{t('Due & Age', 'Due & Age')}</span>
+          <Clock size={16} />
+          <span>{t('Due & Age', 'मिति र उमेर')}</span>
         </button>
       </div>
 
@@ -354,56 +326,26 @@ export function HeroQuickCalcCard({
 
         {/* 1. SALARY TAX TAB */}
         {activeTab === 'tax' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div key="tax" className="tab-panel-smooth" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {/* Header row: Monthly Gross Salary + Capsule Switcher */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
               <label style={{ fontSize: 'clamp(13px, 3.4vw, 14.5px)', fontWeight: 800, color: '#0f172a' }}>
-                {t('Monthly Gross Salary', 'Monthly Gross Salary')}
+                {t('Monthly Gross Salary', 'मासिक कुल तलब')}
               </label>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  backgroundColor: '#f1f5f9',
-                  borderRadius: '9999px',
-                  padding: '2px',
-                  flexShrink: 0,
-                }}
-              >
+              <div className="hero-pill-toggle">
                 <button
                   type="button"
                   onClick={() => setTaxMarital('single')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 12px',
-                    borderRadius: '9999px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: taxMarital === 'single' ? '#1d4ed8' : 'transparent',
-                    color: taxMarital === 'single' ? '#ffffff' : '#64748b',
-                    boxShadow: taxMarital === 'single' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-                    transition: 'all 0.15s ease',
-                  }}
+                  className={`hero-pill-btn ${taxMarital === 'single' ? 'active' : ''}`}
                 >
-                  Single
+                  {t('Single', 'अविवाहित')}
                 </button>
                 <button
                   type="button"
                   onClick={() => setTaxMarital('married')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 12px',
-                    borderRadius: '9999px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: taxMarital === 'married' ? '#1d4ed8' : 'transparent',
-                    color: taxMarital === 'married' ? '#ffffff' : '#64748b',
-                    boxShadow: taxMarital === 'married' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-                    transition: 'all 0.15s ease',
-                  }}
+                  className={`hero-pill-btn ${taxMarital === 'married' ? 'active' : ''}`}
                 >
-                  Married
+                  {t('Married', 'विवाहित')}
                 </button>
               </div>
             </div>
@@ -439,7 +381,7 @@ export function HeroQuickCalcCard({
               />
             </div>
 
-            {/* Quick Preset Salary Chips matching image */}
+            {/* Quick Preset Salary Chips */}
             <div style={{ display: 'flex', gap: '5px' }}>
               {[
                 { label: '30k', val: 30000 },
@@ -454,12 +396,7 @@ export function HeroQuickCalcCard({
                     key={chip.label}
                     type="button"
                     onClick={() => setMonthlySalary(chip.val)}
-                    className="hero-preset-chip"
-                    style={{
-                      border: isSelected ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
-                      backgroundColor: isSelected ? '#eff6ff' : '#f8fafc',
-                      color: isSelected ? '#1d4ed8' : '#64748b',
-                    }}
+                    className={`hero-preset-chip ${isSelected ? 'active' : ''}`}
                   >
                     {chip.label}
                   </button>
@@ -467,7 +404,7 @@ export function HeroQuickCalcCard({
               })}
             </div>
 
-            {/* Clean Result Layout matching image */}
+            {/* Clean Result Layout */}
             <div
               style={{
                 backgroundColor: '#f8fafc',
@@ -482,7 +419,7 @@ export function HeroQuickCalcCard({
               {/* Row 1: Net In-Hand left, Tax right */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
                 <span style={{ fontSize: '12px', color: '#64748b', fontWeight: 600 }}>
-                  {t('Net In-Hand (Monthly)', 'Net In-Hand (Monthly)')}
+                  {t('Net In-Hand (Monthly)', 'मासिक हात पर्ने खुद तलब')}
                 </span>
                 <span
                   style={{
@@ -496,7 +433,7 @@ export function HeroQuickCalcCard({
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  Tax: NPR {taxCalculation.monthlyTax.toLocaleString('en-IN')}/mo ({taxCalculation.effectiveRate}%)
+                  {t('Tax: NPR', 'कर: रू')} {taxCalculation.monthlyTax.toLocaleString('en-IN')}/{t('mo', 'महिना')} ({taxCalculation.effectiveRate}%)
                 </span>
               </div>
 
@@ -508,15 +445,15 @@ export function HeroQuickCalcCard({
               {/* Row 3: Annual Gross left, SSF tax info right */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px 10px', fontSize: '11.5px', borderTop: '1px solid #e2e8f0', paddingTop: '6px' }}>
                 <span style={{ color: '#64748b', whiteSpace: 'nowrap' }}>
-                  Annual: NPR {(monthlySalary * 12).toLocaleString('en-IN')}
+                  {t('Annual: NPR', 'वार्षिक: रू')} {(monthlySalary * 12).toLocaleString('en-IN')}
                 </span>
                 <span style={{ color: '#059669', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '3px', whiteSpace: 'nowrap' }}>
-                  ✓ With SSF: NPR {taxCalculation.ssfMonthlyTax.toLocaleString('en-IN')}/mo tax
+                  ✓ {t('With SSF: NPR', 'SSF सहित: रू')} {taxCalculation.ssfMonthlyTax.toLocaleString('en-IN')}/{t('mo tax', 'महिना कर')}
                 </span>
               </div>
             </div>
 
-            {/* Full-width CTA Button matching our brand button color */}
+            {/* Full-width CTA Button */}
             <Link
               href="/tax"
               style={{
@@ -538,49 +475,31 @@ export function HeroQuickCalcCard({
               className="hover-lift btn-tactile"
             >
               <Calculator size={15} />
-              <span>{t('View Complete Tax Breakdown →', 'View Complete Tax Breakdown →')}</span>
+              <span>{t('View Complete Tax Breakdown →', 'विस्तृत आयकर हिसाब हेर्नुहोस् →')}</span>
             </Link>
           </div>
         )}
 
         {/* 2. LAND CONVERTER TAB */}
         {activeTab === 'land' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div key="land" className="tab-panel-smooth" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {/* Region Switcher */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <label style={{ fontSize: '12px', fontWeight: 700, color: '#334155' }}>
                 {t('Measurement System', 'नाप प्रणाली')}
               </label>
-              <div style={{ display: 'inline-flex', backgroundColor: '#f1f5f9', borderRadius: '6px', padding: '2px' }}>
+              <div className="hero-pill-toggle">
                 <button
                   type="button"
                   onClick={() => setLandRegion('hilly')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 8px',
-                    borderRadius: '4px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: landRegion === 'hilly' ? '#0b2b5c' : 'transparent',
-                    color: landRegion === 'hilly' ? '#ffffff' : '#64748b',
-                  }}
+                  className={`hero-pill-btn ${landRegion === 'hilly' ? 'active' : ''}`}
                 >
-                  {t('Hilly (Ropani)', 'पहाड (रोपनी)')}
+                  {t('Hilly (Ropani)', 'पहाडी (रोपनी)')}
                 </button>
                 <button
                   type="button"
                   onClick={() => setLandRegion('terai')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 8px',
-                    borderRadius: '4px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: landRegion === 'terai' ? '#0b2b5c' : 'transparent',
-                    color: landRegion === 'terai' ? '#ffffff' : '#64748b',
-                  }}
+                  className={`hero-pill-btn ${landRegion === 'terai' ? 'active' : ''}`}
                 >
                   {t('Terai (Bigha)', 'तराई (बिघा)')}
                 </button>
@@ -591,7 +510,7 @@ export function HeroQuickCalcCard({
             {landRegion === 'hilly' ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px' }}>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>रोपनी</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Ropani', 'रोपनी')}</span>
                   <input
                     type="number"
                     min="0"
@@ -601,7 +520,7 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>आना</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Aana', 'आना')}</span>
                   <input
                     type="number"
                     min="0"
@@ -611,7 +530,7 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>पैसा</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Paisa', 'पैसा')}</span>
                   <input
                     type="number"
                     min="0"
@@ -621,7 +540,7 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>दाम</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Daam', 'दाम')}</span>
                   <input
                     type="number"
                     min="0"
@@ -634,7 +553,7 @@ export function HeroQuickCalcCard({
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>बिघा</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Bigha', 'बिघा')}</span>
                   <input
                     type="number"
                     min="0"
@@ -644,7 +563,7 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>कट्ठा</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Kattha', 'कट्ठा')}</span>
                   <input
                     type="number"
                     min="0"
@@ -654,7 +573,7 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>धुर</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Dhur', 'धुर')}</span>
                   <input
                     type="number"
                     min="0"
@@ -671,30 +590,30 @@ export function HeroQuickCalcCard({
               <button
                 type="button"
                 onClick={() => { setLandRegion('hilly'); setRopani(0); setAana(4); setPaisa(0); setDaam(0); }}
-                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
+                className="hero-preset-chip"
               >
-                ४ आना (घडेरी)
+                {t('4 Aana (House Plot)', '४ आना (घडेरी)')}
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('hilly'); setRopani(1); setAana(0); setPaisa(0); setDaam(0); }}
-                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
+                className="hero-preset-chip"
               >
-                १ रोपनी
+                {t('1 Ropani', '१ रोपनी')}
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('terai'); setBigha(0); setKattha(10); setDhur(0); }}
-                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
+                className="hero-preset-chip"
               >
-                १० कट्ठा
+                {t('10 Kattha', '१० कट्ठा')}
               </button>
               <button
                 type="button"
                 onClick={() => { setLandRegion('terai'); setBigha(1); setKattha(0); setDhur(0); }}
-                style={{ flex: 1, minWidth: '65px', padding: '4px 6px', borderRadius: '6px', fontSize: '11px', border: '1px solid #cbd5e1', background: '#f8fafc', cursor: 'pointer', fontWeight: 700, textAlign: 'center' }}
+                className="hero-preset-chip"
               >
-                १ बिघा
+                {t('1 Bigha', '१ बिघा')}
               </button>
             </div>
 
@@ -709,13 +628,13 @@ export function HeroQuickCalcCard({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>कुल क्षेत्रफल (Square Feet)</span>
+                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>{t('Total Area (Square Feet)', 'कुल क्षेत्रफल (वर्ग फिट)')}</span>
                   <div style={{ fontSize: '18px', fontWeight: 900, color: '#0b2b5c' }}>
-                    {landCalculation.totalSqFt.toLocaleString('en-IN')} <span style={{ fontSize: '12px', fontWeight: 600 }}>वर्ग फिट</span>
+                    {landCalculation.totalSqFt.toLocaleString('en-IN')} <span style={{ fontSize: '12px', fontWeight: 600 }}>{t('Sq. Ft', 'वर्ग फिट')}</span>
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>वर्ग मिटर</span>
+                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>{t('Square Meters', 'वर्ग मिटर')}</span>
                   <div style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a' }}>
                     {landCalculation.totalSqMtr.toLocaleString('en-IN')} m²
                   </div>
@@ -724,9 +643,9 @@ export function HeroQuickCalcCard({
 
               <div style={{ borderTop: '1px solid #e2e8f0', marginTop: '6px', paddingTop: '6px', fontSize: '11px', color: '#475569' }}>
                 {landRegion === 'hilly' ? (
-                  <span>तराई रूपान्तरण: <strong>{landCalculation.teraiEquiv.bigha} बिघा, {landCalculation.teraiEquiv.kattha} कट्ठा, {landCalculation.teraiEquiv.dhur} धुर</strong></span>
+                  <span>{t('Terai Equivalent:', 'तराई रूपान्तरण:')} <strong>{landCalculation.teraiEquiv.bigha} {t('Bigha', 'बिघा')}, {landCalculation.teraiEquiv.kattha} {t('Kattha', 'कट्ठा')}, {landCalculation.teraiEquiv.dhur} {t('Dhur', 'धुर')}</strong></span>
                 ) : (
-                  <span>पहाड रूपान्तरण: <strong>{landCalculation.hillyEquiv.ropani} रोपनी, {landCalculation.hillyEquiv.aana} आना, {landCalculation.hillyEquiv.paisa} पैसा</strong></span>
+                  <span>{t('Hilly Equivalent:', 'पहाड रूपान्तरण:')} <strong>{landCalculation.hillyEquiv.ropani} {t('Ropani', 'रोपनी')}, {landCalculation.hillyEquiv.aana} {t('Aana', 'आना')}, {landCalculation.hillyEquiv.paisa} {t('Paisa', 'पैसा')}</strong></span>
                 )}
               </div>
             </div>
@@ -758,46 +677,37 @@ export function HeroQuickCalcCard({
 
         {/* 3. LOAN EMI TAB */}
         {activeTab === 'emi' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div key="emi" className="tab-panel-smooth" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <label style={{ fontSize: '12px', fontWeight: 700, color: '#334155' }}>
-                {t('Loan Amount', 'ऋण रकम (NPR)')}
+                {t('Loan Amount', 'ऋण रकम')}
               </label>
               <span style={{ fontSize: '13px', fontWeight: 900, color: '#0b2b5c' }}>
-                NPR {(loanAmount / 100000).toFixed(1)} Lakhs
+                NPR {(loanAmount / 100000).toFixed(1)} {t('Lakhs', 'लाख')}
               </span>
             </div>
 
             {/* Quick Loan Chips */}
             <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-              {[1000000, 2500000, 5000000, 10000000].map((amt) => (
-                <button
-                  key={amt}
-                  type="button"
-                  onClick={() => setLoanAmount(amt)}
-                  style={{
-                    flex: 1,
-                    minWidth: '55px',
-                    border: loanAmount === amt ? '1.5px solid #0b2b5c' : '1px solid #cbd5e1',
-                    background: loanAmount === amt ? '#eff6ff' : '#f8fafc',
-                    color: loanAmount === amt ? '#0b2b5c' : '#475569',
-                    fontSize: '11px',
-                    fontWeight: 800,
-                    padding: '5px 4px',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    textAlign: 'center',
-                  }}
-                >
-                  {amt >= 10000000 ? '१ करोड' : `${amt / 100000} लाख`}
-                </button>
-              ))}
+              {[1000000, 2500000, 5000000, 10000000].map((amt) => {
+                const isSelected = loanAmount === amt;
+                return (
+                  <button
+                    key={amt}
+                    type="button"
+                    onClick={() => setLoanAmount(amt)}
+                    className={`hero-preset-chip ${isSelected ? 'active' : ''}`}
+                  >
+                    {amt >= 10000000 ? t('1 Crore', '१ करोड') : `${amt / 100000} ${t('Lakh', 'लाख')}`}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Interest & Tenure Inputs */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               <div>
-                <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>ब्याज दर (% प्रति वर्ष)</span>
+                <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Interest Rate (% p.a.)', 'ब्याज दर (% प्रति वर्ष)')}</span>
                 <input
                   type="number"
                   step="0.1"
@@ -807,17 +717,17 @@ export function HeroQuickCalcCard({
                 />
               </div>
               <div>
-                <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>अवधि (वर्ष)</span>
+                <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Tenure (Years)', 'ऋण अवधि (वर्ष)')}</span>
                 <select
                   value={tenureYears}
                   onChange={(e) => setTenureYears(Number(e.target.value))}
                   style={{ width: '100%', padding: '7px 8px', borderRadius: '6px', border: '1.5px solid #cbd5e1', fontSize: '13px', fontWeight: 800, backgroundColor: '#ffffff' }}
                 >
-                  <option value={5}>5 Years (५ वर्ष)</option>
-                  <option value={10}>10 Years (१० वर्ष)</option>
-                  <option value={15}>15 Years (१५ वर्ष)</option>
-                  <option value={20}>20 Years (२० वर्ष)</option>
-                  <option value={25}>25 Years (२५ वर्ष)</option>
+                  <option value={5}>5 {t('Years', 'वर्ष')}</option>
+                  <option value={10}>10 {t('Years', 'वर्ष')}</option>
+                  <option value={15}>15 {t('Years', 'वर्ष')}</option>
+                  <option value={20}>20 {t('Years', 'वर्ष')}</option>
+                  <option value={25}>25 {t('Years', 'वर्ष')}</option>
                 </select>
               </div>
             </div>
@@ -833,21 +743,21 @@ export function HeroQuickCalcCard({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <span style={{ fontSize: '10.5px', color: '#64748b', fontWeight: 600 }}>मासिक किस्ता (Monthly EMI)</span>
+                  <span style={{ fontSize: '10.5px', color: '#64748b', fontWeight: 600 }}>{t('Monthly Installment (EMI)', 'मासिक किस्ता (EMI)')}</span>
                   <div style={{ fontSize: '19px', fontWeight: 900, color: '#0b2b5c' }}>
-                    NPR {emiCalculation.monthlyEmi.toLocaleString('en-IN')} <span style={{ fontSize: '11px', fontWeight: 600 }}>/ महिना</span>
+                    NPR {emiCalculation.monthlyEmi.toLocaleString('en-IN')} <span style={{ fontSize: '11px', fontWeight: 600 }}>/{t('month', 'महिना')}</span>
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>कुल ब्याज</span>
+                  <span style={{ fontSize: '10.5px', color: '#64748b' }}>{t('Total Interest', 'कुल ब्याज')}</span>
                   <div style={{ fontSize: '13px', fontWeight: 800, color: '#dc2626' }}>
-                    NPR {(emiCalculation.totalInterest / 100000).toFixed(2)} L
+                    NPR {(emiCalculation.totalInterest / 100000).toFixed(2)} {t('Lakhs', 'लाख')}
                   </div>
                 </div>
               </div>
               <div style={{ borderTop: '1px solid #e2e8f0', marginTop: '6px', paddingTop: '6px', fontSize: '11px', color: '#475569', display: 'flex', justifyContent: 'space-between' }}>
-                <span>कुल भुक्तानी: NPR {emiCalculation.totalPayment.toLocaleString('en-IN')}</span>
-                <span>दर: {interestRate}% p.a.</span>
+                <span>{t('Total Payment:', 'कुल भुक्तानी:')} NPR {emiCalculation.totalPayment.toLocaleString('en-IN')}</span>
+                <span>{t('Rate:', 'दर:')} {interestRate}% p.a.</span>
               </div>
             </div>
 
@@ -878,41 +788,23 @@ export function HeroQuickCalcCard({
 
         {/* 4. DATE CONVERTER & AGE TAB */}
         {activeTab === 'date' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div key="date" className="tab-panel-smooth" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <label style={{ fontSize: '12px', fontWeight: 700, color: '#334155' }}>
                 {t('Conversion Direction', 'रूपान्तरण प्रकार')}
               </label>
-              <div style={{ display: 'inline-flex', backgroundColor: '#f1f5f9', borderRadius: '6px', padding: '2px' }}>
+              <div className="hero-pill-toggle">
                 <button
                   type="button"
                   onClick={() => setDateMode('adToBs')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 8px',
-                    borderRadius: '4px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: dateMode === 'adToBs' ? '#0b2b5c' : 'transparent',
-                    color: dateMode === 'adToBs' ? '#ffffff' : '#64748b',
-                  }}
+                  className={`hero-pill-btn ${dateMode === 'adToBs' ? 'active' : ''}`}
                 >
                   AD ➔ BS
                 </button>
                 <button
                   type="button"
                   onClick={() => setDateMode('bsToAd')}
-                  style={{
-                    border: 'none',
-                    padding: '3px 8px',
-                    borderRadius: '4px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    backgroundColor: dateMode === 'bsToAd' ? '#0b2b5c' : 'transparent',
-                    color: dateMode === 'bsToAd' ? '#ffffff' : '#64748b',
-                  }}
+                  className={`hero-pill-btn ${dateMode === 'bsToAd' ? 'active' : ''}`}
                 >
                   BS ➔ AD
                 </button>
@@ -923,7 +815,7 @@ export function HeroQuickCalcCard({
             {dateMode === 'adToBs' ? (
               <div>
                 <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>
-                  English (A.D.) Date
+                  {t('English (A.D.) Date', 'अंग्रेजी (A.D.) मिति')}
                 </span>
                 <input
                   type="date"
@@ -935,7 +827,7 @@ export function HeroQuickCalcCard({
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr 1fr', gap: '6px' }}>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>वर्ष (Year)</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Year (BS)', 'वर्ष (वि.सं.)')}</span>
                   <input
                     type="number"
                     value={bsYearInput}
@@ -944,19 +836,19 @@ export function HeroQuickCalcCard({
                   />
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>महिना (Month)</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Month', 'महिना')}</span>
                   <select
                     value={bsMonthInput}
                     onChange={(e) => setBsMonthInput(Number(e.target.value))}
                     style={{ width: '100%', padding: '7px 4px', borderRadius: '6px', border: '1.5px solid #cbd5e1', fontSize: '12px', fontWeight: 700, backgroundColor: '#ffffff' }}
                   >
                     {NEPALI_MONTHS.map((m) => (
-                      <option key={m.num} value={m.num}>{m.bs} ({m.en})</option>
+                      <option key={m.num} value={m.num}>{t(m.en, m.bs)}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>गते (Day)</span>
+                  <span style={{ fontSize: '10.5px', fontWeight: 700, color: '#64748b' }}>{t('Day (Gathe)', 'गते')}</span>
                   <input
                     type="number"
                     min="1"
@@ -978,16 +870,16 @@ export function HeroQuickCalcCard({
                 padding: '10px 12px',
               }}
             >
-              <span style={{ fontSize: '10.5px', color: '#64748b', fontWeight: 600 }}>रूपान्तरित मिति (Converted Date)</span>
+              <span style={{ fontSize: '10.5px', color: '#64748b', fontWeight: 600 }}>{t('Converted Date', 'रूपान्तरित मिति')}</span>
               <div style={{ fontSize: '16px', fontWeight: 900, color: '#0b2b5c', marginTop: '2px' }}>
-                {dateCalculation.formattedNep}
+                {t(dateCalculation.formattedEng, dateCalculation.formattedNep)}
               </div>
               <div style={{ fontSize: '12px', color: '#64748b', marginTop: '1px' }}>
-                {dateCalculation.formattedEng}
+                {t(dateCalculation.formattedNep, dateCalculation.formattedEng)}
               </div>
 
               <div style={{ borderTop: '1px solid #e2e8f0', marginTop: '6px', paddingTop: '6px', fontSize: '11.5px', color: '#059669', fontWeight: 700 }}>
-                🎂 यथार्थ उमेर (Exact Age): {toNepaliDigits(dateCalculation.ageYears)} वर्ष, {toNepaliDigits(dateCalculation.ageMonths)} महिना, {toNepaliDigits(dateCalculation.ageDays)} दिन
+                🎂 {t('Exact Age:', 'यथार्थ उमेर:')} {dateCalculation.ageYears} {t('Years', 'वर्ष')}, {dateCalculation.ageMonths} {t('Months', 'महिना')}, {dateCalculation.ageDays} {t('Days', 'दिन')}
               </div>
             </div>
 

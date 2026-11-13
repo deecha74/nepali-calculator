@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Home, Car, Copy, Check } from 'lucide-react';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 export function HomeAutoLoanCalculator({ defaultMode = 'home' }: { defaultMode?: 'home' | 'auto' }) {
   const { t } = useLanguage();
@@ -109,7 +110,7 @@ Calculated on NepalCalc.com`;
       </div>
 
       {/* Mode Switcher */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '22px' }}>
+      <div className="segmented-control" style={{ width: '100%', display: 'flex', marginBottom: '22px', padding: '4px' }}>
         <button
           type="button"
           onClick={() => {
@@ -118,15 +119,8 @@ Calculated on NepalCalc.com`;
             setDownPaymentPercent(30);
             setTenureYears(15);
           }}
-          style={{
-            padding: '10px',
-            borderRadius: '10px',
-            fontWeight: 700,
-            border: mode === 'home' ? '2px solid #2563eb' : '1px solid var(--border-subtle)',
-            background: mode === 'home' ? '#eff6ff' : '#ffffff',
-            color: mode === 'home' ? '#1e40af' : 'var(--text-primary)',
-            cursor: 'pointer',
-          }}
+          className={`segmented-btn ${mode === 'home' ? 'active' : ''}`}
+          style={{ flex: 1, padding: '10px 14px', fontSize: '13px', fontWeight: 700 }}
         >
           🏠 {t('Home / Land Mortgage Loan', 'घर तथा जग्गा कर्जा')}
         </button>
@@ -138,15 +132,8 @@ Calculated on NepalCalc.com`;
             setDownPaymentPercent(20);
             setTenureYears(7);
           }}
-          style={{
-            padding: '10px',
-            borderRadius: '10px',
-            fontWeight: 700,
-            border: mode === 'auto' ? '2px solid #2563eb' : '1px solid var(--border-subtle)',
-            background: mode === 'auto' ? '#eff6ff' : '#ffffff',
-            color: mode === 'auto' ? '#1e40af' : 'var(--text-primary)',
-            cursor: 'pointer',
-          }}
+          className={`segmented-btn ${mode === 'auto' ? 'active' : ''}`}
+          style={{ flex: 1, padding: '10px 14px', fontSize: '13px', fontWeight: 700 }}
         >
           🚗 {t('Auto / EV Car & Bike Loan', 'गाडी तथा मोटरसाइकल कर्जा')}
         </button>
@@ -154,6 +141,22 @@ Calculated on NepalCalc.com`;
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Monthly EMI Payment', 'मासिक किस्ता (EMI)')}
+            primaryValue={`रु ${calculation.emi.toLocaleString('en-IN')}`}
+            primarySubtext={`${t('Principal:', 'साँवा:')} रु ${calculation.loanPrincipal.toLocaleString('en-IN')}`}
+            secondaryLabel={t('Min Income (50% DSTI)', 'न्यूनतम आम्दानी')}
+            secondaryValue={`रु ${calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}`}
+            tertiaryLabel={t('Total Interest', 'कुल ब्याज')}
+            tertiaryValue={`रु ${calculation.totalInterest.toLocaleString('en-IN')}`}
+            badge={mode === 'home' ? t('Home Loan', 'घर कर्जा') : t('Auto Loan', 'सवारी कर्जा')}
+            accentColor="blue"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="loan-breakdown-details"
+          />
+
           <div style={{ marginBottom: '16px' }}>
             <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
               1. {mode === 'home' ? t('Total Property / House Valuation (NPR):', 'कुल घर/जग्गा मूल्याङ्कन (रु):') : t('Vehicle Showroom Price (NPR):', 'सवारीको सोरुम मूल्य (रु):')}
@@ -213,17 +216,26 @@ Calculated on NepalCalc.com`;
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          <div style={{ padding: '20px', borderRadius: '14px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              {t('Monthly Bank Installment (EMI)', 'मासिक बैंक किस्ता (EMI)')}
+        <div id="loan-breakdown-details" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              {t('Monthly Bank Installment (EMI)', 'मासिक बैंक किस्ता')}
             </div>
-            <div style={{ fontSize: '34px', fontWeight: 900, color: '#38bdf8', marginTop: '4px' }}>
-              NPR {calculation.emi.toLocaleString('en-IN')} / {t('mo', 'महिना')}
+            <div style={{ fontSize: '36px', fontWeight: 900, color: '#003893', margin: '6px 0 10px', fontFamily: 'var(--font-mono)' }}>
+              रु {calculation.emi.toLocaleString('en-IN')}{' '}
+              <span style={{ fontSize: '14px', fontWeight: 500, color: '#64748b' }}>/{t('month', 'महिना')}</span>
             </div>
-            <div style={{ fontSize: '12.5px', color: '#cbd5e1', marginTop: '4px' }}>
-              {t('Loan Amount:', 'कर्जा रकम:')} <strong>NPR {calculation.loanPrincipal.toLocaleString('en-IN')}</strong> • {t('Down Payment:', 'डाउनपेमेन्ट:')}{' '}
-              <strong>NPR {calculation.downPaymentNpr.toLocaleString('en-IN')}</strong>
+            <div style={{ fontSize: '13px', color: '#475569', borderTop: '1px solid #e2e8f0', paddingTop: '12px' }}>
+              {t('Loan Principal:', 'कर्जा रकम:')} <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>रु {calculation.loanPrincipal.toLocaleString('en-IN')}</strong> • {t('Down Payment:', 'डाउनपेमेन्ट:')}{' '}
+              <strong style={{ fontFamily: 'var(--font-mono)', color: '#0f172a' }}>रु {calculation.downPaymentNpr.toLocaleString('en-IN')}</strong>
             </div>
           </div>
 

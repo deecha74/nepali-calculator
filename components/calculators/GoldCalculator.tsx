@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Sparkles, Copy, Check } from 'lucide-react';
 import { DEFAULT_GOLD_RATES, GRAMS_PER_TOLA, LAL_PER_TOLA } from '@/lib/rates/goldRates';
 import { useLanguage } from '@/components/LanguageContext';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 export interface GoldCalculatorProps {
   initialMetalType?: 'fine' | 'tejabi' | 'silver';
@@ -166,6 +167,22 @@ Calculated via NepalCalc.com`;
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Total Jewelry Price', 'गहनाको जम्मा मूल्य')}
+            primaryValue={`रु ${Math.round(calculation.grandTotal).toLocaleString('en-IN')}`}
+            primarySubtext={`${t('Weight:', 'तौल:')} ${totalTolas.toFixed(3)} ${t('Tola', 'तोला')} (${totalGrams.toFixed(2)}g)`}
+            secondaryLabel={t('Base Gold Price', 'सुनको मूल्य')}
+            secondaryValue={`रु ${Math.round(calculation.baseMetalValue).toLocaleString('en-IN')}`}
+            tertiaryLabel={t('Charges+Jarti', 'ज्याला+जर्ती')}
+            tertiaryValue={`रु ${Math.round(calculation.totalMakingCharge + calculation.wastageJartiValue).toLocaleString('en-IN')}`}
+            badge={metalType === 'silver' ? t('Pure Silver', 'शुद्ध चाँदी') : `${metalType === 'fine' ? '24K' : '22K'} Gold`}
+            accentColor="amber"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="gold-breakdown-details"
+          />
+
           {/* Metal Type */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">{t('Precious Metal Type', 'धातुको प्रकार')}</label>
@@ -280,7 +297,7 @@ Calculated via NepalCalc.com`;
         </div>
 
         {/* Results */}
-        <div>
+        <div id="gold-breakdown-details">
           <div className="result-card-highlight">
             <span className="stat-label">{t('Total Jewelry Price', 'गहनाको जम्मा मूल्य')}</span>
             <div className="stat-value" style={{ color: '#d97706', margin: '6px 0 2px' }}>

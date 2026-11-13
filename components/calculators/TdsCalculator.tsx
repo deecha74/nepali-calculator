@@ -401,15 +401,16 @@ Calculated via NepalCalc.com`;
               </span>
             </div>
 
-            <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
+            <div className="input-with-prefix-wrap" style={{ position: 'relative' }}>
+              <span className="prefix-symbol" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: '#64748b', pointerEvents: 'none' }}>
                 रु
               </span>
               <input
                 type="number"
-                className="text-input"
-                style={{ paddingLeft: '38px', fontSize: '18px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
+                className="text-input input-with-prefix"
+                style={{ paddingLeft: '42px', fontSize: '18px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
                 value={amountInput || ''}
+                placeholder="0"
                 onChange={(e) => setAmountInput(Number(e.target.value) || 0)}
               />
             </div>

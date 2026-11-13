@@ -413,50 +413,18 @@ export function NepalPatroHero() {
                 <button
                   type="button"
                   onClick={() => setHeroRightTab('tools')}
-                  className="hero-switcher-btn"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '12px',
-                    fontWeight: 750,
-                    padding: '5px 14px',
-                    borderRadius: '9999px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    backgroundColor: heroRightTab === 'tools' ? '#ffffff' : 'transparent',
-                    color: heroRightTab === 'tools' ? '#0f172a' : '#64748b',
-                    boxShadow: heroRightTab === 'tools' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
-                    transition: 'all 0.15s ease',
-                    whiteSpace: 'nowrap',
-                  }}
+                  className={`hero-switcher-btn ${heroRightTab === 'tools' ? 'active' : ''}`}
                 >
                   <span style={{ color: '#dc2626' }}>🛡️</span>
-                  <span>{t('Quick Tools', 'Quick Tools')}</span>
+                  <span>{t('Quick Tools', 'द्रुत औजार')}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setHeroRightTab('calendar')}
-                  className="hero-switcher-btn"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '12px',
-                    fontWeight: 750,
-                    padding: '5px 14px',
-                    borderRadius: '9999px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    backgroundColor: heroRightTab === 'calendar' ? '#ffffff' : 'transparent',
-                    color: heroRightTab === 'calendar' ? '#0f172a' : '#64748b',
-                    boxShadow: heroRightTab === 'calendar' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
-                    transition: 'all 0.15s ease',
-                    whiteSpace: 'nowrap',
-                  }}
+                  className={`hero-switcher-btn ${heroRightTab === 'calendar' ? 'active' : ''}`}
                 >
                   <span>📅</span>
-                  <span>{t('Monthly Patro', 'Monthly Alert')}</span>
+                  <span>{t('Monthly Patro', 'मासिक पात्रो')}</span>
                 </button>
               </div>
 
@@ -536,11 +504,12 @@ export function NepalPatroHero() {
             </div>
 
             {/* TAB CONTENT: Quick Tools (Option A) or Monthly Calendar View */}
-            {heroRightTab === 'tools' ? (
-              <HeroQuickCalcCard onSwitchToPatro={() => setHeroRightTab('calendar')} hideHeader={true} />
-            ) : (
-              <>
-                {/* Header Subtitle: आश्विन २०८३ सेप्टेम्बर – अक्टोबर २०२६ */}
+            <div key={heroRightTab} className="tab-panel-smooth">
+              {heroRightTab === 'tools' ? (
+                <HeroQuickCalcCard onSwitchToPatro={() => setHeroRightTab('calendar')} hideHeader={true} />
+              ) : (
+                <>
+                  {/* Header Subtitle: आश्विन २०८३ सेप्टेम्बर – अक्टोबर २०२६ */}
                 <div style={{ marginBottom: '14px' }}>
                   <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
                     <span>{heroMeta.monthNameNep} {toNepaliDigits(heroYear)}</span>{' '}
@@ -766,6 +735,7 @@ export function NepalPatroHero() {
                 </div>
               </>
             )}
+            </div>
 
           </div>
 

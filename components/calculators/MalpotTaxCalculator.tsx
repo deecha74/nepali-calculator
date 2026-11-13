@@ -18,6 +18,7 @@ import {
   BadgePercent
 } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 type LocationCategory = 'metropolitan' | 'submetropolitan' | 'municipality' | 'rural' | 'apartment';
 type HoldingPeriod = 'under5' | 'over5';
@@ -245,6 +246,21 @@ Calculated via NepalCalc.com`;
         
         {/* Controls Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Buyer Registration Fee', 'क्रेताले बुझाउने लिखत दस्तुर')}
+            primaryValue={`रु ${Math.round(calculation.totalBuyerPayable).toLocaleString('en-IN')}`}
+            primarySubtext={`${t('Taxable Base:', 'करयोग्य मूल्याङ्कन:')} रु ${Math.round(calculation.taxableBase).toLocaleString('en-IN')}`}
+            secondaryLabel={t('Seller CGT', 'बिक्रेताको लाभकर')}
+            secondaryValue={`रु ${Math.round(calculation.cgtAmount).toLocaleString('en-IN')}`}
+            tertiaryLabel={t('Total Revenue', 'कुल राजस्व')}
+            tertiaryValue={`रु ${Math.round(calculation.totalGovtRevenue).toLocaleString('en-IN')}`}
+            badge={t('Malpot Fee', 'मालपोत दस्तुर')}
+            accentColor="amber"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="malpot-breakdown-details"
+          />
           
           {/* Section 1: Property Valuation */}
           <div style={{ padding: '18px', background: '#ffffff', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
@@ -444,7 +460,7 @@ Calculated via NepalCalc.com`;
         </div>
 
         {/* Results Column */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div id="malpot-breakdown-details" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           
           {/* Main Hero Result Card */}
           <div 

@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { GraduationCap, Copy, Check } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 interface SubjectGrade {
   name: string;
@@ -105,6 +106,20 @@ Calculated via NepalCalc.com`;
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
         {/* Subject Grades List */}
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Overall GPA', 'कुल GPA')}
+            primaryValue={calculation.hasNg ? 'NG' : calculation.gpa.toFixed(2)}
+            primarySubtext={calculation.hasNg ? t('Non-Graded in one or more subjects', 'कुनै विषयमा नन-ग्रेडेड (NG)') : t('Official NEB Scale', 'आधिकारिक NEB ग्रेड')}
+            secondaryLabel={t('Equivalent %', 'बराबर प्रतिशत')}
+            secondaryValue={calculation.hasNg ? '-' : `${calculation.approximatePercentage.toFixed(1)}%`}
+            badge="NEB Letter Grade"
+            accentColor={calculation.hasNg ? 'rose' : 'purple'}
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="gpa-breakdown-details"
+          />
+
           <span className="input-label" style={{ marginBottom: '14px' }}>
             {t('Select Subject Grades:', 'विषयगत ग्रेड छान्नुहोस्:')}
           </span>
@@ -150,7 +165,7 @@ Calculated via NepalCalc.com`;
         </div>
 
         {/* Results */}
-        <div>
+        <div id="gpa-breakdown-details">
           <div className="result-card-highlight">
             <span className="stat-label">{t('Calculated Overall GPA', 'गणना गरिएको कुल GPA')}</span>
             <div className="stat-value" style={{ color: '#2563eb', margin: '6px 0 2px', fontSize: '36px' }}>

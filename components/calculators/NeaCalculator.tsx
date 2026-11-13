@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Zap, Copy, Check } from 'lucide-react';
 import { NEA_SLABS_5A, METER_CAPACITIES } from '@/lib/rates/neaRates';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 
 export function NeaCalculator() {
   const { t } = useLanguage();
@@ -92,6 +93,22 @@ Calculated via NepalCalc.com`;
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Total Payable Bill', 'कुल तिर्नुपर्ने महसुल')}
+            primaryValue={`रु ${Math.round(calculation.totalBill).toLocaleString('en-IN')}`}
+            primarySubtext={`${unitsConsumed} kWh • ${selectedMeter.label}`}
+            secondaryLabel={t('Energy Charge', 'विद्युत शुल्क')}
+            secondaryValue={`रु ${Math.round(calculation.energyCharge).toLocaleString('en-IN')}`}
+            tertiaryLabel={t('VAT', 'भ्याट')}
+            tertiaryValue={`रु ${Math.round(calculation.vatAmount)}`}
+            badge="NEA Tariff"
+            accentColor="blue"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="nea-breakdown-details"
+          />
+
           {/* Units Consumed */}
           <div style={{ marginBottom: '22px' }}>
             <label className="input-label">{t('Monthly Units Consumed (kWh)', 'मासिक खपत युनिट (kWh)')}</label>
@@ -166,7 +183,7 @@ Calculated via NepalCalc.com`;
         </div>
 
         {/* Results */}
-        <div>
+        <div id="nea-breakdown-details">
           <div className="result-card-highlight">
             <span className="stat-label">{t('Estimated Bill Amount', 'तिर्नुपर्ने अनुमानित महसुल')}</span>
             <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>

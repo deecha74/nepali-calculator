@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Calculator, Copy, Check, Table, Sparkles, Building2 } from 'lucide-react';
 import { DonutChart } from '@/components/DonutChart';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 import { LeadCaptureModal } from '@/components/LeadCaptureModal';
 import { useLanguage } from '@/components/LanguageContext';
 
@@ -131,6 +132,22 @@ Via NepalCalc.com`;
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         {/* Controls */}
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Monthly EMI Payment', 'मासिक किस्ता (EMI)')}
+            primaryValue={`रु ${Math.round(calculation.monthlyEmi).toLocaleString('en-IN')}`}
+            primarySubtext={`${t('Total Interest: Rs.', 'कुल ब्याज: रू.')} ${Math.round(calculation.totalInterest).toLocaleString('en-IN')}`}
+            secondaryLabel={t('Total Payment', 'कुल भुक्तानी')}
+            secondaryValue={`रु ${Math.round(calculation.totalPayment).toLocaleString('en-IN')}`}
+            tertiaryLabel={t('Principal', 'साँवा')}
+            tertiaryValue={`रु ${loanAmount.toLocaleString('en-IN')}`}
+            badge={t('NRB Regulated', 'राष्ट्र बैंक मापदण्ड')}
+            accentColor="blue"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="emi-breakdown-details"
+          />
+
           {/* Quick preset buttons */}
           <div style={{ display: 'flex', gap: '6px', marginBottom: '18px', flexWrap: 'wrap' }}>
             <button type="button" className="segmented-btn" onClick={() => { setLoanAmount(2500000); setAnnualInterestRate(10.5); setTenureYears(10); }}>{t('Auto Loan (25L)', 'सवारी कर्जा (२५ लाख)')}</button>
@@ -223,7 +240,7 @@ Via NepalCalc.com`;
         </div>
 
         {/* Results Highlight Card */}
-        <div>
+        <div id="emi-breakdown-details">
           <div
             style={{
               background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',

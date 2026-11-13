@@ -74,9 +74,9 @@ export function BaseRomanConverter() {
           { label: 'Hexadecimal (Base 16)', val: converted.hex },
           { label: 'Roman Numeral', val: converted.roman },
         ].map((item) => (
-          <div key={item.label} style={{ padding: '14px', borderRadius: '10px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700 }}>{item.label}</div>
-            <div style={{ fontSize: '18px', fontWeight: 900, color: '#38bdf8', fontFamily: 'monospace', marginTop: '4px', wordBreak: 'break-all' }}>
+          <div key={item.label} style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#ffffff', border: '1.5px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0, 56, 147, 0.05)' }}>
+            <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{item.label}</div>
+            <div style={{ fontSize: '18px', fontWeight: 900, color: '#003893', fontFamily: 'var(--font-mono)', marginTop: '4px', wordBreak: 'break-all' }}>
               {item.val}
             </div>
           </div>

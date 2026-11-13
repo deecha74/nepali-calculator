@@ -162,15 +162,24 @@ Calculated on NepalCalc.com/calorie-calculator`;
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          <div style={{ padding: '20px', borderRadius: '14px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Daily Maintenance Calories (TDEE)
             </div>
-            <div style={{ fontSize: '32px', fontWeight: 900, color: '#fb923c', marginTop: '4px' }}>
-              {calculation.tdeeMaintenance.toLocaleString('en-IN')} kcal / day
+            <div style={{ fontSize: '36px', fontWeight: 900, color: '#003893', margin: '4px 0 10px', fontFamily: 'var(--font-mono)' }}>
+              {calculation.tdeeMaintenance.toLocaleString('en-IN')}{' '}
+              <span style={{ fontSize: '14px', fontWeight: 500, color: '#64748b' }}>kcal / day</span>
             </div>
-            <div style={{ fontSize: '12.5px', color: '#cbd5e1', marginTop: '4px' }}>
-              Resting BMR: <strong>{calculation.bmr} kcal/day</strong> • Equals ~{calculation.dalBhatPlatesEquivalent} standard Nepali Dal-Bhat thalis
+            <div style={{ fontSize: '13px', color: '#475569', borderTop: '1px solid #e2e8f0', paddingTop: '10px' }}>
+              Resting BMR: <strong style={{ color: '#0f172a', fontFamily: 'var(--font-mono)' }}>{calculation.bmr} kcal/day</strong> • Equals ~{calculation.dalBhatPlatesEquivalent} standard Nepali Dal-Bhat thalis
             </div>
           </div>
 

@@ -35,6 +35,7 @@ import {
   X
 } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
+import { MobileInstantResult } from '@/components/calculators/MobileInstantResult';
 import { toNepaliDigits } from '@/lib/nepaliDate';
 import {
   calculateHouseConstruction,
@@ -351,6 +352,20 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', marginBottom: '28px' }}>
         {/* Left Column: Dimensions, Soil & Quality */}
         <div>
+          {/* Mobile-only instant above-the-fold result */}
+          <MobileInstantResult
+            primaryLabel={t('Estimated Construction Cost', 'अनुमानित कुल निर्माण लागत')}
+            primaryValue={formatCurrency(estimate.totalBudget)}
+            primarySubtext={`${effectiveSqFt.toLocaleString()} sq. ft. • ${storeys} ${t('Storeys', 'तल्ला')}`}
+            secondaryLabel={t('Cost per Sq. Ft.', 'प्रति वर्गफिट दर')}
+            secondaryValue={formatCurrency(estimate.effectiveRatePerSqFt)}
+            badge={t('DUDBC Standard', 'सहरी विकास मापदण्ड')}
+            accentColor="amber"
+            onCopy={handleCopy}
+            copied={copied}
+            targetDetailsId="construction-estimate-details"
+          />
+
           {/* Input Mode Selector */}
           <div style={{ display: 'flex', gap: '10px', marginBottom: '18px' }}>
             <button
@@ -656,8 +671,8 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
           </div>
         </div>
 
-        {/* Right Column: Estimated Budget & Clickable Material Cards */}
-        <div>
+        {/* Right Column: Key Cost Metrics, Visual Breakdown & Lead CTA */}
+        <div id="construction-estimate-details">
           <div style={{
             background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(245, 158, 11, 0.05) 100%)',
             border: '1px solid var(--border-subtle)',

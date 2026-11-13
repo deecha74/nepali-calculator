@@ -65,10 +65,24 @@ export function PasswordGeneratorCalculator() {
         </div>
       </div>
 
-      <div style={{ padding: '18px 20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#4ade80', fontFamily: 'monospace', fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 800, wordBreak: 'break-all', marginBottom: '20px' }}>
+      <div
+        style={{
+          padding: '22px 24px',
+          borderRadius: '16px',
+          backgroundColor: '#f8fafc',
+          border: '2px solid #003893',
+          boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)',
+          color: '#003893',
+          fontFamily: 'var(--font-mono)',
+          fontSize: 'clamp(20px, 3vw, 26px)',
+          fontWeight: 800,
+          wordBreak: 'break-all',
+          marginBottom: '20px'
+        }}
+      >
         {generated.pwd}
-        <div style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'sans-serif', marginTop: '6px' }}>
-          {t('Entropy:', 'सुरक्षा स्तर:')} <strong>{generated.entropyBits} bits</strong> • {generated.strength}
+        <div style={{ fontSize: '12px', color: '#64748b', fontFamily: 'var(--font-sans)', marginTop: '8px', borderTop: '1px solid #e2e8f0', paddingTop: '8px' }}>
+          {t('Entropy:', 'सुरक्षा स्तर:')} <strong style={{ color: '#059669', fontFamily: 'var(--font-mono)' }}>{generated.entropyBits} bits</strong> • <strong style={{ color: '#0f172a' }}>{generated.strength}</strong>
         </div>
       </div>
 

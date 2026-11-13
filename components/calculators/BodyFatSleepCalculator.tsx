@@ -120,15 +120,23 @@ export function BodyFatSleepCalculator({ defaultTab = 'body_fat' }: { defaultTab
             </div>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '14px', backgroundColor: '#0f172a', color: '#ffffff' }}>
-            <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>Estimated Body Fat Percentage</div>
-            <div style={{ fontSize: '34px', fontWeight: 900, color: '#34d399', margin: '4px 0 10px' }}>
-              {bodyFatResult.bodyFatPercent}% Body Fat
+          <div
+            style={{
+              padding: '24px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)'
+            }}
+          >
+            <div style={{ fontSize: '11px', color: '#003893', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Body Fat Percentage</div>
+            <div style={{ fontSize: '36px', fontWeight: 900, color: '#003893', margin: '4px 0 12px', fontFamily: 'var(--font-mono)' }}>
+              {bodyFatResult.bodyFatPercent}% <span style={{ fontSize: '15px', fontWeight: 600, color: '#64748b' }}>Body Fat</span>
             </div>
-            <div style={{ fontSize: '13.5px', color: '#e2e8f0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <div>Lean Muscle Mass: <strong>{bodyFatResult.leanMassKg} kg</strong></div>
-              <div>Fat Mass: <strong>{bodyFatResult.fatMassKg} kg</strong></div>
-              <div>Ideal Weight for {heightCm}cm: <strong>{bodyFatResult.idealWeightKg} kg</strong></div>
+            <div style={{ fontSize: '13px', color: '#475569', display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid #e2e8f0', paddingTop: '12px' }}>
+              <div>Lean Muscle Mass: <strong style={{ color: '#0f172a', fontFamily: 'var(--font-mono)' }}>{bodyFatResult.leanMassKg} kg</strong></div>
+              <div>Fat Mass: <strong style={{ color: '#0f172a', fontFamily: 'var(--font-mono)' }}>{bodyFatResult.fatMassKg} kg</strong></div>
+              <div>Ideal Weight for {heightCm}cm: <strong style={{ color: '#059669', fontFamily: 'var(--font-mono)' }}>{bodyFatResult.idealWeightKg} kg</strong></div>
             </div>
           </div>
         </div>
@@ -141,9 +149,12 @@ export function BodyFatSleepCalculator({ defaultTab = 'body_fat' }: { defaultTab
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
             {sleepCycles.map((c) => (
-              <div key={c.cycles} style={{ padding: '16px', borderRadius: '12px', backgroundColor: '#1e1b4b', color: '#ffffff' }}>
-                <div style={{ fontSize: '12px', color: '#a5b4fc', fontWeight: 700 }}>{c.cycles} REM Cycles ({c.hours} hrs sleep)</div>
-                <div style={{ fontSize: '26px', fontWeight: 900, color: '#fde047', marginTop: '4px' }}>Bed by {c.timeStr}</div>
+              <div key={c.cycles} style={{ padding: '18px', borderRadius: '12px', backgroundColor: '#ffffff', border: '1.5px solid #bfdbfe', boxShadow: '0 4px 12px rgba(0, 56, 147, 0.05)' }}>
+                <div style={{ fontSize: '12px', color: '#003893', fontWeight: 800 }}>{c.cycles} REM Cycles ({c.hours} hrs sleep)</div>
+                <div style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '4px 0', fontFamily: 'var(--font-mono)' }}>{c.timeStr}</div>
+                <div style={{ fontSize: '12px', color: '#64748b' }}>
+                  {c.cycles === 5 ? 'Recommended (7.5 hrs)' : c.cycles === 6 ? 'Deep Rest (9 hrs)' : 'Light Rest (6 hrs)'}
+                </div>
               </div>
             ))}
           </div>

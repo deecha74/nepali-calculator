@@ -99,11 +99,11 @@ export function DateConverter() {
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '12px' }}>
+      <div className="segmented-control" style={{ width: '100%', display: 'flex', marginBottom: '24px' }}>
         <button
           type="button"
           className={`segmented-btn ${mode === 'bsToAd' ? 'active' : ''}`}
-          style={{ padding: '9px 16px', fontSize: '13.5px' }}
+          style={{ flex: 1, padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('bsToAd')}
         >
           {t('BS to AD', 'वि.सं. देखि ई.सं.')}
@@ -111,7 +111,7 @@ export function DateConverter() {
         <button
           type="button"
           className={`segmented-btn ${mode === 'adToBs' ? 'active' : ''}`}
-          style={{ padding: '9px 16px', fontSize: '13.5px' }}
+          style={{ flex: 1, padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('adToBs')}
         >
           {t('AD to BS', 'ई.सं. देखि वि.सं.')}
@@ -119,7 +119,7 @@ export function DateConverter() {
         <button
           type="button"
           className={`segmented-btn ${mode === 'age' ? 'active' : ''}`}
-          style={{ padding: '9px 16px', fontSize: '13.5px' }}
+          style={{ flex: 1, padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('age')}
         >
           {t('Age Calculator', 'उमेर क्याल्कुलेटर')}
@@ -130,7 +130,7 @@ export function DateConverter() {
         {/* Input Panel */}
         <div>
           {mode === 'bsToAd' && (
-            <div>
+            <div key="bsToAd" className="tab-panel-smooth">
               <span className="input-label" style={{ marginBottom: '14px' }}>
                 {t('Select Bikram Sambat (BS) Date:', 'विक्रम संवत् (वि.सं.) मिति छान्नुहोस्:')}
               </span>
@@ -176,7 +176,7 @@ export function DateConverter() {
           )}
 
           {mode === 'adToBs' && (
-            <div>
+            <div key="adToBs" className="tab-panel-smooth">
               <label className="input-label">{t('Select English (AD) Date', 'अंग्रेजी (ई.सं.) मिति छान्नुहोस्')}</label>
               <input
                 type="date"
@@ -189,7 +189,7 @@ export function DateConverter() {
           )}
 
           {mode === 'age' && (
-            <div>
+            <div key="age" className="tab-panel-smooth">
               <span className="input-label" style={{ marginBottom: '14px' }}>
                 {t('Enter Birth Date in BS (Bikram Sambat):', 'जन्म मिति वि.सं. छान्नुहोस्:')}
               </span>

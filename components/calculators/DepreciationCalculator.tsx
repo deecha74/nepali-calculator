@@ -290,15 +290,16 @@ Calculated via NepalCalc.com`;
             <label className="input-label">
               {t('Opening Written Down Value (WDV)', 'सुरुको बाँकी मूल्य (Opening WDV)')}
             </label>
-            <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
+            <div className="input-with-prefix-wrap" style={{ position: 'relative' }}>
+              <span className="prefix-symbol" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: '#64748b', pointerEvents: 'none' }}>
                 रु
               </span>
               <input
                 type="number"
-                className="text-input"
-                style={{ paddingLeft: '38px', fontSize: '16px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
+                className="text-input input-with-prefix"
+                style={{ paddingLeft: '42px', fontSize: '16px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
                 value={openingWdv || ''}
+                placeholder="0"
                 onChange={(e) => setOpeningWdv(Number(e.target.value) || 0)}
               />
             </div>

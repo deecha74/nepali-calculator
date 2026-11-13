@@ -538,25 +538,26 @@ Calculated on NepalCalc.com/how-much-gold-can-you-bring-to-nepal`;
           {/* Main Payable Duty Card */}
           <div
             style={{
-              padding: '18px',
-              borderRadius: '12px',
-              backgroundColor: '#0f172a',
-              color: '#ffffff',
+              padding: '22px',
+              borderRadius: '16px',
+              backgroundColor: '#ffffff',
+              border: '2px solid #003893',
+              boxShadow: '0 8px 30px rgba(0, 56, 147, 0.08)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: '10px',
+              gap: '14px',
             }}
           >
             <div>
-              <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94a3b8', fontWeight: 700 }}>
+              <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#003893', fontWeight: 800 }}>
                 {t('Payable Customs Duty at Airport', 'विमानस्थलमा लाग्ने भन्सार महसुल')}
               </div>
-              <div style={{ fontSize: 'clamp(24px, 3.5vw, 30px)', fontWeight: 900, color: '#fbbf24', marginTop: '2px' }}>
+              <div style={{ fontSize: 'clamp(26px, 3.5vw, 34px)', fontWeight: 900, color: '#003893', marginTop: '4px', fontFamily: 'var(--font-mono)' }}>
                 NPR {calculation.totalDutyNpr.toLocaleString('en-IN')}
               </div>
-              <div style={{ fontSize: '11.5px', color: '#cbd5e1', marginTop: '2px' }}>
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
                 {t(
                   `For ${calculation.totalGrams.toFixed(2)} Grams (${calculation.totalTola.toFixed(2)} Tola)`,
                   `${calculation.totalGrams.toFixed(2)} ग्राम (${calculation.totalTola.toFixed(2)} तोला) को लागि`
@@ -565,10 +566,10 @@ Calculated on NepalCalc.com/how-much-gold-can-you-bring-to-nepal`;
             </div>
 
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: '11px', color: '#94a3b8' }}>
+              <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 600 }}>
                 {t('Estimated Nepal Value', 'नेपालमा बजार मूल्य')}
               </div>
-              <div style={{ fontSize: '15px', fontWeight: 800, color: '#ffffff' }}>
+              <div style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', fontFamily: 'var(--font-mono)' }}>
                 ~NPR {calculation.estimatedMarketValueNpr.toLocaleString('en-IN')}
               </div>
               <Link

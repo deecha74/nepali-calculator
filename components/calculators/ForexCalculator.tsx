@@ -139,7 +139,7 @@ Via NepalCalc.com`;
                 <CountryFlag code={selectedCurrency} size={17} />
               </span>
               <select
-                className="select-input"
+                className="select-input has-prefix"
                 value={selectedCurrency}
                 onChange={(e) => setSelectedCurrency(e.target.value)}
                 style={{ paddingLeft: '44px' }}

@@ -254,15 +254,16 @@ Calculated via NepalCalc.com`;
             <label className="input-label">
               {t('Net Accounting Profit Before Tax', 'कर अघिको खुद नाफा')}
             </label>
-            <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
+            <div className="input-with-prefix-wrap" style={{ position: 'relative' }}>
+              <span className="prefix-symbol" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: '#64748b', pointerEvents: 'none' }}>
                 रु
               </span>
               <input
                 type="number"
-                className="text-input"
-                style={{ paddingLeft: '38px', fontSize: '17px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
+                className="text-input input-with-prefix"
+                style={{ paddingLeft: '42px', fontSize: '17px', fontWeight: 700, fontFamily: 'var(--font-mono)' }}
                 value={netAccountingProfit || ''}
+                placeholder="0"
                 onChange={(e) => setNetAccountingProfit(Number(e.target.value) || 0)}
               />
             </div>
@@ -335,15 +336,16 @@ Calculated via NepalCalc.com`;
             <label className="input-label">
               {t('Less: Advance TDS Withheld by Clients', 'घटाउने: पार्टीहरूले कट्टी गरेको अग्रिम कर (TDS Credit)')}
             </label>
-            <div style={{ position: 'relative' }}>
-              <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
+            <div className="input-with-prefix-wrap" style={{ position: 'relative' }}>
+              <span className="prefix-symbol" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: '#64748b', pointerEvents: 'none' }}>
                 रु
               </span>
               <input
                 type="number"
-                className="text-input"
-                style={{ paddingLeft: '38px', fontSize: '15px', fontWeight: 600, fontFamily: 'var(--font-mono)' }}
+                className="text-input input-with-prefix"
+                style={{ paddingLeft: '42px', fontSize: '15px', fontWeight: 600, fontFamily: 'var(--font-mono)' }}
                 value={tdsReceivableAlreadyDeducted || ''}
+                placeholder="0"
                 onChange={(e) => setTdsReceivableAlreadyDeducted(Number(e.target.value) || 0)}
               />
             </div>
