@@ -542,36 +542,23 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    {/* Middle: Title & Subtitle taking full width */}
+                    {/* Title taking full width - displays only English when English selected, only Nepali when Nepali selected */}
                     <h4
                       className="tool-card-title"
                       style={{
                         fontSize: '15px',
                         fontWeight: 800,
                         color: '#0b2b5c',
-                        margin: '0 0 3px 0',
-                        lineHeight: 1.3,
+                        margin: '0 0 8px 0',
+                        lineHeight: 1.35,
                         letterSpacing: '-0.01em',
                         wordBreak: 'normal',
                         overflowWrap: 'break-word',
                         hyphens: 'none',
                       }}
                     >
-                      {language === 'ne' ? tool.nepaliName : tool.name}
+                      {language === 'ne' ? (tool.nepaliName || tool.name) : tool.name}
                     </h4>
-                    <div
-                      style={{
-                        fontSize: '11.5px',
-                        fontWeight: 600,
-                        color: '#64748b',
-                        marginBottom: '8px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {language === 'ne' ? tool.name : tool.nepaliName}
-                    </div>
 
                     {/* Description taking full width */}
                     <p

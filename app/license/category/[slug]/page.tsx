@@ -153,3 +153,4 @@ export default async function LicenseCategoryPage({ params }: PageProps) {
     </div>
   );
 }
+

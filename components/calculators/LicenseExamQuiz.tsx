@@ -1146,6 +1146,238 @@ export function LicenseExamQuiz({ initialTab = 'overview' }: { initialTab?: Lice
                 </Link>
               </div>
             </section>
+
+            {/* 4. PROGRAMMATIC SEO DIRECTORY: CATEGORIES, TOPICS & TRIAL GUIDES */}
+            <section
+              style={{
+                backgroundColor: '#ffffff',
+                borderRadius: '24px',
+                padding: '36px clamp(18px, 3.5vw, 32px)',
+                border: '1.5px solid #e2e8f0',
+                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.03)'
+              }}
+            >
+              <div style={{ marginBottom: '28px' }}>
+                <div style={{ fontSize: '13px', fontWeight: 800, color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '6px' }}>
+                  {t('Comprehensive Preparation Index', 'विस्तृत परीक्षा निर्देशिका तथा प्रश्न संग्रह')}
+                </div>
+                <h3 style={{ fontSize: 'clamp(20px, 2.8vw, 26px)', fontWeight: 800, color: '#0f172a', margin: '0 0 8px' }}>
+                  {t('License Exams by Vehicle Category & Study Topics', 'सवारी साधन वर्ग र विषय अनुसार तयारी')}
+                </h3>
+                <p style={{ fontSize: '14.5px', color: '#64748b', margin: 0 }}>
+                  {t(
+                    'Explore dedicated practice tests, chapter-wise questions, and practical trial rubrics:',
+                    'आफ्नो सवारी साधन र विषय अनुसार समर्पित नमुना परीक्षा र अंक तालिका हेर्नुहोस्:'
+                  )}
+                </p>
+              </div>
+
+              {/* Sub-grid 1: Vehicle Categories */}
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{ fontSize: '13.5px', fontWeight: 800, color: '#334155', marginBottom: '12px' }}>
+                  {t('🚗 License Category Guides (सवारी साधन वर्ग):', '🚗 सवारी साधन वर्ग अनुसार तयारी:')}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+                  <Link
+                    href="/license/category/bike-category-a"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      textDecoration: 'none',
+                      color: '#0f172a',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      transition: 'all 0.15s ease'
+                    }}
+                    className="hover:border-blue-300 hover:bg-blue-50/40"
+                  >
+                    <span>🏍️ Bike / Motorcycle (Cat A)</span>
+                    <span style={{ fontSize: '12px', color: '#2563eb' }}>20 Qs →</span>
+                  </Link>
+
+                  <Link
+                    href="/license/category/scooter-category-k"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      textDecoration: 'none',
+                      color: '#0f172a',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      transition: 'all 0.15s ease'
+                    }}
+                    className="hover:border-blue-300 hover:bg-blue-50/40"
+                  >
+                    <span>🛵 Scooter / Moped (Cat K)</span>
+                    <span style={{ fontSize: '12px', color: '#2563eb' }}>20 Qs →</span>
+                  </Link>
+
+                  <Link
+                    href="/license/category/car-category-b"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      textDecoration: 'none',
+                      color: '#0f172a',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      transition: 'all 0.15s ease'
+                    }}
+                    className="hover:border-blue-300 hover:bg-blue-50/40"
+                  >
+                    <span>🚗 Car / Jeep / Van (Cat B)</span>
+                    <span style={{ fontSize: '12px', color: '#2563eb' }}>25 Qs →</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Sub-grid 2: Study Chapters / Topics */}
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{ fontSize: '13.5px', fontWeight: 800, color: '#334155', marginBottom: '12px' }}>
+                  {t('📚 Question Bank by Topic (विषय अनुसार ५०० प्रश्नहरू):', '📚 विषय अनुसार ५०० प्रश्नोत्तरहरू:')}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+                  {[
+                    { href: '/license/topic/traffic-rules-and-regulations', label: 'Traffic Rules & Penalties (सवारी ऐन नियम)' },
+                    { href: '/license/topic/traffic-signs-and-signals', label: 'Road Signs & Signals (सडक संकेत तथा चिन्ह)' },
+                    { href: '/license/topic/vehicle-technical-knowledge', label: 'Vehicle Mechanics (प्राविधिक तथा यान्त्रिक ज्ञान)' },
+                    { href: '/license/topic/safe-driving-principles', label: 'Safe Driving Principles (सैद्धान्तिक ज्ञान)' },
+                    { href: '/license/topic/accident-awareness-first-aid', label: 'Accident Awareness & First Aid (दुर्घटना सचेतना)' },
+                    { href: '/license/topic/environmental-pollution-awareness', label: 'Emission & Pollution (वातावरण प्रदूषण)' }
+                  ].map((topic) => (
+                    <Link
+                      key={topic.href}
+                      href={topic.href}
+                      style={{
+                        padding: '10px 14px',
+                        borderRadius: '10px',
+                        backgroundColor: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        textDecoration: 'none',
+                        color: '#1e293b',
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                      className="hover:border-blue-300 hover:text-blue-600"
+                    >
+                      <span>{topic.label}</span>
+                      <span style={{ fontSize: '12px', color: '#94a3b8' }}>→</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sub-grid 3: 70-Point Trial Rules */}
+              <div>
+                <div style={{ fontSize: '13.5px', fontWeight: 800, color: '#334155', marginBottom: '12px' }}>
+                  {t('🏁 70-Mark Practical Trial Guides (७० अंक प्रयोगात्मक परीक्षा निर्देशिका):', '🏁 ७० अंक प्रयोगात्मक परीक्षा निर्देशिका:')}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                  <Link
+                    href="/license/trial/bike-70-mark-trial-system"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#f0fdf4',
+                      border: '1px solid #bbf7d0',
+                      textDecoration: 'none',
+                      color: '#166534',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 700,
+                      fontSize: '13.5px'
+                    }}
+                    className="hover:border-green-400 hover:shadow-sm"
+                  >
+                    <span>🏍️ Bike 70-Point Trial Evaluation & Rubric</span>
+                    <span>→</span>
+                  </Link>
+
+                  <Link
+                    href="/license/trial/car-70-mark-trial-system"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      backgroundColor: '#eff6ff',
+                      border: '1px solid #bfdbfe',
+                      textDecoration: 'none',
+                      color: '#1e40af',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 700,
+                      fontSize: '13.5px'
+                    }}
+                    className="hover:border-blue-400 hover:shadow-sm"
+                  >
+                    <span>🚗 Car 70-Point Trial Evaluation & T-Parking</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Sub-grid 4: Low-Volume Longtail Guides & Specific FAQs */}
+              <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
+                <div style={{ fontSize: '13.5px', fontWeight: 800, color: '#334155', marginBottom: '12px' }}>
+                  {t('💡 Essential Rules, Medical & Retrial FAQs (बारम्बार सोधिने विशेष प्रश्नहरू):', '💡 बारम्बार सोधिने विशेष प्रश्नहरू:')}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+                  {[
+                    { href: '/license/guide/is-there-negative-marking-in-likhit-exam-nepal', label: 'Negative Marking in Likhit Exam (नेगेटिभ मार्किङ नियम)' },
+                    { href: '/license/guide/how-many-retrials-allowed-nepal-license', label: 'Retrials Allowed & 18-Month Validity (रिट्रायल म्याद)' },
+                    { href: '/license/guide/bike-trial-8-shape-rules-deductions', label: 'Bike 8-Shape Line Touch Deductions (८ आकार नियम)' },
+                    { href: '/license/guide/narrow-plank-falyak-bike-trial-tips', label: 'Narrow Plank (Falyak) Balance Tips (साँघुरो फल्याक)' },
+                    { href: '/license/guide/car-t-parking-trial-tips-nepal', label: 'Car T-Parking & Garage Reverse (टी-पार्किङ गाइड)' },
+                    { href: '/license/guide/uphill-ramp-car-trial-technique', label: 'Uphill Ramp Stop & Start (उकालो र्‍याम्प विधि)' },
+                    { href: '/license/guide/color-blindness-eye-test-rules-nepal-license', label: 'Color Blindness & Ishihara Test (आँखा जाँच नियम)' },
+                    { href: '/license/guide/driving-license-medical-test-requirements-nepal', label: 'Medical Test Checkup Procedure (मेडिकलमा के के जाँच्छ)' },
+                    { href: '/license/guide/driving-license-total-cost-fees-breakdown-nepal', label: 'Total License Expense & Fees (निकाल्न कति खर्च लाग्छ)' },
+                    { href: '/license/guide/smart-license-card-print-check-sms', label: 'Check Smart Card Print via SMS 33001 (प्रिन्ट स्टाटस)' }
+                  ].map((guide) => (
+                    <Link
+                      key={guide.href}
+                      href={guide.href}
+                      style={{
+                        padding: '10px 14px',
+                        borderRadius: '10px',
+                        backgroundColor: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        textDecoration: 'none',
+                        color: '#1e293b',
+                        fontSize: '12.5px',
+                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                      className="hover:border-blue-300 hover:text-blue-600"
+                    >
+                      <span style={{ maxWidth: '88%' }}>{guide.label}</span>
+                      <span style={{ fontSize: '12px', color: '#94a3b8' }}>→</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
           </div>
         )}
 

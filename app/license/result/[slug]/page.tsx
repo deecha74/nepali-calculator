@@ -2,3 +2,4 @@ import Page, { generateMetadata, generateStaticParams } from '@/app/likhit-resul
 
 export { generateMetadata, generateStaticParams };
 export default Page;
+

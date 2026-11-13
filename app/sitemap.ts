@@ -16,6 +16,12 @@ import { PROGRAMMATIC_TDS_SCENARIOS } from '@/lib/rates/programmaticTds';
 import { PROGRAMMATIC_MALPOT_SCENARIOS } from '@/lib/rates/programmaticMalpot';
 import { PROGRAMMATIC_BAGGAGE_ITEMS } from '@/lib/rates/programmaticBaggage';
 import { PROGRAMMATIC_LIKHIT_SCENARIOS } from '@/lib/rates/programmaticLikhit';
+import {
+  PROGRAMMATIC_LICENSE_CATEGORIES,
+  PROGRAMMATIC_LICENSE_TOPICS,
+  PROGRAMMATIC_TRIAL_GUIDES,
+  PROGRAMMATIC_LONGTAIL_GUIDES,
+} from '@/lib/rates/programmaticLicense';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
 const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
@@ -258,6 +264,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticLicenseCategoryRoutes = PROGRAMMATIC_LICENSE_CATEGORIES.map((cat) => ({
+    url: `${baseUrl}/license/category/${cat.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticLicenseTopicRoutes = PROGRAMMATIC_LICENSE_TOPICS.map((topic) => ({
+    url: `${baseUrl}/license/topic/${topic.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticTrialGuideRoutes = PROGRAMMATIC_TRIAL_GUIDES.map((guide) => ({
+    url: `${baseUrl}/license/trial/${guide.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticLicenseResultRoutes = PROGRAMMATIC_LIKHIT_SCENARIOS.map((scenario) => ({
+    url: `${baseUrl}/license/result/${scenario.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  const programmaticLongtailRoutes = PROGRAMMATIC_LONGTAIL_GUIDES.map((guide) => ({
+    url: `${baseUrl}/license/guide/${guide.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -276,6 +317,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticMalpotRoutes,
     ...programmaticBaggageRoutes,
     ...programmaticLikhitRoutes,
+    ...programmaticLicenseCategoryRoutes,
+    ...programmaticLicenseTopicRoutes,
+    ...programmaticTrialGuideRoutes,
+    ...programmaticLicenseResultRoutes,
+    ...programmaticLongtailRoutes,
     ...blogRoutes,
   ];
 }

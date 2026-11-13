@@ -129,7 +129,7 @@ export default async function LicenseTopicPage({ params }: PageProps) {
       </div>
 
       {/* Main Interactive 500 Questions Viewer */}
-      <LicenseExamQuiz initialTab="questions" />
+      <LicenseExamQuiz initialTab="question-bank" />
 
       {/* Chapter Specific FAQs */}
       <div style={{ maxWidth: '960px', margin: '48px auto 0' }}>

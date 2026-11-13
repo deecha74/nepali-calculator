@@ -258,6 +258,49 @@ export function getProgrammaticClusterLinksForPost(post: BlogPost): ContextualCl
     ];
   }
 
+  if (
+    href.startsWith('/license') ||
+    href === '/traffic-signs' ||
+    href === '/eye-test' ||
+    post.slug.includes('license') ||
+    post.slug.includes('traffic') ||
+    post.slug.includes('color-blindness') ||
+    post.slug.includes('eye-test')
+  ) {
+    return [
+      {
+        label: '12-Plate Ishihara Color Blindness Eye Test Simulator',
+        href: '/license/eye-test',
+        description: 'Interactive screening test with official DoTM Ishihara plates used at Yatayat medical counters.',
+      },
+      {
+        label: 'DoTM Nepal Traffic Signs & Road Signals Gallery',
+        href: '/license/traffic-signs',
+        description: 'Complete visual gallery of mandatory, cautionary, and informatory road signs with explanations.',
+      },
+      {
+        label: 'Official DoTM Likhit Exam Mock Test Simulator',
+        href: '/license/mock-test',
+        description: 'Timed 20/25-question simulation in Nepali & English with official 60% passing mark.',
+      },
+      {
+        label: 'Topic 2: Road Signs & Signals 100-Question Bank',
+        href: '/license/topic/traffic-signs-and-signals',
+        description: 'Practice all official Department of Transport Management questions on signals and markings.',
+      },
+      {
+        label: '70-Point Motorcycle (Bike/Scooter) Trial Guide',
+        href: '/license/trial/bike',
+        description: '8-figure, narrow plank, uphill ramp, and traffic light point deduction checklist.',
+      },
+      {
+        label: 'Daily Yatayat Likhit Exam Result Checker',
+        href: '/license/result/radhe-radhe-bhaktapur',
+        description: 'Check daily written exam pass/fail lists for Radhe Radhe, Ekantakuna, Dakshinkali & Chabahil.',
+      },
+    ];
+  }
+
   return [
     {
       label: post.toolLink.title,
