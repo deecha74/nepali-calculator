@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Scale, Copy, Check, ArrowRightLeft } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 // Traditional Nepali Weight Constants:
 // 1 Dharni (धार्नी) = 2.3328 kg (or commercially 2.5 kg or 2.4 kg approx, standard official is 2.3328 kg / 2.39 kg, 1 Dharni = 12 Pao = 2 Bishe)
@@ -16,6 +17,7 @@ import { Scale, Copy, Check, ArrowRightLeft } from 'lucide-react';
 // 1 Muthi (मुठी) = 1/4 Mana
 
 export function TraditionalUnitsConverter({ hideTitleTag = false, customTitle }: { hideTitleTag?: boolean; customTitle?: string }) {
+  const { t } = useLanguage();
   const TitleHeading = hideTitleTag ? 'h2' : 'h1';
   const [category, setCategory] = useState<'weight' | 'volume'>('weight');
 
@@ -116,7 +118,7 @@ Via NepalCalc.com`;
           style={{ padding: '10px 18px', fontSize: '14px' }}
           onClick={() => setCategory('weight')}
         >
-          ⚖️ Weight (धार्नी, सेर, पाउ ⇄ KG)
+          ⚖️ {t('Weight (Dharni, Pao to KG)', 'तौल (धार्नी, पाउ देखि केजी)')}
         </button>
         <button
           type="button"
@@ -124,7 +126,7 @@ Via NepalCalc.com`;
           style={{ padding: '10px 18px', fontSize: '14px' }}
           onClick={() => setCategory('volume')}
         >
-          🌾 Grain & Volume (माना, पाथी, मुरी ⇄ लिटर)
+          🌾 {t('Volume (Mana, Pathi, Muri to Liters)', 'आयतन (माना, पाथी, मुरी देखि लिटर)')}
         </button>
       </div>
 
@@ -132,10 +134,12 @@ Via NepalCalc.com`;
         {category === 'weight' ? (
           <>
             <div>
-              <span className="input-label" style={{ marginBottom: '14px' }}>Enter Traditional Weight Units:</span>
+              <span className="input-label" style={{ marginBottom: '14px' }}>
+                {t('Enter Traditional Weight Units:', 'परम्परागत तौल एकाइहरू प्रविष्ट गर्नुहोस्:')}
+              </span>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '20px' }}>
                 <div>
-                  <label className="input-label">DHARNI (धार्नी)</label>
+                  <label className="input-label">{t('Dharni', 'धार्नी')}</label>
                   <input
                     type="number"
                     min={0}
@@ -144,10 +148,12 @@ Via NepalCalc.com`;
                     value={dharni}
                     onChange={(e) => setDharni(Math.max(0, Number(e.target.value)))}
                   />
-                  <span className="input-subtext">१ धार्नी = १२ पाउ ≈ २.३३ केजी</span>
+                  <span className="input-subtext">
+                    {t('1 Dharni = 12 Pao ≈ 2.33 kg', '१ धार्नी = १२ पाउ ≈ २.३३ केजी')}
+                  </span>
                 </div>
                 <div>
-                  <label className="input-label">PAO (पाउ, 0-11)</label>
+                  <label className="input-label">{t('Pao (0–11)', 'पाउ (०–११)')}</label>
                   <input
                     type="number"
                     min={0}
@@ -157,35 +163,47 @@ Via NepalCalc.com`;
                     value={pao}
                     onChange={(e) => setPao(Math.max(0, Number(e.target.value)))}
                   />
-                  <span className="input-subtext">१ पाउ ≈ १९४ ग्राम (बजारमा २०० ग्राम)</span>
+                  <span className="input-subtext">
+                    {t('1 Pao ≈ 194.4 grams', '१ पाउ ≈ १९४.४ ग्राम')}
+                  </span>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                <button type="button" className="segmented-btn" onClick={() => { setDharni(1); setPao(0); }}>१ धार्नी (1 Dharni)</button>
-                <button type="button" className="segmented-btn" onClick={() => { setDharni(0); setPao(4); }}>४ पाउ (4 Pao)</button>
-                <button type="button" className="segmented-btn" onClick={() => { setDharni(5); setPao(0); }}>५ धार्नी (5 Dharni)</button>
+                <button type="button" className="segmented-btn" onClick={() => { setDharni(1); setPao(0); }}>
+                  {t('1 Dharni', '१ धार्नी')}
+                </button>
+                <button type="button" className="segmented-btn" onClick={() => { setDharni(0); setPao(4); }}>
+                  {t('4 Pao', '४ पाउ')}
+                </button>
+                <button type="button" className="segmented-btn" onClick={() => { setDharni(5); setPao(0); }}>
+                  {t('5 Dharni', '५ धार्नी')}
+                </button>
               </div>
             </div>
 
             <div>
               <div className="result-card-highlight">
-                <span className="stat-label">Official Metric Weight (सरकारी मानक)</span>
+                <span className="stat-label">
+                  {t('Official Metric Weight', 'सरकारी मानक तौल')}
+                </span>
                 <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
                   {(Math.round(weightCalculation.totalKg * 100) / 100).toLocaleString('en-IN')} <span style={{ fontSize: '16px', color: '#64748b' }}>KG</span>
                 </div>
                 <span className="stat-subvalue">
-                  = {Math.round(weightCalculation.totalGrams).toLocaleString('en-IN')} Grams
+                  = {Math.round(weightCalculation.totalGrams).toLocaleString('en-IN')} {t('Grams', 'ग्राम')}
                 </span>
 
                 <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                    <span style={{ color: '#64748b' }}>Local Market Practice (२.५ केजी प्रति धार्नी)</span>
+                    <span style={{ color: '#64748b' }}>
+                      {t('Local Market Practice (2.5 kg/dharni)', 'बजार प्रचलन (२.५ केजी प्रति धार्नी)')}
+                    </span>
                     <span style={{ fontWeight: 700 }}>≈ {(Math.round(weightCalculation.commercialKg * 100) / 100)} KG</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                    <span style={{ color: '#64748b' }}>Total Pao</span>
-                    <span style={{ fontWeight: 700 }}>{weightCalculation.totalPao} पाउ</span>
+                    <span style={{ color: '#64748b' }}>{t('Total Pao', 'कुल पाउ')}</span>
+                    <span style={{ fontWeight: 700 }}>{weightCalculation.totalPao} {t('Pao', 'पाउ')}</span>
                   </div>
                 </div>
               </div>
@@ -194,10 +212,12 @@ Via NepalCalc.com`;
         ) : (
           <>
             <div>
-              <span className="input-label" style={{ marginBottom: '14px' }}>Enter Traditional Volume Units:</span>
+              <span className="input-label" style={{ marginBottom: '14px' }}>
+                {t('Enter Traditional Volume Units:', 'परम्परागत आयतन एकाइहरू प्रविष्ट गर्नुहोस्:')}
+              </span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '20px' }}>
                 <div>
-                  <label className="input-label">MURI (मुरी)</label>
+                  <label className="input-label">{t('Muri', 'मुरी')}</label>
                   <input
                     type="number"
                     min={0}
@@ -205,10 +225,12 @@ Via NepalCalc.com`;
                     value={muri}
                     onChange={(e) => setMuri(Math.max(0, Number(e.target.value)))}
                   />
-                  <span className="input-subtext">१ मुरी = २० पाथी</span>
+                  <span className="input-subtext">
+                    {t('1 Muri = 20 Pathi', '१ मुरी = २० पाथी')}
+                  </span>
                 </div>
                 <div>
-                  <label className="input-label">PATHI (पाथी)</label>
+                  <label className="input-label">{t('Pathi (0–19)', 'पाथी (०–१९)')}</label>
                   <input
                     type="number"
                     min={0}
@@ -217,10 +239,12 @@ Via NepalCalc.com`;
                     value={pathi}
                     onChange={(e) => setPathi(Math.max(0, Number(e.target.value)))}
                   />
-                  <span className="input-subtext">१ पाथी = ८ माना</span>
+                  <span className="input-subtext">
+                    {t('1 Pathi = 8 Mana', '१ पाथी = ८ माना')}
+                  </span>
                 </div>
                 <div>
-                  <label className="input-label">MANA (माना)</label>
+                  <label className="input-label">{t('Mana (0–7)', 'माना (०–७)')}</label>
                   <input
                     type="number"
                     min={0}
@@ -229,30 +253,45 @@ Via NepalCalc.com`;
                     value={mana}
                     onChange={(e) => setMana(Math.max(0, Number(e.target.value)))}
                   />
-                  <span className="input-subtext">१ माना ≈ ०.५६८ लिटर</span>
+                  <span className="input-subtext">
+                    {t('1 Mana ≈ 0.568 Liters', '१ माना ≈ ०.५६८ लिटर')}
+                  </span>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                <button type="button" className="segmented-btn" onClick={() => { setMuri(0); setPathi(1); setMana(0); }}>१ पाथी (1 Pathi)</button>
-                <button type="button" className="segmented-btn" onClick={() => { setMuri(1); setPathi(0); setMana(0); }}>१ मुरी (1 Muri = 20 Pathi)</button>
-                <button type="button" className="segmented-btn" onClick={() => { setMuri(0); setPathi(0); setMana(4); }}>४ माना (Half Pathi)</button>
+                <button type="button" className="segmented-btn" onClick={() => { setMuri(0); setPathi(1); setMana(0); }}>
+                  {t('1 Pathi', '१ पाथी')}
+                </button>
+                <button type="button" className="segmented-btn" onClick={() => { setMuri(1); setPathi(0); setMana(0); }}>
+                  {t('1 Muri (20 Pathi)', '१ मुरी (२० पाथी)')}
+                </button>
+                <button type="button" className="segmented-btn" onClick={() => { setMuri(0); setPathi(0); setMana(4); }}>
+                  {t('4 Mana (Half Pathi)', '४ माना (आधा पाथी)')}
+                </button>
               </div>
             </div>
 
             <div>
               <div className="result-card-highlight">
-                <span className="stat-label">Equivalent Volume in Liters (कुल लिटर)</span>
+                <span className="stat-label">
+                  {t('Equivalent Volume in Liters', 'कुल लिटर')}
+                </span>
                 <div className="stat-value" style={{ color: '#0d9488', margin: '6px 0 2px' }}>
-                  {(Math.round(volumeCalculation.totalLiters * 100) / 100).toLocaleString('en-IN')} <span style={{ fontSize: '16px', color: '#64748b' }}>Liters</span>
+                  {(Math.round(volumeCalculation.totalLiters * 100) / 100).toLocaleString('en-IN')} <span style={{ fontSize: '16px', color: '#64748b' }}>{t('Liters', 'लिटर')}</span>
                 </div>
                 <span className="stat-subvalue">
-                  Total {volumeCalculation.totalMana} Mana = {volumeCalculation.totalPathi.toFixed(2)} Pathi
+                  {t(
+                    `Total ${volumeCalculation.totalMana} Mana = ${volumeCalculation.totalPathi.toFixed(2)} Pathi`,
+                    `कुल ${volumeCalculation.totalMana} माना = ${volumeCalculation.totalPathi.toFixed(2)} पाथी`
+                  )}
                 </span>
 
                 <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                    <span style={{ color: '#64748b' }}>Estimated Paddy / Rice Grain Weight</span>
+                    <span style={{ color: '#64748b' }}>
+                      {t('Estimated Paddy / Rice Grain Weight', 'अनुमानित धान/चामल तौल')}
+                    </span>
                     <span style={{ fontWeight: 700 }}>≈ {(Math.round(volumeCalculation.approxGrainKg * 10) / 10)} KG</span>
                   </div>
                 </div>

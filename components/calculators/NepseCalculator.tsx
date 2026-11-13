@@ -232,7 +232,7 @@ Calculated via NepalCalc.com`;
           <div>
             {activeTab === 'buy' ? (
               <div className="result-card-highlight">
-                <span className="stat-label">{t('Total Amount to Pay (कुल खरिद लागत)', 'जम्मा भुक्तानी गर्नुपर्ने रकम (Total Buy Cost)')}</span>
+                <span className="stat-label">{t('Total Amount to Pay', 'जम्मा भुक्तानी गर्नुपर्ने रकम')}</span>
                 <div className="stat-value" style={{ margin: '6px 0 2px' }}>
                   रु {Math.round(buyCalculation.totalCost).toLocaleString('en-IN')}
                 </div>
@@ -261,7 +261,7 @@ Calculated via NepalCalc.com`;
               </div>
             ) : (
               <div className="result-card-highlight">
-                <span className="stat-label">{t('Net Receivable (प्राप्त हुने खुद रकम)', 'हात पर्ने खुद रकम (Net Receivable)')}</span>
+                <span className="stat-label">{t('Net Receivable', 'हात पर्ने खुद रकम')}</span>
                 <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
                   रु {Math.round(sellCalculation.netReceivable).toLocaleString('en-IN')}
                 </div>
@@ -342,7 +342,7 @@ Calculated via NepalCalc.com`;
 
           <div>
             <div className="result-card-highlight">
-              <span className="stat-label">{t('Adjusted Share Price (समायोजित मूल्य)', 'समायोजित सेयर मूल्य (Adjusted Price)')}</span>
+              <span className="stat-label">{t('Adjusted Share Price', 'समायोजित सेयर मूल्य')}</span>
               <div className="stat-value" style={{ color: '#2563eb', margin: '6px 0 2px' }}>
                 रु {(Math.round(adjustedPrice * 100) / 100).toFixed(2)}
               </div>

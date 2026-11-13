@@ -16,16 +16,16 @@ interface CountryZone {
 }
 
 const DESTINATIONS: CountryZone[] = [
-  { code: 'NP', name: 'Nepal (Domestic/अन्तर-जिल्ला)', nepaliName: 'नेपालभित्र (जिल्ला/उपत्यका)', zone: 'domestic', baseEms500g: 150, per500gAdd: 60, baseAirmail20g: 25, deliveryDays: '1-3 Days' },
-  { code: 'IN', name: 'India (भारत)', nepaliName: 'भारत', zone: 'saarc', baseEms500g: 1250, per500gAdd: 450, baseAirmail20g: 80, deliveryDays: '5-8 Days' },
+  { code: 'NP', name: 'Nepal (Domestic)', nepaliName: 'नेपालभित्र (जिल्ला/उपत्यका)', zone: 'domestic', baseEms500g: 150, per500gAdd: 60, baseAirmail20g: 25, deliveryDays: '1-3 Days' },
+  { code: 'IN', name: 'India', nepaliName: 'भारत', zone: 'saarc', baseEms500g: 1250, per500gAdd: 450, baseAirmail20g: 80, deliveryDays: '5-8 Days' },
   { code: 'US', name: 'United States (USA)', nepaliName: 'संयुक्त राज्य अमेरिका', zone: 'americas', baseEms500g: 3850, per500gAdd: 1100, baseAirmail20g: 220, deliveryDays: '6-10 Days' },
   { code: 'GB', name: 'United Kingdom (UK)', nepaliName: 'संयुक्त अधिराज्य (बेलायत)', zone: 'europe', baseEms500g: 3400, per500gAdd: 950, baseAirmail20g: 200, deliveryDays: '5-9 Days' },
-  { code: 'AU', name: 'Australia (अस्ट्रेलिया)', nepaliName: 'अस्ट्रेलिया', zone: 'asia', baseEms500g: 3600, per500gAdd: 1050, baseAirmail20g: 210, deliveryDays: '6-10 Days' },
-  { code: 'JP', name: 'Japan (जापान)', nepaliName: 'जापान', zone: 'asia', baseEms500g: 2900, per500gAdd: 850, baseAirmail20g: 190, deliveryDays: '5-8 Days' },
-  { code: 'AE', name: 'United Arab Emirates (UAE/दुबई)', nepaliName: 'युएई (दुबई)', zone: 'mideast', baseEms500g: 2450, per500gAdd: 700, baseAirmail20g: 160, deliveryDays: '4-7 Days' },
-  { code: 'QA', name: 'Qatar (कतार)', nepaliName: 'कतार', zone: 'mideast', baseEms500g: 2450, per500gAdd: 700, baseAirmail20g: 160, deliveryDays: '4-7 Days' },
-  { code: 'CA', name: 'Canada (क्यानाडा)', nepaliName: 'क्यानाडा', zone: 'americas', baseEms500g: 3950, per500gAdd: 1150, baseAirmail20g: 230, deliveryDays: '7-12 Days' },
-  { code: 'KR', name: 'South Korea (दक्षिण कोरिया)', nepaliName: 'दक्षिण कोरिया', zone: 'asia', baseEms500g: 2800, per500gAdd: 820, baseAirmail20g: 180, deliveryDays: '5-8 Days' },
+  { code: 'AU', name: 'Australia', nepaliName: 'अस्ट्रेलिया', zone: 'asia', baseEms500g: 3600, per500gAdd: 1050, baseAirmail20g: 210, deliveryDays: '6-10 Days' },
+  { code: 'JP', name: 'Japan', nepaliName: 'जापान', zone: 'asia', baseEms500g: 2900, per500gAdd: 850, baseAirmail20g: 190, deliveryDays: '5-8 Days' },
+  { code: 'AE', name: 'United Arab Emirates (UAE)', nepaliName: 'संयुक्त अरब इमिरेट्स (युएई)', zone: 'mideast', baseEms500g: 2450, per500gAdd: 700, baseAirmail20g: 160, deliveryDays: '4-7 Days' },
+  { code: 'QA', name: 'Qatar', nepaliName: 'कतार', zone: 'mideast', baseEms500g: 2450, per500gAdd: 700, baseAirmail20g: 160, deliveryDays: '4-7 Days' },
+  { code: 'CA', name: 'Canada', nepaliName: 'क्यानाडा', zone: 'americas', baseEms500g: 3950, per500gAdd: 1150, baseAirmail20g: 230, deliveryDays: '7-12 Days' },
+  { code: 'KR', name: 'South Korea', nepaliName: 'दक्षिण कोरिया', zone: 'asia', baseEms500g: 2800, per500gAdd: 820, baseAirmail20g: 180, deliveryDays: '5-8 Days' },
 ];
 
 export function PostalShippingCalculator() {
@@ -140,13 +140,13 @@ export function PostalShippingCalculator() {
           {/* Service Type */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
-              सेवा प्रकार (Service Type)
+              {t('Service Type', 'सेवाको प्रकार')}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
               {[
-                { id: 'ems', name: 'EMS Express', badge: 'Fastest ⚡' },
-                { id: 'registered', name: 'Registry (दर्ता)', badge: 'Tracked 🛡️' },
-                { id: 'airmail', name: 'Airmail (हवाई)', badge: 'Economy ✉️' }
+                { id: 'ems', name: t('EMS Express', 'इएमएस द्रुत'), badge: 'Fastest ⚡' },
+                { id: 'registered', name: t('Registered', 'दर्ता हुलाक'), badge: 'Tracked 🛡️' },
+                { id: 'airmail', name: t('Airmail', 'हवाई हुलाक'), badge: 'Economy ✉️' }
               ].map(s => (
                 <button
                   key={s.id}

@@ -257,7 +257,7 @@ export function BulkDateConverter() {
       <div style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
           <label style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-primary)' }}>
-            Paste Date Column From Excel or Text (१ लाइनमा १ मिति):
+            Paste Date Column (1 date per line):
           </label>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button
@@ -380,7 +380,7 @@ export function BulkDateConverter() {
               <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)', width: '60px' }}>#</th>
               <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)' }}>Input Date</th>
               <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)' }}>Converted (YYYY-MM-DD)</th>
-              <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)' }}>Day (बार)</th>
+              <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)' }}>Day</th>
               <th style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-secondary)' }}>Full Description</th>
             </tr>
           </thead>

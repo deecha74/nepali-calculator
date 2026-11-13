@@ -437,7 +437,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{t('Nepali Citizenship (१६ वर्ष+)', 'नेपाली नागरिकता (१६ वर्ष+)')}</span>
+                <span>{t('Nepali Citizenship (16+ Yrs)', 'नेपाली नागरिकता (१६ वर्ष+)')}</span>
                 <span className={`badge ${result.eligibility.citizenship ? 'badge-emerald' : 'badge-neutral'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   {result.eligibility.citizenship ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
                   {result.eligibility.citizenship ? t('Eligible', 'योग्य') : t('Not Eligible', 'अयोग्य')}
@@ -445,7 +445,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{t('Driving License & Voter ID (१८ वर्ष+)', 'सवारी चालक अनुमति तथा मतदाता (१८ वर्ष+)')}</span>
+                <span>{t('Driving License & Voter ID (18+ Yrs)', 'सवारी चालक अनुमति तथा मतदाता (१८ वर्ष+)')}</span>
                 <span className={`badge ${result.eligibility.drivingLicense ? 'badge-emerald' : 'badge-neutral'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   {result.eligibility.drivingLicense ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
                   {result.eligibility.drivingLicense ? t('Eligible', 'योग्य') : t('Not Eligible', 'अयोग्य')}
@@ -453,7 +453,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{t('Loksewa Kharidar / Nasu (१८ - ३५/४० वर्ष)', 'लोकसेवा खरिदार / नासु (१८ - ३५/४० वर्ष)')}</span>
+                <span>{t('Loksewa Kharidar / Nasu (18–35/40 Yrs)', 'लोकसेवा खरिदार / नासु (१८ - ३५/४० वर्ष)')}</span>
                 <span className={`badge ${result.eligibility.lokSewaGeneralFemale ? 'badge-emerald' : 'badge-neutral'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   {result.eligibility.lokSewaGeneralFemale ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
                   {result.eligibility.lokSewaGeneralFemale ? t('Eligible', 'योग्य') : t('Age Bar Exceeded', 'उमेर हद नाघेको')}
@@ -461,7 +461,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{t('Foreign Employment Labor Permit (१८ - ६० वर्ष)', 'वैदेशिक रोजगार श्रम स्वीकृति (१८ - ६० वर्ष)')}</span>
+                <span>{t('Foreign Employment Permit (18–60 Yrs)', 'वैदेशिक रोजगार श्रम स्वीकृति (१८ - ६० वर्ष)')}</span>
                 <span className={`badge ${result.eligibility.foreignEmployment ? 'badge-emerald' : 'badge-neutral'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   {result.eligibility.foreignEmployment ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
                   {result.eligibility.foreignEmployment ? t('Eligible', 'योग्य') : t('Not Eligible', 'अयोग्य')}
@@ -469,7 +469,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{t('Senior Citizen Allowance (६८ वर्ष+)', 'ज्येष्ठ नागरिक सामाजिक सुरक्षा भत्ता (६८ वर्ष+)')}</span>
+                <span>{t('Senior Citizen Allowance (68+ Yrs)', 'ज्येष्ठ नागरिक सामाजिक सुरक्षा भत्ता (६८ वर्ष+)')}</span>
                 <span className={`badge ${result.eligibility.seniorCitizenAllowance ? 'badge-emerald' : 'badge-neutral'}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                   {result.eligibility.seniorCitizenAllowance ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
                   {result.eligibility.seniorCitizenAllowance ? t('Eligible for Allowance', 'भत्ता योग्य') : t('Under Age', 'उमेर नपुगेको')}

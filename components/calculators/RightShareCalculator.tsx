@@ -156,7 +156,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
           {/* Market Price Before Book Closure */}
           <div style={{ marginBottom: '18px' }}>
             <label className="input-label" style={{ fontWeight: 600 }}>
-              {t('Market Closing Price Before Book Closure (अन्तिम कारोबार मूल्य)', 'बुकक्लोज अघिको अन्तिम सेयर मूल्य')}
+              {t('Market Closing Price Before Book Closure', 'बुकक्लोज अघिको अन्तिम सेयर मूल्य')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: 'var(--text-muted)' }}>
@@ -219,7 +219,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
           {/* Right Share Ratio */}
           <div style={{ marginBottom: '18px' }}>
             <label className="input-label" style={{ fontWeight: 600, marginBottom: '6px' }}>
-              {t('Proposed Right Share Ratio (हकप्रद सेयर अनुपात)', 'प्रस्तावित हकप्रद सेयर अनुपात')}
+              {t('Proposed Right Share Ratio', 'प्रस्तावित हकप्रद सेयर अनुपात')}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginBottom: '8px' }}>
               {[
@@ -254,7 +254,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
           {/* Number of Shares Held */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label" style={{ fontWeight: 600 }}>
-              {t('Number of Shares Held in Demat (तपाईंसँग भएको कित्ता)', 'तपाईंसँग भएको सेयर कित्ता (Demat)')}
+              {t('Number of Shares Held in Demat', 'तपाईंसँग भएको सेयर कित्ता (Demat)')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 600, color: 'var(--text-muted)', fontSize: '13px' }}>
@@ -338,7 +338,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', fontSize: '12px', color: 'var(--text-muted)' }}>
-                  <span>{t('5% Cash Dividend Tax Payable (रु ५/कित्ता):', '५% नगद लाभांश कर (रू. ५ प्रति कित्ता):')}</span>
+                  <span>{t('5% Cash Dividend Tax Payable (Rs. 5/kitta):', '५% नगद लाभांश कर (रू. ५ प्रति कित्ता):')}</span>
                   <span style={{ fontWeight: 700, color: '#d97706' }}>{formatCurrency(result.bonusTaxPayable)}</span>
                 </div>
               </div>
@@ -355,7 +355,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
                     </span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', fontSize: '12px', color: 'var(--text-muted)' }}>
-                    <span>{t('Required Application Capital (x रु १००):', 'हकप्रद आवेदन खर्च (× रू. १००):')}</span>
+                    <span>{t('Required Application Capital (x Rs. 100):', 'हकप्रद आवेदन खर्च (× रू. १००):')}</span>
                     <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{formatCurrency(result.rightApplicationAmount)}</span>
                   </div>
                 </div>

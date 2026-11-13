@@ -2,8 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { Lock, RefreshCw, Copy, Check } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export function PasswordGeneratorCalculator() {
+  const { t } = useLanguage();
   const [length, setLength] = useState<number>(16);
   const [useUpper, setUseUpper] = useState<boolean>(true);
   const [useLower, setUseLower] = useState<boolean>(true);
@@ -28,12 +30,12 @@ export function PasswordGeneratorCalculator() {
     }
 
     const entropyBits = Math.round(length * Math.log2(pool.length));
-    let strength = 'Strong (सुरक्षित)';
-    if (entropyBits >= 90) strength = 'Military Grade / Unbreakable (अत्यन्त सुरक्षित)';
-    else if (entropyBits < 55) strength = 'Weak — Increase Length';
+    let strength = t('Strong', 'सुरक्षित');
+    if (entropyBits >= 90) strength = t('Military Grade / Unbreakable', 'अत्यन्त सुरक्षित');
+    else if (entropyBits < 55) strength = t('Weak — Increase Length', 'कमजोर — लम्बाइ बढाउनुहोस्');
 
     return { pwd, entropyBits, strength };
-  }, [length, useUpper, useLower, useNumbers, useSymbols, seed]);
+  }, [length, useUpper, useLower, useNumbers, useSymbols, seed, t]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(generated.pwd);
@@ -49,16 +51,16 @@ export function PasswordGeneratorCalculator() {
             <Lock size={22} />
           </div>
           <h1 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>
-            Secure Password Generator & Entropy Checker
+            {t('Secure Password Generator & Entropy Checker', 'सुरक्षित पासवर्ड जेनेरेटर तथा सुरक्षा जाँच')}
           </h1>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button type="button" onClick={() => setSeed((s) => s + 1)} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
-            <RefreshCw size={15} /> Regenerate
+            <RefreshCw size={15} /> {t('Regenerate', 'नयाँ बनाउनुहोस्')}
           </button>
           <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
             {copied ? <Check size={15} color="#059669" /> : <Copy size={15} />}
-            <span>{copied ? 'Copied!' : 'Copy Password'}</span>
+            <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy Password', 'पासवर्ड कपी')}</span>
           </button>
         </div>
       </div>
@@ -66,25 +68,24 @@ export function PasswordGeneratorCalculator() {
       <div style={{ padding: '18px 20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#4ade80', fontFamily: 'monospace', fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 800, wordBreak: 'break-all', marginBottom: '20px' }}>
         {generated.pwd}
         <div style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'sans-serif', marginTop: '6px' }}>
-          Entropy: <strong>{generated.entropyBits} bits</strong> • {generated.strength}
+          {t('Entropy:', 'सुरक्षा स्तर:')} <strong>{generated.entropyBits} bits</strong> • {generated.strength}
         </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', alignItems: 'center' }}>
         <div>
           <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-            Password Length: {length} characters
+            {t(`Password Length: ${length} characters`, `पासवर्ड लम्बाइ: ${length} अक्षर`)}
           </label>
           <input type="range" min={8} max={48} value={length} onChange={(e) => setLength(Number(e.target.value))} style={{ width: '100%' }} />
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', fontSize: '13.5px', fontWeight: 700 }}>
-          <label><input type="checkbox" checked={useUpper} onChange={(e) => setUseUpper(e.target.checked)} /> Uppercase (A-Z)</label>
-          <label><input type="checkbox" checked={useLower} onChange={(e) => setUseLower(e.target.checked)} /> Lowercase (a-z)</label>
-          <label><input type="checkbox" checked={useNumbers} onChange={(e) => setUseNumbers(e.target.checked)} /> Numbers (0-9)</label>
-          <label><input type="checkbox" checked={useSymbols} onChange={(e) => setUseSymbols(e.target.checked)} /> Symbols (!@#$)</label>
+          <label><input type="checkbox" checked={useUpper} onChange={(e) => setUseUpper(e.target.checked)} /> {t('Uppercase (A-Z)', 'ठूला अक्षर (A-Z)')}</label>
+          <label><input type="checkbox" checked={useLower} onChange={(e) => setUseLower(e.target.checked)} /> {t('Lowercase (a-z)', 'साना अक्षर (a-z)')}</label>
+          <label><input type="checkbox" checked={useNumbers} onChange={(e) => setUseNumbers(e.target.checked)} /> {t('Numbers (0-9)', 'अंक (०-९)')}</label>
+          <label><input type="checkbox" checked={useSymbols} onChange={(e) => setUseSymbols(e.target.checked)} /> {t('Symbols (!@#$)', 'चिह्नहरू (!@#$)')}</label>
         </div>
       </div>
     </div>
   );
 }
-

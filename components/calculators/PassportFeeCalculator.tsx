@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '@/components/LanguageContext';
 import { BookOpen, Copy, Check, Info, ShieldCheck, MapPin } from 'lucide-react';
-import { toNepaliDigits } from '@/lib/nepaliDate';
 
 export function PassportFeeCalculator() {
   const { t } = useLanguage();
@@ -58,136 +57,74 @@ Calculated via NepalCalc.com`;
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '18px', marginBottom: '24px' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="badge badge-emerald">Department of Passport (राहदानी विभाग)</span>
-            <span className="badge badge-blue">e-Passport Rates 2083</span>
+            <span className="badge badge-emerald">{t('Department of Passport', 'राहदानी विभाग')}</span>
+            <span className="badge badge-blue">{t('e-Passport Standard Rates', 'विद्युतीय राहदानी दर')}</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
             {t('Nepal e-Passport Fee Calculator', 'विद्युतीय राहदानी (e-Passport) दस्तुर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
-            जिल्ला प्रशासन कार्यालय (DAO), राहदानी विभाग त्रिपुरेश्वर (द्रुत सेवा) तथा विदेशस्थित नेपाली दूतावासको आधिकारिक राजस्व शुल्क।
+            {t(
+              'Official government revenue fees for DAO regular, Tripureshwor fast-track, and Nepali Embassies abroad.',
+              'जिल्ला प्रशासन कार्यालय (DAO), राहदानी विभाग त्रिपुरेश्वर (द्रुत सेवा) तथा विदेशस्थित नेपाली दूतावासको आधिकारिक राजस्व शुल्क।'
+            )}
           </p>
         </div>
 
         <button onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? "Copied" : "Copy"}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy Details', 'विवरण कपी')}</span>
         </button>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
         {/* Controls */}
-        <div>
-          {/* Submission Location */}
-          <div style={{ marginBottom: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+          {/* Submission Location Dropdown */}
+          <div>
             <label className="input-label" style={{ fontSize: '13px', fontWeight: 800, color: '#1e293b', marginBottom: '6px', display: 'block' }}>
-              आवेदन पेश गर्ने स्थान (Application Center)
+              {t('Application Center / Processing Location', 'आवेदन पेश गर्ने स्थान')}
             </label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <button
-                type="button"
-                onClick={() => setSubmissionLocation('dao')}
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '8px',
-                  border: '1.5px solid',
-                  borderColor: submissionLocation === 'dao' ? '#003893' : '#e2e8f0',
-                  backgroundColor: submissionLocation === 'dao' ? '#eff6ff' : '#ffffff',
-                  textAlign: 'left',
-                  cursor: 'pointer'
-                }}
-              >
-                <div style={{ fontWeight: 800, fontSize: '13.5px', color: submissionLocation === 'dao' ? '#003893' : '#0f172a' }}>
-                  जिल्ला प्रशासन कार्यालय / इलाका प्रशासन (DAO)
-                </div>
-                <div style={{ fontSize: '11.5px', color: '#64748b' }}>सामान्य समय: १० देखし १५ दिन (Regular processing)</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSubmissionLocation('dop_urgent')}
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '8px',
-                  border: '1.5px solid',
-                  borderColor: submissionLocation === 'dop_urgent' ? '#c8102e' : '#e2e8f0',
-                  backgroundColor: submissionLocation === 'dop_urgent' ? '#fef2f2' : '#ffffff',
-                  textAlign: 'left',
-                  cursor: 'pointer'
-                }}
-              >
-                <div style={{ fontWeight: 800, fontSize: '13.5px', color: submissionLocation === 'dop_urgent' ? '#c8102e' : '#0f172a' }}>
-                  राहदानी विभाग, त्रिपुरेश्वर काठमाडौँ (द्रुत सेवा)
-                </div>
-                <div style={{ fontSize: '11.5px', color: '#64748b' }}>अति जरुरी: २ देखि ३ कार्यदिन (Fast-track within 3 days)</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSubmissionLocation('embassy')}
-                style={{
-                  padding: '10px 14px',
-                  borderRadius: '8px',
-                  border: '1.5px solid',
-                  borderColor: submissionLocation === 'embassy' ? '#059669' : '#e2e8f0',
-                  backgroundColor: submissionLocation === 'embassy' ? '#ecfdf5' : '#ffffff',
-                  textAlign: 'left',
-                  cursor: 'pointer'
-                }}
-              >
-                <div style={{ fontWeight: 800, fontSize: '13.5px', color: submissionLocation === 'embassy' ? '#059669' : '#0f172a' }}>
-                  विदेशस्थित नेपाली दूतावास / नियोग (Nepali Embassy Abroad)
-                </div>
-                <div style={{ fontSize: '11.5px', color: '#64748b' }}>शुल्क USD $८० देखि $१६० (Payment in foreign currency)</div>
-              </button>
-            </div>
+            <select
+              value={submissionLocation}
+              onChange={(e) => setSubmissionLocation(e.target.value as 'dao' | 'dop_urgent' | 'embassy')}
+              className="text-input"
+              style={{ width: '100%', padding: '10px 12px', fontSize: '14px', fontWeight: 600 }}
+            >
+              <option value="dao">
+                🏢 {t('District Administration Office (DAO — Regular 10–15 Days)', 'जिल्ला प्रशासन कार्यालय / इलाका प्रशासन (DAO — १०–१५ दिन)')}
+              </option>
+              <option value="dop_urgent">
+                ⚡ {t('Department of Passport, Tripureshwor (Urgent 2–3 Days)', 'राहदानी विभाग, त्रिपुरेश्वर काठमाडौँ (द्रुत सेवा २–३ दिन)')}
+              </option>
+              <option value="embassy">
+                🌍 {t('Nepali Embassy / Consulate Abroad ($80 – $160 USD)', 'विदेशस्थित नेपाली दूतावास / नियोग ($८० देखि $१६० USD)')}
+              </option>
+            </select>
           </div>
 
-          {/* Page Count */}
-          <div style={{ marginBottom: '20px' }}>
+          {/* Page Count Dropdown */}
+          <div>
             <label className="input-label" style={{ fontSize: '13px', fontWeight: 800, color: '#1e293b', marginBottom: '6px', display: 'block' }}>
-              राहदानीको पृष्ठ संख्या (Passport Pages)
+              {t('Passport Page Count', 'राहदानीको पृष्ठ संख्या')}
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-              <button
-                type="button"
-                onClick={() => setPageCount('34')}
-                style={{
-                  padding: '10px',
-                  borderRadius: '8px',
-                  border: '1.5px solid',
-                  borderColor: pageCount === '34' ? '#003893' : '#cbd5e1',
-                  backgroundColor: pageCount === '34' ? '#003893' : '#ffffff',
-                  color: pageCount === '34' ? '#ffffff' : '#0f172a',
-                  fontWeight: 800,
-                  fontSize: '13px',
-                  cursor: 'pointer'
-                }}
-              >
-                ३४ पृष्ठ (साधारण यात्रु)
-              </button>
-              <button
-                type="button"
-                onClick={() => setPageCount('66')}
-                style={{
-                  padding: '10px',
-                  borderRadius: '8px',
-                  border: '1.5px solid',
-                  borderColor: pageCount === '66' ? '#003893' : '#cbd5e1',
-                  backgroundColor: pageCount === '66' ? '#003893' : '#ffffff',
-                  color: pageCount === '66' ? '#ffffff' : '#0f172a',
-                  fontWeight: 800,
-                  fontSize: '13px',
-                  cursor: 'pointer'
-                }}
-              >
-                ६६ पृष्ठ (बारम्बार यात्रा गर्ने)
-              </button>
-            </div>
+            <select
+              value={pageCount}
+              onChange={(e) => setPageCount(e.target.value as '34' | '66')}
+              className="text-input"
+              style={{ width: '100%', padding: '10px 12px', fontSize: '14px', fontWeight: 600 }}
+            >
+              <option value="34">
+                📖 {t('34 Pages (Standard — Most Travelers)', '३४ पृष्ठ (सामान्य यात्रुका लागि उपयुक्त)')}
+              </option>
+              <option value="66">
+                📚 {t('66 Pages (Frequent Travelers & Business)', '६६ पृष्ठ (बारम्बार यात्रा गर्नेहरूका लागि)')}
+              </option>
+            </select>
           </div>
 
           {/* Checkboxes */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '12px 14px', backgroundColor: '#f8fafc', borderRadius: '8px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '14px', backgroundColor: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer' }}>
               <input
                 type="checkbox"
@@ -197,7 +134,7 @@ Calculated via NepalCalc.com`;
                   if (e.target.checked) setIsLostOrDamaged(false);
                 }}
               />
-              <span>१० वर्ष मुनिका नाबालिग (Minor: ५०% छुट - ५ वर्षे म्याद)</span>
+              <span>{t('Minor Under 10 Years (50% Fee Discount — 5-Year Validity)', '१० वर्ष मुनिका नाबालिग (५०% छुट — ५ वर्षे म्याद)')}</span>
             </label>
 
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer' }}>
@@ -209,7 +146,7 @@ Calculated via NepalCalc.com`;
                   if (e.target.checked) setIsMinor(false);
                 }}
               />
-              <span>हराएको वा च्यातिएको राहदानी नवीकरण (Lost / Damaged)</span>
+              <span>{t('Lost, Stolen or Damaged Passport Replacement', 'हराएको वा च्यातिएको राहदानी प्रतिलिपि')}</span>
             </label>
           </div>
         </div>
@@ -227,18 +164,23 @@ Calculated via NepalCalc.com`;
             }}
           >
             <span style={{ fontSize: '12px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              तिर्नुपर्ने कुल राजस्व दस्तुर
+              {t('Total Government Revenue Fee', 'तिर्नुपर्ने कुल राजस्व दस्तुर')}
             </span>
             <div style={{ fontSize: '38px', fontWeight: 900, color: '#38bdf8', margin: '8px 0' }}>
               {calculation.isForeign ? `$${calculation.feeUsd} USD` : `रु ${calculation.feeNpr.toLocaleString('en-IN')}`}
             </div>
             <div style={{ fontSize: '13px', color: '#cbd5e1' }}>
-              {calculation.isForeign ? `नेपाली रुपैयाँ करिब रु ${(calculation.feeNpr).toLocaleString('en-IN')}` : `अक्षरमा: ${calculation.feeNpr === 5000 ? 'पाँच हजार' : calculation.feeNpr === 10000 ? 'दश हजार' : calculation.feeNpr === 2500 ? 'दुई हजार पाँच सय' : calculation.feeNpr === 15000 ? 'पन्ध्र हजार' : calculation.feeNpr === 20000 ? 'बीस हजार' : 'पच्चीस हजार'} रुपैयाँ मात्र`}
+              {calculation.isForeign 
+                ? t(`Approx. NPR ${(calculation.feeNpr).toLocaleString('en-IN')}`, `नेपाली रुपैयाँ करिब रु ${(calculation.feeNpr).toLocaleString('en-IN')}`)
+                : t(
+                    `NPR ${calculation.feeNpr.toLocaleString('en-IN')} Only`,
+                    `अक्षरमा: ${calculation.feeNpr === 5000 ? 'पाँच हजार' : calculation.feeNpr === 10000 ? 'दश हजार' : calculation.feeNpr === 2500 ? 'दुई हजार पाँच सय' : calculation.feeNpr === 15000 ? 'पन्ध्र हजार' : calculation.feeNpr === 20000 ? 'बीस हजार' : 'पच्चीस हजार'} रुपैयाँ मात्र`
+                  )}
             </div>
 
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '20px', paddingTop: '16px', textAlign: 'left', fontSize: '12px', color: '#94a3b8', lineHeight: 1.6 }}>
-              <div>• भुक्तानी: नेपाल बैंक लिमिटेड / राष्ट्रिय वाणिज्य बैंक वा अनलाइन eSewa/ConnectIPS मार्फत राजस्व दाखिला।</div>
-              <div>• बायोमेट्रिक मितिमा नागरिकताको सक्कल, राष्ट्रिय परिचयपत्र (NIN) नम्बर र अनलाइन फारमको प्रिन्ट अनिवार्य छ।</div>
+              <div>• {t('Payment: Nepal Bank Ltd / Rastriya Banijya Bank or online via eSewa / ConnectIPS.', 'भुक्तानी: नेपाल बैंक लिमिटेड / राष्ट्रिय वाणिज्य बैंक वा अनलाइन eSewa/ConnectIPS मार्फत राजस्व दाखिला।')}</div>
+              <div>• {t('Original Citizenship, National Identity (NIN) number and online appointment slip required on biometric date.', 'बायोमेट्रिक मितिमा नागरिकताको सक्कल, राष्ट्रिय परिचयपत्र (NIN) नम्बर र अनलाइन फारमको प्रिन्ट अनिवार्य छ।')}</div>
             </div>
           </div>
         </div>

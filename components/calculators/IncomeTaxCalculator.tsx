@@ -218,7 +218,7 @@ Calculated via NepalCalc.com`;
                 style={{ flex: 1, padding: '8px 10px', fontSize: '13px' }}
                 onClick={() => setIsMarried(false)}
               >
-                {t('Individual / Unmarried', 'व्यक्तिगत / अविवाहित')}
+                {t('Individual', 'व्यक्तिगत')}
               </button>
               <button
                 type="button"
@@ -226,7 +226,7 @@ Calculated via NepalCalc.com`;
                 style={{ flex: 1, padding: '8px 10px', fontSize: '13px' }}
                 onClick={() => setIsMarried(true)}
               >
-                {t('Married (Couple / Joint)', 'दम्पती / विवाहित')}
+                {t('Married', 'विवाहित')}
               </button>
             </div>
           </div>
@@ -235,7 +235,7 @@ Calculated via NepalCalc.com`;
           <div style={{ marginBottom: '22px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <label className="input-label" style={{ marginBottom: 0 }}>
-                {isMonthlyInput ? t("Monthly Gross Salary (मासिक तलब)", "मासिक कुल तलब (Gross Salary)") : t("Annual Gross Income (वार्षिक आम्दानी)", "वार्षिक कुल आम्दानी (Annual Gross)")}
+                {isMonthlyInput ? t("Monthly Gross Salary", "मासिक कुल तलब") : t("Annual Gross Income", "वार्षिक कुल आम्दानी")}
               </label>
               <div className="segmented-control">
                 <button
@@ -419,7 +419,7 @@ Calculated via NepalCalc.com`;
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
-                  {t('Net Monthly In-Hand (मासिक खुद तलब)', 'मासिक हात पर्ने खुद तलब (Net Take-Home)')}
+                  {t('Net Monthly In-Hand', 'मासिक हात पर्ने खुद तलब')}
                 </span>
                 <div style={{ fontSize: '38px', fontWeight: 800, color: '#34d399', margin: '6px 0 2px', fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(calculation.netMonthlyTakeHome).toLocaleString('en-IN')}

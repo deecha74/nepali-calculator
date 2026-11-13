@@ -13,14 +13,14 @@ interface BloodTypeInfo {
 }
 
 const BLOOD_MATRIX: Record<string, BloodTypeInfo> = {
-  'O+': { type: 'O+', canDonateTo: ['O+', 'A+', 'B+', 'AB+'], canReceiveFrom: ['O+', 'O-'], rarityNepal: '३४% (सर्वाधिक प्रचलित)', note: 'सकारात्मक समूहका सबैलाई दिन मिल्छ।' },
-  'O-': { type: 'O-', canDonateTo: ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'], canReceiveFrom: ['O-'], rarityNepal: '२% (अत्यन्त दुर्लभ)', note: 'युनिभर्सल डोनर (Universal Donor) - सबैलाई दिन मिल्छ।' },
-  'A+': { type: 'A+', canDonateTo: ['A+', 'AB+'], canReceiveFrom: ['A+', 'A-', 'O+', 'O-'], rarityNepal: '२८% (प्रचलित)', note: 'A+ र AB+ लाई दिन मिल्छ।' },
-  'A-': { type: 'A-', canDonateTo: ['A+', 'A-', 'AB+', 'AB-'], canReceiveFrom: ['A-', 'O-'], rarityNepal: '१.५% (दुर्लभ)', note: 'A र AB समूहका दुवैलाई दिन मिल्छ।' },
-  'B+': { type: 'B+', canDonateTo: ['B+', 'AB+'], canReceiveFrom: ['B+', 'B-', 'O+', 'O-'], rarityNepal: '२७% (प्रचलित)', note: 'B+ र AB+ लाई दिन मिल्छ।' },
-  'B-': { type: 'B-', canDonateTo: ['B+', 'B-', 'AB+', 'AB-'], canReceiveFrom: ['B-', 'O-'], rarityNepal: '१.५% (दुर्लभ)', note: 'B र AB समूहका दुवैलाई दिन मिल्छ।' },
-  'AB+': { type: 'AB+', canDonateTo: ['AB+'], canReceiveFrom: ['सबै समूह (Universal Recipient)'], rarityNepal: '५% (दुर्लभ)', note: 'युनिभर्सल रेसिपिएन्ट - सबै समूहको रगत लिन मिल्छ।' },
-  'AB-': { type: 'AB-', canDonateTo: ['AB+', 'AB-'], canReceiveFrom: ['AB-', 'A-', 'B-', 'O-'], rarityNepal: '०.५% (अति दुर्लभ)', note: 'नेपालमा सबैभन्दा दुर्लभ रक्त समूह।' },
+  'O+': { type: 'O+', canDonateTo: ['O+', 'A+', 'B+', 'AB+'], canReceiveFrom: ['O+', 'O-'], rarityNepal: '34% (Most Common)', note: 'Can donate to all positive blood groups.' },
+  'O-': { type: 'O-', canDonateTo: ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'], canReceiveFrom: ['O-'], rarityNepal: '2% (Rare)', note: 'Universal Donor - can donate to all blood groups.' },
+  'A+': { type: 'A+', canDonateTo: ['A+', 'AB+'], canReceiveFrom: ['A+', 'A-', 'O+', 'O-'], rarityNepal: '28% (Common)', note: 'Can donate to A+ and AB+.' },
+  'A-': { type: 'A-', canDonateTo: ['A+', 'A-', 'AB+', 'AB-'], canReceiveFrom: ['A-', 'O-'], rarityNepal: '1.5% (Rare)', note: 'Can donate to A and AB groups.' },
+  'B+': { type: 'B+', canDonateTo: ['B+', 'AB+'], canReceiveFrom: ['B+', 'B-', 'O+', 'O-'], rarityNepal: '27% (Common)', note: 'Can donate to B+ and AB+.' },
+  'B-': { type: 'B-', canDonateTo: ['B+', 'B-', 'AB+', 'AB-'], canReceiveFrom: ['B-', 'O-'], rarityNepal: '1.5% (Rare)', note: 'Can donate to B and AB groups.' },
+  'AB+': { type: 'AB+', canDonateTo: ['AB+'], canReceiveFrom: ['All Groups (Universal Recipient)'], rarityNepal: '5% (Rare)', note: 'Universal Recipient - can receive from all groups.' },
+  'AB-': { type: 'AB-', canDonateTo: ['AB+', 'AB-'], canReceiveFrom: ['AB-', 'A-', 'B-', 'O-'], rarityNepal: '0.5% (Very Rare)', note: 'Rarest blood group in Nepal.' },
 };
 
 export function BloodDonationCalculator() {
@@ -100,7 +100,7 @@ export function BloodDonationCalculator() {
           {/* Blood Group Picker */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '8px' }}>
-              तपाईंको रक्त समूह (Blood Group)
+              {t('Your Blood Group', 'तपाईंको रक्त समूह')}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px' }}>
               {Object.keys(BLOOD_MATRIX).map(bg => (
@@ -129,7 +129,7 @@ export function BloodDonationCalculator() {
           {/* Gender Selector */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
-              लिङ्ग (Gender - Red Cross Interval Rule)
+              {t('Gender (Interval Rule)', 'लिङ्ग (रक्तदान अन्तर नियम)')}
             </label>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
@@ -148,7 +148,7 @@ export function BloodDonationCalculator() {
                   cursor: 'pointer'
                 }}
               >
-                पुरुष (९० दिन / ३ महिना)
+                {t('Male (90 Days / 3 Months)', 'पुरुष (९० दिन / ३ महिना)')}
               </button>
               <button
                 type="button"
@@ -166,7 +166,7 @@ export function BloodDonationCalculator() {
                   cursor: 'pointer'
                 }}
               >
-                महिला (१२० दिन / ४ महिना)
+                {t('Female (120 Days / 4 Months)', 'महिला (१२० दिन / ४ महिना)')}
               </button>
             </div>
           </div>
@@ -174,7 +174,7 @@ export function BloodDonationCalculator() {
           {/* Has donated before? */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
-              पछिल्लो पटक रक्तदान गर्नुभएको मिति:
+              {t('Last Blood Donation Date:', 'पछिल्लो पटक रक्तदान गर्नुभएको मिति:')}
             </label>
             <input
               type="date"
@@ -234,13 +234,13 @@ export function BloodDonationCalculator() {
 
             {/* Compatibility Grid */}
             <div style={{ fontSize: '12px', fontWeight: 800, color: '#991b1b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>
-              रक्त समूह {selectedGroup} अनुकूलता विवरण
+              {t(`Blood Group ${selectedGroup} Compatibility Breakdown`, `रक्त समूह ${selectedGroup} अनुकूलता विवरण`)}
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
               <div style={{ padding: '10px 12px', backgroundColor: '#ffffff', borderRadius: '8px', border: '1px solid #fed7d7' }}>
                 <div style={{ fontSize: '11.5px', fontWeight: 800, color: '#059669', marginBottom: '3px' }}>
-                  ✅ कसलाई रक्तदान गर्न मिल्छ (Can Donate To):
+                  ✅ {t('Can Donate To:', 'कसलाई रक्तदान गर्न मिल्छ:')}
                 </div>
                 <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '14px' }}>
                   {bloodInfo.canDonateTo.join('  •  ')}
@@ -249,7 +249,7 @@ export function BloodDonationCalculator() {
 
               <div style={{ padding: '10px 12px', backgroundColor: '#ffffff', borderRadius: '8px', border: '1px solid #fed7d7' }}>
                 <div style={{ fontSize: '11.5px', fontWeight: 800, color: '#0284c7', marginBottom: '3px' }}>
-                  🩸 कसबाट रगत लिन मिल्छ (Can Receive From):
+                  🩸 {t('Can Receive From:', 'कसबाट रगत लिन मिल्छ:')}
                 </div>
                 <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '14px' }}>
                   {bloodInfo.canReceiveFrom.join('  •  ')}
@@ -257,7 +257,7 @@ export function BloodDonationCalculator() {
               </div>
 
               <div style={{ fontSize: '12px', color: '#64748b' }}>
-                नेपालमा अनुपात: <strong>{bloodInfo.rarityNepal}</strong> • {bloodInfo.note}
+                {t('Nepal Population Frequency:', 'नेपालमा अनुपात:')} <strong>{bloodInfo.rarityNepal}</strong> • {bloodInfo.note}
               </div>
             </div>
 

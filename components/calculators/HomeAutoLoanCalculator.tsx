@@ -38,21 +38,23 @@ export function HomeAutoLoanCalculator({ defaultMode = 'home' }: { defaultMode?:
     return {
       downPaymentNpr,
       loanPrincipal,
-      months,
       emi: Math.round(emi),
-      totalInterest: Math.round(totalInterest),
       totalPayment: Math.round(totalPayment),
+      totalInterest: Math.round(totalInterest),
       minMonthlyIncomeRequired,
+      months,
     };
   }, [propertyOrVehiclePrice, downPaymentPercent, interestRate, tenureYears]);
 
   const handleCopy = () => {
-    const text = `Nepal ${mode === 'home' ? 'Home Loan' : 'Auto / EV Vehicle Loan'} EMI Summary:
-Asset Price: NPR ${propertyOrVehiclePrice.toLocaleString('en-IN')}
+    const text = `Nepal ${mode === 'home' ? 'Home Loan' : 'Auto Loan'} EMI Summary:
+Valuation / Price: NPR ${propertyOrVehiclePrice.toLocaleString('en-IN')}
 Down Payment (${downPaymentPercent}%): NPR ${calculation.downPaymentNpr.toLocaleString('en-IN')}
 Loan Principal: NPR ${calculation.loanPrincipal.toLocaleString('en-IN')}
-Monthly EMI (${interestRate}% for ${tenureYears} yrs): NPR ${calculation.emi.toLocaleString('en-IN')}/month
-Min Monthly Income Required (NRB 50% DSTI): NPR ${calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}
+Interest Rate: ${interestRate}% p.a. | Tenure: ${tenureYears} Years (${calculation.months} Months)
+Monthly EMI: NPR ${calculation.emi.toLocaleString('en-IN')}/month
+Total Interest: NPR ${calculation.totalInterest.toLocaleString('en-IN')}
+Min. Gross Family Income (50% DSTI): NPR ${calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}/mo
 Calculated on NepalCalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -70,7 +72,7 @@ Calculated on NepalCalc.com`;
           gap: '14px',
           marginBottom: '20px',
           borderBottom: '1px solid var(--border-subtle)',
-          paddingBottom: '16px',
+          paddingBottom: '18px',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -79,8 +81,8 @@ Calculated on NepalCalc.com`;
               width: '46px',
               height: '46px',
               borderRadius: '12px',
-              backgroundColor: '#eff6ff',
-              color: '#2563eb',
+              backgroundColor: mode === 'home' ? '#eff6ff' : '#ecfdf5',
+              color: mode === 'home' ? '#2563eb' : '#059669',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -91,18 +93,18 @@ Calculated on NepalCalc.com`;
           <div>
             <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
               {mode === 'home'
-                ? 'Nepal Home Loan & Mortgage Calculator (घर कर्जा किस्ता)'
-                : 'Nepal Auto & EV Car/Bike Loan Calculator (गाडी कर्जा किस्ता)'}
+                ? t('Nepal Home Loan & Mortgage Calculator', 'नेपाल घर कर्जा किस्ता क्याल्कुलेटर')
+                : t('Nepal Auto & EV Vehicle Loan Calculator', 'नेपाल सवारी कर्जा किस्ता क्याल्कुलेटर')}
             </h1>
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: '2px 0 0' }}>
-              Includes NRB Down-Payment LTV Ratio & 50% DSTI Income Requirement
+              {t('Includes NRB Down-Payment LTV Ratio & 50% DSTI Income Requirement', 'नेपाल राष्ट्र बैंक डाउनपेमेन्ट तथा ५०% DSTI आय मापदण्ड सहित')}
             </p>
           </div>
         </div>
 
         <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? 'Copied!' : 'Copy EMI'}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy EMI', 'किस्ता कपी')}</span>
         </button>
       </div>
 
@@ -122,10 +124,11 @@ Calculated on NepalCalc.com`;
             fontWeight: 700,
             border: mode === 'home' ? '2px solid #2563eb' : '1px solid var(--border-subtle)',
             background: mode === 'home' ? '#eff6ff' : '#ffffff',
+            color: mode === 'home' ? '#1e40af' : 'var(--text-primary)',
             cursor: 'pointer',
           }}
         >
-          🏠 Home / Land Mortgage Loan (घर/जग्गा कर्जा)
+          🏠 {t('Home / Land Mortgage Loan', 'घर तथा जग्गा कर्जा')}
         </button>
         <button
           type="button"
@@ -141,10 +144,11 @@ Calculated on NepalCalc.com`;
             fontWeight: 700,
             border: mode === 'auto' ? '2px solid #2563eb' : '1px solid var(--border-subtle)',
             background: mode === 'auto' ? '#eff6ff' : '#ffffff',
+            color: mode === 'auto' ? '#1e40af' : 'var(--text-primary)',
             cursor: 'pointer',
           }}
         >
-          🚗 Auto / EV Car & Bike Loan (सवारी कर्जा)
+          🚗 {t('Auto / EV Car & Bike Loan', 'गाडी तथा मोटरसाइकल कर्जा')}
         </button>
       </div>
 
@@ -152,7 +156,7 @@ Calculated on NepalCalc.com`;
         <div>
           <div style={{ marginBottom: '16px' }}>
             <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-              1. {mode === 'home' ? 'Total Property / House Valuation (NPR)' : 'Vehicle Showroom Price (NPR)'}:
+              1. {mode === 'home' ? t('Total Property / House Valuation (NPR):', 'कुल घर/जग्गा मूल्याङ्कन (रु):') : t('Vehicle Showroom Price (NPR):', 'सवारीको सोरुम मूल्य (रु):')}
             </label>
             <input
               type="number"
@@ -165,7 +169,7 @@ Calculated on NepalCalc.com`;
 
           <div style={{ marginBottom: '16px' }}>
             <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-              2. Down Payment % ({mode === 'auto' ? '20% for EV / 50% for ICE Petrol' : 'Typically 30%–50% in Nepal'}):
+              2. {t('Down Payment %:', 'डाउनपेमेन्ट %:')} ({mode === 'auto' ? t('20% for EV / 50% for Petrol', 'विद्युतीयमा २०% / पेट्रोलमा ५०%') : t('Typically 30%–50% in Nepal', 'नेपालमा सामान्यतया ३०% देखि ५०%')})
             </label>
             <input
               type="number"
@@ -181,7 +185,7 @@ Calculated on NepalCalc.com`;
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Interest Rate (% p.a.):
+                {t('Interest Rate (% p.a.):', 'वार्षिक ब्याज दर (%):')}
               </label>
               <input
                 type="number"
@@ -194,7 +198,7 @@ Calculated on NepalCalc.com`;
             </div>
             <div>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Loan Tenure (Years):
+                {t('Loan Tenure (Years):', 'कर्जा अवधि (वर्षमा):')}
               </label>
               <input
                 type="number"
@@ -212,29 +216,29 @@ Calculated on NepalCalc.com`;
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div style={{ padding: '20px', borderRadius: '14px', backgroundColor: '#0f172a', color: '#ffffff' }}>
             <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              Monthly Bank Installment (मासिक किस्ता — EMI)
+              {t('Monthly Bank Installment (EMI)', 'मासिक बैंक किस्ता (EMI)')}
             </div>
             <div style={{ fontSize: '34px', fontWeight: 900, color: '#38bdf8', marginTop: '4px' }}>
-              NPR {calculation.emi.toLocaleString('en-IN')} / mo
+              NPR {calculation.emi.toLocaleString('en-IN')} / {t('mo', 'महिना')}
             </div>
             <div style={{ fontSize: '12.5px', color: '#cbd5e1', marginTop: '4px' }}>
-              Loan Amount: <strong>NPR {calculation.loanPrincipal.toLocaleString('en-IN')}</strong> • Down Payment:{' '}
+              {t('Loan Amount:', 'कर्जा रकम:')} <strong>NPR {calculation.loanPrincipal.toLocaleString('en-IN')}</strong> • {t('Down Payment:', 'डाउनपेमेन्ट:')}{' '}
               <strong>NPR {calculation.downPaymentNpr.toLocaleString('en-IN')}</strong>
             </div>
           </div>
 
           <div style={{ border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '14px 16px', backgroundColor: '#ffffff', fontSize: '13.5px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#475569' }}>Total Interest Payable ({calculation.months} mos):</span>
+              <span style={{ color: '#475569' }}>{t(`Total Interest Payable (${calculation.months} mos):`, `कुल तिर्नुपर्ने ब्याज (${calculation.months} महिना):`)}</span>
               <strong>NPR {calculation.totalInterest.toLocaleString('en-IN')}</strong>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: '#475569' }}>Total Principal + Interest:</span>
+              <span style={{ color: '#475569' }}>{t('Total Principal + Interest:', 'कुल साउँ र ब्याज भुक्तानी:')}</span>
               <strong>NPR {calculation.totalPayment.toLocaleString('en-IN')}</strong>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #f1f5f9', paddingTop: '8px', color: '#059669' }}>
-              <span>Min. Gross Monthly Income Needed (50% DSTI):</span>
-              <strong>NPR {calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}/mo</strong>
+              <span>{t('Min. Gross Monthly Income Needed (50% DSTI):', 'न्यूनतम आवश्यक मासिक पारिवारिक आम्दानी (५०% DSTI):')}</span>
+              <strong>NPR {calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}/{t('mo', 'महिना')}</strong>
             </div>
           </div>
         </div>
@@ -242,4 +246,3 @@ Calculated on NepalCalc.com`;
     </div>
   );
 }
-

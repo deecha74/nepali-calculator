@@ -506,13 +506,25 @@ export function BankLoanComparison({
         </div>
         <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: '#475569', lineHeight: 1.65 }}>
           <li>
-            <strong>Debt Service to Income Ratio (DSTI / DBR - ५०% मापदण्ड)</strong>: Your total monthly EMI commitments across all financial institutions cannot exceed 50% of your verifiable gross family income.
+            <strong>{t('Debt Service to Income Ratio (50% DSTI Limit):', 'ऋण भुक्तानी आय अनुपात (DSTI - ५०% मापदण्ड):')}</strong>{' '}
+            {t(
+              'Your total monthly EMI commitments across all financial institutions cannot exceed 50% of your verifiable gross family income.',
+              'सबै बैंक तथा वित्तीय संस्थाहरूमा गरी तिर्नुपर्ने कुल मासिक किस्ता प्रमाणित पारिवारिक कुल आम्दानीको ५०% भन्दा बढी हुनु हुँदैन।'
+            )}
           </li>
           <li>
-            <strong>Loan-to-Value (LTV) Ratio</strong>: Up to <strong>70%</strong> for first-time residential home buyers inside and outside Kathmandu Valley; up to <strong>80%</strong> for Electric Vehicles (EVs); and <strong>50%</strong> for petrol/diesel private cars.
+            <strong>{t('Loan-to-Value (LTV) Ratio:', 'धितो मूल्य अनुपात (LTV):')}</strong>{' '}
+            {t(
+              'Up to 70% for first-time residential home buyers; up to 80% for Electric Vehicles (EVs); and 50% for petrol/diesel private cars.',
+              'पहिलो पटक आवासीय घर खरिदकर्ताका लागि ७०% सम्म, विद्युतीय सवारी (EV) का लागि ८०% सम्म र पेट्रोल/डिजेल निजी गाडीका लागि ५०% सम्म कर्जा पाइन्छ।'
+            )}
           </li>
           <li>
-            <strong>Quarterly Base Rate Revision</strong>: Commercial banks in Nepal revise their base rate every quarter (Ashoj, Poush, Chaitra, Ashadh). If the base rate drops, your monthly EMI interest automatically decreases.
+            <strong>{t('Quarterly Base Rate Revision:', 'त्रैमासिक आधार दर समायोजन:')}</strong>{' '}
+            {t(
+              'Commercial banks in Nepal revise their base rate every quarter. If the base rate drops, your monthly EMI interest automatically decreases.',
+              'नेपालका वाणिज्य बैंकहरूले प्रत्येक त्रैमासमा आधार दर हेरफेर गर्छन्। आधार दर घट्दा तपाईंको मासिक किस्ताको ब्याज पनि स्वतः घट्छ।'
+            )}
           </li>
         </ul>
       </div>

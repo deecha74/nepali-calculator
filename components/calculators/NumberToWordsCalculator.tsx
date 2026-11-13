@@ -2,9 +2,11 @@
 
 import React, { useState, useMemo } from 'react';
 import { FileText, Copy, Check, Sparkles, CreditCard, Building } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 import { numberToNepaliWords, numberToEnglishWords } from '@/lib/rates/numberToWords';
 
 export function NumberToWordsCalculator() {
+  const { t } = useLanguage();
   const [amount, setAmount] = useState<number>(125480);
   const [copiedNep, setCopiedNep] = useState(false);
   const [copiedEng, setCopiedEng] = useState(false);
@@ -79,7 +81,7 @@ export function NumberToWordsCalculator() {
         {/* Nepali Words Card */}
         <div className="result-card-highlight" style={{ padding: '24px', background: 'linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%)', border: '1.5px solid #bbf7d0' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <span className="stat-label" style={{ color: '#047857' }}>Nepali Cheque Words (नेपाली अक्षरमा)</span>
+            <span className="stat-label" style={{ color: '#047857' }}>{t('Nepali Cheque Words', 'नेपाली अक्षरमा (चेकका लागि)')}</span>
             <button
               onClick={() => copyText(nepaliWords, true)}
               className="btn-secondary"

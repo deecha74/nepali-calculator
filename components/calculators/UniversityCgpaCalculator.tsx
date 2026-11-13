@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { GraduationCap, Plus, Trash2, Copy, Check, Award, Target } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export type UniversitySystem = 'tu_ioe' | 'tu_semester' | 'ku' | 'pokhara' | 'purbanchal';
 
@@ -26,18 +27,18 @@ const UNIVERSITY_CONFIGS: Record<
 > = {
   tu_ioe: {
     name: 'Tribhuvan University — IOE / Engineering / CSIT',
-    nepaliName: 'त्रिभुवन विश्वविद्यालय (IOE / इन्जिनियरिङ)',
+    nepaliName: 'त्रिभुवन विश्वविद्यालय (IOE / इन्जिनियरिङ / CSIT)',
     maxScale: 4.0,
-    toPercentageFormula: 'Percentage = (CGPA / 4.0) × 100 (or TU Dean Office conversion)',
+    toPercentageFormula: 'Percentage = (CGPA / 4.0) × 100',
     convertToPercentage: (cgpa) => Math.min(100, (cgpa / 4.0) * 100),
     passCgpa: 2.0,
     distinctionCgpa: 3.6,
   },
   tu_semester: {
-    name: 'TU FoM — BBA / BIM / BBM / BCA / MBS',
-    nepaliName: 'त्रि.वि. व्यवस्थापन संकाय (BBA / BIM / BCA)',
+    name: 'TU Faculty of Management — BBA / BIM / BBM / BCA',
+    nepaliName: 'त्रि.वि. व्यवस्थापन संकाय (BBA / BIM / BBM / BCA)',
     maxScale: 4.0,
-    toPercentageFormula: 'Percentage = CGPA × 25 (TU Faculty of Management 4.0 Scale)',
+    toPercentageFormula: 'Percentage = CGPA × 25',
     convertToPercentage: (cgpa) => Math.min(100, cgpa * 25),
     passCgpa: 2.0,
     distinctionCgpa: 3.7,
@@ -46,23 +47,23 @@ const UNIVERSITY_CONFIGS: Record<
     name: 'Kathmandu University (KU — Engineering / Science / Mgmt)',
     nepaliName: 'काठमाडौँ विश्वविद्यालय (KU)',
     maxScale: 4.0,
-    toPercentageFormula: 'Percentage = (CGPA / 4.0) × 100 (KU 4.0 Grading System)',
+    toPercentageFormula: 'Percentage = (CGPA / 4.0) × 100',
     convertToPercentage: (cgpa) => Math.min(100, (cgpa / 4.0) * 100),
     passCgpa: 2.0,
     distinctionCgpa: 3.5,
   },
   pokhara: {
     name: 'Pokhara University (PU — BE / BBA / BCIS)',
-    nepaliName: 'पोखरा विश्वविद्यालय (Pokhara University)',
+    nepaliName: 'पोखरा विश्वविद्यालय (PU)',
     maxScale: 4.0,
-    toPercentageFormula: 'Percentage = (CGPA - 0.5) × 25 (or Direct 4.0 Scale Equivalence)',
+    toPercentageFormula: 'Percentage = CGPA × 25',
     convertToPercentage: (cgpa) => Math.min(100, Math.max(0, cgpa * 25)),
     passCgpa: 2.0,
     distinctionCgpa: 3.6,
   },
   purbanchal: {
     name: 'Purbanchal University (PoU — BE / BIT / BBA)',
-    nepaliName: 'पूर्वाञ्चल विश्वविद्यालय (Purbanchal University)',
+    nepaliName: 'पूर्वाञ्चल विश्वविद्यालय (PoU)',
     maxScale: 4.0,
     toPercentageFormula: 'Percentage = CGPA × 25',
     convertToPercentage: (cgpa) => Math.min(100, cgpa * 25),
@@ -72,6 +73,7 @@ const UNIVERSITY_CONFIGS: Record<
 };
 
 export function UniversityCgpaCalculator() {
+  const { t, language } = useLanguage();
   const [uni, setUni] = useState<UniversitySystem>('tu_ioe');
   const [semesters, setSemesters] = useState<SemesterRow[]>([
     { id: '1', name: '1st Semester', credits: 20, gpa: 3.45 },
@@ -125,10 +127,10 @@ export function UniversityCgpaCalculator() {
     const cgpa = totalCredits > 0 ? weightedGradePoints / totalCredits : 0;
     const percentage = uniConfig.convertToPercentage(cgpa);
 
-    let divisionLabel = 'Pass / Second Division';
-    if (cgpa >= uniConfig.distinctionCgpa) divisionLabel = 'Distinction / Dean’s List (विशिष्ट श्रेणी)';
-    else if (cgpa >= 3.0) divisionLabel = 'First Division with Honours (प्रथम श्रेणी)';
-    else if (cgpa < uniConfig.passCgpa) divisionLabel = 'Below Minimum Passing CGPA (< 2.00)';
+    let divisionLabel = t('Pass / Second Division', 'दोस्रो श्रेणी');
+    if (cgpa >= uniConfig.distinctionCgpa) divisionLabel = t('Distinction / Dean’s List', 'विशिष्ट श्रेणी (Distinction)');
+    else if (cgpa >= 3.0) divisionLabel = t('First Division with Honours', 'प्रथम श्रेणी (First Division)');
+    else if (cgpa < uniConfig.passCgpa) divisionLabel = t('Below Minimum Passing CGPA (< 2.00)', 'न्यूनतम उत्तीर्ण अङ्कभन्दा कम');
 
     // Target CGPA Predictor Math
     const completedSemCount = semesters.length;
@@ -138,30 +140,29 @@ export function UniversityCgpaCalculator() {
     const totalExpectedCredits = totalCredits + remainingCredits;
 
     const requiredTotalPoints = targetFinalCgpa * totalExpectedCredits;
-    const neededPoints = requiredTotalPoints - weightedGradePoints;
-    const requiredFutureGpa = remainingCredits > 0 ? neededPoints / remainingCredits : cgpa;
-    const isTargetAchievable = requiredFutureGpa <= 4.0 && requiredFutureGpa >= 0;
+    const neededFuturePoints = requiredTotalPoints - weightedGradePoints;
+    const requiredFutureGpa = remainingCredits > 0 ? neededFuturePoints / remainingCredits : 0;
+    const isTargetAchievable = requiredFutureGpa <= 4.0;
 
     return {
+      cgpa: Math.round(cgpa * 100) / 100,
+      percentage: Math.round(percentage * 100) / 100,
       totalCredits,
-      weightedGradePoints,
-      cgpa,
-      percentage,
       divisionLabel,
       completedSemCount,
       remainingSemCount,
-      requiredFutureGpa,
+      requiredFutureGpa: Math.round(requiredFutureGpa * 100) / 100,
       isTargetAchievable,
     };
-  }, [semesters, uniConfig, totalProgramSemesters, targetFinalCgpa]);
+  }, [semesters, uniConfig, totalProgramSemesters, targetFinalCgpa, t]);
 
   const handleCopy = () => {
-    const text = `${uniConfig.name} — CGPA Result:
-Completed Semesters: ${calculation.completedSemCount} (${calculation.totalCredits} Credits)
-Cumulative GPA (CGPA): ${calculation.cgpa.toFixed(2)} / 4.00
+    const text = `University CGPA Calculation (${uniConfig.name}):
+Total Completed Semesters: ${calculation.completedSemCount} (${calculation.totalCredits} Credits)
+Cumulative CGPA: ${calculation.cgpa.toFixed(2)} / 4.00
 Equivalent Percentage: ${calculation.percentage.toFixed(2)}%
-Division: ${calculation.divisionLabel}
-Calculated on NepalCalc.com/cgpa`;
+Standing: ${calculation.divisionLabel}
+Calculated via NepalCalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -199,25 +200,25 @@ Calculated on NepalCalc.com/cgpa`;
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-              <span className="badge badge-blue">TU • KU • Pokhara • Purbanchal</span>
-              <span className="badge badge-neutral">Semester CGPA & Target Grade</span>
+              <span className="badge badge-blue">{t('TU • KU • Pokhara • Purbanchal', 'त्रि.वि. • का.वि. • पो.वि. • पूर्वाञ्चल')}</span>
+              <span className="badge badge-neutral">{t('Semester CGPA & Target Grade', 'सेमेस्टर CGPA तथा लक्ष्य')}</span>
             </div>
             <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
-              University CGPA, Engineering GPA & Target Marks Calculator
+              {t('University CGPA, Engineering GPA & Target Marks Calculator', 'विश्वविद्यालय CGPA तथा इन्जिनियरिङ GPA क्याल्कुलेटर')}
             </h1>
           </div>
         </div>
 
         <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? 'Copied!' : 'Copy CGPA'}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy CGPA', 'नतिजा कपी')}</span>
         </button>
       </div>
 
-      {/* University Selector */}
+      {/* University Selector Dropdown */}
       <div style={{ marginBottom: '22px' }}>
         <label htmlFor="uni-select" className="input-label" style={{ display: 'block', marginBottom: '8px', fontWeight: 700, fontSize: '13.5px' }}>
-          Select Your University Grading System (विश्वविद्यालय छान्नुहोस्):
+          {t('Select Your University Grading System:', 'विश्वविद्यालय छान्नुहोस्:')}
         </label>
         <select
           id="uni-select"
@@ -228,7 +229,7 @@ Calculated on NepalCalc.com/cgpa`;
         >
           {(Object.keys(UNIVERSITY_CONFIGS) as UniversitySystem[]).map((k) => (
             <option key={k} value={k}>
-              {UNIVERSITY_CONFIGS[k].name} ({UNIVERSITY_CONFIGS[k].nepaliName})
+              {language === 'ne' ? UNIVERSITY_CONFIGS[k].nepaliName : UNIVERSITY_CONFIGS[k].name}
             </option>
           ))}
         </select>
@@ -238,7 +239,7 @@ Calculated on NepalCalc.com/cgpa`;
         {/* Left: Semester Inputs */}
         <div>
           <div style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a', marginBottom: '10px' }}>
-            Enter Semester Credit Hours & SGPA (सेमेस्टर विवरण)
+            {t('Enter Semester Credit Hours & SGPA:', 'सेमेस्टर क्रेडिट घण्टा तथा SGPA:')}
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px' }}>
@@ -272,7 +273,7 @@ Calculated on NepalCalc.com/cgpa`;
                     value={sem.credits}
                     onChange={(e) => updateSemester(sem.id, 'credits', e.target.value)}
                     className="text-input"
-                    placeholder="Credits"
+                    placeholder={t('Credits', 'क्रेडिट')}
                     style={{ width: '100%', padding: '7px 8px', fontSize: '13px', fontWeight: 700 }}
                   />
                 </div>
@@ -315,7 +316,7 @@ Calculated on NepalCalc.com/cgpa`;
             className="btn-secondary"
             style={{ fontSize: '12.5px', padding: '8px 14px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            <Plus size={15} /> Add Next Semester
+            <Plus size={15} /> {t('Add Next Semester', 'अर्को सेमेस्टर थप्नुहोस्')}
           </button>
         </div>
 
@@ -330,7 +331,7 @@ Calculated on NepalCalc.com/cgpa`;
             }}
           >
             <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c7d2fe', fontWeight: 700 }}>
-              Cumulative Grade Point Average (CGPA)
+              {t('Cumulative Grade Point Average (CGPA)', 'कुल संचयी ग्रेड पोइन्ट (CGPA)')}
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '14px', marginTop: '6px', flexWrap: 'wrap' }}>
               <span style={{ fontSize: 'clamp(30px, 4.5vw, 40px)', fontWeight: 900, color: '#fbbf24' }}>
@@ -341,7 +342,7 @@ Calculated on NepalCalc.com/cgpa`;
               </span>
             </div>
             <div style={{ fontSize: '13px', color: '#e0e7ff', marginTop: '6px', fontWeight: 600 }}>
-              {calculation.divisionLabel} • Total Credits: {calculation.totalCredits}
+              {calculation.divisionLabel} • {t('Total Credits:', 'कुल क्रेडिट:')} {calculation.totalCredits}
             </div>
           </div>
 
@@ -349,13 +350,13 @@ Calculated on NepalCalc.com/cgpa`;
           <div style={{ padding: '18px', borderRadius: '12px', border: '1px solid #e2e8f0', backgroundColor: '#f8fafc' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 800, color: '#0f172a', marginBottom: '12px' }}>
               <Target size={18} color="#4f46e5" />
-              <span>Graduation Target CGPA Predictor (लक्ष्य GPA हिसाब)</span>
+              <span>{t('Graduation Target CGPA Predictor', 'लक्ष्य CGPA अनुमान')}</span>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
               <div>
                 <label style={{ fontSize: '11.5px', fontWeight: 700, color: '#475569', display: 'block', marginBottom: '4px' }}>
-                  Total Degree Semesters
+                  {t('Total Degree Semesters', 'कुल डिग्री सेमेस्टर')}
                 </label>
                 <select
                   value={totalProgramSemesters}
@@ -363,15 +364,15 @@ Calculated on NepalCalc.com/cgpa`;
                   className="text-input"
                   style={{ width: '100%', padding: '8px', fontSize: '13px', fontWeight: 700 }}
                 >
-                  <option value={8}>8 Semesters (4-Year BE / BBA / CSIT)</option>
-                  <option value={10}>10 Semesters (5-Year B.Arch / BALLB)</option>
-                  <option value={4}>4 Semesters (2-Year Masters / MBA / ME)</option>
+                  <option value={8}>{t('8 Semesters (4-Year BE / BBA / CSIT)', '८ सेमेस्टर (४ वर्षे BE / BBA / CSIT)')}</option>
+                  <option value={10}>{t('10 Semesters (5-Year B.Arch / BALLB)', '१० सेमेस्टर (५ वर्षे B.Arch / BALLB)')}</option>
+                  <option value={4}>{t('4 Semesters (2-Year Masters / MBA)', '४ सेमेस्टर (२ वर्षे स्नातकोत्तर / MBA)')}</option>
                 </select>
               </div>
 
               <div>
                 <label style={{ fontSize: '11.5px', fontWeight: 700, color: '#475569', display: 'block', marginBottom: '4px' }}>
-                  Desired Graduation CGPA
+                  {t('Desired Graduation CGPA', 'लक्ष्य राखिएको CGPA')}
                 </label>
                 <input
                   type="number"
@@ -400,21 +401,26 @@ Calculated on NepalCalc.com/cgpa`;
               >
                 {calculation.isTargetAchievable ? (
                   <>
-                    To graduate with a <strong>{targetFinalCgpa.toFixed(2)} CGPA</strong>, you need an average SGPA of{' '}
-                    <strong>{Math.max(0, calculation.requiredFutureGpa).toFixed(2)} / 4.00</strong> across your remaining{' '}
-                    <strong>{calculation.remainingSemCount} semesters</strong>.
+                    {t(
+                      `To graduate with a ${targetFinalCgpa.toFixed(2)} CGPA, you need an average SGPA of ${Math.max(0, calculation.requiredFutureGpa).toFixed(2)} / 4.00 across your remaining ${calculation.remainingSemCount} semesters.`,
+                      `अन्त्यमा ${targetFinalCgpa.toFixed(2)} CGPA हासिल गर्न अब बाँकी ${calculation.remainingSemCount} वटा सेमेस्टरमा औसत ${Math.max(0, calculation.requiredFutureGpa).toFixed(2)} SGPA ल्याउनुपर्नेछ।`
+                    )}
                   </>
                 ) : (
                   <>
-                    Requires <strong>{calculation.requiredFutureGpa.toFixed(2)} SGPA</strong> in remaining{' '}
-                    {calculation.remainingSemCount} semesters (exceeds the 4.00 maximum scale). Try adjusting your target CGPA.
+                    {t(
+                      `Requires ${calculation.requiredFutureGpa.toFixed(2)} SGPA in remaining ${calculation.remainingSemCount} semesters (exceeds the 4.00 maximum scale). Try adjusting your target CGPA.`,
+                      `बाँकी ${calculation.remainingSemCount} सेमेस्टरमा ${calculation.requiredFutureGpa.toFixed(2)} SGPA चाहिन्छ (जो अधिकतम ४.०० भन्दा बढी हो)। कृपया आफ्नो लक्ष्य समायोजन गर्नुहोस्।`
+                    )}
                   </>
                 )}
               </div>
             ) : (
               <div style={{ fontSize: '12.5px', color: '#64748b' }}>
-                All {totalProgramSemesters} semesters are entered above. Your final graduation CGPA is{' '}
-                <strong>{calculation.cgpa.toFixed(2)}</strong>.
+                {t(
+                  `All ${totalProgramSemesters} semesters are entered above. Your final graduation CGPA is ${calculation.cgpa.toFixed(2)}.`,
+                  `सबै ${totalProgramSemesters} सेमेस्टरहरूको विवरण प्रविष्ट भइसकेको छ। तपाईंको अन्तिम CGPA ${calculation.cgpa.toFixed(2)} हो।`
+                )}
               </div>
             )}
           </div>
@@ -423,4 +429,3 @@ Calculated on NepalCalc.com/cgpa`;
     </div>
   );
 }
-

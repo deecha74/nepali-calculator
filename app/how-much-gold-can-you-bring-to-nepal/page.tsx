@@ -124,7 +124,7 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
             1. Official Duty-Free Gold & Silver Allowance Limits in Nepal (FY 2083/84)
           </h2>
           <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6, margin: '0 0 18px' }}>
-            The amount of gold you can legally bring into Tribhuvan International Airport (TIA) or land customs checkpoints depends on whether the item is <strong>multi-piece finished personal jewelry (तयारी गहना)</strong> or <strong>raw gold/bullion (काँचो सुन)</strong>. Below is the official passenger allowance schedule published by the Department of Customs and CAAN AIP:
+            The amount of gold you can legally bring into Tribhuvan International Airport (TIA) or land customs checkpoints depends on whether the item is <strong>finished personal jewelry</strong> or <strong>raw bullion/coins</strong>. Below is the official passenger allowance schedule published by the Department of Customs and CAAN AIP:
           </p>
 
           <div style={{ overflowX: 'auto' }}>
@@ -149,7 +149,7 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
               </thead>
               <tbody>
                 <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                  <td style={{ padding: '12px 14px', fontWeight: 700, color: '#0f172a' }}>Male Passenger (पुरुष)</td>
+                  <td style={{ padding: '12px 14px', fontWeight: 700, color: '#0f172a' }}>Male Passenger</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>Finished Gold Ornaments</td>
                   <td style={{ padding: '12px 14px', fontWeight: 700, color: '#059669' }}>Up to 25g (~2.14 Tola)</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>Up to +200g (225g max total)</td>
@@ -160,7 +160,7 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
                   </td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #e2e8f0', backgroundColor: '#fcfcfd' }}>
-                  <td style={{ padding: '12px 14px', fontWeight: 700, color: '#0f172a' }}>Female Passenger (महिला)</td>
+                  <td style={{ padding: '12px 14px', fontWeight: 700, color: '#0f172a' }}>Female Passenger</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>Finished Gold Ornaments</td>
                   <td style={{ padding: '12px 14px', fontWeight: 700, color: '#059669' }}>Up to 50g (~4.29 Tola)</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>Up to +200g (250g max total)</td>
@@ -179,7 +179,7 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
                 </tr>
                 <tr>
                   <td style={{ padding: '12px 14px', fontWeight: 700, color: '#0f172a' }}>All Passengers</td>
-                  <td style={{ padding: '12px 14px', color: '#334155' }}>Silver Ornaments (चाँदीका गहना)</td>
+                  <td style={{ padding: '12px 14px', color: '#334155' }}>Silver Ornaments</td>
                   <td style={{ padding: '12px 14px', fontWeight: 700, color: '#059669' }}>Up to 500g (~42.87 Tola)</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>Up to +500g</td>
                   <td style={{ padding: '12px 14px', color: '#334155' }}>NPR 15 per gram</td>
@@ -254,10 +254,10 @@ export default function HowMuchGoldCanYouBringToNepalPage() {
 
           <ul style={{ fontSize: '13.5px', color: '#334155', lineHeight: 1.65, paddingLeft: '20px', margin: '0 0 20px' }}>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Green Channel (हरियो मार्ग):</strong> For passengers carrying only duty-free personal effects within the 25g (male) or 50g (female) gold ornament limit. Baggage is still screened via X-ray.
+              <strong>Green Channel:</strong> For passengers carrying only duty-free personal effects within the 25g (male) or 50g (female) gold ornament limit. Baggage is still screened via X-ray.
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Red Channel (रातो मार्ग):</strong> Mandatory for passengers carrying excess gold ornaments (between 25g–225g for men or 50g–250g for women) or any dutiable goods. Declare your gold on the customs form, pay the official tariff at the bank counter inside the arrival hall, and collect your official customs receipt (भन्सार प्रज्ञापनपत्र रसिद).
+              <strong>Red Channel:</strong> Mandatory for passengers carrying excess gold ornaments (between 25g–225g for men or 50g–250g for women) or any dutiable goods. Declare your gold on the customs form, pay the official tariff at the bank counter inside the arrival hall, and collect your official customs receipt.
             </li>
           </ul>
 

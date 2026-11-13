@@ -2,8 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { Flame, Droplets, Copy, Check } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export function CalorieBmrWaterCalculator() {
+  const { t } = useLanguage();
   const [gender, setGender] = useState<'male' | 'female'>('male');
   const [age, setAge] = useState<number>(27);
   const [weightKg, setWeightKg] = useState<number>(68);
@@ -108,7 +110,7 @@ Calculated on NepalCalc.com/calorie-calculator`;
                 cursor: 'pointer',
               }}
             >
-              👨 Male (पुरुष)
+              👨 {t('Male', 'पुरुष')}
             </button>
             <button
               type="button"
@@ -122,7 +124,7 @@ Calculated on NepalCalc.com/calorie-calculator`;
                 cursor: 'pointer',
               }}
             >
-              👩 Female (महिला)
+              👩 {t('Female', 'महिला')}
             </button>
           </div>
 

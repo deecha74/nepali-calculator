@@ -141,7 +141,7 @@ Via NepalCalc.com`;
           {/* Loan Amount */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label className="input-label" style={{ fontWeight: 700, marginBottom: 0 }}>{t('Loan Amount', 'ऋण रकम (Loan Amount)')}</label>
+              <label className="input-label" style={{ fontWeight: 700, marginBottom: 0 }}>{t('Loan Amount', 'कुल ऋण रकम')}</label>
               <span style={{ fontSize: '16px', fontWeight: 800, color: '#2563eb', fontFamily: 'var(--font-mono)' }}>
                 रु {loanAmount.toLocaleString('en-IN')}
               </span>
@@ -160,7 +160,7 @@ Via NepalCalc.com`;
           {/* Interest Rate */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <label className="input-label" style={{ fontWeight: 700, marginBottom: 0 }}>{t('Interest Rate (% p.a.)', 'वार्षिक ब्याजदर (% p.a.)')}</label>
+              <label className="input-label" style={{ fontWeight: 700, marginBottom: 0 }}>{t('Interest Rate (% p.a.)', 'वार्षिक ब्याजदर')}</label>
               <span style={{ fontSize: '16px', fontWeight: 800, color: '#e11d48', fontFamily: 'var(--font-mono)' }}>
                 {annualInterestRate}%
               </span>
@@ -235,7 +235,7 @@ Via NepalCalc.com`;
             }}
           >
             <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
-              {t('Monthly EMI (मासिक किस्ता)', 'मासिक किस्ता (Monthly EMI)')}
+              {t('Monthly EMI', 'मासिक किस्ता')}
             </span>
             <div style={{ fontSize: '42px', fontWeight: 800, color: '#34d399', margin: '8px 0 2px', fontFamily: 'var(--font-mono)' }}>
               रु {Math.round(calculation.monthlyEmi).toLocaleString('en-IN')}

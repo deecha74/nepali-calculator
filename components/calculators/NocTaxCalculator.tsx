@@ -2,8 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { GraduationCap, Copy, Check, DollarSign, Calculator } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export function NocTaxCalculator() {
+  const { t } = useLanguage();
   const [foreignAmount, setForeignAmount] = useState<number>(10000);
   const [currency, setCurrency] = useState<'USD' | 'AUD' | 'CAD' | 'GBP' | 'EUR' | 'JPY'>('AUD');
   const [exchangeRate, setExchangeRate] = useState<number>(88.5); // Default AUD
@@ -56,13 +58,16 @@ Calculated via NepalCalc.com`;
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="badge badge-emerald">Nepal Finance Act 2083/84</span>
-            <span className="badge badge-blue">३% शिक्षा सेवा शुल्क (Education Tax)</span>
+            <span className="badge badge-blue">{t('3% Education Tax', '३% शिक्षा सेवा शुल्क')}</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
-            विदेश अध्ययन NOC र ३% शिक्षा कर क्याल्कुलेटर
+            {t('Abroad Study NOC & 3% Education Tax Calculator', 'विदेश अध्ययन NOC र ३% शिक्षा कर क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
-            अन्तर्राष्ट्रिय कलेज शुल्क (Tuition) तथा लिभिङ खर्च बैंकबाट पठाउँदा लाग्ने ३% सरकारी शिक्षा सेवा शुल्क र NOC दस्तुर।
+            {t(
+              'Calculate total NPR needed to wire tuition fees abroad including 3% government education tax and MOEST NOC fees.',
+              'अन्तर्राष्ट्रिय कलेज शुल्क (Tuition) तथा लिभिङ खर्च बैंकबाट पठाउँदा लाग्ने ३% सरकारी शिक्षा सेवा शुल्क र NOC दस्तुर।'
+            )}
           </p>
         </div>
 
@@ -193,11 +198,11 @@ Calculated via NepalCalc.com`;
                 <strong>रु {Math.round(calculation.tuitionNpr).toLocaleString('en-IN')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#f87171' }}>
-                <span>३% शिक्षा सेवा शुल्क (Government Tax):</span>
+                <span>{t('3% Education Service Tax:', '३% शिक्षा सेवा शुल्क:')}</span>
                 <strong>+ रु {Math.round(calculation.educationTax3Percent).toLocaleString('en-IN')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#fbbf24' }}>
-                <span>शिक्षा मन्त्रालय NOC शुल्क ({nocCount}x):</span>
+                <span>{t(`MOEST NOC Fee (${nocCount}x):`, `शिक्षा मन्त्रालय NOC शुल्क (${nocCount}x):`)}</span>
                 <strong>+ रु {calculation.moestNocFee.toLocaleString('en-IN')}</strong>
               </div>
             </div>

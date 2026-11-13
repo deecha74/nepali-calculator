@@ -50,19 +50,22 @@ Calculated via NepalCalc.com`;
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="badge badge-emerald">स्थानीय सरकार सञ्चालन ऐन २०७४</span>
-            <span className="badge badge-blue">१०% घरबहाल कर (Local Rent Tax)</span>
+            <span className="badge badge-blue">{t('10% Local Rent Tax', '१०% स्थानीय घरबहाल कर')}</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#0f172a', margin: '8px 0 4px' }}>
             {t('House Rent Tax Calculator Nepal', 'घरबहाल कर क्याल्कुलेटर')}
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
-            काठमाडौँ, ललितपुर, पोखरा लगायत सम्पूर्ण स्थानीय तहमा लाग्ने १०% घरबहाल कर र घरधनीले पाउने खुद भाडा।
+            {t(
+              'Calculate 10% municipality house rent tax and net landlord earnings across Kathmandu, Lalitpur, Pokhara, and all municipalities in Nepal.',
+              'काठमाडौँ, ललितपुर, पोखरा लगायत सम्पूर्ण स्थानीय तहमा लाग्ने १०% घरबहाल कर र घरधनीले पाउने खुद भाडा।'
+            )}
           </p>
         </div>
 
         <button onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? "Copied" : "Copy"}</span>
+          <span>{copied ? t('Copied', 'कपी भयो') : t('Copy', 'कपी')}</span>
         </button>
       </div>
 
@@ -71,7 +74,7 @@ Calculated via NepalCalc.com`;
           {/* Rent Amount */}
           <div style={{ marginBottom: '16px' }}>
             <label className="input-label" style={{ fontSize: '13px', fontWeight: 800, color: '#1e293b', marginBottom: '6px', display: 'block' }}>
-              भाडा रकम (Rent Amount in NPR)
+              {t('Rent Amount (NPR)', 'भाडा रकम (रू.)')}
             </label>
             <input
               type="number"

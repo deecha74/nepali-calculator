@@ -263,53 +263,23 @@ Calculated via NepalCalc.com`;
         </div>
       </div>
 
-      {/* Block Selector Tabs */}
-      <div style={{ marginBottom: '28px' }}>
-        <label className="input-label" style={{ marginBottom: '10px' }}>
-          {t('Select Asset Pool Block (सम्पत्तिको समूह छान्नुहोस्)', 'सम्पत्ति समूह (Asset Block)')}
+      {/* Block Selector Dropdown */}
+      <div style={{ marginBottom: '24px' }}>
+        <label className="input-label" style={{ marginBottom: '8px' }}>
+          {t('Select Asset Pool Block', 'सम्पत्ति समूह (Asset Block)')}
         </label>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '10px' }}>
+        <select
+          className="select-input"
+          value={selectedBlockId}
+          onChange={(e) => setSelectedBlockId(e.target.value as any)}
+          style={{ padding: '12px 14px', borderRadius: '10px', fontSize: '14px', fontWeight: 600 }}
+        >
           {ASSET_BLOCKS.map((b) => (
-            <button
-              key={b.id}
-              type="button"
-              onClick={() => setSelectedBlockId(b.id)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: '12px 14px',
-                borderRadius: '12px',
-                border: selectedBlockId === b.id ? '2px solid #003893' : '1px solid #e2e8f0',
-                backgroundColor: selectedBlockId === b.id ? '#eff6ff' : '#ffffff',
-                cursor: 'pointer',
-                textAlign: 'left',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '4px' }}>
-                <span style={{ fontSize: '14px', fontWeight: 800, color: selectedBlockId === b.id ? '#003893' : '#0f172a' }}>
-                  {t(`Block ${b.id}`, `समूह ${b.id}`)}
-                </span>
-                <span
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: 800,
-                    color: selectedBlockId === b.id ? '#003893' : '#64748b',
-                    background: selectedBlockId === b.id ? '#dbeafe' : '#f1f5f9',
-                    padding: '2px 6px',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {b.rate}%
-                </span>
-              </div>
-              <span style={{ fontSize: '11.5px', color: '#475569', lineHeight: 1.3 }}>
-                {language === 'ne' ? b.nepaliName.split('—')[1] : b.name.split('—')[1]}
-              </span>
-            </button>
+            <option key={b.id} value={b.id}>
+              Block {b.id} ({b.rate}%) — {language === 'ne' ? b.nepaliName : b.name}
+            </option>
           ))}
-        </div>
+        </select>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '32px' }}>
@@ -318,7 +288,7 @@ Calculated via NepalCalc.com`;
           {/* Opening WDV */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">
-              {t('Opening Written Down Value (WDV) — सुरुको बाँकी मूल्य', 'सुरुको बाँकी मूल्य (Opening WDV)')}
+              {t('Opening Written Down Value (WDV)', 'सुरुको बाँकी मूल्य (Opening WDV)')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
@@ -349,7 +319,7 @@ Calculated via NepalCalc.com`;
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--text-primary)' }}>
-                {t('Additions / New Purchases (चालू आ.व. को नयाँ खरिद)', 'नयाँ खरिद (समय अनुसार)')}
+                {t('Additions / New Asset Purchases', 'नयाँ खरिद (समय अनुसार)')}
               </span>
               <span style={{ fontSize: '11px', color: '#003893', fontWeight: 700 }}>
                 {t('Schedule 2 Timing Rule', 'ऐनको समय नियम')}
@@ -360,9 +330,9 @@ Calculated via NepalCalc.com`;
             <div style={{ marginBottom: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '4px' }}>
                 <span style={{ color: '#334155', fontWeight: 600 }}>
-                  {t('Shrawan 1 – Poush End (साउन देखि पुस मसान्त सम्म)', 'साउन – पुस मसान्त (३/३ = १००%)')}
+                  {t('Shrawan 1 – Poush End', 'साउन – पुस मसान्त (३/३ = १००%)')}
                 </span>
-                <span style={{ color: '#059669', fontWeight: 700 }}>100% Absorbed (३/३)</span>
+                <span style={{ color: '#059669', fontWeight: 700 }}>{t('100% Absorbed (3/3)', '१००% कट्टा (३/३)')}</span>
               </div>
               <input
                 type="number"
@@ -378,9 +348,9 @@ Calculated via NepalCalc.com`;
             <div style={{ marginBottom: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '4px' }}>
                 <span style={{ color: '#334155', fontWeight: 600 }}>
-                  {t('Magh 1 – Chaitra End (माघ देखि चैत मसान्त सम्म)', 'माघ – चैत मसान्त (२/३ = ६६.६७%)')}
+                  {t('Magh 1 – Chaitra End', 'माघ – चैत मसान्त (२/३ = ६६.६७%)')}
                 </span>
-                <span style={{ color: '#d97706', fontWeight: 700 }}>66.7% Absorbed (२/३)</span>
+                <span style={{ color: '#d97706', fontWeight: 700 }}>{t('66.7% Absorbed (2/3)', '६६.७% कट्टा (२/३)')}</span>
               </div>
               <input
                 type="number"
@@ -396,9 +366,9 @@ Calculated via NepalCalc.com`;
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '4px' }}>
                 <span style={{ color: '#334155', fontWeight: 600 }}>
-                  {t('Baisakh 1 – Ashadh End (वैशाख देखि असार मसान्त सम्म)', 'वैशाख – असार मसान्त (१/३ = ३३.३३%)')}
+                  {t('Baisakh 1 – Ashadh End', 'वैशाख – असार मसान्त (१/३ = ३३.३३%)')}
                 </span>
-                <span style={{ color: '#c8102e', fontWeight: 700 }}>33.3% Absorbed (१/३)</span>
+                <span style={{ color: '#c8102e', fontWeight: 700 }}>{t('33.3% Absorbed (1/3)', '३३.३% कट्टा (१/३)')}</span>
               </div>
               <input
                 type="number"
@@ -460,7 +430,7 @@ Calculated via NepalCalc.com`;
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
-                  {t('Tax Depreciation for the Year (चालू आ.व. को ह्रासकट्टी)', 'चालू आ.व. को ह्रासकट्टी रकम')}
+                  {t('Tax Depreciation for the Year', 'चालू आ.व. को ह्रासकट्टी रकम')}
                 </span>
                 <div style={{ fontSize: '38px', fontWeight: 800, color: '#38bdf8', margin: '6px 0 2px', fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(schedule.depreciationAmount).toLocaleString('en-IN')}
@@ -557,28 +527,28 @@ Calculated via NepalCalc.com`;
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', fontSize: '13px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#475569' }}>
-                <span>1. {t('Opening WDV (सुरु बाँकी मूल्य):', '१. सुरु बाँकी मूल्य (Opening WDV):')}</span>
+                <span>1. {t('Opening WDV:', '१. सुरु बाँकी मूल्य:')}</span>
                 <strong style={{ color: '#0f172a', fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(schedule.openingWdv).toLocaleString('en-IN')}
                 </strong>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#475569' }}>
-                <span>2. {t('Total Absorbed Additions (खरिद आधार):', '२. समायोजन भएको खरिद रकम:')}</span>
+                <span>2. {t('Total Absorbed Additions:', '२. समायोजन भएको खरिद रकम:')}</span>
                 <strong style={{ color: '#059669', fontFamily: 'var(--font-mono)' }}>
                   + रु {Math.round(schedule.totalAbsorbedAdditions).toLocaleString('en-IN')}
                 </strong>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#475569' }}>
-                <span>3. {t('Disposal / Sale Proceeds (निसर्ग रकम):', '३. बिक्री / निसर्ग भएको रकम:')}</span>
+                <span>3. {t('Disposal / Sale Proceeds:', '३. बिक्री / निसर्ग भएको रकम:')}</span>
                 <strong style={{ color: '#dc2626', fontFamily: 'var(--font-mono)' }}>
                   - रु {Math.round(schedule.disposalProceeds).toLocaleString('en-IN')}
                 </strong>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#0f172a', fontWeight: 700, borderTop: '1px solid #f1f5f9', paddingTop: '8px' }}>
-                <span>4. {t('Depreciation Base (ह्रासकट्टी आधार):', '४. ह्रासकट्टी आधार (Depreciation Base):')}</span>
+                <span>4. {t('Depreciation Base:', '४. ह्रासकट्टी आधार:')}</span>
                 <span style={{ fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(schedule.depreciationBase).toLocaleString('en-IN')}
                 </span>
@@ -593,7 +563,7 @@ Calculated via NepalCalc.com`;
 
               {schedule.unabsorbedAdditions > 0 && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#d97706', fontSize: '12px' }}>
-                  <span>+ {t('Unabsorbed Additions (अर्को वर्ष सर्ने खरिद):', 'समायोजन हुन बाँकी नयाँ खरिद:')}</span>
+                  <span>+ {t('Unabsorbed Additions:', 'समायोजन हुन बाँकी नयाँ खरिद:')}</span>
                   <strong style={{ fontFamily: 'var(--font-mono)' }}>
                     + रु {Math.round(schedule.unabsorbedAdditions).toLocaleString('en-IN')}
                   </strong>
@@ -602,7 +572,7 @@ Calculated via NepalCalc.com`;
 
               {schedule.excessRepairCapitalized > 0 && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#d97706', fontSize: '12px' }}>
-                  <span>+ {t('Capitalized Excess Repairs (दफा १६):', 'पूँजीकरण भएको बढी मर्मत खर्च:')}</span>
+                  <span>+ {t('Capitalized Excess Repairs:', 'पूँजीकरण भएको बढी मर्मत खर्च:')}</span>
                   <strong style={{ fontFamily: 'var(--font-mono)' }}>
                     + रु {Math.round(schedule.excessRepairCapitalized).toLocaleString('en-IN')}
                   </strong>

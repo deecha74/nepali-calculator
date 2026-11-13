@@ -77,7 +77,7 @@ export function BatoKattaCalculator() {
   };
 
   const handleCopy = () => {
-    const textEn = `Nepal Land Road Deduction (बाटो कट्टा हिसाब):
+    const textEn = `Nepal Land Road Deduction:
 Gross Land Area: ${result.grossSqFt} sq. ft. (${result.grossRopani.formattedEn})
 Road Dimensions: ${roadWidthFt} ft wide × ${roadLengthFt} ft length
 • Road Area Deducted: ${result.roadDeductionSqFt} sq. ft. (${result.roadRopani.formattedEn}) [${result.percentageRoadLost}% of land]
@@ -94,7 +94,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
 • बाटोमा कट्टा भएको क्षेत्रफल: ${toNepaliDigits(result.roadDeductionSqFt)} वर्ग फिट (${result.roadRopani.formattedNe}) [जग्गाको ${toNepaliDigits(result.percentageRoadLost)}%]
 • बाँकी उपयोगयोग्य खुद क्षेत्रफल: ${toNepaliDigits(result.netRemainingSqFt)} वर्ग फिट (${result.netRopani.formattedNe})
 
-मूल्य प्रभाव (Real Usable Rate):
+मूल्य प्रभाव:
 • सुरु दर: रू. ${toNepaliDigits(ratePerUnit.toLocaleString('ne-NP'))} प्रति आना
 • बाटो कट्टा पछिको वास्तविक उपयोग दर: रू. ${toNepaliDigits(result.effectiveCostPerNetAana.toLocaleString('ne-NP'))} प्रति बाँकी आना (+${toNepaliDigits(result.priceIncreasePercentage)}%)
 नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/bato-katta`;
@@ -167,58 +167,21 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
         {/* Left Column: Land & Road Inputs */}
         <div>
           {/* Measurement System Selector */}
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '18px' }}>
-            <button
-              type="button"
-              onClick={() => setSystem('ropani')}
-              style={{
-                flex: 1,
-                padding: '8px',
-                borderRadius: '8px',
-                border: `1.5px solid ${system === 'ropani' ? 'var(--primary)' : 'var(--border-subtle)'}`,
-                background: system === 'ropani' ? 'var(--primary-light, #eff6ff)' : 'transparent',
-                color: system === 'ropani' ? 'var(--primary)' : 'var(--text-secondary)',
-                fontWeight: 700,
-                fontSize: '12px',
-                cursor: 'pointer',
-              }}
+          {/* System Selection Dropdown */}
+          <div style={{ marginBottom: '18px' }}>
+            <label className="input-label" style={{ fontWeight: 700, marginBottom: '6px' }}>
+              {t('Land Measurement System', 'जग्गा नाप प्रणाली')}
+            </label>
+            <select
+              className="select-input"
+              value={system}
+              onChange={(e) => setSystem(e.target.value as 'ropani' | 'bigha' | 'sqft')}
+              style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 600 }}
             >
-              {t('Ropani-Aana (पहाड)', 'रोपनी-आना (पहाड)')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setSystem('bigha')}
-              style={{
-                flex: 1,
-                padding: '8px',
-                borderRadius: '8px',
-                border: `1.5px solid ${system === 'bigha' ? 'var(--primary)' : 'var(--border-subtle)'}`,
-                background: system === 'bigha' ? 'var(--primary-light, #eff6ff)' : 'transparent',
-                color: system === 'bigha' ? 'var(--primary)' : 'var(--text-secondary)',
-                fontWeight: 700,
-                fontSize: '12px',
-                cursor: 'pointer',
-              }}
-            >
-              {t('Bigha-Kattha (तराई)', 'बिघा-कट्ठा (तराई)')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setSystem('sqft')}
-              style={{
-                flex: 1,
-                padding: '8px',
-                borderRadius: '8px',
-                border: `1.5px solid ${system === 'sqft' ? 'var(--primary)' : 'var(--border-subtle)'}`,
-                background: system === 'sqft' ? 'var(--primary-light, #eff6ff)' : 'transparent',
-                color: system === 'sqft' ? 'var(--primary)' : 'var(--text-secondary)',
-                fontWeight: 700,
-                fontSize: '12px',
-                cursor: 'pointer',
-              }}
-            >
-              {t('Sq. Feet (वर्ग फिट)', 'वर्ग फिट')}
-            </button>
+              <option value="ropani">{t('Hill System (Ropani-Aana)', 'पहाडी प्रणाली (रोपनी-आना)')}</option>
+              <option value="bigha">{t('Terai System (Bigha-Kattha)', 'तराई प्रणाली (बिघा-कट्ठा)')}</option>
+              <option value="sqft">{t('Square Feet / Metric', 'वर्ग फिट / मिटर')}</option>
+            </select>
           </div>
 
           {/* Area Inputs */}
@@ -231,7 +194,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
               marginBottom: '18px' 
             }}>
               <label className="input-label" style={{ fontWeight: 700, marginBottom: '10px' }}>
-                {t('Initial Land Area (कुल जग्गा क्षेत्रफल)', 'कुल जग्गा क्षेत्रफल (रोपनी-आना-पैसा-दाम)')}
+                {t('Initial Land Area', 'कुल जग्गा क्षेत्रफल')}
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
                 <div>
@@ -287,7 +250,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
               marginBottom: '18px' 
             }}>
               <label className="input-label" style={{ fontWeight: 700, marginBottom: '10px' }}>
-                {t('Initial Land Area (कुल जग्गा क्षेत्रफल)', 'कुल जग्गा क्षेत्रफल (बिघा-कट्ठा-धुर)')}
+                {t('Initial Land Area', 'कुल जग्गा क्षेत्रफल')}
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                 <div>
@@ -343,7 +306,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
           {/* Road Width Section */}
           <div style={{ marginBottom: '18px' }}>
             <label className="input-label" style={{ fontWeight: 600, marginBottom: '6px' }}>
-              {t('Road Width in Feet (बाटोको चौडाइ - फिट)', 'बाटोको चौडाइ (फिटमा)')}
+              {t('Road Width in Feet', 'बाटोको चौडाइ (फिटमा)')}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginBottom: '8px' }}>
               {[10, 13, 16, 20, 26].map((w) => (
@@ -385,7 +348,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
           {/* Road Length Section */}
           <div style={{ marginBottom: '18px' }}>
             <label className="input-label" style={{ fontWeight: 600 }}>
-              {t('Road Length Passing Through Plot (बाटोको लम्बाइ - फिट)', 'जग्गामा पर्ने बाटोको लम्बाइ (फिटमा)')}
+              {t('Road Length Passing Through Plot', 'जग्गामा पर्ने बाटोको लम्बाइ (फिटमा)')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 600, color: 'var(--text-muted)', fontSize: '12px' }}>
@@ -407,8 +370,8 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label" style={{ fontWeight: 600 }}>
               {system === 'bigha'
-                ? t('Land Rate per Kattha (प्रति कट्ठा दर)', 'जग्गाको दर (प्रति कट्ठा)')
-                : t('Land Rate per Aana (प्रति आना दर)', 'जग्गाको दर (प्रति आना)')}
+                ? t('Land Rate per Kattha', 'जग्गाको दर (प्रति कट्ठा)')
+                : t('Land Rate per Aana', 'जग्गाको दर (प्रति आना)')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: 'var(--text-muted)' }}>
@@ -460,7 +423,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '14px 16px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                 <span style={{ fontSize: '13px', fontWeight: 700, color: '#dc2626' }}>
-                  {t('Road Area Deducted (बाटोमा गएको):', 'बाटोमा कट्टा भएको क्षेत्रफल:')}
+                  {t('Road Area Deducted:', 'बाटोमा कट्टा भएको क्षेत्रफल:')}
                 </span>
                 <span className="badge badge-amber" style={{ fontSize: '11px' }}>
                   {isNe ? `${toNepaliDigits(result.percentageRoadLost)}% जग्गा बाटोमा` : `${result.percentageRoadLost}% of plot`}
@@ -478,7 +441,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
             {ratePerUnit > 0 && (
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '14px 16px', marginBottom: '16px' }}>
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '8px' }}>
-                  {t('Real Land Cost Reality Check (सच्चा मूल्य हिसाब)', 'वास्तविक उपयोग दर हिसाब (Real Usable Rate)')}
+                  {t('Real Land Cost Analysis', 'वास्तविक उपयोग दर हिसाब')}
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '6px' }}>
                   <span style={{ color: 'var(--text-secondary)' }}>{t('Gross Purchase Rate:', 'सुरु खरिद दर:')}</span>

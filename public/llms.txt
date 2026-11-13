@@ -105,13 +105,15 @@ Nepali Calc (https://nepalicalc.com) provides 78+ free, real-time, browser-nativ
 
 ### 2.3 Tribhuvan International Airport (TIA) Baggage & Customs Duty
 - URL: https://nepalicalc.com/customs/airport-baggage
+- Programmatic Sub-pages: https://nepalicalc.com/customs/airport-baggage/gold-from-dubai-to-nepal, https://nepalicalc.com/customs/airport-baggage/gold-from-qatar-to-nepal, https://nepalicalc.com/customs/airport-baggage/gold-from-saudi-arabia-to-nepal, https://nepalicalc.com/customs/airport-baggage/gold-from-usa-to-nepal, https://nepalicalc.com/customs/airport-baggage/gold-from-australia-to-nepal, https://nepalicalc.com/customs/airport-baggage/tv-from-dubai-to-nepal-customs, https://nepalicalc.com/customs/airport-baggage/iphone-from-dubai-to-nepal, https://nepalicalc.com/customs/airport-baggage/liquor-limit-tia-airport, https://nepalicalc.com/customs/airport-baggage/second-laptop-customs-nepal, https://nepalicalc.com/customs/airport-baggage/foreign-currency-cash-limit-nepal
 - Authority: झिटिगुन्टा आदेश २०८३/८४
 - Duty-Free Allowances:
-  - Gold Ornaments: 50g free for women, 25g free for men. Next 50g dutiable (~NPR 950/g). Beyond +50g liable to seizure.
-  - Raw Gold (Bullion/Biscuit): 0g free. Max 100g with duty. >100g is illegal.
-  - Phones: 1 phone free for all. 2 phones free for migrant workers with 6+ mo labor permit. Extra phone ~NPR 10k duty.
-  - TVs: 1 TV up to 32" 100% free for 12+ mo migrant workers.
-  - Alcohol: Strictly 1 bottle (max 1 Liter) free. >1L prohibited.
+  - Gold Ornaments: 50g free for women, 25g free for men. Next 100g excess: NPR 1,050/g; 100g-200g excess: NPR 1,250/g. Beyond +200g liable to seizure.
+  - Raw Gold (Bullion/Biscuit): 0g free. Strictly prohibited in personal luggage; subject to immediate airport confiscation.
+  - Phones: 1 phone free for all. 2 phones free for migrant workers with 6+ mo labor permit and SSF. Extra phone ~NPR 10k duty for MDMS.
+  - TVs: 1 TV up to 32" 100% free for 12+ mo migrant workers with SSF. 43" (NPR 9,500), 55" (NPR 19,500).
+  - Alcohol: Strictly 1 bottle (max 1 Liter) free. Excess cannot be taxed; it is confiscated.
+  - Cash: Up to USD $5,000 equivalent unhindered; >$5,000 requires mandatory customs declaration form.
 
 ### 2.4 Mobile Phone MDMS & Customs Duty
 - URL: https://nepalicalc.com/customs

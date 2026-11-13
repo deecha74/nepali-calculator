@@ -101,92 +101,84 @@ export function AirportBaggageCalculator() {
       <div
         className="white-card"
         style={{
-          padding: '24px',
-          borderRadius: '18px',
-          border: '1.5px solid #e2e8f0',
+          padding: '20px 24px',
+          borderRadius: '16px',
+          border: '1px solid #e2e8f0',
           backgroundColor: '#ffffff',
-          boxShadow: '0 4px 20px rgba(11, 43, 92, 0.04)',
-          marginBottom: '24px',
+          boxShadow: '0 2px 12px rgba(11, 43, 92, 0.04)',
+          marginBottom: '20px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-          <Plane size={18} color="#003893" />
-          <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 800, color: '#0f172a' }}>
-            {t('Step 1: Select Traveler Profile & Legal Status', 'चरण १: यात्रुको विवरण तथा कानुनी हैसियत')}
-          </h3>
-        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', alignItems: 'flex-end' }}>
+          {/* Passenger Type Dropdown */}
+          <div>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
+              <Plane size={15} color="#003893" />
+              <span>{t('Traveler Status & Visa Type', 'यात्रुको विवरण तथा भिसा प्रकार')}</span>
+            </label>
+            <select
+              value={passengerType}
+              onChange={(e) => setPassengerType(e.target.value as PassengerType)}
+              style={{
+                width: '100%',
+                padding: '10px 14px',
+                borderRadius: '10px',
+                border: '1.5px solid #cbd5e1',
+                fontSize: '13.5px',
+                fontWeight: 600,
+                color: '#0f172a',
+                backgroundColor: '#f8fafc',
+                cursor: 'pointer',
+                outline: 'none',
+              }}
+            >
+              {PASSENGER_TYPES.map((pt) => (
+                <option key={pt.id} value={pt.id}>
+                  {ne ? pt.nameNe : pt.nameEn} ({pt.badge})
+                </option>
+              ))}
+            </select>
+          </div>
 
-        {/* Passenger Type Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px', marginBottom: '18px' }}>
-          {PASSENGER_TYPES.map((pt) => {
-            const active = passengerType === pt.id;
-            return (
+          {/* Gender Segmented Toggle */}
+          <div>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
+              {t('Passenger Gender (Affects Duty-Free Gold Limit)', 'यात्रुको लिङ्ग')}
+            </label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               <button
-                key={pt.id}
                 type="button"
-                onClick={() => setPassengerType(pt.id)}
+                onClick={() => setGender('female')}
                 style={{
-                  textAlign: 'left',
-                  padding: '12px 14px',
-                  borderRadius: '12px',
-                  border: active ? '2px solid #003893' : '1px solid #e2e8f0',
-                  backgroundColor: active ? '#eff6ff' : '#f8fafc',
+                  padding: '9px 12px',
+                  borderRadius: '10px',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  border: gender === 'female' ? '2px solid #003893' : '1px solid #cbd5e1',
+                  backgroundColor: gender === 'female' ? '#eff6ff' : '#ffffff',
+                  color: gender === 'female' ? '#003893' : '#475569',
                   cursor: 'pointer',
-                  transition: 'all 0.15s ease',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 800, color: active ? '#003893' : '#64748b', textTransform: 'uppercase' }}>
-                    {pt.badge}
-                  </span>
-                  {active && <CheckCircle2 size={14} color="#003893" />}
-                </div>
-                <div style={{ fontSize: '13px', fontWeight: 750, color: active ? '#003893' : '#1e293b', lineHeight: 1.35 }}>
-                  {ne ? pt.nameNe : pt.nameEn}
-                </div>
+                👩 {t('Female (50g Free)', 'महिला (५० ग्राम निःशुल्क)')}
               </button>
-            );
-          })}
-        </div>
-
-        {/* Gender Selection (Crucial for Gold Ornaments allowance: 25g male vs 50g female) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', paddingTop: '12px', borderTop: '1px solid #f1f5f9' }}>
-          <span style={{ fontSize: '13px', fontWeight: 700, color: '#334155' }}>
-            {t('Passenger Gender (Affects Duty-Free Gold Limit):', 'यात्रुको लिङ्ग (सुनको निःशुल्क कोटा निर्धारण गर्छ):')}
-          </span>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button
-              type="button"
-              onClick={() => setGender('male')}
-              style={{
-                padding: '6px 14px',
-                borderRadius: '8px',
-                fontSize: '13px',
-                fontWeight: 700,
-                border: gender === 'male' ? '1.5px solid #003893' : '1px solid #cbd5e1',
-                backgroundColor: gender === 'male' ? '#eff6ff' : '#ffffff',
-                color: gender === 'male' ? '#003893' : '#475569',
-                cursor: 'pointer',
-              }}
-            >
-              👨 {t('Male (25g Gold Free)', 'पुरुष (२५ ग्राम सुन निःशुल्क)')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setGender('female')}
-              style={{
-                padding: '6px 14px',
-                borderRadius: '8px',
-                fontSize: '13px',
-                fontWeight: 700,
-                border: gender === 'female' ? '1.5px solid #003893' : '1px solid #cbd5e1',
-                backgroundColor: gender === 'female' ? '#eff6ff' : '#ffffff',
-                color: gender === 'female' ? '#003893' : '#475569',
-                cursor: 'pointer',
-              }}
-            >
-              👩 {t('Female (50g Gold Free)', 'महिला (५० ग्राम सुन निःशुल्क)')}
-            </button>
+              <button
+                type="button"
+                onClick={() => setGender('male')}
+                style={{
+                  padding: '9px 12px',
+                  borderRadius: '10px',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  border: gender === 'male' ? '2px solid #003893' : '1px solid #cbd5e1',
+                  backgroundColor: gender === 'male' ? '#eff6ff' : '#ffffff',
+                  color: gender === 'male' ? '#003893' : '#475569',
+                  cursor: 'pointer',
+                }}
+              >
+                👨 {t('Male (25g Free)', 'पुरुष (२५ ग्राम निःशुल्क)')}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -214,7 +206,7 @@ export function AirportBaggageCalculator() {
           {/* Gold Ornaments */}
           <div style={{ padding: '14px', borderRadius: '12px', backgroundColor: '#fffbeb', border: '1px solid #fef3c7' }}>
             <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 800, color: '#92400e', marginBottom: '6px' }}>
-              <span>🪙 {t('Gold Jewelry / Ornaments', 'सुनका गहना (छड्के, सिक्री आदि)')}</span>
+              <span>🪙 {t('Gold Jewelry / Ornaments', 'सुनका गहना')}</span>
               <strong style={{ fontSize: '15px' }}>{goldOrnamentsGrams} grams</strong>
             </label>
             <input
@@ -228,7 +220,7 @@ export function AirportBaggageCalculator() {
             />
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#b45309', marginTop: '4px' }}>
               <span>0g</span>
-              <span>Free limit: {gender === 'female' ? '50g' : '25g'}</span>
+              <span>{t(`Free: ${gender === 'female' ? '50g' : '25g'}`, `निःशुल्क: ${gender === 'female' ? '५० ग्राम' : '२५ ग्राम'}`)}</span>
               <span>150g</span>
             </div>
           </div>
@@ -236,7 +228,7 @@ export function AirportBaggageCalculator() {
           {/* Raw Gold / Bullion / Coins */}
           <div style={{ padding: '14px', borderRadius: '12px', backgroundColor: '#fef2f2', border: '1px solid #fee2e2' }}>
             <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 800, color: '#991b1b', marginBottom: '6px' }}>
-              <span>🧱 {t('Raw Gold (Bullion / Coins / Biscuits)', 'काँचो सुन (सिक्का / बिस्कुट)')}</span>
+              <span>🧱 {t('Raw Gold (Bullion / Coins / Biscuits)', 'काँचो सुन (सिक्का तथा बिस्कुट)')}</span>
               <strong style={{ fontSize: '15px' }}>{rawGoldGrams} grams</strong>
             </label>
             <input
@@ -249,17 +241,17 @@ export function AirportBaggageCalculator() {
               style={{ width: '100%', accentColor: '#dc2626', cursor: 'pointer' }}
             />
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#991b1b', marginTop: '4px' }}>
-              <span>0g Free</span>
-              <span>Max allowed: 100g (Taxable)</span>
-              <span>&gt;100g Prohibited</span>
+              <span>{t('0g Free', '० ग्राम छुट')}</span>
+              <span>{t('Max: 100g (Taxable)', 'अधिकतम: १०० ग्राम (कर लाग्ने)')}</span>
+              <span>{t('>100g Prohibited', '> १०० ग्राम निषेधित')}</span>
             </div>
           </div>
 
           {/* Mobile Phones (Smartphones / iPhone) */}
           <div style={{ padding: '14px', borderRadius: '12px', backgroundColor: '#f0f9ff', border: '1px solid #e0f2fe' }}>
             <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 800, color: '#0369a1', marginBottom: '6px' }}>
-              <span>📱 {t('Mobile Phones (Smartphones / iPhone)', 'मोबाइल फोन (स्मार्टफोन)')}</span>
-              <strong style={{ fontSize: '15px' }}>{smartphonesCount} Phone(s)</strong>
+              <span>📱 {t('Mobile Phones (Smartphones / iPhone)', 'मोबाइल फोन')}</span>
+              <strong style={{ fontSize: '15px' }}>{smartphonesCount} {t('Phone(s)', 'वटा')}</strong>
             </label>
             <input
               type="range"
@@ -271,36 +263,36 @@ export function AirportBaggageCalculator() {
               style={{ width: '100%', accentColor: '#0284c7', cursor: 'pointer' }}
             />
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#0369a1', marginTop: '4px' }}>
-              <span>1 Phone</span>
-              <span>Free: {passengerType.includes('migrant') ? '2 Phones' : '1 Phone'}</span>
-              <span>5 Phones</span>
+              <span>1</span>
+              <span>{t(`Free: ${passengerType.includes('migrant') ? '2 Phones' : '1 Phone'}`, `छुट: ${passengerType.includes('migrant') ? '२ वटा' : '१ वटा'}`)}</span>
+              <span>5</span>
             </div>
           </div>
 
           {/* Television (TV) Size */}
           <div style={{ padding: '14px', borderRadius: '12px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0' }}>
             <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 800, color: '#334155', marginBottom: '6px' }}>
-              <span>📺 {t('Television (Smart / LED TV)', 'टेलिभिजन (टिभी)')}</span>
-              <strong style={{ fontSize: '15px' }}>{tvSizeInches > 0 ? `${tvSizeInches} Inches` : 'None'}</strong>
+              <span>📺 {t('Television (LED / Smart TV)', 'टेलिभिजन (टिभी)')}</span>
+              <strong style={{ fontSize: '15px' }}>{tvSizeInches > 0 ? `${tvSizeInches} ${t('Inches', 'इन्च')}` : t('None', 'छैन')}</strong>
             </label>
             <select
               value={tvSizeInches}
               onChange={(e) => setTvSizeInches(Number(e.target.value))}
               style={{ width: '100%', padding: '8px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px', backgroundColor: '#ffffff' }}
             >
-              <option value={0}>No Television (टिभी नल्याउने)</option>
-              <option value={32}>Up to 32 Inches (Free for 12+ Mo Labor)</option>
-              <option value={43}>43 Inches (Taxable)</option>
-              <option value={55}>55 Inches (Taxable)</option>
-              <option value={65}>65 Inches or Larger (Heavy Tariff)</option>
+              <option value={0}>{t('No Television', 'टिभी नल्याउने')}</option>
+              <option value={32}>{t('Up to 32 Inches (Free for 12+ Mo Labor)', '३२ इन्चसम्म (१२ महिनाभन्दा बढी श्रममा निःशुल्क)')}</option>
+              <option value={43}>{t('43 Inches (Taxable)', '४३ इन्च (कर लाग्ने)')}</option>
+              <option value={55}>{t('55 Inches (Taxable)', '५५ इन्च (कर लाग्ने)')}</option>
+              <option value={65}>{t('65 Inches or Larger (Heavy Tariff)', '६५ इन्च वा ठूलो (उच्च भन्सार)')}</option>
             </select>
           </div>
 
           {/* Alcohol & Liquor */}
           <div style={{ padding: '14px', borderRadius: '12px', backgroundColor: '#fdf4ff', border: '1px solid #fae8ff' }}>
             <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 800, color: '#86198f', marginBottom: '6px' }}>
-              <span>🍾 {t('Alcohol & Liquor (Liters)', 'मदिरा / रक्सी (लिटर)')}</span>
-              <strong style={{ fontSize: '15px' }}>{alcoholLiters} Liter(s)</strong>
+              <span>🍾 {t('Alcohol & Liquor (Liters)', 'मदिरा तथा रक्सी (लिटर)')}</span>
+              <strong style={{ fontSize: '15px' }}>{alcoholLiters} {t('Liter(s)', 'लिटर')}</strong>
             </label>
             <input
               type="range"
@@ -499,27 +491,26 @@ export function AirportBaggageCalculator() {
         }}
       >
         <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#0f172a', marginBottom: '14px' }}>
-          {t('Official Itemized Baggage Assessment (भन्सार महसुल फाँटवारी)', 'भन्सार महसुल फाँटवारी')}
+          {t('Itemized Baggage Assessment', 'भन्सार महसुल फाँटवारी')}
         </h3>
 
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px', textAlign: 'left' }}>
             <thead>
               <tr style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #e2e8f0', color: '#475569' }}>
-                <th style={{ padding: '10px 12px' }}>Item Category</th>
-                <th style={{ padding: '10px 12px' }}>Declared</th>
-                <th style={{ padding: '10px 12px' }}>Duty-Free Limit</th>
-                <th style={{ padding: '10px 12px' }}>Taxable Quantity</th>
-                <th style={{ padding: '10px 12px' }}>Customs Duty</th>
-                <th style={{ padding: '10px 12px' }}>Status & Rule</th>
+                <th style={{ padding: '10px 12px' }}>{t('Item Category', 'सामानको विवरण')}</th>
+                <th style={{ padding: '10px 12px' }}>{t('Declared', 'घोषित परिमाण')}</th>
+                <th style={{ padding: '10px 12px' }}>{t('Duty-Free Limit', 'निःशुल्क कोटा')}</th>
+                <th style={{ padding: '10px 12px' }}>{t('Taxable Quantity', 'कर लाग्ने परिमाण')}</th>
+                <th style={{ padding: '10px 12px' }}>{t('Customs Duty', 'भन्सार महसुल')}</th>
+                <th style={{ padding: '10px 12px' }}>{t('Status & Rule', 'अवस्था तथा नियम')}</th>
               </tr>
             </thead>
             <tbody>
               {result.breakdown.map((row, idx) => (
                 <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9' }}>
                   <td style={{ padding: '12px', fontWeight: 750, color: '#0f172a' }}>
-                    <div>{row.category}</div>
-                    <div style={{ fontSize: '11px', color: '#64748b' }}>{row.categoryNe}</div>
+                    <div>{ne ? row.categoryNe : row.category}</div>
                   </td>
                   <td style={{ padding: '12px', color: '#334155' }}>{row.declared}</td>
                   <td style={{ padding: '12px', color: '#059669', fontWeight: 600 }}>{row.dutyFreeLimit}</td>

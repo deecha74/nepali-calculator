@@ -2,8 +2,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { Home, Copy, Check } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export function PaintBrickConcreteCalculator() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'paint' | 'brick' | 'concrete'>('paint');
 
   // Paint State
@@ -111,26 +113,26 @@ Calculated on NepalCalc.com/paint-cost`;
           </div>
           <div>
             <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
-              Paint Cost, Wall Brick & Concrete Mix (M20) Calculator
+              {t('Paint Cost, Wall Brick & Concrete Mix (M20) Calculator', 'रङरोगन खर्च, गारोको इँटा तथा ढलान अनुपात क्याल्कुलेटर')}
             </h1>
             <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: '2px 0 0' }}>
-              रङरोगन खर्च, गारोको इँटा संख्या र ढलानको सिमेन्ट-बालुवा-गिट्टी अनुपात
+              {t('Calculate paint, brick requirements and concrete mix ratio for house construction in Nepal', 'नेपालमा घर निर्माणका लागि रङरोगन, इँटा र ढलान सामग्रीको यकिन लागत निकाल्नुहोस्')}
             </p>
           </div>
         </div>
 
         <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? 'Copied!' : 'Copy All'}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy All', 'सबै कपी')}</span>
         </button>
       </div>
 
       {/* Mode Tabs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '24px' }}>
         {[
-          { id: 'paint', label: '🎨 Paint & Putty Cost (रङ खर्च)' },
-          { id: 'brick', label: '🧱 Wall Brick Calculator (इँटा संख्या)' },
-          { id: 'concrete', label: '🏗️ Concrete Mix M15/M20 (ढलान अनुपात)' },
+          { id: 'paint', label: t('🎨 Paint & Putty', '🎨 रङ तथा पुटि') },
+          { id: 'brick', label: t('🧱 Wall Bricks', '🧱 गारोको इँटा') },
+          { id: 'concrete', label: t('🏗️ Concrete Mix', '🏗️ ढलान कंक्रीट') },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -157,7 +159,7 @@ Calculated on NepalCalc.com/paint-cost`;
           <div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Total Paintable Wall / Ceiling Area (Sq. Ft):
+                {t('Total Paintable Area (Sq. Ft):', 'रङ लगाउने कुल क्षेत्रफल (वर्गफिट):')}
               </label>
               <input
                 type="number"
@@ -169,7 +171,7 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Number of Paint Coats:
+                {t('Number of Paint Coats:', 'कोट संख्या:')}
               </label>
               <select
                 value={coats}
@@ -177,14 +179,14 @@ Calculated on NepalCalc.com/paint-cost`;
                 className="text-input"
                 style={{ width: '100%' }}
               >
-                <option value={1}>1 Coat (Repainting — 110 sq.ft/L)</option>
-                <option value={2}>2 Coats (Standard New Wall — 60 sq.ft/L)</option>
-                <option value={3}>3 Coats (Premium Finish — 42 sq.ft/L)</option>
+                <option value={1}>{t('1 Coat (Repainting — 110 sq.ft/L)', '१ कोट (पुनः रङ — ११० वर्गफिट/लिटर)')}</option>
+                <option value={2}>{t('2 Coats (Standard New Wall — 60 sq.ft/L)', '२ कोट (नयाँ गारो — ६० वर्गफिट/लिटर)')}</option>
+                <option value={3}>{t('3 Coats (Premium Finish — 42 sq.ft/L)', '३ कोट (प्रिमियम फिनिसिङ — ४२ वर्गफिट/लिटर)')}</option>
               </select>
             </div>
             <div>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Emulsion Paint Price per Liter (NPR — Asian/Berger/Pashupati):
+                {t('Emulsion Paint Price per Liter (NPR):', 'इमल्सन रङ प्रति लिटर दर (रु):')}
               </label>
               <input
                 type="number"
@@ -198,22 +200,22 @@ Calculated on NepalCalc.com/paint-cost`;
 
           <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
             <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              Estimated Paint, Primer & Putty Requirement
+              {t('Estimated Paint, Primer & Putty Cost', 'अनुमानित रङ, प्राइमर तथा पुटि खर्च')}
             </div>
             <div style={{ fontSize: '30px', fontWeight: 900, color: '#38bdf8', margin: '6px 0 12px' }}>
               NPR {calculation.totalPaintCostNpr.toLocaleString('en-IN')}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Topcoat Emulsion Paint:</span>
-                <strong>{calculation.paintLitersNeeded} Liters</strong>
+                <span>{t('Topcoat Emulsion Paint:', 'मुख्य इमल्सन रङ:')}</span>
+                <strong>{calculation.paintLitersNeeded} {t('Liters', 'लिटर')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Wall Primer (1 Coat):</span>
-                <strong>{calculation.primerLitersNeeded} Liters</strong>
+                <span>{t('Wall Primer (1 Coat):', 'वाल प्राइमर (१ कोट):')}</span>
+                <strong>{calculation.primerLitersNeeded} {t('Liters', 'लिटर')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Wall Putty (2 Coats):</span>
+                <span>{t('Wall Putty (2 Coats):', 'वाल पुटि (२ कोट):')}</span>
                 <strong>{calculation.puttyKgNeeded} KG</strong>
               </div>
             </div>
@@ -227,7 +229,7 @@ Calculated on NepalCalc.com/paint-cost`;
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
               <div>
                 <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                  Wall Length (Feet):
+                  {t('Wall Length (Feet):', 'गारोको लम्बाइ (फिट):')}
                 </label>
                 <input
                   type="number"
@@ -239,7 +241,7 @@ Calculated on NepalCalc.com/paint-cost`;
               </div>
               <div>
                 <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                  Wall Height (Feet):
+                  {t('Wall Height (Feet):', 'गारोको उचाइ (फिट):')}
                 </label>
                 <input
                   type="number"
@@ -252,7 +254,7 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Wall Thickness (गारोको मोटाइ):
+                {t('Wall Thickness:', 'गारोको मोटाइ:')}
               </label>
               <select
                 value={wallThickness}
@@ -260,13 +262,13 @@ Calculated on NepalCalc.com/paint-cost`;
                 className="text-input"
                 style={{ width: '100%' }}
               >
-                <option value="9_inch">9-Inch Outer Wall (९ इन्च गारो — ~9.2 bricks/sq.ft)</option>
-                <option value="4.5_inch">4.5-Inch Partition Wall (४.५ इन्च गारो — ~4.6 bricks/sq.ft)</option>
+                <option value="9_inch">{t('9-Inch Outer Wall (~9.2 bricks/sq.ft)', '९ इन्च बाहिरी गारो (~९.२ इँटा/वर्गफिट)')}</option>
+                <option value="4.5_inch">{t('4.5-Inch Partition Wall (~4.6 bricks/sq.ft)', '४.५ इन्च भित्री गारो (~४.६ इँटा/वर्गफिट)')}</option>
               </select>
             </div>
             <div>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Price per Brick in Nepal (NPR):
+                {t('Price per Brick (NPR):', 'प्रति इँटा दर (रु):')}
               </label>
               <input
                 type="number"
@@ -280,19 +282,19 @@ Calculated on NepalCalc.com/paint-cost`;
 
           <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
             <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              Total Bricks Required (Including 5% Wastage)
+              {t('Total Bricks Required (5% Wastage Buffer)', 'कुल इँटा संख्या (५% टुटफुट सहित)')}
             </div>
             <div style={{ fontSize: '30px', fontWeight: 900, color: '#fbbf24', margin: '6px 0 12px' }}>
-              {calculation.totalBricksWithWastage.toLocaleString('en-IN')} Bricks
+              {calculation.totalBricksWithWastage.toLocaleString('en-IN')} {t('Bricks', 'वटा इँटा')}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Total Brick Cost:</span>
+                <span>{t('Total Brick Cost:', 'कुल इँटा खर्च:')}</span>
                 <strong>NPR {calculation.brickCostNpr.toLocaleString('en-IN')}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Mortar Cement Required (1:5):</span>
-                <strong>{calculation.mortarCementBags} Bags (50kg)</strong>
+                <span>{t('Mortar Cement (1:5):', 'गारोको सिमेन्ट (१:५):')}</span>
+                <strong>{calculation.mortarCementBags} {t('Bags (50kg)', 'बोरा (५० केजी)')}</strong>
               </div>
             </div>
           </div>
@@ -304,7 +306,7 @@ Calculated on NepalCalc.com/paint-cost`;
           <div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                RCC Slab / Column Area (Sq. Ft):
+                {t('RCC Slab / Beam Area (Sq. Ft):', 'ढलान / बिमको क्षेत्रफल (वर्गफिट):')}
               </label>
               <input
                 type="number"
@@ -316,7 +318,7 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Slab Thickness (Inches — Standard Nepal Dhalan is 5"):
+                {t('Slab Thickness (Inches — Standard is 5"):', 'ढलानको मोटाइ (इन्च — सामान्यतया ५ इन्च):')}
               </label>
               <input
                 type="number"
@@ -328,7 +330,7 @@ Calculated on NepalCalc.com/paint-cost`;
             </div>
             <div>
               <label className="input-label" style={{ display: 'block', marginBottom: '6px', fontWeight: 700 }}>
-                Concrete Grade Ratio:
+                {t('Concrete Grade Ratio:', 'कंक्रीट ग्रेड अनुपात:')}
               </label>
               <select
                 value={mixGrade}
@@ -336,28 +338,28 @@ Calculated on NepalCalc.com/paint-cost`;
                 className="text-input"
                 style={{ width: '100%' }}
               >
-                <option value="M20">M20 (1 : 1.5 : 3 — NBC 105 Standard RCC Slab/Beam)</option>
-                <option value="M25">M25 (1 : 1 : 2 — Heavy Columns & High-Rise)</option>
-                <option value="M15">M15 (1 : 2 : 4 — PCC Flooring & Foundation Base)</option>
+                <option value="M20">{t('M20 (1 : 1.5 : 3 — Standard RCC Slab/Beam)', 'M20 (१ : १.५ : ३ — ढलान तथा बिम)')}</option>
+                <option value="M25">{t('M25 (1 : 1 : 2 — Heavy Columns & High-Rise)', 'M25 (१ : १ : २ — ठूला पिल्लर)')}</option>
+                <option value="M15">{t('M15 (1 : 2 : 4 — PCC Flooring & Base)', 'M15 (१ : २ : ४ — बेस तथा भुइँ)')}</option>
               </select>
             </div>
           </div>
 
           <div style={{ padding: '20px', borderRadius: '12px', backgroundColor: '#0f172a', color: '#ffffff' }}>
             <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              {mixGrade} Concrete Materials ({calculation.wetVolumeCft.toFixed(0)} CFT Wet Volume)
+              {t(`${mixGrade} Concrete Materials (${calculation.wetVolumeCft.toFixed(0)} CFT Wet Volume)`, `${mixGrade} ढलान सामग्री (${calculation.wetVolumeCft.toFixed(0)} घनफिट आयतन)`)}
             </div>
             <div style={{ fontSize: '30px', fontWeight: 900, color: '#34d399', margin: '6px 0 12px' }}>
-              {calculation.cementBags50Kg} Bags Cement
+              {calculation.cementBags50Kg} {t('Bags Cement', 'बोरा सिमेन्ट')}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13.5px', color: '#e2e8f0' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Washed River Sand (बालुवा):</span>
-                <strong>{calculation.sandCft} CFT (~{(calculation.sandCft / 100).toFixed(1)} Mini Tippers)</strong>
+                <span>{t('River Sand:', 'बालुवा:')}</span>
+                <strong>{calculation.sandCft} CFT (~{(calculation.sandCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Crushed Stone Aggregate (गिट्टी):</span>
-                <strong>{calculation.aggregateCft} CFT (~{(calculation.aggregateCft / 100).toFixed(1)} Mini Tippers)</strong>
+                <span>{t('Crushed Stone Aggregate:', 'गिट्टी:')}</span>
+                <strong>{calculation.aggregateCft} CFT (~{(calculation.aggregateCft / 100).toFixed(1)} {t('Mini Tippers', 'टिपर')})</strong>
               </div>
             </div>
           </div>
@@ -366,4 +368,3 @@ Calculated on NepalCalc.com/paint-cost`;
     </div>
   );
 }
-

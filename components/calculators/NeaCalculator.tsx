@@ -94,7 +94,7 @@ Calculated via NepalCalc.com`;
         <div>
           {/* Units Consumed */}
           <div style={{ marginBottom: '22px' }}>
-            <label className="input-label">Monthly Units Consumed (युनिट / kWh)</label>
+            <label className="input-label">{t('Monthly Units Consumed (kWh)', 'मासिक खपत युनिट (kWh)')}</label>
             <input
               type="number"
               min={0}
@@ -168,7 +168,7 @@ Calculated via NepalCalc.com`;
         {/* Results */}
         <div>
           <div className="result-card-highlight">
-            <span className="stat-label">Estimated Bill Amount (तिर्नुपर्ने रकम)</span>
+            <span className="stat-label">{t('Estimated Bill Amount', 'तिर्नुपर्ने अनुमानित महसुल')}</span>
             <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
               रु {Math.round(calculation.totalBill).toLocaleString('en-IN')}
             </div>

@@ -387,7 +387,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
                 transition: 'all 0.15s ease',
               }}
             >
-              {t('By Land Size (Aana / आना)', 'जग्गाको आना अनुसार')}
+              {t('By Land Area (Aana)', 'जग्गाको आना अनुसार')}
             </button>
           </div>
 
@@ -415,11 +415,11 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
           ) : (
             <div style={{ marginBottom: '16px' }}>
               <label className="input-label" style={{ fontWeight: 600 }}>
-                {t('Plot Land Area in Aana (जग्गाको आना)', 'जग्गाको क्षेत्रफल (आनामा)')}
+                {t('Plot Land Area in Aana', 'जग्गाको क्षेत्रफल (आनामा)')}
               </label>
               <div style={{ position: 'relative' }}>
                 <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 600, color: 'var(--text-muted)', fontSize: '13px' }}>
-                  {t('Aana (आना)', 'आना')}
+                  {t('Aana', 'आना')}
                 </span>
                 <input
                   type="number"
@@ -494,7 +494,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
           <div style={{ marginBottom: '22px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <label className="input-label" style={{ fontWeight: 600, margin: 0 }}>
-                {t('Number of Storeys / Floors (घरको तला)', 'घरको तला (Storeys)')}
+                {t('Number of Floors', 'घरको तला')}
               </label>
               <span className="badge badge-emerald" style={{ fontSize: '11px', fontWeight: 700 }}>
                 {isNe ? `छनोट भएको: ${toNepaliDigits(storeys)} तला` : `Selected: ${storeys} Floors`}
@@ -730,7 +730,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('RCC Pillars / खम्बा', 'पिल्लर (खम्बा)')}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('RCC Pillars', 'पिल्लर')}</div>
                   <Columns3 size={15} color={activeDetailTab === 'pillars' ? '#2563eb' : 'var(--text-muted)'} />
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 800, color: '#1e40af', marginTop: '2px' }}>
@@ -782,7 +782,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('Cement / सिमेन्ट', 'सिमेन्ट (५० केजी बोरा)')}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('Cement', 'सिमेन्ट')}</div>
                   <Layers size={15} color={activeDetailTab === 'cement' ? '#2563eb' : 'var(--text-muted)'} />
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
@@ -807,7 +807,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('Steel Rebar / रड', 'स्टिल रड (TMT ५००D)')}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>{t('Steel Rebar', 'फलामे रड')}</div>
                   <Hammer size={15} color={activeDetailTab === 'steel' ? '#2563eb' : 'var(--text-muted)'} />
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
@@ -906,7 +906,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
               {/* Pillar Size */}
               <div style={{ background: '#ffffff', border: '1.5px solid #e2e8f0', borderRadius: '12px', padding: '14px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Pillar Size (खम्बाको नाप)', 'पिल्लरको नाप')}
+                  {t('Pillar Size', 'खम्बाको नाप')}
                 </div>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#1e40af', margin: '4px 0 2px' }}>
                   12" × 12"
@@ -919,7 +919,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
               {/* Main Rebar */}
               <div style={{ background: '#ffffff', border: '1.5px solid #e2e8f0', borderRadius: '12px', padding: '14px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Main Rebar Steel (ठाडो रड)', 'मुख्य ठाडो रड')}
+                  {t('Main Rebar Steel', 'मुख्य ठाडो रड')}
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#b45309', margin: '4px 0 2px' }}>
                   {isNe ? '६ देखि ८ वटा १६mm' : '6 to 8 Nos. 16mm'}
@@ -932,7 +932,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
               {/* Rings / Stirrups */}
               <div style={{ background: '#ffffff', border: '1.5px solid #e2e8f0', borderRadius: '12px', padding: '14px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Stirrups (रिङको दूरी)', 'रिङको दूरी (Ties)')}
+                  {t('Stirrups', 'रिङको दूरी')}
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#0f172a', margin: '4px 0 2px' }}>
                   8mm @ 4"–6" c/c
@@ -945,7 +945,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
               {/* Footing Size & Depth */}
               <div style={{ background: '#ffffff', border: '1.5px solid #e2e8f0', borderRadius: '12px', padding: '14px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Footing & Depth (जग)', 'जगको नाप र गहिराइ')}
+                  {t('Footing & Depth', 'जगको नाप र गहिराइ')}
                 </div>
                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#059669', margin: '4px 0 2px' }}>
                   5'0" × 5'0"
@@ -959,7 +959,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '12px 16px' }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Plinth Tie-Beam (डिपिसी बिम):', 'प्लिन्थ डिपिसी बिम:')}{' '}
+                  {t('Plinth Tie-Beam:', 'प्लिन्थ डिपिसी बिम:')}{' '}
                 </span>
                 <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#0f172a' }}>
                   9" × 12" (4 Nos. 12mm bars)
@@ -967,7 +967,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
               </div>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-                  {t('Roof Slab (छत ढलान):', 'छत ढलान:')}{' '}
+                  {t('Roof Slab:', 'छत ढलान:')}{' '}
                 </span>
                 <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#0f172a' }}>
                   5" (125mm) M20 concrete
@@ -1152,7 +1152,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                  {t('Exterior 9-Inch Boundary Walls (६०%)', 'बाहिरी ९ इन्च पर्खाल (६०%)')}
+                  {t('Exterior 9-Inch Boundary Walls (60%)', 'बाहिरी ९ इन्च पर्खाल (६०%)')}
                 </div>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#b45309', marginTop: '4px' }}>
                   {formatNumber(estimate.materials.bricksDetail.exterior9InchUnits)} {t('Units', 'वटा')}
@@ -1164,7 +1164,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
 
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                  {t('Interior 4.5-Inch Room Partitions (४०%)', 'भित्री ४.५ इन्च पार्टिसन (४०%)')}
+                  {t('Interior 4.5-Inch Room Partitions (40%)', 'भित्री ४.५ इन्च पार्टिसन (४०%)')}
                 </div>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#2563eb', marginTop: '4px' }}>
                   {formatNumber(estimate.materials.bricksDetail.interior4InchUnits)} {t('Units', 'वटा')}
@@ -1188,7 +1188,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
 
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                  {t('Breakage Wastage Allowance (५% छुट)', 'टुटेफुटेको खेर जाने भाग (५%)')}
+                  {t('Breakage Wastage Allowance (5%)', 'टुटेफुटेको खेर जाने भाग (५%)')}
                 </div>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: 'var(--text-primary)', marginTop: '4px' }}>
                   +{formatNumber(estimate.materials.bricksDetail.breakageWastageUnits)} {t('Units', 'वटा')}
@@ -1224,19 +1224,19 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '16px' }}>
               <div style={{ background: 'var(--bg-card)', border: '2px solid #2563eb', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#1e40af' }}>
-                  {t('OPC 43/53 Grade (RCC Framing - ५२%)', 'ओपिसी (OPC) सिमेन्ट - पिल्लर र ढलान (५२%)')}
+                  {t('OPC 43/53 Grade (RCC Framing - 52%)', 'ओपिसी (OPC) सिमेन्ट - पिल्लर र ढलान (५२%)')}
                 </div>
                 <div style={{ fontSize: '24px', fontWeight: 900, color: '#1e40af', marginTop: '4px' }}>
                   {formatNumber(estimate.materials.cementDetail.opcStructureBags)} {t('Bags', 'बोरा')}
                 </div>
                 <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
-                  {t('High early compressive strength for Columns, Footings, Beams, and Roof Slabs (ढलान).', 'उच्च भार वहन क्षमताका लागि जग, पिल्लर, बिम र छत ढलानमा प्रयोग हुने।')}
+                  {t('High early compressive strength for Columns, Footings, Beams, and Roof Slabs.', 'उच्च भार वहन क्षमताका लागि जग, पिल्लर, बिम र छत ढलानमा प्रयोग हुने।')}
                 </div>
               </div>
 
               <div style={{ background: 'var(--bg-card)', border: '2px solid #059669', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#065f46' }}>
-                  {t('PPC Grade (Masonry & Plaster - ४८%)', 'पिपिसी (PPC) सिमेन्ट - गारो र प्लास्टर (४८%)')}
+                  {t('PPC Grade (Masonry & Plaster - 48%)', 'पिपिसी (PPC) सिमेन्ट - गारो र प्लास्टर (४८%)')}
                 </div>
                 <div style={{ fontSize: '24px', fontWeight: 900, color: '#059669', marginTop: '4px' }}>
                   {formatNumber(estimate.materials.cementDetail.ppcFinishingBags)} {t('Bags', 'बोरा')}
@@ -1531,7 +1531,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
               <div>
                 <h3 style={{ fontSize: '18px', fontWeight: 800, margin: '0 0 4px', color: 'var(--text-primary)' }}>
-                  {t('Municipality Approval (नक्शा पास) & Professional Engineering Fees', 'नगरपालिका नक्शा पास, धरौटी तथा इन्जिनियर परामर्श खर्च')}
+                  {t('Municipality Approval & Engineering Fees', 'नगरपालिका नक्शा पास, धरौटी तथा इन्जिनियर परामर्श खर्च')}
                 </h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', margin: 0 }}>
                   {t(
@@ -1848,7 +1848,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             {/* Section 1: Materials */}
             <div style={{ marginBottom: '16px' }}>
               <div style={{ fontSize: '11.5px', fontWeight: 800, color: '#334155', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '8px' }}>
-                {t('1. Materials (सामग्री दर)', '१. निर्माण सामग्री दर')}
+                {t('1. Materials Rates', '१. निर्माण सामग्री दर')}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '9px' }}>
                 {/* 1. Cement */}
@@ -2018,7 +2018,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
             {/* Section 2: Labor */}
             <div style={{ marginBottom: '18px' }}>
               <div style={{ fontSize: '11.5px', fontWeight: 800, color: '#334155', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '8px' }}>
-                {t('2. Daily Wages (दैनिक ज्याला)', '२. दैनिक ज्याला दर')}
+                {t('2. Daily Wages', '२. दैनिक ज्याला दर')}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '9px' }}>
                 {/* 7. Mason */}

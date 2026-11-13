@@ -73,13 +73,13 @@ export function VillageInterestCalculator() {
   const endMonthObj = NEPALI_MONTHS[endMonth - 1] || NEPALI_MONTHS[0];
 
   const handleCopy = () => {
-    const textEn = `Nepali Village Interest (साहुको सयकडा ब्याज हिसाब):
+    const textEn = `Nepali Village Interest:
 Principal Amount: NPR ${principal.toLocaleString('en-IN')}
 Loan Taken Date: ${startYear} ${startMonthObj.en} ${startDay} BS
 Settlement Date: ${endYear} ${endMonthObj.en} ${endDay} BS
 Duration: ${result.elapsedYears} Years, ${result.elapsedMonths} Months, ${result.elapsedDays} Days
 Interest Rate: Sayakada ${sayakadaRate} (${result.annualEquivalentRate}% p.a.)
-Interest Method: ${isCompoundedYearly ? 'Yearly Compounded (साँवा थप)' : 'Simple Interest (साधारण)'}
+Interest Method: ${isCompoundedYearly ? 'Yearly Compounded' : 'Simple Interest'}
 Monthly Interest: NPR ${result.monthlyInterestInitial.toLocaleString('en-IN')}
 Total Interest Accumulated: NPR ${result.totalInterest.toLocaleString('en-IN')}
 Total Settlement Amount: NPR ${result.totalPayable.toLocaleString('en-IN')}
@@ -133,7 +133,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
             <span className="badge badge-amber" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
               <Coins size={12} />
-              {t('Sayakada Interest (सयकडा १, २, ३)', 'सयकडा ब्याज हिसाब (१, २, ३)')}
+              {t('Sayakada Interest Rates', 'सयकडा ब्याज हिसाब (१, २, ३)')}
             </span>
             <span className="badge badge-neutral">
               {t('Bikram Sambat Date Duration', 'वि.सं. मिति अवधि')}
@@ -177,7 +177,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
           {/* Principal Amount Input */}
           <div style={{ marginBottom: '16px' }}>
             <label className="input-label" style={{ fontWeight: 600 }}>
-              {t('Principal Loan Amount (साँवा रकम)', 'साँवा रकम (Principal)')}
+              {t('Principal Loan Amount', 'साँवा रकम')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', fontWeight: 700, color: 'var(--text-muted)' }}>
@@ -229,7 +229,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
               <Calendar size={16} color="var(--primary)" />
               <label className="input-label" style={{ fontWeight: 700, margin: 0 }}>
-                {t('Loan Taken Date in BS (ऋण लिएको मिति)', 'ऋण लिएको मिति (वि.सं.)')}
+                {t('Loan Taken Date in BS', 'ऋण लिएको मिति (वि.सं.)')}
               </label>
             </div>
 
@@ -295,7 +295,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Clock size={16} color="var(--primary)" />
                 <label className="input-label" style={{ fontWeight: 700, margin: 0 }}>
-                  {t('Settlement Date in BS (हिसाब गर्ने मिति)', 'हिसाब गर्ने मिति (वि.सं.)')}
+                  {t('Settlement Date in BS', 'हिसाब गर्ने मिति (वि.सं.)')}
                 </label>
               </div>
               <button
@@ -365,7 +365,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
           {/* Interest Rate Selector */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label" style={{ fontWeight: 600, marginBottom: '8px' }}>
-              {t('Sayakada Monthly Interest Rate (सयकडा ब्याज दर)', 'सयकडा ब्याज दर (मासिक %)')}
+              {t('Sayakada Monthly Interest Rate', 'सयकडा ब्याज दर (मासिक %)')}
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginBottom: '10px' }}>
               {[1, 1.5, 2, 2.5, 3].map((r) => (
@@ -408,7 +408,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
           }}>
             <div>
               <div style={{ fontWeight: 600, fontSize: '13px', color: 'var(--text-primary)' }}>
-                {t('Yearly Compounding (साँवा थप)', 'वर्षे चक्रिय (प्रत्येक वर्ष ब्याज साँवामा थपिने)')}
+                {t('Yearly Compounding', 'वर्षे चक्रिय (साँवा थप)')}
               </div>
               <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
                 {t('In traditional lending, unpaid interest is added to the principal each full year.', 'गाउँघरको चलन अनुसार प्रत्येक वर्ष ब्याजलाई साँवामा जोडेर नयाँ ब्याज निकालिन्छ।')}
@@ -465,7 +465,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                  {t('Total Accumulated Interest (जम्मा ब्याज):', 'जम्मा चढेको कुल ब्याज:')}
+                  {t('Total Accumulated Interest:', 'जम्मा चढेको कुल ब्याज:')}
                 </span>
                 <span style={{ fontSize: '20px', fontWeight: 800, color: '#b45309' }}>
                   {isNe ? `रू. ${formatNumber(result.totalInterest)}` : `NPR ${formatNumber(result.totalInterest)}`}

@@ -410,7 +410,7 @@ Via NepalCalc.com`;
                   style={{ width: '18px', height: '18px', accentColor: '#2563eb', cursor: 'pointer' }}
                 />
                 <span style={{ fontSize: '12px', fontWeight: 700, color: '#1f2937' }}>
-                  {t('Include Current Year Renewal (चालु आ.व. २०८३/८४ कर सहित)', 'चालु आर्थिक वर्ष (२०८३/८४) को कर नवीकरण समावेश गर्नुहोस्')}
+                  {t('Include Current Year Renewal', 'चालु आर्थिक वर्षको कर नवीकरण समावेश गर्नुहोस्')}
                 </span>
               </label>
             </div>
@@ -419,7 +419,7 @@ Via NepalCalc.com`;
           {/* Insurance Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: '#f9fafb', borderRadius: '14px', border: '1px solid #e5e7eb' }}>
             <div>
-              <span style={{ fontSize: '13px', fontWeight: 700, color: '#111827' }}>{t('Third-Party Insurance (बीमा)', 'तेस्रो पक्ष बिमा (Third-Party Insurance)')}</span>
+              <span style={{ fontSize: '13px', fontWeight: 700, color: '#111827' }}>{t('Third-Party Insurance', 'तेस्रो पक्ष बिमा')}</span>
               <p style={{ fontSize: '11px', color: '#6b7280' }}>{t('Mandatory renewal fee', 'अनिवार्य नवीकरण शुल्क')} ({vehicleType === 'bike' ? 'रु १,५००' : 'रु ७,५००'})</p>
             </div>
             <input
@@ -442,7 +442,7 @@ Via NepalCalc.com`;
             }}
           >
             <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
-              {t('Total Payable Amount (कुल तिर्नुपर्ने रकम)', 'जम्मा तिर्नुपर्ने रकम (Total Payable Amount)')}
+              {t('Total Payable Amount', 'जम्मा तिर्नुपर्ने रकम')}
             </span>
             <div style={{ fontSize: '42px', fontWeight: 800, color: '#34d399', margin: '8px 0 2px', fontFamily: 'var(--font-mono)' }}>
               रु {Math.round(totalPayable).toLocaleString('en-IN')}
@@ -464,7 +464,7 @@ Via NepalCalc.com`;
                 <>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: '#cbd5e1' }}>
-                      {t(`Unpaid Back-Taxes (${overdueYears} Yrs @ रु ${baseAnnualTax.toLocaleString('en-IN')})`, `बक्यौता सवारी कर (${overdueYears} वर्ष × रु ${baseAnnualTax.toLocaleString('en-IN')})`)}
+                      {t(`Unpaid Back-Taxes (${overdueYears} Yrs @ NPR ${baseAnnualTax.toLocaleString('en-IN')})`, `बक्यौता सवारी कर (${overdueYears} वर्ष × रु ${baseAnnualTax.toLocaleString('en-IN')})`)}
                     </span>
                     <span style={{ fontWeight: 700, fontFamily: 'var(--font-mono)' }}>रु {overdueBackTax.toLocaleString('en-IN')}</span>
                   </div>
@@ -481,12 +481,12 @@ Via NepalCalc.com`;
                       {t('Accumulated Late Fines', 'कुल ढिलाइ जरिवाना')}
                     </span>
                     <span style={{ fontWeight: 700, fontFamily: 'var(--font-mono)', color: fineAmount > 0 ? '#f87171' : '#34d399' }}>
-                      {fineAmount > 0 ? `+ रु ${fineAmount.toLocaleString('en-IN')}` : t('रु 0 (Grace Period)', 'रु ० (छुट अवधि)')}
+                      {fineAmount > 0 ? `+ रु ${fineAmount.toLocaleString('en-IN')}` : t('NPR 0 (Grace Period)', 'रु ० (छुट अवधि)')}
                     </span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: '#cbd5e1' }}>
-                      {t(`Renewal Endorsement Fees (${totalTaxYears} Yrs × रु ${renewalFeePerYear})`, `नवीकरण दस्तुर (${totalTaxYears} वर्ष × रु ${renewalFeePerYear})`)}
+                      {t(`Renewal Endorsement Fees (${totalTaxYears} Yrs × NPR ${renewalFeePerYear})`, `नवीकरण दस्तुर (${totalTaxYears} वर्ष × रु ${renewalFeePerYear})`)}
                     </span>
                     <span style={{ fontWeight: 700, fontFamily: 'var(--font-mono)' }}>रु {totalRenewalFee.toLocaleString('en-IN')}</span>
                   </div>
@@ -500,7 +500,7 @@ Via NepalCalc.com`;
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: '#cbd5e1' }}>{t('Late Fine', 'ढिलाइ जरिवाना')} ({currentBracket.finePercent * 100}%)</span>
                     <span style={{ fontWeight: 700, fontFamily: 'var(--font-mono)', color: fineAmount > 0 ? '#f87171' : '#34d399' }}>
-                      {fineAmount > 0 ? `+ रु ${fineAmount.toLocaleString('en-IN')}` : t('रु 0 (Grace Period)', 'रु ० (छुट अवधि)')}
+                      {fineAmount > 0 ? `+ रु ${fineAmount.toLocaleString('en-IN')}` : t('NPR 0 (Grace Period)', 'रु ० (छुट अवधि)')}
                     </span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
@@ -564,7 +564,7 @@ Via NepalCalc.com`;
                       {includeInsurance && (
                         <tr style={{ borderBottom: '1px solid #e2e8f0', background: '#fafafa' }}>
                           <td colSpan={4} style={{ padding: '6px 8px', fontWeight: 600, color: '#475569' }}>
-                            {t('Third-Party Insurance (तेस्रो पक्ष बिमा)', 'तेस्रो पक्ष बिमा')}
+                            {t('Third-Party Insurance', 'तेस्रो पक्ष बिमा')}
                           </td>
                           <td style={{ padding: '6px 8px', fontFamily: 'var(--font-mono)', fontWeight: 700, textAlign: 'right', color: '#0f172a' }}>
                             रु {insuranceFee.toLocaleString('en-IN')}
@@ -573,7 +573,7 @@ Via NepalCalc.com`;
                       )}
                       <tr style={{ background: '#f0fdf4', fontWeight: 800 }}>
                         <td colSpan={4} style={{ padding: '8px', color: '#166534' }}>
-                          {t('TOTAL PAYABLE (कुल जम्मा)', 'कुल बुझाउनुपर्ने')}
+                          {t('TOTAL PAYABLE', 'कुल बुझाउनुपर्ने')}
                         </td>
                         <td style={{ padding: '8px', fontFamily: 'var(--font-mono)', fontSize: '13px', textAlign: 'right', color: '#166534' }}>
                           रु {Math.round(totalPayable).toLocaleString('en-IN')}

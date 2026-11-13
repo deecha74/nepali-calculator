@@ -363,14 +363,14 @@ export function MomoCalorieCalculator() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
           <div>
             <span style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#c2410c' }}>
-              कुल क्यालोरी (TOTAL ENERGY)
+              {t('Total Energy', 'कुल ऊर्जा')}
             </span>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '4px' }}>
               <span style={{ fontSize: '42px', fontWeight: 900, color: '#9a3412', lineHeight: 1 }}>
                 {calculation.totalKcal}
               </span>
               <span style={{ fontSize: '18px', fontWeight: 700, color: '#c2410c' }}>
-                kcal (क्यालोरी)
+                {t('kcal', 'क्यालोरी')}
               </span>
             </div>
             <p style={{ fontSize: '13px', color: '#7c2d12', marginTop: '6px' }}>

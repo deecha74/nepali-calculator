@@ -14,6 +14,7 @@ import { PROGRAMMATIC_CONSTRUCTION_SCENARIOS } from '@/lib/rates/programmaticCon
 import { PROGRAMMATIC_NEA_BILLS } from '@/lib/rates/programmaticNea';
 import { PROGRAMMATIC_TDS_SCENARIOS } from '@/lib/rates/programmaticTds';
 import { PROGRAMMATIC_MALPOT_SCENARIOS } from '@/lib/rates/programmaticMalpot';
+import { PROGRAMMATIC_BAGGAGE_ITEMS } from '@/lib/rates/programmaticBaggage';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
 const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
@@ -233,6 +234,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const programmaticBaggageRoutes = PROGRAMMATIC_BAGGAGE_ITEMS.map((baggage) => ({
+    url: `${baseUrl}/customs/airport-baggage/${baggage.slug}`,
+    lastModified: CONTENT_LAST_MODIFIED,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   return [
     ...coreRoutes,
     ...programmaticLandRoutes,
@@ -249,6 +257,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...programmaticNeaRoutes,
     ...programmaticTdsRoutes,
     ...programmaticMalpotRoutes,
+    ...programmaticBaggageRoutes,
     ...blogRoutes,
   ];
 }

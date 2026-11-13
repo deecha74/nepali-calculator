@@ -250,13 +250,13 @@ Calculated via NepalCalc.com`;
           <div style={{ padding: '18px', background: '#ffffff', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#1e40af', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px' }}>
               <Receipt size={15} />
-              <span>{t('1. Land / Property Valuation (थैली रकम)', '१. जग्गा तथा सम्पत्ति मूल्याङ्कन (थैली रकम)')}</span>
+              <span>{t('1. Property Valuation', '१. जग्गा तथा सम्पत्ति मूल्याङ्कन')}</span>
             </span>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div>
                 <label className="input-label" style={{ fontSize: '12.5px' }}>
-                  {t('Agreed Deed / Transaction Price (लिखित थैली मूल्य रु)', 'लिखित थैली / जग्गाको कारोबार मूल्य (रु)')}
+                  {t('Agreed Deed / Transaction Price', 'लिखित थैली / जग्गाको कारोबार मूल्य (रु)')}
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
@@ -279,7 +279,7 @@ Calculated via NepalCalc.com`;
 
               <div>
                 <label className="input-label" style={{ fontSize: '12.5px' }}>
-                  {t('Govt. Minimum Valuation (सरकारी न्यूनतम मूल्याङ्कन रु)', 'सरकारी न्यूनतम मूल्याङ्कन पुस्तिका अनुसारको रकम (रु)')}
+                  {t('Govt. Minimum Valuation', 'सरकारी न्यूनतम मूल्याङ्कन पुस्तिका अनुसारको रकम (रु)')}
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
@@ -303,124 +303,58 @@ Calculated via NepalCalc.com`;
             </div>
           </div>
 
-          {/* Section 2: Location Category */}
+          {/* Section 2: Location Category Dropdown */}
           <div style={{ padding: '18px', background: '#ffffff', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#047857', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px' }}>
               <MapPin size={15} />
-              <span>{t('2. Location Municipality (स्थानीय तह)', '२. स्थानीय तह तथा क्षेत्र (Municipality)')}</span>
+              <span>{t('2. Location Municipality', '२. स्थानीय तह तथा क्षेत्र')}</span>
             </span>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
-              {[
-                { id: 'metropolitan', labelEn: 'Metropolitan (5%)', labelNe: 'महानगर (५%)', sub: 'KTM, Lalitpur, Pokhara' },
-                { id: 'submetropolitan', labelEn: 'Sub-Metro (4.5%)', labelNe: 'उपमहानगर (४.५%)', sub: 'Dharan, Butwal' },
-                { id: 'municipality', labelEn: 'Municipality (4.5%)', labelNe: 'नगरपालिका (४.५%)', sub: 'Standard Nagarpalika' },
-                { id: 'rural', labelEn: 'Rural Metro (3%)', labelNe: 'गाउँपालिका (३%)', sub: 'Gaunpalika Area' },
-                { id: 'apartment', labelEn: 'Apartment (1%)', labelNe: 'अपार्टमेन्ट (१%)', sub: 'Group Housing' },
-              ].map((loc) => (
-                <button
-                  key={loc.id}
-                  type="button"
-                  onClick={() => setLocationCategory(loc.id as LocationCategory)}
-                  style={{
-                    padding: '10px 12px',
-                    borderRadius: '10px',
-                    border: locationCategory === loc.id ? '2px solid #003893' : '1px solid #e2e8f0',
-                    background: locationCategory === loc.id ? '#eff6ff' : '#ffffff',
-                    color: locationCategory === loc.id ? '#003893' : '#334155',
-                    fontWeight: locationCategory === loc.id ? 800 : 600,
-                    fontSize: '12px',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    transition: 'all 0.15s ease'
-                  }}
-                >
-                  <div>{t(loc.labelEn, loc.labelNe)}</div>
-                  <div style={{ fontSize: '10px', color: '#64748b', marginTop: '2px' }}>{loc.sub}</div>
-                </button>
-              ))}
-            </div>
+            <select
+              className="select-input"
+              value={locationCategory}
+              onChange={(e) => setLocationCategory(e.target.value as LocationCategory)}
+              style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 600 }}
+            >
+              <option value="metropolitan">{t('Metropolitan (5%) — KTM, Lalitpur, Pokhara', 'महानगरपालिका (५%) — काठमाडौं, ललितपुर, पोखरा')}</option>
+              <option value="submetropolitan">{t('Sub-Metropolitan (4.5%) — Dharan, Butwal', 'उपमहानगरपालिका (४.५%) — धरान, बुटवल')}</option>
+              <option value="municipality">{t('Municipality (4.5%) — Standard Nagarpalika', 'नगरपालिका (४.५%)')}</option>
+              <option value="rural">{t('Rural Municipality (3%) — Gaunpalika', 'गाउँपालिका (३%)')}</option>
+              <option value="apartment">{t('Apartment / Group Housing (1%)', 'अपार्टमेन्ट (१%)')}</option>
+            </select>
           </div>
 
-          {/* Section 3: Buyer Concession (Female Rebate) */}
+          {/* Section 3: Buyer Concession Dropdown */}
           <div style={{ padding: '18px', background: '#ffffff', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#b45309', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px' }}>
               <UserCheck size={15} />
-              <span>{t('3. Buyer Ownership & Discounts (क्रेताको छुट)', '३. क्रेताको स्वामित्व तथा छुट सुविधा')}</span>
+              <span>{t('3. Buyer Ownership & Discounts', '३. क्रेताको स्वामित्व तथा छुट सुविधा')}</span>
             </span>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-              <button
-                type="button"
-                onClick={() => setBuyerCategory('general')}
-                style={{
-                  padding: '10px',
-                  borderRadius: '10px',
-                  border: buyerCategory === 'general' ? '2px solid #003893' : '1px solid #e2e8f0',
-                  background: buyerCategory === 'general' ? '#eff6ff' : '#ffffff',
-                  color: buyerCategory === 'general' ? '#003893' : '#334155',
-                  fontWeight: 700,
-                  fontSize: '12px',
-                  cursor: 'pointer',
-                  textAlign: 'center'
-                }}
-              >
-                <div>{t('General', 'सामान्य')}</div>
-                <div style={{ fontSize: '10.5px', color: '#64748b', marginTop: '2px' }}>0% {t('Rebate', 'छुट')}</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setBuyerCategory('woman')}
-                style={{
-                  padding: '10px',
-                  borderRadius: '10px',
-                  border: buyerCategory === 'woman' ? '2px solid #059669' : '1px solid #e2e8f0',
-                  background: buyerCategory === 'woman' ? '#f0fdf4' : '#ffffff',
-                  color: buyerCategory === 'woman' ? '#059669' : '#334155',
-                  fontWeight: 800,
-                  fontSize: '12px',
-                  cursor: 'pointer',
-                  textAlign: 'center'
-                }}
-              >
-                <div>👩 {t('Woman', 'महिला')}</div>
-                <div style={{ fontSize: '10.5px', color: '#059669', marginTop: '2px', fontWeight: 800 }}>25% {t('Rebate', 'छुट')}</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setBuyerCategory('single_woman')}
-                style={{
-                  padding: '10px',
-                  borderRadius: '10px',
-                  border: buyerCategory === 'single_woman' ? '2px solid #7c3aed' : '1px solid #e2e8f0',
-                  background: buyerCategory === 'single_woman' ? '#f5f3ff' : '#ffffff',
-                  color: buyerCategory === 'single_woman' ? '#7c3aed' : '#334155',
-                  fontWeight: 800,
-                  fontSize: '12px',
-                  cursor: 'pointer',
-                  textAlign: 'center'
-                }}
-              >
-                <div>👩‍👧 {t('Single Woman', 'एकल महिला')}</div>
-                <div style={{ fontSize: '10.5px', color: '#7c3aed', marginTop: '2px', fontWeight: 800 }}>35% {t('Rebate', 'छुट')}</div>
-              </button>
-            </div>
+            <select
+              className="select-input"
+              value={buyerCategory}
+              onChange={(e) => setBuyerCategory(e.target.value as BuyerGenderCategory)}
+              style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 600 }}
+            >
+              <option value="general">{t('General / Standard (0% Rebate)', 'सामान्य (छुट नहुने)')}</option>
+              <option value="woman">{t('Woman Ownership (25% Rebate)', 'महिला स्वामित्व (२५% छुट)')}</option>
+              <option value="single_woman">{t('Single Woman (35% Rebate)', 'एकल महिला (३५% छुट)')}</option>
+            </select>
           </div>
 
           {/* Section 4: Seller Capital Gains Tax (CGT) Config */}
           <div style={{ padding: '18px', background: '#ffffff', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
             <span style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#dc2626', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '14px' }}>
               <Percent size={15} />
-              <span>{t('4. Seller Capital Gains Tax Details (विक्रेताको लाभकर)', '४. विक्रेताको पूँजीगत लाभकर (CGT) विवरण')}</span>
+              <span>{t('4. Seller Capital Gains Tax Details', '४. विक्रेताको पूँजीगत लाभकर विवरण')}</span>
             </span>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <div>
                   <label className="input-label" style={{ fontSize: '12px' }}>
-                    {t('Past Acquisition Cost (साविक खरिद रु)', 'साविक खरिद/प्राप्ति मूल्य (रु)')}
+                    {t('Past Acquisition Cost', 'साविक खरिद/प्राप्ति मूल्य (रु)')}
                   </label>
                   <input
                     type="number"
@@ -435,7 +369,7 @@ Calculated via NepalCalc.com`;
 
                 <div>
                   <label className="input-label" style={{ fontSize: '12px' }}>
-                    {t('Allowable Expenses (सुधार खर्च रु)', 'थप सुधार/रजिष्ट्रेसन खर्च (रु)')}
+                    {t('Allowable Expenses', 'थप सुधार/रजिष्ट्रेसन खर्च (रु)')}
                   </label>
                   <input
                     type="number"
@@ -452,7 +386,7 @@ Calculated via NepalCalc.com`;
               {/* Holding Period Radio */}
               <div>
                 <label className="input-label" style={{ fontSize: '12px' }}>
-                  {t('Ownership Holding Period (स्वामित्व अवधि):', 'जग्गा स्वामित्व अवधि (खरिद देखि हालसम्म):')}
+                  {t('Ownership Holding Period:', 'जग्गा स्वामित्व अवधि:')}
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                   <button
@@ -543,7 +477,7 @@ Calculated via NepalCalc.com`;
               {/* Buyer Box */}
               <div style={{ padding: '12px', background: '#f0fdf4', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
                 <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#166534', letterSpacing: '0.04em' }}>
-                  🛒 {t("BUYER PAYS (क्रेता)", "क्रेताले तिर्नुपर्ने")}
+                  🛒 {t("BUYER PAYS", "क्रेताले तिर्नुपर्ने")}
                 </span>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#15803d', marginTop: '4px' }}>
                   रु {Math.round(calculation.totalBuyerPayable).toLocaleString('en-IN')}
@@ -558,7 +492,7 @@ Calculated via NepalCalc.com`;
               {/* Seller Box */}
               <div style={{ padding: '12px', background: '#fef2f2', borderRadius: '12px', border: '1px solid #fecaca' }}>
                 <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#991b1b', letterSpacing: '0.04em' }}>
-                  🤝 {t("SELLER CGT (विक्रेता)", "विक्रेताको लाभकर")}
+                  🤝 {t("SELLER CGT", "विक्रेताको लाभकर")}
                 </span>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#b91c1c', marginTop: '4px' }}>
                   रु {Math.round(calculation.cgtAmount).toLocaleString('en-IN')}
@@ -579,7 +513,7 @@ Calculated via NepalCalc.com`;
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
-                <span>{t('Gross Registration Fee (बिना छुट)', 'रजिष्ट्रेसन दस्तुर (छुट अघि)')}</span>
+                <span>{t('Gross Registration Fee (Standard)', 'रजिष्ट्रेसन दस्तुर (छुट अघि)')}</span>
                 <span style={{ fontWeight: 600, color: '#0f172a' }}>रु {Math.round(calculation.grossRegistrationFee).toLocaleString('en-IN')}</span>
               </div>
 

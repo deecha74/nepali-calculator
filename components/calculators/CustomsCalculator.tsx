@@ -2,11 +2,13 @@
 
 import React, { useState, useMemo } from 'react';
 import { Smartphone, Copy, Check, ShieldAlert } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageContext';
 
 export function CustomsCalculator() {
+  const { t, language } = useLanguage();
   const [deviceType, setDeviceType] = useState<'iphone' | 'smart' | 'general'>('iphone');
   const [phonePriceUsd, setPhonePriceUsd] = useState<number>(1000);
-  const [isMigrantWorkerWithPermit, setIsMigrantWorkerWithPermit] = useState<boolean>(false); // Shram Swikriti holders get 1 phone duty free!
+  const [isMigrantWorkerWithPermit, setIsMigrantWorkerWithPermit] = useState<boolean>(false);
   const [phoneCount, setPhoneCount] = useState<number>(1);
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -74,38 +76,23 @@ Calculated via NepalCalc.com`;
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         <div>
+          {/* Device Category Dropdown */}
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">Select Device Category</label>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button
-                type="button"
-                className={`segmented-btn ${deviceType === 'iphone' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => setDeviceType('iphone')}
-              >
-                📱 iPhone / Premium Flagship
-              </button>
-              <button
-                type="button"
-                className={`segmented-btn ${deviceType === 'smart' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => setDeviceType('smart')}
-              >
-                📲 Android Smartphone
-              </button>
-              <button
-                type="button"
-                className={`segmented-btn ${deviceType === 'general' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => setDeviceType('general')}
-              >
-                ☎️ Basic Feature Phone
-              </button>
-            </div>
+            <label className="input-label">{t('Select Device Category', 'उपकरणको वर्ग छनौट गर्नुहोस्')}</label>
+            <select
+              className="select-input"
+              value={deviceType}
+              onChange={(e) => setDeviceType(e.target.value as 'iphone' | 'smart' | 'general')}
+              style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '14px', fontWeight: 600 }}
+            >
+              <option value="iphone">{t('iPhone / Flagship Smartphone', 'आईफोन वा प्रिमियम स्मार्टफोन')}</option>
+              <option value="smart">{t('Android Smartphone', 'एन्ड्रोइड स्मार्टफोन')}</option>
+              <option value="general">{t('Basic Feature Phone', 'साधारण बार फोन')}</option>
+            </select>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">Total Number of Phones Brought</label>
+            <label className="input-label">{t('Total Number of Phones Brought', 'नेपाल ल्याइएका कुल फोन संख्या')}</label>
             <input
               type="number"
               min={1}
@@ -118,8 +105,8 @@ Calculated via NepalCalc.com`;
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px', background: '#f8fafc', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
             <div>
-              <span style={{ fontSize: '13px', fontWeight: 700 }}>Migrant Worker with Valid Labour Permit (श्रम स्वीकृति)</span>
-              <p style={{ fontSize: '11px', color: '#64748b' }}>Worked abroad for 6+ months (Eligible for 2 phones duty-free)</p>
+              <span style={{ fontSize: '13px', fontWeight: 700 }}>{t('Migrant Worker with Valid Labour Permit', 'श्रम स्वीकृति प्राप्त वैदेशिक रोजगार यात्रु')}</span>
+              <p style={{ fontSize: '11px', color: '#64748b' }}>{t('Worked abroad for 6+ months (Eligible for 2 phones duty-free)', '६ महिनाभन्दा बढी काम गरेका (२ वटा फोन निःशुल्क ल्याउन पाउने)')}</p>
             </div>
             <input
               type="checkbox"
@@ -132,17 +119,17 @@ Calculated via NepalCalc.com`;
 
         <div>
           <div className="result-card-highlight">
-            <span className="stat-label">Estimated Customs / MDMS Duty (भन्सार महसुल)</span>
+            <span className="stat-label">{t('Estimated Customs & MDMS Duty', 'अनुमानित भन्सार तथा MDMS महसुल')}</span>
             <div className="stat-value" style={{ color: calculation.totalCustomsDuty > 0 ? '#e11d48' : '#059669', margin: '6px 0 2px' }}>
               रु {calculation.totalCustomsDuty.toLocaleString('en-IN')}
             </div>
             <span className="stat-subvalue">
-              {calculation.isFullyExempt ? '✅ 100% Duty Free under personal baggage allowance' : `Duty applies to ${calculation.taxablePhones} phone(s)`}
+              {calculation.isFullyExempt ? t('100% Duty Free under personal baggage allowance', 'व्यक्तिगत झिटिगुन्टा अन्तर्गत पूर्ण निःशुल्क') : t(`Duty applies to ${calculation.taxablePhones} phone(s)`, `${calculation.taxablePhones} वटा फोनमा कर लाग्छ`)}
             </span>
 
             <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                <span style={{ color: '#64748b' }}>Flat Rate Per Taxable Device</span>
+                <span style={{ color: '#64748b' }}>{t('Flat Rate Per Taxable Device', 'प्रति करयोग्य फोनको दर')}</span>
                 <span style={{ fontWeight: 700 }}>रु {calculation.flatDutyPerPhone.toLocaleString('en-IN')}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>

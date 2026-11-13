@@ -149,7 +149,7 @@ Calculated on NepalCalc.com`;
           style={{ flexShrink: 0, padding: '8px 14px', fontSize: '13px', whiteSpace: 'nowrap' }}
           onClick={() => setActiveTab('ropani')}
         >
-          {t('🏔️ Hill System (Ropani-Aana)', '🏔️ पहाड (रोपनी-आना)')}
+          {t('Hill System (Ropani-Aana)', 'पहाडी प्रणाली (रोपनी-आना)')}
         </button>
         <button
           type="button"
@@ -157,7 +157,7 @@ Calculated on NepalCalc.com`;
           style={{ flexShrink: 0, padding: '8px 14px', fontSize: '13px', whiteSpace: 'nowrap' }}
           onClick={() => setActiveTab('bigha')}
         >
-          {t('🌾 Terai System (Bigha-Kattha)', '🌾 तराई (विघा-कठ्ठा)')}
+          {t('Terai System (Bigha-Kattha)', 'तराई प्रणाली (विघा-कठ्ठा)')}
         </button>
         <button
           type="button"
@@ -165,7 +165,7 @@ Calculated on NepalCalc.com`;
           style={{ flexShrink: 0, padding: '8px 14px', fontSize: '13px', whiteSpace: 'nowrap' }}
           onClick={() => setActiveTab('sqft')}
         >
-          {t('📐 Sq. Feet / Meters', '📐 वर्ग फिट / मिटर')}
+          {t('Sq. Feet / Meters', 'वर्ग फिट / मिटर')}
         </button>
       </div>
 

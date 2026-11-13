@@ -109,7 +109,7 @@ Calculated on NepalCalc.com/savings-goal`;
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div style={{ padding: '20px', borderRadius: '14px', backgroundColor: '#0f172a', color: '#ffffff' }}>
             <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
-              Required Monthly Deposit (मासिक बचत रकम)
+              {t('Required Monthly Deposit', 'मासिक बचत गर्नुपर्ने रकम')}
             </div>
             <div style={{ fontSize: '34px', fontWeight: 900, color: '#4ade80', marginTop: '4px' }}>
               NPR {calculation.requiredMonthlySaving.toLocaleString('en-IN')} / mo

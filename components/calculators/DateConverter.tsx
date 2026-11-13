@@ -12,7 +12,7 @@ import {
 import { useLanguage } from '@/components/LanguageContext';
 
 export function DateConverter() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [mode, setMode] = useState<'bsToAd' | 'adToBs' | 'age'>('bsToAd');
 
   // BS to AD state
@@ -61,7 +61,7 @@ export function DateConverter() {
   const handleCopy = () => {
     let text = "";
     if (mode === 'bsToAd') {
-      text = `Nepali Date Conversion:\nBS: ${bsYear}/${bsMonth}/${bsDay}\nAD: ${convertedAd.formatted} (${convertedAd.dayOfWeek.bs} / ${convertedAd.dayOfWeek.en})\nVia NepalCalc.com`;
+      text = `Nepali Date Conversion:\nBS: ${bsYear}/${bsMonth}/${bsDay}\nAD: ${convertedAd.formatted} (${language === 'ne' ? convertedAd.dayOfWeek.bs : convertedAd.dayOfWeek.en})\nVia NepalCalc.com`;
     } else if (mode === 'adToBs') {
       text = `English to Nepali Date Conversion:\nAD: ${adDateString}\nBS: ${convertedBs.formatted}\nVia NepalCalc.com`;
     } else {
@@ -78,8 +78,8 @@ export function DateConverter() {
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '24px', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '18px' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="badge badge-emerald">Bikram Sambat (वि.सं.)</span>
-            <span className="badge badge-neutral">Anno Domini (ई.सं.)</span>
+            <span className="badge badge-emerald">{t('Bikram Sambat (BS)', 'विक्रम संवत् (वि.सं.)')}</span>
+            <span className="badge badge-neutral">{t('Anno Domini (AD)', 'इस्वी संवत् (ई.सं.)')}</span>
           </div>
           <h1 style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
             {t('Nepali Date Converter & Exact Age Finder', 'नेपाली मिति रूपान्तरण तथा उमेर क्याल्कुलेटर')}
@@ -103,26 +103,26 @@ export function DateConverter() {
         <button
           type="button"
           className={`segmented-btn ${mode === 'bsToAd' ? 'active' : ''}`}
-          style={{ padding: '10px 18px', fontSize: '14px' }}
+          style={{ padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('bsToAd')}
         >
-          {t('📅 BS to AD (Nepali to English)', '📅 वि.सं. देखि ई.सं. (नेपाली ➔ अंग्रेजी)')}
+          {t('BS to AD', 'वि.सं. देखि ई.सं.')}
         </button>
         <button
           type="button"
           className={`segmented-btn ${mode === 'adToBs' ? 'active' : ''}`}
-          style={{ padding: '10px 18px', fontSize: '14px' }}
+          style={{ padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('adToBs')}
         >
-          {t('🌍 AD to BS (English to Nepali)', '🌍 ई.सं. देखि वि.सं. (अंग्रेजी ➔ नेपाली)')}
+          {t('AD to BS', 'ई.सं. देखि वि.सं.')}
         </button>
         <button
           type="button"
           className={`segmented-btn ${mode === 'age' ? 'active' : ''}`}
-          style={{ padding: '10px 18px', fontSize: '14px' }}
+          style={{ padding: '9px 16px', fontSize: '13.5px' }}
           onClick={() => setMode('age')}
         >
-          {t('🎂 Exact Age Calculator', '🎂 यकिन उमेर क्याल्कुलेटर (Age)')}
+          {t('Age Calculator', 'उमेर क्याल्कुलेटर')}
         </button>
       </div>
 
@@ -136,7 +136,7 @@ export function DateConverter() {
               </span>
               <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr 1fr', gap: '10px' }}>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('YEAR (साल)', 'साल (Year)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Year', 'साल')}</label>
                   <input
                     type="number"
                     min={2000}
@@ -147,7 +147,7 @@ export function DateConverter() {
                   />
                 </div>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('MONTH (महिना)', 'महिना (Month)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Month', 'महिना')}</label>
                   <select
                     className="select-input"
                     value={bsMonth}
@@ -155,13 +155,13 @@ export function DateConverter() {
                   >
                     {NEPALI_MONTHS.map((m) => (
                       <option key={m.num} value={m.num}>
-                        {m.num}. {m.bs} ({m.en})
+                        {m.num}. {language === 'ne' ? m.bs : m.en}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('DAY (गते)', 'गते (Day)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Day', 'गते')}</label>
                   <input
                     type="number"
                     min={1}
@@ -195,7 +195,7 @@ export function DateConverter() {
               </span>
               <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr 1fr', gap: '10px' }}>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('YEAR (साल)', 'साल (Year)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Year', 'साल')}</label>
                   <input
                     type="number"
                     min={1980}
@@ -206,19 +206,21 @@ export function DateConverter() {
                   />
                 </div>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('MONTH (महिना)', 'महिना (Month)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Month', 'महिना')}</label>
                   <select
                     className="select-input"
                     value={birthMonthBs}
                     onChange={(e) => setBirthMonthBs(Number(e.target.value))}
                   >
                     {NEPALI_MONTHS.map((m) => (
-                      <option key={m.num} value={m.num}>{m.num}. {m.bs}</option>
+                      <option key={m.num} value={m.num}>
+                        {m.num}. {language === 'ne' ? m.bs : m.en}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('DAY (गते)', 'गते (Day)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Day', 'गते')}</label>
                   <input
                     type="number"
                     min={1}
@@ -242,7 +244,7 @@ export function DateConverter() {
                 {convertedAd.formatted}
               </div>
               <span className="stat-subvalue">
-                {t('Day:', 'वार:')} {convertedAd.dayOfWeek.bs} ({convertedAd.dayOfWeek.en})
+                {t('Day:', 'वार:')} {language === 'ne' ? convertedAd.dayOfWeek.bs : convertedAd.dayOfWeek.en}
               </span>
             </div>
           )}

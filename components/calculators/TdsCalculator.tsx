@@ -345,7 +345,7 @@ Calculated via NepalCalc.com`;
           {/* Payment Category Selector */}
           <div style={{ marginBottom: '22px' }}>
             <label className="input-label">
-              {t('Payment / Service Category (कर कट्टी हुने शिर्षक)', 'भुक्तानी / सेवा शिर्षक')}
+              {t('Payment / Service Category', 'भुक्तानी / सेवा शिर्षक')}
             </label>
             <select
               className="select-input"
@@ -393,8 +393,8 @@ Calculated via NepalCalc.com`;
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <label className="input-label" style={{ marginBottom: 0 }}>
                 {calcMode === 'forward'
-                  ? t('Gross Taxable Amount (करयोग्य रकम - भ्याट बाहेक)', 'करयोग्य रकम (भ्याट बाहेकको बिल रकम)')
-                  : t('Desired Net Payable (हात पर्ने खुद भुक्तानी रकम)', 'हात पर्ने खुद रकम (Net in Hand)')}
+                  ? t('Gross Taxable Amount (Excl. VAT)', 'करयोग्य रकम (भ्याट बाहेक)')
+                  : t('Desired Net Payable (In Hand)', 'हात पर्ने खुद रकम')}
               </label>
               <span style={{ fontSize: '12px', fontWeight: 700, color: '#003893' }}>
                 {result.effectiveRate}% TDS Rate
@@ -505,7 +505,7 @@ Calculated via NepalCalc.com`;
           >
             <Clock size={18} color="#003893" style={{ flexShrink: 0, marginTop: '2px' }} />
             <div style={{ fontSize: '12px', color: '#1e3a8a', lineHeight: 1.5 }}>
-              <strong>{t('Statutory Deposit Deadline (दफा ९०):', 'राजस्व दाखिला म्याद (दफा ९०):')}</strong>
+              <strong>{t('Statutory Deposit Deadline (Section 90):', 'राजस्व दाखिला म्याद (दफा ९०):')}</strong>
               <br />
               {t(
                 'TDS deducted must be deposited to the government revenue account by the 25th of the following Bikram Sambat month along with e-TDS return.',
@@ -601,7 +601,7 @@ Calculated via NepalCalc.com`;
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#475569' }}>
-                <span>{t('Taxable Base Amount (भ्याट बाहेक):', 'करयोग्य रकम (भ्याट बाहेक):')}</span>
+                <span>{t('Taxable Base Amount (Excl. VAT):', 'करयोग्य रकम (भ्याट बाहेक):')}</span>
                 <strong style={{ color: '#0f172a', fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(result.taxableBase).toLocaleString('en-IN')}
                 </strong>
@@ -617,7 +617,7 @@ Calculated via NepalCalc.com`;
               )}
 
               <div style={{ display: 'flex', justifyContent: 'space-between', color: '#0f172a', fontWeight: 700, borderTop: '1px solid #f1f5f9', paddingTop: '8px' }}>
-                <span>{t('Total Invoice Amount (कुल बिल रकम):', 'कुल बिल रकम (भ्याट सहित):')}</span>
+                <span>{t('Total Invoice Amount (Incl. VAT):', 'कुल बिल रकम (भ्याट सहित):')}</span>
                 <span style={{ fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(result.totalInvoiceWithVat).toLocaleString('en-IN')}
                 </span>
@@ -658,7 +658,7 @@ Calculated via NepalCalc.com`;
       <div style={{ marginTop: '36px', borderTop: '1px solid var(--border-subtle)', paddingTop: '24px' }}>
         <h4 style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Percent size={16} />
-          <span>{t('Nepal Official TDS Rate Schedule (आयकर ऐन बमोजिम स्रोतमा कर कट्टी दरहरू)', 'नेपाल आधिकारिक TDS दर सूची')}</span>
+          <span>{t('Nepal Official TDS Rate Schedule', 'नेपाल आधिकारिक TDS दर सूची')}</span>
         </h4>
 
         <div style={{ overflowX: 'auto' }}>

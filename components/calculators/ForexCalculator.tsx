@@ -4,17 +4,20 @@ import React, { useState, useMemo } from 'react';
 import { DollarSign, ArrowRightLeft, Copy, Check } from 'lucide-react';
 import { DEFAULT_FOREX_RATES } from '@/lib/rates/forexRates';
 import { CountryFlag } from '@/components/hero/MarketRatesAndPopularTools';
+import { useLanguage } from '@/components/LanguageContext';
 
 interface ForexCalculatorProps {
   initialCurrency?: string;
+  initialAmount?: number;
   titleTag?: 'h1' | 'h2';
   customTitle?: string;
 }
 
-export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle }: ForexCalculatorProps = {}) {
+export function ForexCalculator({ initialCurrency, initialAmount, titleTag = 'h1', customTitle }: ForexCalculatorProps = {}) {
+  const { t } = useLanguage();
   const TitleHeading = titleTag;
   const [selectedCurrency, setSelectedCurrency] = useState<string>(initialCurrency || "USD");
-  const [foreignAmount, setForeignAmount] = useState<number>(1000);
+  const [foreignAmount, setForeignAmount] = useState<number>(initialAmount !== undefined ? initialAmount : 1000);
   const [direction, setDirection] = useState<'foreignToNpr' | 'nprToForeign'>('foreignToNpr');
   const [copied, setCopied] = useState<boolean>(false);
   const [forexRates, setForexRates] = useState(DEFAULT_FOREX_RATES);
@@ -51,7 +54,7 @@ export function ForexCalculator({ initialCurrency, titleTag = 'h1', customTitle 
           }
         }
       } catch (e) {
-        // Fallback
+        // Fallback to defaults
       }
     }
     loadLiveForex();
@@ -106,28 +109,31 @@ Via NepalCalc.com`;
                   backgroundColor: isLive ? '#059669' : '#1d4ed8',
                 }}
               />
-              {isLive ? `Live NRB Rates (${publishedDate || 'Today'})` : 'Nepal Rastra Bank Standard'}
+              {isLive ? t(`Live NRB Rates (${publishedDate || 'Today'})`, `ताजा राष्ट्र बैंक दर (${publishedDate || 'आज'})`) : t('Nepal Rastra Bank Standard Rates', 'नेपाल राष्ट्र बैंक मानक दर')}
             </span>
-            <span className="badge badge-neutral">Remittance & Exchange</span>
+            <span className="badge badge-neutral">{t('Remittance & Forex', 'विप्रेषण तथा विदेशी मुद्रा')}</span>
           </div>
           <TitleHeading style={{ fontSize: '24px', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>
-            {customTitle || 'Forex & Remittance Currency Converter'}
+            {customTitle || t('Forex & Remittance Currency Converter', 'विदेशी मुद्रा तथा विप्रेषण रूपान्तरण')}
           </TitleHeading>
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-            Real-time Nepal Rastra Bank (NRB) buying and selling exchange rates for remittances and forex.
+            {t(
+              'Real-time Nepal Rastra Bank (NRB) buying and selling exchange rates for remittances and forex.',
+              'नेपाल राष्ट्र बैंकको आधिकारिक खरिद तथा बिक्री विनिमय दरका आधारमा रेमिट्यान्स तथा विदेशी मुद्रा हिसाब गर्नुहोस्।'
+            )}
           </p>
         </div>
 
         <button onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? "Copied!" : "Copy"}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy Result', 'नतिजा कपी')}</span>
         </button>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         <div>
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">Select Foreign Currency</label>
+            <label className="input-label">{t('Select Foreign Currency', 'विदेशी मुद्रा छान्नुहोस्')}</label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
                 <CountryFlag code={selectedCurrency} size={17} />
@@ -140,7 +146,7 @@ Via NepalCalc.com`;
               >
                 {forexRates.map((curr) => (
                   <option key={curr.code} value={curr.code}>
-                    {curr.code} — {curr.name} (Unit: {curr.unit})
+                    {curr.code} — {curr.name} ({t(`Unit: ${curr.unit}`, `एकाइ: ${curr.unit}`)})
                   </option>
                 ))}
               </select>
@@ -149,7 +155,7 @@ Via NepalCalc.com`;
 
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">
-              {direction === 'foreignToNpr' ? `Amount in ${rate.code} (${rate.name})` : 'Amount in Nepali Rupees (रु NPR)'}
+              {direction === 'foreignToNpr' ? t(`Amount in ${rate.code} (${rate.name})`, `${rate.code} (${rate.name}) मा रकम`) : t('Amount in Nepali Rupees (NPR)', 'नेपाली रुपैयाँमा रकम (रु)')}
             </label>
             <input
               type="number"
@@ -168,34 +174,38 @@ Via NepalCalc.com`;
             onClick={() => setDirection(direction === 'foreignToNpr' ? 'nprToForeign' : 'foreignToNpr')}
           >
             <ArrowRightLeft size={16} />
-            <span>Switch Direction ({direction === 'foreignToNpr' ? `${rate.code} → NPR` : `NPR → ${rate.code}`})</span>
+            <span>{t(`Switch Direction (${direction === 'foreignToNpr' ? `${rate.code} → NPR` : `NPR → ${rate.code}`})`, `दिशा परिवर्तन गर्नुहोस् (${direction === 'foreignToNpr' ? `${rate.code} → रु` : `रु → ${rate.code}`})`)}</span>
           </button>
         </div>
 
         <div>
           <div className="result-card-highlight">
             <span className="stat-label">
-              {direction === 'foreignToNpr' ? 'Converted Equivalent in Nepali Rupees (NPR)' : `Converted Equivalent in ${rate.code}`}
+              {direction === 'foreignToNpr' ? t('Converted Equivalent in Nepali Rupees (NPR)', 'नेपाली रुपैयाँमा रूपान्तरित मूल्य (रु)') : t(`Converted Equivalent in ${rate.code}`, `${rate.code} मा रूपान्तरित मूल्य`)}
             </span>
             <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
               {direction === 'foreignToNpr' ? `रु ${Math.round(convertedValue).toLocaleString('en-IN')}` : `${(Math.round(convertedValue * 100) / 100).toLocaleString('en-IN')} ${rate.code}`}
             </div>
             <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               <div>
-                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Buying Rate (Bank Buys)</span>
+                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>
+                  {t('Buying Rate (Bank Buys)', 'खरिद दर (बैंकले लिने)')}
+                </span>
                 <div style={{ fontSize: '14px', fontWeight: 800, color: '#ffffff' }}>
                   {rate.unit} {rate.code} = रु {rate.buyNpr}
                 </div>
               </div>
               <div>
-                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>Selling Rate (Bank Sells)</span>
+                <span style={{ fontSize: '10.5px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 700 }}>
+                  {t('Selling Rate (Bank Sells)', 'बिक्री दर (बैंकले दिने)')}
+                </span>
                 <div style={{ fontSize: '14px', fontWeight: 800, color: '#ffffff' }}>
                   {rate.unit} {rate.code} = रु {rate.sellNpr}
                 </div>
               </div>
             </div>
             <div style={{ marginTop: '10px', fontSize: '11px', color: '#94a3b8' }}>
-              Source: Official Nepal Rastra Bank (NRB) Daily Exchange Bulletin.
+              {t('Source: Official Nepal Rastra Bank (NRB) Daily Exchange Bulletin.', 'स्रोत: नेपाल राष्ट्र बैंकको आधिकारिक दैनिक विनिमय दर।')}
             </div>
           </div>
         </div>

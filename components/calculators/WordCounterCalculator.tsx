@@ -66,10 +66,10 @@ export function WordCounterCalculator() {
       {/* Stat Cards Row */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginBottom: '18px' }}>
         {[
-          { label: 'Total Words (शब्द)', val: stats.words, color: '#2563eb' },
-          { label: 'Characters (अक्षर)', val: stats.charsWithSpaces, color: '#059669' },
+          { label: t('Total Words', 'कुल शब्द'), val: stats.words, color: '#2563eb' },
+          { label: t('Characters', 'अक्षरहरू'), val: stats.charsWithSpaces, color: '#059669' },
           { label: 'No Spaces', val: stats.charsWithoutSpaces, color: '#7c3aed' },
-          { label: 'Sentences (वाक्य)', val: stats.sentences, color: '#d97706' },
+          { label: t('Sentences', 'वाक्यहरू'), val: stats.sentences, color: '#d97706' },
           { label: 'Loksewa 5-Char Words', val: stats.loksewaStandardWords, color: '#dc2626' },
         ].map((item) => (
           <div key={item.label} style={{ padding: '14px', borderRadius: '10px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', textAlign: 'center' }}>

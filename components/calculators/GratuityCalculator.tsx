@@ -75,7 +75,7 @@ Calculated via NepalCalc.com`;
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
         <div>
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">Basic Monthly Salary (मासिक आधारभूत तलब)</label>
+            <label className="input-label">{t('Basic Monthly Salary', 'मासिक आधारभूत तलब')}</label>
             <input
               type="number"
               min={1000}
@@ -84,11 +84,13 @@ Calculated via NepalCalc.com`;
               value={basicSalary}
               onChange={(e) => setBasicSalary(Number(e.target.value) || 0)}
             />
-            <span className="input-subtext">Gratuity is calculated on basic salary without allowances</span>
+            <span className="input-subtext">
+              {t('Gratuity is calculated on basic salary without allowances', 'उपदान भत्ता बाहेक आधारभूत तलबमा मात्र हिसाब हुन्छ')}
+            </span>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">Total Years of Service (कार्य अवधि - वर्ष)</label>
+            <label className="input-label">{t('Total Years of Service', 'कुल कार्य अवधि (वर्ष)')}</label>
             <input
               type="number"
               min={0.1}
@@ -101,7 +103,7 @@ Calculated via NepalCalc.com`;
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
-              <label className="input-label">Remaining Home Leave (घर बिदा)</label>
+              <label className="input-label">{t('Remaining Home Leave', 'बाँकी घर बिदा')}</label>
               <input
                 type="number"
                 min={0}
@@ -110,11 +112,11 @@ Calculated via NepalCalc.com`;
                 value={accumulatedHomeLeaveDays}
                 onChange={(e) => setAccumulatedHomeLeaveDays(Number(e.target.value) || 0)}
               />
-              <span className="input-subtext">Max encashable: 90 days</span>
+              <span className="input-subtext">{t('Max encashable: 90 days', 'अधिकतम ९० दिनसम्मको साट्न मिल्ने')}</span>
             </div>
 
             <div>
-              <label className="input-label">Remaining Sick Leave (बिरामी बिदा)</label>
+              <label className="input-label">{t('Remaining Sick Leave', 'बाँकी बिरामी बिदा')}</label>
               <input
                 type="number"
                 min={0}
@@ -123,24 +125,24 @@ Calculated via NepalCalc.com`;
                 value={accumulatedSickLeaveDays}
                 onChange={(e) => setAccumulatedSickLeaveDays(Number(e.target.value) || 0)}
               />
-              <span className="input-subtext">Max encashable: 45 days</span>
+              <span className="input-subtext">{t('Max encashable: 45 days', 'अधिकतम ४५ दिनसम्मको साट्न मिल्ने')}</span>
             </div>
           </div>
         </div>
 
         <div>
           <div className="result-card-highlight">
-            <span className="stat-label">Total Separation Benefit (कुल प्राप्त हुने उपदान)</span>
+            <span className="stat-label">{t('Total Separation Benefit', 'कुल प्राप्त हुने उपदान तथा रकम')}</span>
             <div className="stat-value" style={{ color: '#059669', margin: '6px 0 2px' }}>
               रु {Math.round(calculation.totalRetirementPayout).toLocaleString('en-IN')}
             </div>
             <span className="stat-subvalue">
-              After {yearsWorked} years of employment
+              {t(`After ${yearsWorked} years of employment`, `${yearsWorked} वर्ष सेवा पश्चात`)}
             </span>
 
             <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                <span style={{ color: '#64748b' }}>Accrued Gratuity (8.33% उपदान)</span>
+                <span style={{ color: '#64748b' }}>{t('Accrued Gratuity (8.33%)', 'उपदान रकम (८.३३%)')}</span>
                 <span style={{ fontWeight: 700, fontFamily: 'var(--font-mono)' }}>रु {Math.round(calculation.totalGratuity).toLocaleString('en-IN')}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>

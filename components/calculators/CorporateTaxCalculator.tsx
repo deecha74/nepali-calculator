@@ -182,7 +182,7 @@ Calculated via NepalCalc.com`;
               {t('Nepal Corporate Tax & Section 94', 'नेपाल कम्पनी आयकर तथा दफा ९४')}
             </span>
             <span className="badge badge-neutral">
-              {t('Advance Tax Instalments (किस्ताबन्दी)', 'अग्रिम कर किस्ताबन्दी तालिका')}
+              {t('Advance Tax Instalments', 'अग्रिम कर किस्ताबन्दी तालिका')}
             </span>
           </div>
           <h1
@@ -230,7 +230,7 @@ Calculated via NepalCalc.com`;
           {/* Sector Selector */}
           <div style={{ marginBottom: '22px' }}>
             <label className="input-label">
-              {t('Business Sector & Industry Type (व्यवसायको प्रकृति)', 'कम्पनीको क्षेत्र तथा प्रकृति')}
+              {t('Business Sector & Industry Type', 'कम्पनीको क्षेत्र तथा प्रकृति')}
             </label>
             <select
               className="select-input"
@@ -252,7 +252,7 @@ Calculated via NepalCalc.com`;
           {/* Net Accounting Profit Input */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">
-              {t('Net Accounting Profit Before Tax (कर अघिको खुद नाफा)', 'कर अघिको खुद नाफा (Net Profit Before Tax)')}
+              {t('Net Accounting Profit Before Tax', 'कर अघिको खुद नाफा')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
@@ -292,13 +292,13 @@ Calculated via NepalCalc.com`;
             }}
           >
             <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--text-primary)', display: 'block', marginBottom: '12px' }}>
-              {t('Income Tax Adjustments (कर समायोजनहरू)', 'कर समायोजनहरू (Tax Add-Backs & Deductions)')}
+              {t('Income Tax Adjustments', 'कर समायोजनहरू')}
             </span>
 
             {/* Inadmissible Expenses */}
             <div style={{ marginBottom: '12px' }}>
               <label className="input-label" style={{ fontSize: '12px' }}>
-                {t('Add: Disallowable / Inadmissible Expenses (अस्वीकृत खर्च)', 'थप: अस्वीकृत खर्चहरू (Non-allowable expenses)')}
+                {t('Add: Disallowable / Inadmissible Expenses', 'थप: अस्वीकृत खर्चहरू')}
               </label>
               <input
                 type="number"
@@ -315,7 +315,7 @@ Calculated via NepalCalc.com`;
             {/* Allowable Deductions */}
             <div>
               <label className="input-label" style={{ fontSize: '12px' }}>
-                {t('Less: Allowable Deductions / Tax Depreciation (स्वीकृत छुट)', 'घटाउने: स्वीकृत छुट तथा कर ह्रासकट्टी')}
+                {t('Less: Allowable Deductions / Tax Depreciation', 'घटाउने: स्वीकृत छुट तथा कर ह्रासकट्टी')}
               </label>
               <input
                 type="number"
@@ -333,7 +333,7 @@ Calculated via NepalCalc.com`;
           {/* Withheld TDS Credit */}
           <div style={{ marginBottom: '20px' }}>
             <label className="input-label">
-              {t('Less: Advance TDS Withheld by Clients (कट्टी भइसकेको TDS)', 'घटाउने: पार्टीहरूले कट्टी गरेको TDS प्रमाण (TDS Credit)')}
+              {t('Less: Advance TDS Withheld by Clients', 'घटाउने: पार्टीहरूले कट्टी गरेको अग्रिम कर (TDS Credit)')}
             </label>
             <div style={{ position: 'relative' }}>
               <span style={{ position: 'absolute', left: '14px', top: '10px', fontWeight: 700, color: '#64748b' }}>
@@ -370,7 +370,7 @@ Calculated via NepalCalc.com`;
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
-                  {t('Net Annual Tax Payable to IRD (तिर्नुपर्ने खुद आयकर)', 'तिर्नुपर्ने कुल आयकर दायित्व')}
+                  {t('Net Annual Tax Payable to IRD', 'तिर्नुपर्ने कुल आयकर दायित्व')}
                 </span>
                 <div style={{ fontSize: '38px', fontWeight: 800, color: '#f59e0b', margin: '6px 0 2px', fontFamily: 'var(--font-mono)' }}>
                   रु {Math.round(calculation.netAnnualTaxPayable).toLocaleString('en-IN')}
@@ -427,7 +427,7 @@ Calculated via NepalCalc.com`;
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Calendar size={18} color="#003893" />
                 <span style={{ fontSize: '14px', fontWeight: 800, color: '#0f172a' }}>
-                  {t('Section 94 Advance Tax Schedule (किस्ताबन्दी तालिका)', 'दफा ९४ अग्रिम कर किस्ताबन्दी तालिका')}
+                  {t('Section 94 Advance Tax Schedule', 'दफा ९४ अग्रिम कर किस्ताबन्दी तालिका')}
                 </span>
               </div>
               <span style={{ fontSize: '11px', fontWeight: 700, color: '#059669', background: '#f0fdf4', padding: '2px 8px', borderRadius: '4px' }}>
@@ -451,7 +451,7 @@ Calculated via NepalCalc.com`;
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ fontSize: '12.5px', fontWeight: 800, color: '#003893' }}>
-                      {t('1st Instalment: Poush End (पुस मसान्त)', 'पहिलो किस्ता: पुस मसान्त (४०%)')}
+                      {t('1st Instalment: Poush End', 'पहिलो किस्ता: पुस मसान्त (४०%)')}
                     </span>
                     <span style={{ fontSize: '11px', color: '#64748b' }}>(Mid-January)</span>
                   </div>
@@ -482,7 +482,7 @@ Calculated via NepalCalc.com`;
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ fontSize: '12.5px', fontWeight: 800, color: '#003893' }}>
-                      {t('2nd Instalment: Chaitra End (चैत मसान्त)', 'दोस्रो किस्ता: चैत मसान्त (३०%)')}
+                      {t('2nd Instalment: Chaitra End', 'दोस्रो किस्ता: चैत मसान्त (३०%)')}
                     </span>
                     <span style={{ fontSize: '11px', color: '#64748b' }}>(Mid-April)</span>
                   </div>
@@ -513,7 +513,7 @@ Calculated via NepalCalc.com`;
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{ fontSize: '12.5px', fontWeight: 800, color: '#003893' }}>
-                      {t('3rd Instalment: Ashadh End (असार मसान्त)', 'तेस्रो किस्ता: असार मसान्त (३०%)')}
+                      {t('3rd Instalment: Ashadh End', 'तेस्रो किस्ता: असार मसान्त (३०%)')}
                     </span>
                     <span style={{ fontSize: '11px', color: '#64748b' }}>(Mid-July)</span>
                   </div>

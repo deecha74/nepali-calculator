@@ -30,9 +30,9 @@ export function PregnancyDueDateCalculator() {
     const remainingDays = Math.max(0, totalPregnancyDays - elapsedDays);
     const progressPercent = Math.min(100, Math.round((elapsedDays / totalPregnancyDays) * 100));
 
-    let trimester = '1st Trimester (पहिलो त्रैमासिक — Weeks 1–12)';
-    if (currentWeeks >= 27) trimester = '3rd Trimester (तेस्रो त्रैमासिक — Weeks 27–40)';
-    else if (currentWeeks >= 13) trimester = '2nd Trimester (दोस्रो त्रैमासिक — Weeks 13–26)';
+    let trimester = t('1st Trimester (Weeks 1–12)', 'पहिलो त्रैमासिक (हप्ता १–१२)');
+    if (currentWeeks >= 27) trimester = t('3rd Trimester (Weeks 27–40)', 'तेस्रो त्रैमासिक (हप्ता २७–४०)');
+    else if (currentWeeks >= 13) trimester = t('2nd Trimester (Weeks 13–26)', 'दोस्रो त्रैमासिक (हप्ता १३–२६)');
 
     const dueBs = convertAdToBsApprox(dueDate);
     const lmpBs = convertAdToBsApprox(lmp);
@@ -51,7 +51,7 @@ export function PregnancyDueDateCalculator() {
       progressPercent,
       trimester,
     };
-  }, [lmpDateAd, cycleLength]);
+  }, [lmpDateAd, cycleLength, t]);
 
   const handleCopy = () => {
     const text = `Nepali Pregnancy Due Date Summary (BS & AD):
@@ -97,8 +97,7 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-              <span className="badge badge-blue">Bikram Sambat (BS) & AD</span>
-              <span className="badge badge-neutral">आमा सुरक्षा तथा प्रसूति मिति</span>
+              <span className="badge badge-blue">{t('Bikram Sambat (BS) & AD', 'विक्रम संवत् (वि.सं.) र ई.सं.')}</span>
             </div>
             <h1 style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, margin: '6px 0 0', color: 'var(--text-primary)' }}>
               {t('Pregnancy Due Date Calculator', 'प्रसूति मिति क्याल्कुलेटर')}
@@ -108,7 +107,7 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
 
         <button type="button" onClick={handleCopy} className="btn-secondary" style={{ padding: '8px 14px', fontSize: '13px' }}>
           {copied ? <Check size={16} color="#059669" /> : <Copy size={16} />}
-          <span>{copied ? 'Copied!' : 'Copy Due Date'}</span>
+          <span>{copied ? t('Copied!', 'कपी भयो!') : t('Copy Due Date', 'मिति कपी गर्नुहोस्')}</span>
         </button>
       </div>
 
@@ -117,7 +116,7 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
         <div>
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="lmp-date" className="input-label" style={{ display: 'block', marginBottom: '8px', fontWeight: 700, fontSize: '13.5px' }}>
-              First Day of Last Menstrual Period — LMP (अन्तिम महिनावारीको पहिलो दिन):
+              {t('First Day of Last Menstrual Period (LMP):', 'अन्तिम महिनावारीको पहिलो दिन:')}
             </label>
             <input
               id="lmp-date"
@@ -128,13 +127,13 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
               style={{ width: '100%', padding: '10px 12px', fontSize: '15px', fontWeight: 700 }}
             />
             <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontWeight: 600 }}>
-              Nepali BS Equivalent: <strong>{calculation.lmpBsFormatted}</strong>
+              {t('Nepali BS Equivalent:', 'नेपाली वि.सं. मिति:')} <strong>{calculation.lmpBsFormatted}</strong>
             </div>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
             <label htmlFor="cycle-len" className="input-label" style={{ display: 'block', marginBottom: '8px', fontWeight: 700, fontSize: '13.5px' }}>
-              Average Menstrual Cycle Length (महिनावारी चक्र — सामान्यतया २८ दिन):
+              {t('Average Menstrual Cycle Length (Days — Standard is 28):', 'औसत महिनावारी चक्र (दिन — सामान्यतया २८ दिन):')}
             </label>
             <input
               id="cycle-len"
@@ -160,7 +159,11 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
               lineHeight: 1.55,
             }}
           >
-            <strong>🇳🇵 Nepal Government Aama Surakshya Benefit:</strong> Completing the mandatory 4/8 protocol ANC checkups (Months 4, 6, 8, and 9) and delivering at a listed government health facility entitles mothers to free institutional delivery plus <strong>NPR 1,800 to NPR 3,800</strong> transport & ANC cash incentive (Mountain/Hill/Terai).
+            <strong>{t('🇳🇵 Nepal Government Aama Surakshya Benefit:', '🇳🇵 नेपाल सरकार आमा सुरक्षा कार्यक्रम:')}</strong>{' '}
+            {t(
+              'Completing the mandatory protocol ANC checkups and delivering at a listed government health facility entitles mothers to free institutional delivery plus NPR 1,800 to NPR 3,800 transport and ANC cash incentive.',
+              'तोकिएका गर्भजाँच (ANC) पूरा गरी सरकारी स्वास्थ्य संस्थामा प्रसूति गराउँदा निःशुल्क प्रसूति सेवासहित रु १,८०० देखि रु ३,८०० सम्म यातायात तथा प्रोत्साहन खर्च प्राप्त हुन्छ।'
+            )}
           </div>
         </div>
 
@@ -175,13 +178,13 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
             }}
           >
             <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#fbcfe8', fontWeight: 700 }}>
-              Estimated Baby Delivery Due Date (अनुमानित प्रसूति मिति)
+              {t('Estimated Baby Delivery Due Date', 'अनुमानित प्रसूति मिति')}
             </div>
             <div style={{ fontSize: 'clamp(24px, 3.8vw, 32px)', fontWeight: 900, color: '#fde047', marginTop: '6px' }}>
               {calculation.dueBsFormatted}
             </div>
             <div style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff', marginTop: '4px' }}>
-              English Calendar (AD): {calculation.dueDateAdStr}
+              {t('English Calendar (AD):', 'इस्वी संवत् (ई.सं.):')} {calculation.dueDateAdStr}
             </div>
           </div>
 
@@ -189,9 +192,9 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
           <div style={{ padding: '18px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#ffffff' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '13.5px', fontWeight: 800 }}>
               <span>
-                Current Stage: {calculation.currentWeeks} Weeks, {calculation.currentExtraDays} Days
+                {t('Current Stage:', 'हालको अवस्था:')} {calculation.currentWeeks} {t('Weeks', 'हप्ता')}, {calculation.currentExtraDays} {t('Days', 'दिन')}
               </span>
-              <span style={{ color: '#db2777' }}>{calculation.progressPercent}% Complete</span>
+              <span style={{ color: '#db2777' }}>{calculation.progressPercent}% {t('Complete', 'पूरा')}</span>
             </div>
 
             <div style={{ width: '100%', height: '10px', backgroundColor: '#fce7f3', borderRadius: '9999px', overflow: 'hidden', marginBottom: '12px' }}>
@@ -207,16 +210,16 @@ Calculated on NepalCalc.com/pregnancy-due-date`;
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: '#334155' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Current Trimester:</span>
+                <span>{t('Current Trimester:', 'हालको त्रैमासिक:')}</span>
                 <strong>{calculation.trimester}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Estimated Conception Date:</span>
+                <span>{t('Estimated Conception Date:', 'अनुमानित गर्भाधान मिति:')}</span>
                 <strong>{calculation.conceptionDateAdStr}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Days Remaining to Due Date:</span>
-                <strong>{calculation.remainingDays} Days</strong>
+                <span>{t('Days Remaining to Due Date:', 'बाँकी दिनहरू:')}</span>
+                <strong>{calculation.remainingDays} {t('Days', 'दिन')}</strong>
               </div>
             </div>
           </div>

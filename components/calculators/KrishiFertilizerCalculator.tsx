@@ -18,12 +18,12 @@ interface CropProfile {
 }
 
 const CROPS: CropProfile[] = [
-  { id: 'paddy', name: 'Paddy / Rice (धान)', nepaliName: 'धान खेती', ureaPerRopani: 6.5, dapPerRopani: 4.5, potashPerRopani: 3.0, compostPerRopani: 6.0, seedPerRopaniKg: 2.5, season: 'असार/साउन (वर्षे धान)' },
-  { id: 'maize', name: 'Maize / Corn (मकै)', nepaliName: 'मकै खेती', ureaPerRopani: 8.0, dapPerRopani: 5.0, potashPerRopani: 3.5, compostPerRopani: 7.0, seedPerRopaniKg: 1.2, season: 'फागुन/चैत (वसन्ते तथा वर्षे)' },
-  { id: 'wheat', name: 'Wheat (गहुँ)', nepaliName: 'गहुँ खेती', ureaPerRopani: 7.0, dapPerRopani: 4.5, potashPerRopani: 2.5, compostPerRopani: 5.0, seedPerRopaniKg: 5.0, season: 'कात्तिक/मंसिर (हिउँदे)' },
-  { id: 'potato', name: 'Potato (आलु)', nepaliName: 'आलु खेती', ureaPerRopani: 10.0, dapPerRopani: 8.0, potashPerRopani: 6.0, compostPerRopani: 10.0, seedPerRopaniKg: 75.0, season: 'असोज/कात्तिक तथा माघ' },
-  { id: 'mustard', name: 'Mustard (तोरी)', nepaliName: 'तोरी/सर्सिउँ', ureaPerRopani: 4.0, dapPerRopani: 3.5, potashPerRopani: 2.0, compostPerRopani: 4.0, seedPerRopaniKg: 0.5, season: 'कात्तिक/मंसिर' },
-  { id: 'vegetable', name: 'Seasonal Vegetables (मौसमी तरकारी)', nepaliName: 'मौसमी तरकारी', ureaPerRopani: 9.0, dapPerRopani: 7.0, potashPerRopani: 5.0, compostPerRopani: 12.0, seedPerRopaniKg: 0.2, season: 'वर्षैभरी' },
+  { id: 'paddy', name: 'Paddy / Rice', nepaliName: 'धान खेती', ureaPerRopani: 6.5, dapPerRopani: 4.5, potashPerRopani: 3.0, compostPerRopani: 6.0, seedPerRopaniKg: 2.5, season: 'असार/साउन (वर्षे धान)' },
+  { id: 'maize', name: 'Maize / Corn', nepaliName: 'मकै खेती', ureaPerRopani: 8.0, dapPerRopani: 5.0, potashPerRopani: 3.5, compostPerRopani: 7.0, seedPerRopaniKg: 1.2, season: 'फागुन/चैत (वसन्ते तथा वर्षे)' },
+  { id: 'wheat', name: 'Wheat', nepaliName: 'गहुँ खेती', ureaPerRopani: 7.0, dapPerRopani: 4.5, potashPerRopani: 2.5, compostPerRopani: 5.0, seedPerRopaniKg: 5.0, season: 'कात्तिक/मंसिर (हिउँदे)' },
+  { id: 'potato', name: 'Potato', nepaliName: 'आलु खेती', ureaPerRopani: 10.0, dapPerRopani: 8.0, potashPerRopani: 6.0, compostPerRopani: 10.0, seedPerRopaniKg: 75.0, season: 'असोज/कात्तिक तथा माघ' },
+  { id: 'mustard', name: 'Mustard', nepaliName: 'तोरी/सर्सिउँ', ureaPerRopani: 4.0, dapPerRopani: 3.5, potashPerRopani: 2.0, compostPerRopani: 4.0, seedPerRopaniKg: 0.5, season: 'कात्तिक/मंसिर' },
+  { id: 'vegetable', name: 'Seasonal Vegetables', nepaliName: 'मौसमी तरकारी', ureaPerRopani: 9.0, dapPerRopani: 7.0, potashPerRopani: 5.0, compostPerRopani: 12.0, seedPerRopaniKg: 0.2, season: 'वर्षैभरी' },
 ];
 
 export function KrishiFertilizerCalculator() {
@@ -132,19 +132,19 @@ export function KrishiFertilizerCalculator() {
             >
               {CROPS.map(c => (
                 <option key={c.id} value={c.id}>
-                  {c.nepaliName} ({c.name})
+                  {language === 'ne' ? c.nepaliName : c.name}
                 </option>
               ))}
             </select>
             <div style={{ fontSize: '11.5px', color: '#64748b', marginTop: '4px' }}>
-              खेती गर्ने उपयुक्त मौसम: <strong>{crop.season}</strong>
+              {t('Recommended Sowing Season:', 'खेती गर्ने उपयुक्त मौसम:')} <strong>{crop.season}</strong>
             </div>
           </div>
 
           {/* Land System Toggle */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
-              जग्गाको एकाइ (Land Measurement System)
+              {t('Land Measurement System', 'जग्गाको एकाइ प्रणाली')}
             </label>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
@@ -163,7 +163,7 @@ export function KrishiFertilizerCalculator() {
                   cursor: 'pointer'
                 }}
               >
-                पहाडी (रोपनी / Ropani)
+                {t('Hill (Ropani)', 'पहाडी (रोपनी)')}
               </button>
               <button
                 type="button"
@@ -181,7 +181,7 @@ export function KrishiFertilizerCalculator() {
                   cursor: 'pointer'
                 }}
               >
-                तराई (बिघा / Bigha)
+                {t('Terai (Bigha)', 'तराई (बिघा)')}
               </button>
             </div>
           </div>
@@ -189,7 +189,7 @@ export function KrishiFertilizerCalculator() {
           {/* Land Quantity */}
           <div>
             <label style={{ fontSize: '13px', fontWeight: 800, color: '#0f172a', display: 'block', marginBottom: '6px' }}>
-              {landSystem === 'ropani' ? 'कुल जग्गा (रोपनीमा):' : 'कुल जग्गा (बिघामा):'}
+              {landSystem === 'ropani' ? t('Total Land (Ropani):', 'कुल जग्गा (रोपनीमा):') : t('Total Land (Bigha):', 'कुल जग्गा (बिघामा):')}
             </label>
             <input
               type="number"

@@ -152,7 +152,7 @@ Calculated via NepalCalc.com`;
           <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
             {customSubtitle ||
               t(
-                'Calculate 24K Hallmark, 22K Tejabi, and Silver prices with making charges (ज्याला) and wastage (जर्ती).',
+                'Calculate 24K Hallmark, 22K Tejabi, and Silver prices with making charges and wastage.',
                 '२४ क्यारेट छापावाल, २२ क्यारेट तेजाबी सुन र चाँदीको मूल्य, ज्याला र जर्ती सहितको वास्तविक गहना हिसाब।'
               )}
           </p>
@@ -168,33 +168,17 @@ Calculated via NepalCalc.com`;
         <div>
           {/* Metal Type */}
           <div style={{ marginBottom: '20px' }}>
-            <label className="input-label">{t('Select Precious Metal', 'धातु छनौट गर्नुहोस्')}</label>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <button
-                type="button"
-                className={`segmented-btn ${metalType === 'fine' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => handleMetalChange('fine')}
-              >
-                {t('🥇 24K Fine Gold', '🥇 २४ क्यारेट छापावाल सुन')}
-              </button>
-              <button
-                type="button"
-                className={`segmented-btn ${metalType === 'tejabi' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => handleMetalChange('tejabi')}
-              >
-                {t('🥈 22K Tejabi Gold', '🥈 २२ क्यारेट तेजाबी सुन')}
-              </button>
-              <button
-                type="button"
-                className={`segmented-btn ${metalType === 'silver' ? 'active' : ''}`}
-                style={{ flex: 1, padding: '10px', border: '1px solid var(--border-subtle)' }}
-                onClick={() => handleMetalChange('silver')}
-              >
-                {t('⚪ Pure Silver', '⚪ चाँदी (Silver)')}
-              </button>
-            </div>
+            <label className="input-label">{t('Precious Metal Type', 'धातुको प्रकार')}</label>
+            <select
+              className="select-input"
+              value={metalType}
+              onChange={(e) => handleMetalChange(e.target.value as 'fine' | 'tejabi' | 'silver')}
+              style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '14px', fontWeight: 600 }}
+            >
+              <option value="fine">{t('24K Fine Gold (Chhapawal)', '२४ क्यारेट छापावाल सुन')}</option>
+              <option value="tejabi">{t('22K Tejabi Gold', '२२ क्यारेट तेजाबी सुन')}</option>
+              <option value="silver">{t('Pure Silver', 'शुद्ध चाँदी')}</option>
+            </select>
           </div>
 
           {/* Daily Market Rate */}
@@ -234,7 +218,7 @@ Calculated via NepalCalc.com`;
             {weightUnit === 'tola' ? (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('TOLA (तोला)', 'तोला (TOLA)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Tola', 'तोला')}</label>
                   <input
                     type="number"
                     min={0}
@@ -244,7 +228,7 @@ Calculated via NepalCalc.com`;
                   />
                 </div>
                 <div>
-                  <label className="input-label" style={{ fontSize: '11px' }}>{t('LAL (लाल, 0-99)', 'लाल (LAL, ०-९९)')}</label>
+                  <label className="input-label" style={{ fontSize: '11px' }}>{t('Lal (0-99)', 'लाल (०-९९)')}</label>
                   <input
                     type="number"
                     min={0}
@@ -257,7 +241,7 @@ Calculated via NepalCalc.com`;
               </div>
             ) : (
               <div>
-                <label className="input-label" style={{ fontSize: '11px' }}>{t('GRAMS (ग्राम)', 'ग्राम (GRAMS)')}</label>
+                <label className="input-label" style={{ fontSize: '11px' }}>{t('Grams', 'ग्राम')}</label>
                 <input
                   type="number"
                   min={0}
@@ -298,7 +282,7 @@ Calculated via NepalCalc.com`;
         {/* Results */}
         <div>
           <div className="result-card-highlight">
-            <span className="stat-label">{t('Total Jewelry Price (गहनाको कुल मूल्य)', 'गहनाको जम्मा मूल्य (Total Jewelry Price)')}</span>
+            <span className="stat-label">{t('Total Jewelry Price', 'गहनाको जम्मा मूल्य')}</span>
             <div className="stat-value" style={{ color: '#d97706', margin: '6px 0 2px' }}>
               रु {Math.round(calculation.grandTotal).toLocaleString('en-IN')}
             </div>
