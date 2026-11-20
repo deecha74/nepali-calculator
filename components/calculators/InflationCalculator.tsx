@@ -31,7 +31,7 @@ Annual Inflation Rate: ${inflationRate}%
 Time Horizon: ${years} Years
 Future Equivalent Required: NPR ${result.futureEquivalentValue.toLocaleString('en-IN')}
 Purchasing Power Left: NPR ${result.realPurchasingPower.toLocaleString('en-IN')} (-${result.cumulativeInflationPercent}% eroded)
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

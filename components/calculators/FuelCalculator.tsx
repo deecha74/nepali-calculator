@@ -33,7 +33,7 @@ Trip Distance: ${distanceKm} km | Mileage: ${mileageKmPerLiter} km/l
 Fuel Needed: ${calculation.litersNeeded.toFixed(1)} Liters @ रु ${fuelPricePerLiter}/L
 TOTAL TRIP FUEL COST: रु ${Math.round(calculation.totalFuelCost).toLocaleString('en-IN')}
 Cost per Passenger (${passengers} people): रु ${Math.round(calculation.costPerPerson).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

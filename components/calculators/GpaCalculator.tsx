@@ -72,7 +72,7 @@ export function GpaCalculator() {
 Calculated GPA: ${calculation.gpa.toFixed(2)}
 Approx. Percentage: ${calculation.approximatePercentage}%
 Status: ${calculation.hasNg ? 'Non-Graded (NG in some subjects)' : 'Passed'}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

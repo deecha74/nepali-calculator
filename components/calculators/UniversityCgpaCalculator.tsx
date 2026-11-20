@@ -162,7 +162,7 @@ Total Completed Semesters: ${calculation.completedSemCount} (${calculation.total
 Cumulative CGPA: ${calculation.cgpa.toFixed(2)} / 4.00
 Equivalent Percentage: ${calculation.percentage.toFixed(2)}%
 Standing: ${calculation.divisionLabel}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

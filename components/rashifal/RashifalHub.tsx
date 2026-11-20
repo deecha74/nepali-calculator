@@ -64,7 +64,7 @@ export function RashifalHub() {
   });
 
   const handleShare = (rashi: RashiItem) => {
-    const text = `🔮 आजको ${rashi.nepaliName} राशिफल (${rashi.englishName}):\n${rashi.predictionNep}\n🔢 शुभ अङ्क: ${rashi.luckyNumber} | 🎨 शुभ रङ्ग: ${rashi.luckyColorNep}\nनेपाल क्याल्क पात्रो: https://nepalcalc.com/rashifal`;
+    const text = `🔮 आजको ${rashi.nepaliName} राशिफल (${rashi.englishName}):\n${rashi.predictionNep}\n🔢 शुभ अङ्क: ${rashi.luckyNumber} | 🎨 शुभ रङ्ग: ${rashi.luckyColorNep}\nनेपाल क्याल्क पात्रो: https://nepalicalc.com/rashifal`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
       setCopiedId(rashi.id);
@@ -108,7 +108,7 @@ export function RashifalHub() {
             "publisher": {
               "@type": "Organization",
               "name": "NepalCalc",
-              "url": "https://nepalcalc.com"
+              "url": "https://nepalicalc.com"
             }
           })
         }}

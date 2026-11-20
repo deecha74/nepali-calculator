@@ -102,7 +102,7 @@ Buy Price: रु ${buyPrice} | Sell Price: रु ${sellPrice}
 Total Buy Cost: रु ${Math.round(buyCalculation.totalCost).toLocaleString('en-IN')}
 Net Sell Receivable: रु ${Math.round(sellCalculation.netReceivable).toLocaleString('en-IN')}
 Net Profit/Loss: रु ${Math.round(sellCalculation.netProfitOrLoss).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

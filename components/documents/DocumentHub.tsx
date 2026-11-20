@@ -67,7 +67,7 @@ export function DocumentHub({ isHomepage = false }: { isHomepage?: boolean }) {
   // Load saved bookmarks from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('nepalcalc_saved_docs');
+      const saved = localStorage.getItem('nepalicalc_saved_docs');
       if (saved) {
         setSavedDocIds(JSON.parse(saved));
       }
@@ -92,7 +92,7 @@ export function DocumentHub({ isHomepage = false }: { isHomepage?: boolean }) {
     }
     setSavedDocIds(updated);
     try {
-      localStorage.setItem('nepalcalc_saved_docs', JSON.stringify(updated));
+      localStorage.setItem('nepalicalc_saved_docs', JSON.stringify(updated));
     } catch (e) { }
   };
 
@@ -141,7 +141,7 @@ EN: ${c.content}
 NE: ${c.contentNep}
 `).join('\n')}
 
-Downloaded from NepalCalc Official Document Archive: https://nepalcalc.com/documents
+Downloaded from NepalCalc Official Document Archive: https://nepalicalc.com/documents
 Verified against Nepal Gazette Standard.
 =====================================================`;
 

@@ -72,7 +72,7 @@ Duration: ${months} Months
 Monthly Interest: रु ${Math.round(localCalc.monthlyInterest).toLocaleString('en-IN')}
 Total Interest: रु ${Math.round(localCalc.totalInterest).toLocaleString('en-IN')}
 Total Payable: रु ${Math.round(localCalc.totalAmount).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     } else {
       text = `Bank Fixed Deposit Calculation:
 FD Amount: रु ${fdAmount.toLocaleString('en-IN')}
@@ -81,7 +81,7 @@ Gross Interest: रु ${Math.round(fdCalc.grossInterest).toLocaleString('en-IN'
 5% TDS Tax: रु ${Math.round(fdCalc.tdsTax).toLocaleString('en-IN')}
 Net In-Hand Interest: रु ${Math.round(fdCalc.netInterest).toLocaleString('en-IN')}
 Total Maturity: रु ${Math.round(fdCalc.netMaturity).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     }
     navigator.clipboard.writeText(text);
     setCopied(true);

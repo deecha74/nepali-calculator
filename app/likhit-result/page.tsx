@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Driving License Likhit Result Nepal — Instant SMS & Pass List Checker',
     description: 'Instant mobile SMS result query (WT <ID> to 33001), 60% point-based passing criteria, and office noticeboards across Nepal.',
-    url: 'https://nepalcalc.com/likhit-result',
+    url: 'https://nepalicalc.com/likhit-result',
     type: 'website',
   },
 };

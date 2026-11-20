@@ -54,7 +54,7 @@ export function BatteryBackupCalculator() {
 ${t('Battery:', 'ब्याट्री:')} ${batteryCount}x ${batteryCapacityAh}Ah (${batteryVoltage}V Tubular)
 ${t('Total Connected Load:', 'कुल जोडिएको लोड:')} ${calculation.totalWatts} W
 ${t('Estimated Backup Duration:', 'अनुमानित ब्याकअप समय:')} ${calculation.hours} ${t('hours', 'घण्टा')} ${calculation.minutes} ${t('mins', 'मिनेट')} (${calculation.backupHours} hrs)
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

@@ -13,7 +13,7 @@ export function CookieConsentBanner() {
   useEffect(() => {
     setMounted(true);
     try {
-      const consent = localStorage.getItem('nepalcalc_cookie_consent');
+      const consent = localStorage.getItem('nepalicalc_cookie_consent');
       if (!consent) {
         // Show after a slight delay for smooth entrance
         const timer = setTimeout(() => setVisible(true), 1200);
@@ -26,14 +26,14 @@ export function CookieConsentBanner() {
 
   const handleAccept = () => {
     try {
-      localStorage.setItem('nepalcalc_cookie_consent', 'all');
+      localStorage.setItem('nepalicalc_cookie_consent', 'all');
     } catch (e) {}
     setVisible(false);
   };
 
   const handleEssentialOnly = () => {
     try {
-      localStorage.setItem('nepalcalc_cookie_consent', 'essential');
+      localStorage.setItem('nepalicalc_cookie_consent', 'essential');
     } catch (e) {}
     setVisible(false);
   };

@@ -94,7 +94,7 @@ Hill/Valley: ${hillBreakdown.ropani} Ropani, ${hillBreakdown.aana} Aana, ${hillB
 Terai: ${teraiBreakdown.bigha} Bigha, ${teraiBreakdown.kattha} Kattha, ${teraiBreakdown.dhur} Dhur
 Area: ${Math.round(totalSqFt).toLocaleString('en-IN')} Sq. Ft (${(Math.round(totalSqMtr * 100) / 100)} Sq. M)
 Estimated Value: रु ${Math.round(estimatedPrice).toLocaleString('en-IN')}
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

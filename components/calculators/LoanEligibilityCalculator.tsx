@@ -43,7 +43,7 @@ Existing EMIs: NPR ${existingEmi.toLocaleString('en-IN')}
 Max Allowed EMI (50% DSTI): NPR ${calc.eligibleNewEmi.toLocaleString('en-IN')}/mo
 Interest Rate: ${interestRate}%, Tenure: ${tenureYears} Years
 Maximum Eligible Loan: NPR ${calc.maxLoanAmount.toLocaleString('en-IN')}
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

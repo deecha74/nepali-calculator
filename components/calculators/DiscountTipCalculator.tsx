@@ -37,7 +37,7 @@ export function DiscountTipCalculator() {
 ${t('Original Price:', 'सुरु मूल्य:')} रु ${originalPrice.toLocaleString('en-IN')}
 ${t(`Discount (${discountPercent}%):`, `छुट (${discountPercent}%):`)} -रु ${calculation.discountSaved.toFixed(2)}
 ${t('Final Payable:', 'अन्तिम तिर्नुपर्ने रकम:')} रु ${calculation.finalPayable.toFixed(2)} (${splitPeople > 1 ? `रु ${calculation.perPersonShare.toFixed(2)}/${t('person', 'व्यक्ति')}` : t('1 person', '१ जना')})
-Calculated on NepalCalc.com/discount-calculator`;
+Calculated on nepalicalc.com/discount-calculator`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

@@ -52,7 +52,7 @@ Monthly CIT: NPR ${monthlyCit.toLocaleString('en-IN')}
 Retirement Age: ${retirementAge} (${result.yearsToRetire} years left)
 Total Retirement Fund: NPR ${result.accumulatedCorpus.toLocaleString('en-IN')}
 Estimated Monthly Pension: NPR ${result.estimatedMonthlyPension.toLocaleString('en-IN')}/mo
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

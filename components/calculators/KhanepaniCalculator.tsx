@@ -45,7 +45,7 @@ Water Consumed: ${litersUsed.toLocaleString()} Liters (${bill.units} Units)
 Water Tariff: NPR ${bill.waterCost}
 Sewerage Charge (50%): NPR ${bill.sewerCost}
 Total Monthly Bill: NPR ${bill.totalPayable}
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

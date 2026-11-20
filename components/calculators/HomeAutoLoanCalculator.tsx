@@ -56,7 +56,7 @@ Interest Rate: ${interestRate}% p.a. | Tenure: ${tenureYears} Years (${calculati
 Monthly EMI: NPR ${calculation.emi.toLocaleString('en-IN')}/month
 Total Interest: NPR ${calculation.totalInterest.toLocaleString('en-IN')}
 Min. Gross Family Income (50% DSTI): NPR ${calculation.minMonthlyIncomeRequired.toLocaleString('en-IN')}/mo
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

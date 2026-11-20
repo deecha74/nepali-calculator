@@ -66,7 +66,7 @@ Recommended Solar System: ${calculation.actualSystemKw.toFixed(2)} kW (${calcula
 Hybrid Inverter Size: ${calculation.recommendedInverterKva} kVA
 Battery Bank: ${calculation.batteryStorageKwh.toFixed(1)} kWh (${calculation.batteryAhAt48V}Ah @ 48V)
 Estimated Installation Cost in Nepal: NPR ${calculation.totalEstimatedCostNpr.toLocaleString('en-IN')}
-Calculated via NepalCalc.com/solar-requirement`;
+Calculated via nepalicalc.com/solar-requirement`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

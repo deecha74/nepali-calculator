@@ -48,7 +48,7 @@ export default async function LicenseLongtailGuidePage({ params }: PageProps) {
     '@type': 'TechArticle',
     headline: guide.titleEn,
     description: guide.metaDescEn,
-    url: `https://nepalcalc.com/license/guide/${guide.slug}`,
+    url: `https://nepalicalc.com/license/guide/${guide.slug}`,
     inLanguage: ['en', 'ne'],
     publisher: {
       '@type': 'Organization',

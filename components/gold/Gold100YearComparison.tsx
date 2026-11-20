@@ -73,7 +73,7 @@ Today's Value: रु ${Math.round(comparison.todayTotalValue).toLocaleString('e
 Net Wealth Gain: +रु ${Math.round(comparison.netProfitNpr).toLocaleString('en-IN')} (+${comparison.percentageGrowth.toFixed(1)}%)
 Multiplier: ${comparison.multiplier.toFixed(1)}x | Annualized Return (CAGR): ${comparison.cagrPercent.toFixed(2)}% per year
 Context: ${comparison.context}
-Calculated via Nepali Calc (nepalcalc.com/gold/history)`;
+Calculated via Nepali Calc (nepalicalc.com/gold/history)`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

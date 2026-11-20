@@ -159,7 +159,7 @@ export function MomoCalorieCalculator() {
       `Total Calories: ${calculation.totalKcal} kcal\n` +
       `Protein: ${calculation.protein}g | Carbs: ${calculation.carbs}g | Fat: ${calculation.fat}g\n` +
       `Burn it off: ~${calculation.jogMins} mins jogging or ${calculation.walkMins} mins walking!\n` +
-      `Check yours at: https://nepalcalc.com/momo-calorie`;
+      `Check yours at: https://nepalicalc.com/momo-calorie`;
 
     navigator.clipboard.writeText(text);
     setCopied(true);

@@ -76,7 +76,7 @@ export function ForexCalculator({ initialCurrency, initialAmount, titleTag = 'h1
     const text = `Forex & Remittance Conversion:
 ${direction === 'foreignToNpr' ? `${foreignAmount} ${rate.code} = रु ${Math.round(convertedValue).toLocaleString('en-IN')}` : `रु ${foreignAmount} = ${(Math.round(convertedValue * 100) / 100)} ${rate.code}`}
 Rate: 1 ${rate.code} ≈ रु ${(rate.buyNpr / rate.unit).toFixed(2)}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

@@ -47,7 +47,7 @@ export default async function LicenseCategoryPage({ params }: PageProps) {
   const schema = generateWebApplicationSchema({
     name: cat.titleEn,
     description: cat.metaDescEn,
-    url: `https://nepalcalc.com/license/category/${cat.slug}`,
+    url: `https://nepalicalc.com/license/category/${cat.slug}`,
     category: 'EducationalApplication',
   });
 

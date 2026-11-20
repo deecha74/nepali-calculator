@@ -35,7 +35,7 @@ export function LeadCaptureModal({
     }
     // Store in localStorage or send to webhook / CRM
     try {
-      const existing = JSON.parse(localStorage.getItem('nepalcalc_leads') || '[]');
+      const existing = JSON.parse(localStorage.getItem('nepalicalc_leads') || '[]');
       existing.push({
         leadType,
         name,
@@ -44,7 +44,7 @@ export function LeadCaptureModal({
         referenceData,
         date: new Date().toISOString(),
       });
-      localStorage.setItem('nepalcalc_leads', JSON.stringify(existing));
+      localStorage.setItem('nepalicalc_leads', JSON.stringify(existing));
     } catch (e) {
       // ignore
     }

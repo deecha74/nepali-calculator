@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: office.titleEn,
       description: office.metaDescEn,
-      url: `https://nepalcalc.com/likhit-result/${office.slug}`,
+      url: `https://nepalicalc.com/likhit-result/${office.slug}`,
       type: 'article',
     },
   };

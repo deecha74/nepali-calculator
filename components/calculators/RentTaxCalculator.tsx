@@ -39,7 +39,7 @@ Monthly Rent: रु ${Math.round(calculation.monthlyRent).toLocaleString('en-IN
 Annual Rent: रु ${Math.round(calculation.annualRent).toLocaleString('en-IN')}
 Municipality Rent Tax (${municipalityRate}%): रु ${Math.round(calculation.monthlyTax).toLocaleString('en-IN')} / month (रु ${Math.round(calculation.annualTax).toLocaleString('en-IN')} / year)
 Net Landlord Income: रु ${Math.round(calculation.netMonthlyLandlord).toLocaleString('en-IN')} / month
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

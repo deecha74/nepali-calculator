@@ -33,7 +33,7 @@ Initial Investment: NPR ${initialValue.toLocaleString('en-IN')}
 Final Maturity Value: NPR ${finalValue.toLocaleString('en-IN')} (${years} Years)
 Compound Annual Growth Rate (CAGR): ${calculation.cagrPercent.toFixed(2)}% per year
 Total Absolute Return: ${calculation.absoluteReturnPercent.toFixed(2)}%
-Calculated on NepalCalc.com/cagr`;
+Calculated on nepalicalc.com/cagr`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

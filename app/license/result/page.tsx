@@ -32,7 +32,7 @@ export default function LicenseResultPage() {
   const schema = generateWebApplicationSchema({
     name: 'Nepal Driving License Likhit Result Checker',
     description: 'Official tool to check driving license written exam result in Nepal via mobile SMS and official DoTM noticeboard.',
-    url: 'https://nepalcalc.com/license/result',
+    url: 'https://nepalicalc.com/license/result',
     category: 'UtilitiesApplication'
   });
 

@@ -46,7 +46,7 @@ Device: ${deviceType.toUpperCase()} | Quantity: ${phoneCount}
 Migrant Worker with Shram: ${isMigrantWorkerWithPermit ? 'Yes' : 'No'}
 Taxable Phones: ${calculation.taxablePhones}
 Total Customs & MDMS Fee: रु ${calculation.totalCustomsDuty.toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

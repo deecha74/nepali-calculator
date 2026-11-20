@@ -149,7 +149,7 @@ Annual Gross: रु ${Math.round(calculation.annualGross).toLocaleString('en-IN
 Total Annual Tax: रु ${Math.round(calculation.totalTax).toLocaleString('en-IN')}
 Monthly Tax: रु ${Math.round(calculation.monthlyTax).toLocaleString('en-IN')}
 Net In-Hand Monthly: रु ${Math.round(calculation.netMonthlyTakeHome).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

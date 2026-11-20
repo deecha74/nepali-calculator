@@ -46,7 +46,7 @@ ${t('Application Center:', 'आवेदन केन्द्र:')} ${submissi
 ${t('Minor (Under 10):', '१० वर्ष मुनिका नाबालिग:')} ${isMinor ? t('Yes (50% Off)', 'हो (५०% छुट)') : t('No', 'होइन')}
 ${t('Lost/Damaged:', 'हराएको वा च्यातिएको:')} ${isLostOrDamaged ? t('Yes', 'हो') : t('No', 'होइन')}
 ${t('Total Revenue Fee:', 'कुल राजस्व दस्तुर:')} ${calculation.isForeign ? `$${calculation.feeUsd} USD` : `रु ${calculation.feeNpr.toLocaleString('en-IN')}`}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

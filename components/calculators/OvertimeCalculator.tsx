@@ -44,7 +44,7 @@ OT Rate (1.5x): NPR ${calc.otHourlyRate}/hour
 OT Hours Worked: ${otHours} Hours
 Total Overtime Pay: NPR ${calc.totalOtPay.toLocaleString('en-IN')}
 Total Gross with OT: NPR ${calc.grossSalaryWithOt.toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

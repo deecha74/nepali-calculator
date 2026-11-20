@@ -167,7 +167,7 @@ Buyer Concession: ${buyerCategory === 'woman' ? '25% Woman Rebate' : buyerCatego
 ${calculation.isCgtExempt ? `(Exemption Status: ${calculation.exemptReason})` : ''}
 
 Total Malpot Revenue: रु ${Math.round(calculation.totalGovtRevenue).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
 
     navigator.clipboard.writeText(text);
     setCopied(true);

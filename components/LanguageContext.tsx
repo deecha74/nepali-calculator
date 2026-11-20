@@ -25,7 +25,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Read from localStorage if user previously chose a language
     try {
-      const saved = localStorage.getItem('nepalcalc_lang') as Language;
+      const saved = localStorage.getItem('nepalicalc_lang') as Language;
       if (saved === 'en' || saved === 'ne') {
         setLanguageState(saved);
       }
@@ -37,7 +37,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
-      localStorage.setItem('nepalcalc_lang', lang);
+      localStorage.setItem('nepalicalc_lang', lang);
     } catch (e) {}
   };
 

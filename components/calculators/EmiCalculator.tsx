@@ -84,7 +84,7 @@ Interest: ${annualInterestRate}% | Tenure: ${tenureYears} Years
 Monthly EMI: रु ${Math.round(calculation.monthlyEmi).toLocaleString('en-IN')}
 Total Interest: रु ${Math.round(calculation.totalInterest).toLocaleString('en-IN')}
 Total Payment: रु ${Math.round(calculation.totalPayment).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

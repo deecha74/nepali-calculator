@@ -255,7 +255,7 @@ Taxable Base (Excl. VAT): रु ${Math.round(result.taxableBase).toLocaleString
 Total Bill/Invoice Amount: रु ${Math.round(result.totalInvoiceWithVat).toLocaleString('en-IN')}
 TDS Deducted (${result.effectiveRate}%): रु ${Math.round(result.tdsAmount).toLocaleString('en-IN')}
 Net Payable to Vendor: रु ${Math.round(result.netPayable).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
 
     navigator.clipboard.writeText(summaryText);
     setCopied(true);

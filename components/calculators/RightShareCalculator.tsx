@@ -68,7 +68,7 @@ Results:
 • Eligible Right Shares: ${result.eligibleRightShares} Kitta
 • Right Application Money Required: NPR ${result.rightApplicationAmount.toLocaleString('en-IN')}
 • Total Post-Adjustment Shares: ${result.postTotalShares} Kitta
-Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
+Calculated via Nepali Calc: https://nepalicalc.com/right-share`;
 
     const textNe = `नेप्से हकप्रद तथा बोनस सेयर मूल्य समायोजन विवरण:
 बुकक्लोज अघिको अन्तिम मूल्य: रू. ${toNepaliDigits(result.marketPrice)}
@@ -84,7 +84,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
 • भर्न पाइने हकप्रद सेयर: ${toNepaliDigits(result.eligibleRightShares)} कित्ता
 • हकप्रद आवेदनका लागि आवश्यक रकम: रू. ${toNepaliDigits(result.rightApplicationAmount.toLocaleString('ne-NP'))}
 • कुल सेयर संख्या (समायोजन पछि): ${toNepaliDigits(result.postTotalShares)} कित्ता
-नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/right-share`;
+नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalicalc.com/right-share`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -93,10 +93,10 @@ Calculated via Nepali Calc: https://nepalcalc.com/right-share`;
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `NEPSE Adjustment: NPR ${result.marketPrice} stock with ${result.bonusPercent}% Bonus & 1:${result.rightRatio} Right adjusts to NPR ${result.adjustedPrice}. Check your bonus tax & right application amount on: https://nepalcalc.com/right-share`
+      `NEPSE Adjustment: NPR ${result.marketPrice} stock with ${result.bonusPercent}% Bonus & 1:${result.rightRatio} Right adjusts to NPR ${result.adjustedPrice}. Check your bonus tax & right application amount on: https://nepalicalc.com/right-share`
     );
     const messageNe = encodeURIComponent(
-      `नेप्से मूल्य समायोजन: रू. ${toNepaliDigits(result.marketPrice)} को सेयरमा ${toNepaliDigits(result.bonusPercent)}% बोनस र १:${toNepaliDigits(result.rightRatio)} हकप्रद पछि समायोजन मूल्य रू. ${toNepaliDigits(result.adjustedPrice)} हुनेछ। बोनस कर र हकप्रद आवेदन हिसाब गर्नुहोस्: https://nepalcalc.com/right-share`
+      `नेप्से मूल्य समायोजन: रू. ${toNepaliDigits(result.marketPrice)} को सेयरमा ${toNepaliDigits(result.bonusPercent)}% बोनस र १:${toNepaliDigits(result.rightRatio)} हकप्रद पछि समायोजन मूल्य रू. ${toNepaliDigits(result.adjustedPrice)} हुनेछ। बोनस कर र हकप्रद आवेदन हिसाब गर्नुहोस्: https://nepalicalc.com/right-share`
     );
 
     window.open(`https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`, '_blank');

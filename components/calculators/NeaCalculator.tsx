@@ -63,7 +63,7 @@ Energy Charge: रु ${Math.round(calculation.energyCharge)}
 5% VAT (>50 units): रु ${Math.round(calculation.vatAmount)}
 Adjustment (${paymentTiming}): रु ${Math.round(calculation.adjustment)}
 TOTAL PAYABLE: रु ${Math.round(calculation.totalBill).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

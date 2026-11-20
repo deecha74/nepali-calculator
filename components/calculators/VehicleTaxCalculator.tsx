@@ -160,7 +160,7 @@ ${isMultiYear && includeCurrentYear ? `• Current Year Road Tax: रु ${curre
 • Renewal Service Fees (${totalTaxYears} Year${totalTaxYears > 1 ? 's' : ''}): रु ${totalRenewalFee.toLocaleString('en-IN')}
 • Third-Party Insurance: रु ${insuranceFee.toLocaleString('en-IN')}
 TOTAL PAYABLE AT YATAYAT: रु ${Math.round(totalPayable).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

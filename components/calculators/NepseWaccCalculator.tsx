@@ -147,7 +147,7 @@ Total Kitta: ${calculation.totalKitta} shares
 Total Cost Basis: NPR ${calculation.totalCostNpr.toFixed(2)}
 MeroShare WACC per Share: NPR ${calculation.waccPerShare.toFixed(2)}
 Net Profit at Rs. ${targetSellPrice}/share: NPR ${calculation.netProfit.toFixed(2)} (After ${calculation.cgtRate * 100}% CGT)
-Calculated via NepalCalc.com/nepse-wacc`;
+Calculated via nepalicalc.com/nepse-wacc`;
     navigator.clipboard.writeText(summary);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

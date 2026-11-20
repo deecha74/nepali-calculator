@@ -174,7 +174,7 @@ export function CitizenshipAgeCalculator() {
       return `${idx + 1}. ${isDone} ${doc.titleNep} (${doc.desc})`;
     });
     const header = `नेपाली नागरिकता प्रमाणपत्रका लागि आवश्यक कागजात चेकलिस्ट:\n\n`;
-    navigator.clipboard.writeText(header + lines.join('\n') + `\n\nVia NepalCalc.com`);
+    navigator.clipboard.writeText(header + lines.join('\n') + `\n\nVia nepalicalc.com`);
     setCopiedChecklist(true);
     setTimeout(() => setCopiedChecklist(false), 2000);
   };

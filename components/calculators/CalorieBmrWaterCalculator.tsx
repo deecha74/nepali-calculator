@@ -44,7 +44,7 @@ Basal Metabolic Rate (BMR): ${calculation.bmr} kcal/day
 Maintenance Calories (TDEE): ${calculation.tdeeMaintenance} kcal/day
 Fat Loss Target (-0.5kg/wk): ${calculation.weightLossCalories} kcal/day
 Daily Water Requirement: ${calculation.waterLitersPerDay} Liters/day
-Calculated on NepalCalc.com/calorie-calculator`;
+Calculated on nepalicalc.com/calorie-calculator`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

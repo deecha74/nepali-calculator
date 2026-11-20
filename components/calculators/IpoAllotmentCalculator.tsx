@@ -56,7 +56,7 @@ ${t('Lucky Allottees (10 Kitta each):', '१० कित्ता पाउन�
 ${t('Oversubscription:', 'ओभरसब्स्क्रिप्सन:')} ${calculation.oversubscriptionTimes}x
 ${t('Allotment Probability:', 'सेयर पर्ने सम्भावना:')} ${calculation.probabilityPercent}% (${t(calculation.oddsRatioEn, calculation.oddsRatioNe)})
 ${t('Required Bank Balance:', 'आवश्यक बैंक मौज्दात:')} रु ${calculation.totalRequiredFund}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

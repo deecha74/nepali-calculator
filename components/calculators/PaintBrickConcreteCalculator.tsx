@@ -78,7 +78,7 @@ export function PaintBrickConcreteCalculator() {
 Paint (${wallAreaSqFt} sq.ft, ${coats} coats): ${calculation.paintLitersNeeded}L Emulsion + ${calculation.primerLitersNeeded}L Primer + ${calculation.puttyKgNeeded}kg Putty (NPR ${calculation.totalPaintCostNpr.toLocaleString('en-IN')})
 Bricks (${calculation.wallSqFt} sq.ft ${wallThickness}): ${calculation.totalBricksWithWastage} Bricks (NPR ${calculation.brickCostNpr.toLocaleString('en-IN')})
 Concrete (${mixGrade}, ${slabAreaSqFt} sq.ft): ${calculation.cementBags50Kg} Bags Cement, ${calculation.sandCft} CFT Sand, ${calculation.aggregateCft} CFT Gitti
-Calculated on NepalCalc.com/paint-cost`;
+Calculated on nepalicalc.com/paint-cost`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

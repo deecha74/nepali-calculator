@@ -143,7 +143,7 @@ Advance Tax Instalments (Section 94):
 - 1st Instalment (Poush End - 40%): रु ${Math.round(calculation.inst1Poush).toLocaleString('en-IN')}
 - 2nd Instalment (Chaitra End - 30%): रु ${Math.round(calculation.inst2ChaitraDelta).toLocaleString('en-IN')}
 - 3rd Instalment (Ashadh End - 30%): रु ${Math.round(calculation.inst3AshadhDelta).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
 
     navigator.clipboard.writeText(summary);
     setCopied(true);

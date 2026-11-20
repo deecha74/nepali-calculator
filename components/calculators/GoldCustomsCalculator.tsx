@@ -167,7 +167,7 @@ Duty-Free Allowance: ${calculation.dutyFreeGrams}g (${calculation.dutyFreeTola.t
 Taxable Excess Weight: ${calculation.taxableGrams.toFixed(2)}g
 Payable Customs Duty at TIA: NPR ${calculation.totalDutyNpr.toLocaleString('en-IN')}
 Channel: ${calculation.channelStatus === 'green' ? 'Green Channel (Duty-Free)' : calculation.channelStatus === 'red' ? 'Red Channel (Declare & Pay Duty)' : 'Restricted / Confiscation Risk'}
-Calculated on NepalCalc.com/how-much-gold-can-you-bring-to-nepal`;
+Calculated on nepalicalc.com/how-much-gold-can-you-bring-to-nepal`;
     navigator.clipboard.writeText(summary);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

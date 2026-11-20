@@ -54,7 +54,7 @@ export function VatCalculator() {
 Base / Taxable Amount: रु ${Math.round(calculation.taxableAmount).toLocaleString('en-IN')}
 13% VAT: रु ${Math.round(calculation.vatAmount).toLocaleString('en-IN')}
 Total Bill: रु ${Math.round(calculation.grandTotal).toLocaleString('en-IN')}
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

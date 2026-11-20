@@ -83,7 +83,7 @@ Interest Method: ${isCompoundedYearly ? 'Yearly Compounded' : 'Simple Interest'}
 Monthly Interest: NPR ${result.monthlyInterestInitial.toLocaleString('en-IN')}
 Total Interest Accumulated: NPR ${result.totalInterest.toLocaleString('en-IN')}
 Total Settlement Amount: NPR ${result.totalPayable.toLocaleString('en-IN')}
-Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
+Calculated via Nepali Calc: https://nepalicalc.com/village-interest`;
 
     const textNe = `गाउँघरको सयकडा ब्याज हिसाब विवरण:
 साँवा रकम: रू. ${toNepaliDigits(principal.toLocaleString('ne-NP'))}
@@ -95,7 +95,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
 मासिक ब्याज: रू. ${toNepaliDigits(result.monthlyInterestInitial.toLocaleString('ne-NP'))}
 जम्मा ब्याज: रू. ${toNepaliDigits(result.totalInterest.toLocaleString('ne-NP'))}
 कुल तिर्नुपर्ने रकम (साँवा+ब्याज): रू. ${toNepaliDigits(result.totalPayable.toLocaleString('ne-NP'))}
-नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/village-interest`;
+नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalicalc.com/village-interest`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -104,10 +104,10 @@ Calculated via Nepali Calc: https://nepalcalc.com/village-interest`;
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `Village Loan Calculation: Principal NPR ${principal.toLocaleString('en-IN')}, Duration ${result.elapsedYears}y ${result.elapsedMonths}m ${result.elapsedDays}d @ Sayakada ${sayakadaRate}. Total Interest: NPR ${result.totalInterest.toLocaleString('en-IN')}. Total Payable: NPR ${result.totalPayable.toLocaleString('en-IN')}. Verified on: https://nepalcalc.com/village-interest`
+      `Village Loan Calculation: Principal NPR ${principal.toLocaleString('en-IN')}, Duration ${result.elapsedYears}y ${result.elapsedMonths}m ${result.elapsedDays}d @ Sayakada ${sayakadaRate}. Total Interest: NPR ${result.totalInterest.toLocaleString('en-IN')}. Total Payable: NPR ${result.totalPayable.toLocaleString('en-IN')}. Verified on: https://nepalicalc.com/village-interest`
     );
     const messageNe = encodeURIComponent(
-      `ऋण हिसाब विवरण: साँवा रू. ${toNepaliDigits(principal.toLocaleString('ne-NP'))}, अवधि ${toNepaliDigits(result.elapsedYears)} वर्ष ${toNepaliDigits(result.elapsedMonths)} महिना ${toNepaliDigits(result.elapsedDays)} दिन, सयकडा ${toNepaliDigits(sayakadaRate)} का दरले जम्मा ब्याज रू. ${toNepaliDigits(result.totalInterest.toLocaleString('ne-NP'))} र कुल तिर्नुपर्ने रू. ${toNepaliDigits(result.totalPayable.toLocaleString('ne-NP'))}। हिसाब हेर्नुहोस्: https://nepalcalc.com/village-interest`
+      `ऋण हिसाब विवरण: साँवा रू. ${toNepaliDigits(principal.toLocaleString('ne-NP'))}, अवधि ${toNepaliDigits(result.elapsedYears)} वर्ष ${toNepaliDigits(result.elapsedMonths)} महिना ${toNepaliDigits(result.elapsedDays)} दिन, सयकडा ${toNepaliDigits(sayakadaRate)} का दरले जम्मा ब्याज रू. ${toNepaliDigits(result.totalInterest.toLocaleString('ne-NP'))} र कुल तिर्नुपर्ने रू. ${toNepaliDigits(result.totalPayable.toLocaleString('ne-NP'))}। हिसाब हेर्नुहोस्: https://nepalicalc.com/village-interest`
     );
 
     window.open(`https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`, '_blank');

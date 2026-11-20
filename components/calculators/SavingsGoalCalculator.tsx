@@ -42,7 +42,7 @@ export function SavingsGoalCalculator() {
 ${t('Target Financial Goal:', 'लक्ष्य रकम:')} रु ${targetAmountNpr.toLocaleString('en-IN')} (${yearsToGoal} ${t('Years', 'वर्ष')})
 ${t('Required Monthly Saving:', 'मासिक बचत गर्नुपर्ने रकम:')} रु ${calculation.requiredMonthlySaving.toLocaleString('en-IN')}/${t('mo', 'महिना')} (@ ${expectedReturnRate}%)
 ${t('Total Compound Interest Earned:', 'प्राप्त कुल चक्रबृद्धि ब्याज:')} रु ${calculation.totalInterestEarned.toLocaleString('en-IN')}
-Calculated on NepalCalc.com/savings-goal`;
+Calculated on nepalicalc.com/savings-goal`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

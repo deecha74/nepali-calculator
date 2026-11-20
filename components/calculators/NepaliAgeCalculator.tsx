@@ -66,7 +66,7 @@ Exact Age: ${result.years} Years, ${result.months} Months, ${result.days} Days
 Total Days Lived: ${result.totalDays.toLocaleString('en-IN')} Days
 Next Birthday: in ${result.nextBirthday.monthsRemaining} Months, ${result.nextBirthday.daysRemaining} Days
 Zodiac Sign: ${result.rashi.nameEn}
-Calculated via Nepali Calc: https://nepalcalc.com/age`;
+Calculated via Nepali Calc: https://nepalicalc.com/age`;
 
     const textNe = `वि.सं. उमेर विवरण:
 जन्म मिति: वि.सं. ${toNepaliDigits(birthYear)} ${birthMonthObj.bs} ${toNepaliDigits(birthDay)} गते
@@ -75,7 +75,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
 कुल बाँचेको दिन: ${toNepaliDigits(result.totalDays.toLocaleString('ne-NP'))} दिन
 आगामी जन्मदिन: ${toNepaliDigits(result.nextBirthday.monthsRemaining)} महिना ${toNepaliDigits(result.nextBirthday.daysRemaining)} दिनमा
 राशि: ${result.rashi.nameNe}
-नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/age`;
+नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalicalc.com/age`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -84,10 +84,10 @@ Calculated via Nepali Calc: https://nepalcalc.com/age`;
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `I am ${result.years} Years, ${result.months} Months, and ${result.days} Days old today in Bikram Sambat! Check your exact BS age: https://nepalcalc.com/age`
+      `I am ${result.years} Years, ${result.months} Months, and ${result.days} Days old today in Bikram Sambat! Check your exact BS age: https://nepalicalc.com/age`
     );
     const messageNe = encodeURIComponent(
-      `वि.सं. अनुसार मेरो उमेर आज ${toNepaliDigits(result.years)} वर्ष, ${toNepaliDigits(result.months)} महिना, ${toNepaliDigits(result.days)} दिन पुग्यो! आफ्नो उमेर हिसाब गर्नुहोस्: https://nepalcalc.com/age`
+      `वि.सं. अनुसार मेरो उमेर आज ${toNepaliDigits(result.years)} वर्ष, ${toNepaliDigits(result.months)} महिना, ${toNepaliDigits(result.days)} दिन पुग्यो! आफ्नो उमेर हिसाब गर्नुहोस्: https://nepalicalc.com/age`
     );
 
     window.open(`https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`, '_blank');

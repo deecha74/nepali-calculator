@@ -181,7 +181,7 @@ Depreciation Expense (Deductible): रु ${Math.round(schedule.depreciationAmou
 Allowable Repair (7% limit): रु ${Math.round(schedule.allowableRepairExpense).toLocaleString('en-IN')}
 Excess Repair Capitalized: रु ${Math.round(schedule.excessRepairCapitalized).toLocaleString('en-IN')}
 Closing WDV for Next FY: रु ${Math.round(schedule.closingWdvNextYear).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
 
     navigator.clipboard.writeText(summary);
     setCopied(true);

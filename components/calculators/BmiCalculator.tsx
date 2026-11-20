@@ -74,7 +74,7 @@ Height: ${heightUnit === 'feet' ? `${feet}ft ${inches}in` : `${heightCm} cm`}
 Weight: ${weightKg} kg
 BMI Score: ${result.bmi} (${ne ? result.statusNe : result.statusEn})
 Ideal Healthy Weight Range: ${result.minIdealKg} kg - ${result.maxIdealKg} kg
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

@@ -44,7 +44,7 @@ Service Duration: ${yearsWorked} Years
 Total Gratuity (उपदान 8.33%): रु ${Math.round(calculation.totalGratuity).toLocaleString('en-IN')}
 Leave Encashment (बिदाको रकम): रु ${Math.round(calculation.totalLeaveEncashment).toLocaleString('en-IN')}
 TOTAL SEPARATION PAYOUT: रु ${Math.round(calculation.totalRetirementPayout).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

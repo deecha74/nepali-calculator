@@ -185,7 +185,7 @@ Key Engineering Structural Breakdown:
 - River Sand: ~${estimate.materials.sandTrips} Tipper Trucks (${estimate.materials.sandCuFt} cu. ft.)
 - Crushed Aggregate: ~${estimate.materials.aggregateTrips} Tipper Trucks (${estimate.materials.aggregateCuFt} cu. ft.)
 - Municipal Permits & Scrutiny Fee: NPR ${estimate.materials.municipalPermits.totalConsultancyAndPermitCost.toLocaleString('en-IN')}
-Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-construction`;
+Calculated via Nepali Calc Senior Engineer DPR: https://nepalicalc.com/house-construction`;
 
     const textNe = `वरिष्ठ स्ट्रक्चरल इन्जिनियर विस्तृत DPR तथा निर्माण लागत विवरण (BOQ):
 आयोजना: आवासीय आरसीसी फ्रेम घर (NBC 105:2020 मापदण्ड)
@@ -207,7 +207,7 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
 - खोलाको बालुवा: करिब ${toNepaliDigits(estimate.materials.sandTrips)} ट्रिपर (${toNepaliDigits(estimate.materials.sandCuFt)} घनफिट)
 - गिट्टी: करिब ${toNepaliDigits(estimate.materials.aggregateTrips)} ट्रिपर (${toNepaliDigits(estimate.materials.aggregateCuFt)} घनफिट)
 - नगरपालिका नक्शा पास तथा इन्जिनियर शुल्क: रू. ${toNepaliDigits(estimate.materials.municipalPermits.totalConsultancyAndPermitCost.toLocaleString('ne-NP'))}
-नेपाली क्याल्क इन्जिनियरिङ पोर्टल: https://nepalcalc.com/house-construction`;
+नेपाली क्याल्क इन्जिनियरिङ पोर्टल: https://nepalicalc.com/house-construction`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -220,10 +220,10 @@ Calculated via Nepali Calc Senior Engineer DPR: https://nepalcalc.com/house-cons
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `Senior Structural Engineer DPR (${storeys} Floors, ${estimate.totalBuiltUpSqFt} sq ft): Total Budget NPR ${estimate.totalBudget.toLocaleString('en-IN')}. Recommended: ${estimate.materials.pillars.pillarCount} RCC Columns (${estimate.materials.pillars.pillarSizeEn}), ${estimate.materials.bricksCount.toLocaleString('en-IN')} Bricks, ${estimate.materials.cementBags} Cement Bags, ${estimate.materials.steelQuintals} Quintals Steel. View full structural BOQ: https://nepalcalc.com/house-construction`
+      `Senior Structural Engineer DPR (${storeys} Floors, ${estimate.totalBuiltUpSqFt} sq ft): Total Budget NPR ${estimate.totalBudget.toLocaleString('en-IN')}. Recommended: ${estimate.materials.pillars.pillarCount} RCC Columns (${estimate.materials.pillars.pillarSizeEn}), ${estimate.materials.bricksCount.toLocaleString('en-IN')} Bricks, ${estimate.materials.cementBags} Cement Bags, ${estimate.materials.steelQuintals} Quintals Steel. View full structural BOQ: https://nepalicalc.com/house-construction`
     );
     const messageNe = encodeURIComponent(
-      `इन्जिनियरिङ विस्तृत DPR (${toNepaliDigits(storeys)} तला, ${toNepaliDigits(estimate.totalBuiltUpSqFt)} वर्ग फिट): कुल बजेट रू. ${toNepaliDigits(estimate.totalBudget.toLocaleString('ne-NP'))}। पिल्लर: ${toNepaliDigits(estimate.materials.pillars.pillarCount)} वटा (${estimate.materials.pillars.pillarSizeNe}), इँटा: ${toNepaliDigits(estimate.materials.bricksCount.toLocaleString('ne-NP'))} वटा, सिमेन्ट: ${toNepaliDigits(estimate.materials.cementBags)} बोरा, रड: ${toNepaliDigits(estimate.materials.steelQuintals)} क्विन्टल। पूर्ण विवरण: https://nepalcalc.com/house-construction`
+      `इन्जिनियरिङ विस्तृत DPR (${toNepaliDigits(storeys)} तला, ${toNepaliDigits(estimate.totalBuiltUpSqFt)} वर्ग फिट): कुल बजेट रू. ${toNepaliDigits(estimate.totalBudget.toLocaleString('ne-NP'))}। पिल्लर: ${toNepaliDigits(estimate.materials.pillars.pillarCount)} वटा (${estimate.materials.pillars.pillarSizeNe}), इँटा: ${toNepaliDigits(estimate.materials.bricksCount.toLocaleString('ne-NP'))} वटा, सिमेन्ट: ${toNepaliDigits(estimate.materials.cementBags)} बोरा, रड: ${toNepaliDigits(estimate.materials.steelQuintals)} क्विन्टल। पूर्ण विवरण: https://nepalicalc.com/house-construction`
     );
 
     window.open(`https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`, '_blank');

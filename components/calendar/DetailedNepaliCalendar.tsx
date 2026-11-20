@@ -229,7 +229,7 @@ export function DetailedNepaliCalendar() {
   }, [activeBottomTab, festivalList, holidayList, saitList, searchQuery]);
 
   const handleCopyDay = () => {
-    const text = `नेपाली पात्रो: ${toNepaliDigits(activeDay.bsDay)} ${meta.monthNameNep} ${toNepaliDigits(activeDay.bsYear)}, ${activeDay.dayNameNep} (${activeDay.adDate}) | ${activeDay.tithi} (${activeDay.paksha}) | सूर्योदय: ${activeDay.sunrise} • सूर्यास्त: ${activeDay.sunset} | via NepalCalc.com`;
+    const text = `नेपाली पात्रो: ${toNepaliDigits(activeDay.bsDay)} ${meta.monthNameNep} ${toNepaliDigits(activeDay.bsYear)}, ${activeDay.dayNameNep} (${activeDay.adDate}) | ${activeDay.tithi} (${activeDay.paksha}) | सूर्योदय: ${activeDay.sunrise} • सूर्यास्त: ${activeDay.sunset} | via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

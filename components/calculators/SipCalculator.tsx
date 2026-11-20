@@ -55,7 +55,7 @@ Tenure: ${tenureYears} Years
 Total Amount Invested: NPR ${result.investedAmount.toLocaleString('en-IN')}
 Estimated Returns (Gain): NPR ${result.wealthGain.toLocaleString('en-IN')}
 Total Maturity Wealth: NPR ${result.maturityValue.toLocaleString('en-IN')}
-Calculated on NepalCalc.com`;
+Calculated on nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

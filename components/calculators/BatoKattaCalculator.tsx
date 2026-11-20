@@ -86,7 +86,7 @@ Road Dimensions: ${roadWidthFt} ft wide × ${roadLengthFt} ft length
 Valuation Impact:
 • Gross Purchase Rate: NPR ${ratePerUnit.toLocaleString('en-IN')} / Aana
 • Real Effective Usable Cost: NPR ${result.effectiveCostPerNetAana.toLocaleString('en-IN')} / Remaining Aana (+${result.priceIncreasePercentage}%)
-Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
+Calculated via Nepali Calc: https://nepalicalc.com/bato-katta`;
 
     const textNe = `जग्गा बाटो कट्टा तथा बाँकी क्षेत्रफल विवरण:
 कुल प्रारम्भिक क्षेत्रफल: ${toNepaliDigits(result.grossSqFt)} वर्ग फिट (${result.grossRopani.formattedNe})
@@ -97,7 +97,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
 मूल्य प्रभाव:
 • सुरु दर: रू. ${toNepaliDigits(ratePerUnit.toLocaleString('ne-NP'))} प्रति आना
 • बाटो कट्टा पछिको वास्तविक उपयोग दर: रू. ${toNepaliDigits(result.effectiveCostPerNetAana.toLocaleString('ne-NP'))} प्रति बाँकी आना (+${toNepaliDigits(result.priceIncreasePercentage)}%)
-नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/bato-katta`;
+नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalicalc.com/bato-katta`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -106,10 +106,10 @@ Calculated via Nepali Calc: https://nepalcalc.com/bato-katta`;
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `Land Road Deduction: ${result.grossSqFt} sq ft land minus ${roadWidthFt}ft x ${roadLengthFt}ft road (${result.roadDeductionSqFt} sq ft lost) leaves ${result.netRemainingSqFt} sq ft (${result.netRopani.formattedEn}). Check full calculation on: https://nepalcalc.com/bato-katta`
+      `Land Road Deduction: ${result.grossSqFt} sq ft land minus ${roadWidthFt}ft x ${roadLengthFt}ft road (${result.roadDeductionSqFt} sq ft lost) leaves ${result.netRemainingSqFt} sq ft (${result.netRopani.formattedEn}). Check full calculation on: https://nepalicalc.com/bato-katta`
     );
     const messageNe = encodeURIComponent(
-      `जग्गा बाटो कट्टा: ${toNepaliDigits(result.grossSqFt)} वर्ग फिट जग्गामा ${toNepaliDigits(roadWidthFt)} फिट × ${toNepaliDigits(roadLengthFt)} फिट बाटो (${toNepaliDigits(result.roadDeductionSqFt)} वर्ग फिट) कट्टा गर्दा बाँकी खुद ${toNepaliDigits(result.netRemainingSqFt)} वर्ग फिट (${result.netRopani.formattedNe}) रहन्छ। पूर्ण हिसाब हेर्नुहोस्: https://nepalcalc.com/bato-katta`
+      `जग्गा बाटो कट्टा: ${toNepaliDigits(result.grossSqFt)} वर्ग फिट जग्गामा ${toNepaliDigits(roadWidthFt)} फिट × ${toNepaliDigits(roadLengthFt)} फिट बाटो (${toNepaliDigits(result.roadDeductionSqFt)} वर्ग फिट) कट्टा गर्दा बाँकी खुद ${toNepaliDigits(result.netRemainingSqFt)} वर्ग फिट (${result.netRopani.formattedNe}) रहन्छ। पूर्ण हिसाब हेर्नुहोस्: https://nepalicalc.com/bato-katta`
     );
 
     window.open(`https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`, '_blank');

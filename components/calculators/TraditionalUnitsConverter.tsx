@@ -74,14 +74,14 @@ export function TraditionalUnitsConverter({ hideTitleTag = false, customTitle }:
 Input: ${dharni} Dharni, ${pao} Pao
 Official Standard: ${(Math.round(weightCalculation.totalKg * 100) / 100)} KG (${Math.round(weightCalculation.totalGrams)} grams)
 Commercial Market (approx): ${(Math.round(weightCalculation.commercialKg * 100) / 100)} KG
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     } else {
       text = `Traditional Nepali Volume Conversion:
 Input: ${muri} Muri, ${pathi} Pathi, ${mana} Mana
 Total Mana: ${volumeCalculation.totalMana} Mana (${volumeCalculation.totalPathi.toFixed(2)} Pathi)
 Equivalent Volume: ${(Math.round(volumeCalculation.totalLiters * 100) / 100)} Liters
 Estimated Grain Weight: ${(Math.round(volumeCalculation.approxGrainKg * 100) / 100)} KG
-Via NepalCalc.com`;
+Via nepalicalc.com`;
     }
     navigator.clipboard.writeText(text);
     setCopied(true);

@@ -126,7 +126,7 @@ Metal: ${metalType.toUpperCase()} | Weight: ${totalTolas.toFixed(3)} Tola (${tot
 Rate per Tola: रु ${ratePerTola.toLocaleString('en-IN')}
 Making Charges: रु ${makingCharge} | Jarti (${wastageJartiPercent}%): रु ${Math.round(calculation.wastageJartiValue)}
 TOTAL JEWELRY PRICE: रु ${Math.round(calculation.grandTotal).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

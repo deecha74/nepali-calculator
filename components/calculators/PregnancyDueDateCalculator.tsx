@@ -59,7 +59,7 @@ LMP Date: ${lmpDateAd} (${calculation.lmpBsFormatted})
 Estimated Due Date (BS): ${calculation.dueBsFormatted}
 Estimated Due Date (AD): ${calculation.dueDateAdStr}
 Current Gestation: ${calculation.currentWeeks} Weeks, ${calculation.currentExtraDays} Days (${calculation.trimester})
-Calculated on NepalCalc.com/pregnancy-due-date`;
+Calculated on nepalicalc.com/pregnancy-due-date`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

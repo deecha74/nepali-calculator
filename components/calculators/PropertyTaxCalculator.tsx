@@ -50,7 +50,7 @@ Total Municipal Valuation: NPR ${calculation.totalValuation.toLocaleString('en-I
 Gross Annual Property Tax: NPR ${calculation.grossAnnualTax.toLocaleString('en-IN')}
 10% Timely Payment Rebate: -NPR ${calculation.earlyPaymentRebate.toLocaleString('en-IN')}
 Net Payable Ward Tax: NPR ${calculation.netPayableAnnualTax.toLocaleString('en-IN')}/year
-Calculated via NepalCalc.com/property-tax`;
+Calculated via nepalicalc.com/property-tax`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

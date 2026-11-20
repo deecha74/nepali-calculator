@@ -47,7 +47,7 @@ export default async function LicenseTrialGuidePage({ params }: PageProps) {
   const schema = generateWebApplicationSchema({
     name: guide.titleEn,
     description: guide.metaDescEn,
-    url: `https://nepalcalc.com/license/trial/${guide.slug}`,
+    url: `https://nepalicalc.com/license/trial/${guide.slug}`,
     category: 'EducationalApplication',
   });
 

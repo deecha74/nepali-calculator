@@ -47,7 +47,7 @@ ${t('Base Tuition (NPR):', 'मूल ट्युसन शुल्क:')} र
 ${t('3% Foreign Education Tax:', '३% शिक्षा सेवा शुल्क:')} रु ${Math.round(calculation.educationTax3Percent).toLocaleString('en-IN')}
 ${t(`MOEST NOC Fee (${nocCount}x):`, `शिक्षा मन्त्रालय NOC दस्तुर (${nocCount}x):`)} रु ${calculation.moestNocFee.toLocaleString('en-IN')}
 ${t('Total Payable at Bank:', 'बैंकमा जम्मा गर्नुपर्ने कुल रकम:')} रु ${Math.round(calculation.totalPayableNpr).toLocaleString('en-IN')}
-Calculated via NepalCalc.com`;
+Calculated via nepalicalc.com`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

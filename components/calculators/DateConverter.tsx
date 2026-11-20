@@ -61,11 +61,11 @@ export function DateConverter() {
   const handleCopy = () => {
     let text = "";
     if (mode === 'bsToAd') {
-      text = `Nepali Date Conversion:\nBS: ${bsYear}/${bsMonth}/${bsDay}\nAD: ${convertedAd.formatted} (${language === 'ne' ? convertedAd.dayOfWeek.bs : convertedAd.dayOfWeek.en})\nVia NepalCalc.com`;
+      text = `Nepali Date Conversion:\nBS: ${bsYear}/${bsMonth}/${bsDay}\nAD: ${convertedAd.formatted} (${language === 'ne' ? convertedAd.dayOfWeek.bs : convertedAd.dayOfWeek.en})\nVia nepalicalc.com`;
     } else if (mode === 'adToBs') {
-      text = `English to Nepali Date Conversion:\nAD: ${adDateString}\nBS: ${convertedBs.formatted}\nVia NepalCalc.com`;
+      text = `English to Nepali Date Conversion:\nAD: ${adDateString}\nBS: ${convertedBs.formatted}\nVia nepalicalc.com`;
     } else {
-      text = `Exact Age Calculation:\nAge: ${calculatedAge.years} Years, ${calculatedAge.months} Months, ${calculatedAge.days} Days\nTotal Days: ${calculatedAge.totalDays.toLocaleString('en-IN')}\nVia NepalCalc.com`;
+      text = `Exact Age Calculation:\nAge: ${calculatedAge.years} Years, ${calculatedAge.months} Months, ${calculatedAge.days} Days\nTotal Days: ${calculatedAge.totalDays.toLocaleString('en-IN')}\nVia nepalicalc.com`;
     }
     navigator.clipboard.writeText(text);
     setCopied(true);

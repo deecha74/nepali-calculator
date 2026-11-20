@@ -111,7 +111,7 @@ Channel: ${channel.nameEn}
 Effective Exchange Rate: 1 ${corridor.code} = NPR ${calculation.effectiveRateWithBonus.toFixed(2)}
 Transfer Fee: ${calculation.feeInForeign} ${corridor.code}
 Net In-Hand Received in Nepal: NPR ${calculation.totalNprReceived.toLocaleString('en-IN')}
-Calculated via Nepali Calc: https://nepalcalc.com/remittance-calculator`;
+Calculated via Nepali Calc: https://nepalicalc.com/remittance-calculator`;
 
     const textNe = `नेपाली रेमिट्यान्स हिसाब:
 पठाएको रकम: ${toNepaliDigits(foreignAmount)} ${corridor.nameNe} (${corridor.code})
@@ -119,7 +119,7 @@ Calculated via Nepali Calc: https://nepalcalc.com/remittance-calculator`;
 लागु भएको सटही दर: १ ${corridor.code} = रू. ${toNepaliDigits(calculation.effectiveRateWithBonus.toFixed(2))}
 सेवा शुल्क (शुल्क): ${toNepaliDigits(calculation.feeInForeign)} ${corridor.code}
 नेपालमा प्राप्त हुने खुद रकम: रू. ${toNepaliDigits(calculation.totalNprReceived.toLocaleString('ne-NP'))}
-नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalcalc.com/remittance-calculator`;
+नेपाली क्याल्क मार्फत हिसाब गरिएको: https://nepalicalc.com/remittance-calculator`;
 
     navigator.clipboard.writeText(isNe ? textNe : textEn);
     setCopied(true);
@@ -128,10 +128,10 @@ Calculated via Nepali Calc: https://nepalcalc.com/remittance-calculator`;
 
   const handleWhatsAppShare = () => {
     const messageEn = encodeURIComponent(
-      `Sending ${foreignAmount} ${corridor.code} to Nepal delivers NPR ${calculation.totalNprReceived.toLocaleString('en-IN')} via ${channel.nameEn} (Rate: NPR ${calculation.effectiveRateWithBonus.toFixed(2)}). Check live rate: https://nepalcalc.com/remittance-calculator`
+      `Sending ${foreignAmount} ${corridor.code} to Nepal delivers NPR ${calculation.totalNprReceived.toLocaleString('en-IN')} via ${channel.nameEn} (Rate: NPR ${calculation.effectiveRateWithBonus.toFixed(2)}). Check live rate: https://nepalicalc.com/remittance-calculator`
     );
     const messageNe = encodeURIComponent(
-      `नेपालमा ${toNepaliDigits(foreignAmount)} ${corridor.nameNe} पठाउँदा ${channel.nameNe} मार्फत खुद रू. ${toNepaliDigits(calculation.totalNprReceived.toLocaleString('ne-NP'))} प्राप्त हुन्छ। प्रत्यक्ष दर हेर्नुहोस्: https://nepalcalc.com/remittance-calculator`
+      `नेपालमा ${toNepaliDigits(foreignAmount)} ${corridor.nameNe} पठाउँदा ${channel.nameNe} मार्फत खुद रू. ${toNepaliDigits(calculation.totalNprReceived.toLocaleString('ne-NP'))} प्राप्त हुन्छ। प्रत्यक्ष दर हेर्नुहोस्: https://nepalicalc.com/remittance-calculator`
     );
 
     const shareUrl = `https://api.whatsapp.com/send?text=${isNe ? messageNe : messageEn}`;
