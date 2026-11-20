@@ -24,7 +24,11 @@ import {
 } from '@/lib/rates/programmaticLicense';
 import { BLOG_POSTS } from '@/lib/blog/posts';
 
-const CONTENT_LAST_MODIFIED = new Date('2026-11-04');
+const CONTENT_LAST_MODIFIED = new Date('2026-11-20');
+
+// Set to true to include the ~420 programmatic sub-pages once domain authority is established.
+// Keeping false focuses Googlebot 100% on the core 75+ calculators and pillar blog guides.
+const INCLUDE_PROGRAMMATIC_ROUTES = false;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -298,6 +302,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
+
+  if (!INCLUDE_PROGRAMMATIC_ROUTES) {
+    return [
+      ...coreRoutes,
+      ...blogRoutes,
+    ];
+  }
 
   return [
     ...coreRoutes,
