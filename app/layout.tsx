@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    other: {
+      "msvalidate.01": "5341D0D0C67ADCAAF049FCF4BA16ABE9",
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -112,6 +117,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="msvalidate.01" content="5341D0D0C67ADCAAF049FCF4BA16ABE9" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootSchema) }}
