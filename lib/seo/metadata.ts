@@ -74,6 +74,11 @@ export function constructMetadata({
         "max-snippet": -1,
       },
     },
+    verification: {
+      other: {
+        "msvalidate.01": "5341D0D0C67ADCAAF049FCF4BA16ABE9",
+      },
+    },
   };
 }
 
